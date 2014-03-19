@@ -6,6 +6,10 @@
     </span>
 </div>
 
+<div>
+    <a class="red-button" href="/radios">Слушать радио онлайн</a>
+</div>
+
 
 <!-- C1_1 -->
 <div id="rontar_adplace_3848"></div>
