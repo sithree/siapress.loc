@@ -163,20 +163,23 @@
 <?php #$this->widget('application.components.main.mbanner', array('position' => 102)); ?>
 <?php # $this->widget('application.components.main.mbanner', array('position' => 101)); ?>
 
-<?php $this->widget('application.components.main.popular'); ?>
+<?php $this->widget('application.components.widgets.popular'); ?>
 
 <!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');  ?>
 
-<h6 class="block-header">Дежурный по сайту</h6>
-<div class="well block-comment" style="padding: 8px;background: white; box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);">
-    <p>Юрий Нуреев, тел.: <b>(3462) 44-23-23, доб. 305</b><br />
+<div class="widget gray-border-light main-news">
+    <div class="header">
+        <h2>Дежурный по сайту</h2>
+    </div>
+      <p class="no-margin">Юрий Нуреев, тел.: <b>(3462) 44-23-23, доб. 305</b><br />
         по e-mail: <b>nureev@novygorod.ru</b></p>
 </div>
-
-<h6 class="block-header">Реклама на сайте</h6>
-<div class="well block-comment" style="padding: 8px;background: white; box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);">
-    <p>Ангелина Медведева, тел.: <b>(3462) 44-23-23, доб. 205</b><br />
-        по e-mail: <b>ng@surgutreklama.ru</b></p>
+<div class="widget gray-border-light main-news">
+    <div class="header">
+        <h2>Реклама на сайте</h2>
+    </div>
+      <p class="no-margin">Ангелина Медведева, тел.: <b>(3462) 44-23-23, доб. 205</b><br />
+        по e-mail: <b>ng@surgutreklama.ru</b></b></p>
 </div>
 
 <?php #include($_SERVER['DOCUMENT_ROOT'] . '/profit_partner/market_vert_3.txt'); ?>

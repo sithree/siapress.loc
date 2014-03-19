@@ -5,7 +5,7 @@ $yii = dirname(__FILE__).'/../framework/yii.php';
 $config = dirname(__FILE__).'/protected/config/frontend.php';
  
 // включать дебаг?
-#defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
  
  

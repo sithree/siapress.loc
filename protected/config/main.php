@@ -118,7 +118,7 @@ return array(
             'errorAction' => 'site/error',
         ),
         'cache' => array(
-            'class' => 'system.caching.CFileCache',
+            'class' => 'system.caching.CDummyCache',
         ),
         'log' => array(
             'class' => 'CLogRouter',

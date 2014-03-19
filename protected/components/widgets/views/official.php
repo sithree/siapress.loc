@@ -1,4 +1,4 @@
-<div class="widget gray-border-light main-news">
+<div class="widget gray-border-light main-news popular">
     <div class="header">
         <h2><a href="/news/official">Пресс-релизы</a></h2>
     </div>

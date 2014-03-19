@@ -1,6 +1,7 @@
 <?php if ($i % 2 == 0): ?>
     <div class="opinion-block"> 
         <header class="clearfix">
+            
             <a href="<?php echo (Article::model()->getCategoryAlias($model->cat_id) === "say" or Article::model()->getCategoryAlias($model->cat_id) === 'lections' ) ? "/news" : ""; ?><?php echo Yii::app()->createUrl(Article::model()->getCategoryAlias($model->cat_id) . '/' . $model->id) ?>">
                 <?php if (is_file(Article::model()->getImgpath($model->id, $model->created, true, false, '_home'))): ?>
                     <img src="<?php echo Article::model()->getImgpath($model->id, $model->created, true, false, '_home'); ?>" alt="<?php echo CHtml::encode($model->title); ?>" />
@@ -12,6 +13,9 @@
 
                 <h3><?php echo $model->title; ?></h3>
             </a>
+            <?php if(strlen($model->introtext) > 10 ):?> 
+            <div class="blogfulltext"><?php echo $model->introtext ?></div>
+            <?php endif; ?>
         </header>
         <footer>
             <div class="row">
