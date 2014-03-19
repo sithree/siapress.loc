@@ -2,6 +2,7 @@
 <html lang="ru"  xmlns:og="http://ogp.me/ns#">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <base href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/" />
         <!-- Le styles -->
@@ -41,6 +42,8 @@
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/img/favicon.ico">
+        
+        
 
         <script type="text/javascript">
 

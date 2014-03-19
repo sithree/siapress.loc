@@ -24,8 +24,8 @@
     this.$items      = null
 
     this.options.pause == 'hover' && this.$element
-      .on('mouseenter', $.proxy(this.pause, this))
-      .on('mouseleave', $.proxy(this.cycle, this))
+      .bind('mouseenter', $.proxy(this.pause, this))
+      .bind('mouseleave', $.proxy(this.cycle, this))
   }
 
   Carousel.DEFAULTS = {
@@ -179,7 +179,7 @@
   // CAROUSEL DATA-API
   // =================
 
-  $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
+  $(document).bind('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
     var $this   = $(this), href
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
     var options = $.extend({}, $target.data(), $this.data())
@@ -195,7 +195,7 @@
     e.preventDefault()
   })
 
-  $(window).on('load', function () {
+  $(window).bind('load', function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
       $carousel.carousel($carousel.data())
