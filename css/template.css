@@ -1,6 +1,6 @@
 p {
-  line-height: 150%;
-  margin: 0 0 10px;
+    line-height: 150%;
+    margin: 0 0 10px;
 }
 
 a {
@@ -303,6 +303,21 @@ nav .dropdown-menu:before {
     margin: 0;
     margin-bottom: 2px;
 }
+.main-news h4 a {
+    color:#333;
+}
+.main-news h4 a:hover {
+    color:#ca0000;
+    text-decoration: none;
+}
+.main-news h4 {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+
 .main-news footer {
     font-size: 11px;
     color: #a5a5a5;
@@ -497,7 +512,7 @@ nav .dropdown-menu:before {
     padding: 0;
 }
 .no-padding .header {
-  margin: 0 0 10px;
+    margin: 0 0 10px;
 }
 .a-right {
     text-align: right;
@@ -507,28 +522,28 @@ nav .dropdown-menu:before {
     margin-right: -5px;
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-  min-height: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  position: relative;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
 }
 .nowrap {
     text-wrap: normal;
 }
 
 .toptop {
-  height: 100%;
-  left: -120px;
-  position: absolute;
-  text-align: center;
-  width: 105px;
+    height: 100%;
+    left: -120px;
+    position: absolute;
+    text-align: center;
+    width: 105px;
 }
 #back-top {
-  color: #FFFFFF;
-  display: block;
-  height: 100%;
-  width: 100%;
-  transition: 0.3s background;
+    color: #FFFFFF;
+    display: block;
+    height: 100%;
+    width: 100%;
+    transition: 0.3s background;
 }
 #back-top:hover {
     background: #e4e4e4;
@@ -732,5 +747,39 @@ hr {
 }
 .carousel-caption .btn {
   text-shadow: none;
+}
+
+.red-button {
+    background: #ca0000;
+    color:white;
+    text-align: center;
+    display:block;
+    padding: 8px 10px;
+    font-size:14px;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.red-button:hover, .red-button:focus, .red-button:active {
+    color:white;
+    text-decoration: underline;
+}
+
+.gray-border-light {
+
+    border:1px solid  #f2f2f2;
+}
+
+.portlet-title {
+    background: none repeat scroll 0 0 #CA0000;
+    line-height: 115%;
+    padding: 3px 10px;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
 }
 

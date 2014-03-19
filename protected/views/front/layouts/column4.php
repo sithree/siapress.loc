@@ -1,10 +1,16 @@
 
 <div class="input-group" id="search">
-    <input type="text" class="form-control">
+    <input type="text" placeholder="Введите текст для поиска" class="form-control">
     <span class="input-group-btn">
         <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
     </span>
 </div>
+
+<div>
+    <a class="red-button" href="/radios">Слушать радио онлайн</a>
+</div>
+
+
 
 
 <!-- C1_1 -->
