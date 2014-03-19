@@ -17,10 +17,7 @@ class Quest extends CPortlet {
     }
 
     protected function renderContent() {
-        foreach ($this->items as $item){
-            $this->render('quest',array('item' => $item));
-        }
-        #$this->render('application.views.ajax.main', array('main' => $this->main, 'politics' => $this->politics));
+         $this->render('quest',array('items' => $this->items));
     }
 }
 
