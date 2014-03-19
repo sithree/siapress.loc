@@ -148,7 +148,7 @@
 <!-- /// C7 -->
 
 
-<?php $this->widget('application.components.main.quest'); ?>
+<?php $this->widget('application.components.widgets.quest'); ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php'); ?>
 
@@ -160,11 +160,6 @@
 <?php $this->widget('application.components.main.popular'); ?>
 
 <!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');  ?>
-
-<?php $this->widget('application.components.main.mbanner', array('position' => 31)); ?>
-<?php $this->widget('application.components.main.mbanner', array('position' => 32)); ?>
-<?php $this->widget('application.components.main.mbanner', array('position' => 3)); ?>
-<?php $this->widget('application.components.main.mbanner', array('position' => 6)); ?>
 
 <h6 class="block-header">Дежурный по сайту</h6>
 <div class="well block-comment" style="padding: 8px;background: white; box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);">
