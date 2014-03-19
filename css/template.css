@@ -303,6 +303,21 @@ nav .dropdown-menu:before {
     margin: 0;
     margin-bottom: 2px;
 }
+.main-news h4 a {
+    color:#333;
+}
+.main-news h4 a:hover {
+    color:#ca0000;
+    text-decoration: none;
+}
+.main-news h4 {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+
 .main-news footer {
     font-size: 11px;
     color: #a5a5a5;
@@ -551,3 +566,21 @@ nav .dropdown-menu:before {
     color:white;
     text-decoration: underline;
 }
+
+.gray-border-light {
+
+    border:1px solid  #f2f2f2;
+}
+
+.portlet-title {
+    background: none repeat scroll 0 0 #CA0000;
+    line-height: 115%;
+    padding: 3px 10px;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+
