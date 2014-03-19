@@ -1,0 +1,6 @@
+<noindex>
+<div class='pluso pluso-theme-light' style='background:#fafafa;'><div class='pluso-more-container'><a class='pluso-more' href=''></a><ul class='pluso-counter-container'><li><li class='pluso-counter'><li></ul></div><a class='pluso-vkontakte'></a><a class='pluso-facebook'></a><a class='pluso-odnoklassniki'></a><a class='pluso-moimir'></a><a class='pluso-twitter'></a><a class='pluso-email'></a><a class='pluso-print'></a></div>
+<script type='text/javascript'>if(!window.pluso){pluso={version:'0.9.1',url:'http://share.pluso.ru/'};h=document.getElementsByTagName('head')[0];l=document.createElement('link');l.href=pluso.url+'pluso.css';l.type='text/css';l.rel='stylesheet';s=document.createElement('script');s.src=pluso.url+'pluso.js';s.charset='UTF-8';h.appendChild(l);h.appendChild(s)}</script></noindex>
+
+<img style="max-width: auto; width: 65px; float: right;"  src="https://chart.googleapis.com/chart?cht=qr&chs=65x65&chld=L|1&chl=http://siapress.ru<?php echo $_SERVER['REQUEST_URI'] ?>" alt="QR код" />
+<div class="clr"></div>

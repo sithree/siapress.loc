@@ -1,0 +1,16 @@
+﻿<kml xmlns="http://www.opengis.net/kml/2.2" 
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>СИА-ПРЕСС: Новости Сургута и югры</name>    
+    <atom:author>      
+      <atom:name>Редакция СИА-ПРЕСС</atom:name>    
+    </atom:author>    
+    <atom:link href="http://www.siapress.ru" />    
+    <Placemark>      
+      <name>СИА-ПРЕСС ЦЕНТР - местоположение редакции СИА-ПРЕСС</name>      
+      <Point>        
+        <coordinates>61.24753852933286,73.40202566299013</coordinates>      
+      </Point>    
+    </Placemark>    
+  </Document> 
+</kml>

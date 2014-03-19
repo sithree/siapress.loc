@@ -1,0 +1,50 @@
+User-agent: *
+Allow: /
+Disallow:
+Disallow: /protected
+Disallow: /search
+Disallow: /login
+Disallow: /registration
+Disallow: /css
+Disallow: /media/com
+Disallow: /media/ng
+Disallow: /proxy
+Disallow: /temp
+Disallow: /adm*
+Disallow: /log*
+Disallow: *captcha*
+Disallow: *comment*
+#Disallow: */query
+#link cleaning	
+Disallow: /1ps
+Disallow: /subscribe
+Disallow: /*?format=
+Disallow: */item
+Disallow: */itemlist
+Disallow: */component
+Disallow: */forum
+Disallow: */weather
+Disallow: */duma2012
+Disallow: */viewforum.php
+#Disallow: /*?
+Disallow: /*?n=*
+Disallow: /*?f=*
+Disallow: /*?t=*
+Disallow: /*?d=*
+Disallow: /*?feed=*
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+Disallow: /*.swf$
+Disallow: *?utm_source
+Disallow: category/category
+Clean-param: utm_source *
+Clean-param: utm_medium *
+Clean-param: utm_campaign *
+Clean-param: utm_term *
+Clean-param: utm_content *
+Sitemap: http://www.siapress.ru/sitemap.xml
+Sitemap: http://www.siapress.ru/sitemap_news.xml
+Sitemap: http://www.siapress.ru/rss
+Host: www.siapress.ru
+Crawl-delay: 0.3

@@ -1,0 +1,47 @@
+#Order allow,deny
+#allow from all
+#Deny from 79.98.88.246
+# spammers fighting
+php_value memory_limit 500M
+
+RewriteEngine on
+AddDefaultCharset utf-8
+
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+
+<IfModule mod_setenvif.c>
+    SetEnv TZ Asia/Ekaterinburg
+</IfModule>
+ServerSignature Off
+
+RewriteCond %{HTTP_HOST} ^siapress.ru(.*\/*)$ 
+RewriteRule ^(.*)$ http://www.siapress.ru/$1 [R=301,L]
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+RewriteRule ^index.php?option=com_sdrsssyndicatorformat=raw$ http://www.siapress.ru/rss [R=permanent,L]
+
+<filesMatch "\.(html|htm)$">
+FileETag None
+<ifModule mod_headers.c>
+Header unset ETag
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</ifModule>
+</filesMatch>
+
+<ifModule mod_expires.c>
+    ExpiresActive Off
+    #по умолчанию кеш в 5 секунд
+    ExpiresDefault "access plus 15 seconds"
+</ifModule>
+
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
+

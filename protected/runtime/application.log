@@ -1,0 +1,152 @@
+2012/06/07 10:45:25 [error] [exception.CException] exception 'CException' with message 'Object configuration must be an array containing a "class" element.' in C:\openserver\domains\sia3\framework\YiiBase.php:195
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#1 C:\openserver\domains\sia3\framework\base\CModule.php(493): CModule->getComponent('bootstrap')
+#2 C:\openserver\domains\sia3\framework\base\CApplication.php(146): CModule->preloadComponents()
+#3 C:\openserver\domains\sia3\framework\YiiBase.php(127): CApplication->__construct('C:\openserver\d...')
+#4 C:\openserver\domains\sia3\framework\YiiBase.php(100): YiiBase::createApplication('CWebApplication', 'C:\openserver\d...')
+#5 C:\openserver\domains\sia3\public_html\index.php(13): YiiBase::createWebApplication('C:\openserver\d...')
+#6 {main}
+REQUEST_URI=/index.php?r=site/index
+HTTP_REFERER=http://sia:88/index.php?r=site/index
+---
+2012/06/07 10:45:25 [error] [exception.CException] exception 'CException' with message 'Object configuration must be an array containing a "class" element.' in C:\openserver\domains\sia3\framework\YiiBase.php:195
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#1 C:\openserver\domains\sia3\framework\base\CModule.php(493): CModule->getComponent('bootstrap')
+#2 C:\openserver\domains\sia3\framework\base\CApplication.php(146): CModule->preloadComponents()
+#3 C:\openserver\domains\sia3\framework\YiiBase.php(127): CApplication->__construct('C:\openserver\d...')
+#4 C:\openserver\domains\sia3\framework\YiiBase.php(100): YiiBase::createApplication('CWebApplication', 'C:\openserver\d...')
+#5 C:\openserver\domains\sia3\public_html\index.php(13): YiiBase::createWebApplication('C:\openserver\d...')
+#6 {main}
+REQUEST_URI=/index.php?r=site/index
+---
+2012/06/07 10:45:28 [error] [exception.CException] exception 'CException' with message 'Object configuration must be an array containing a "class" element.' in C:\openserver\domains\sia3\framework\YiiBase.php:195
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#1 C:\openserver\domains\sia3\framework\base\CModule.php(493): CModule->getComponent('bootstrap')
+#2 C:\openserver\domains\sia3\framework\base\CApplication.php(146): CModule->preloadComponents()
+#3 C:\openserver\domains\sia3\framework\YiiBase.php(127): CApplication->__construct('C:\openserver\d...')
+#4 C:\openserver\domains\sia3\framework\YiiBase.php(100): YiiBase::createApplication('CWebApplication', 'C:\openserver\d...')
+#5 C:\openserver\domains\sia3\public_html\index.php(13): YiiBase::createWebApplication('C:\openserver\d...')
+#6 {main}
+REQUEST_URI=/index.php?r=site/index
+HTTP_REFERER=http://sia:88/index.php?r=site/index
+---
+2012/06/07 10:45:28 [error] [exception.CException] exception 'CException' with message 'Object configuration must be an array containing a "class" element.' in C:\openserver\domains\sia3\framework\YiiBase.php:195
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#1 C:\openserver\domains\sia3\framework\base\CModule.php(493): CModule->getComponent('bootstrap')
+#2 C:\openserver\domains\sia3\framework\base\CApplication.php(146): CModule->preloadComponents()
+#3 C:\openserver\domains\sia3\framework\YiiBase.php(127): CApplication->__construct('C:\openserver\d...')
+#4 C:\openserver\domains\sia3\framework\YiiBase.php(100): YiiBase::createApplication('CWebApplication', 'C:\openserver\d...')
+#5 C:\openserver\domains\sia3\public_html\index.php(13): YiiBase::createWebApplication('C:\openserver\d...')
+#6 {main}
+REQUEST_URI=/index.php?r=site/index
+---
+2012/06/13 10:47:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\openserver\domains\sia3\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\openserver\domains\sia3\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\openserver\domains\sia3\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\openserver\domains\sia3\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\openserver\domains\sia3\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\openserver\domains\sia3\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\openserver\domains\sia3\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\openserver\domains\sia3\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('users/admin')
+#9 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=users/admin
+---
+2012/06/13 10:47:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\openserver\domains\sia3\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\openserver\domains\sia3\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\openserver\domains\sia3\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\openserver\domains\sia3\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\openserver\domains\sia3\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\openserver\domains\sia3\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\openserver\domains\sia3\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\openserver\domains\sia3\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('users/admin')
+#9 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=users/admin
+HTTP_REFERER=http://sia3.ru:88/index.php?r=users
+---
+2012/06/13 12:13:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user".' in C:\openserver\domains\sia3\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('user')
+#1 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=user
+---
+2012/06/13 12:48:49 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity._id" is not defined.' in C:\openserver\domains\sia3\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\openserver\domains\sia3\public_html\protected\components\UserIdentity.php(23): CComponent->__set('_id', '1')
+#1 C:\openserver\domains\sia3\public_html\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 C:\openserver\domains\sia3\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 C:\openserver\domains\sia3\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\openserver\domains\sia3\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 C:\openserver\domains\sia3\public_html\protected\controllers\SiteController.php(115): CModel->validate()
+#6 C:\openserver\domains\sia3\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 C:\openserver\domains\sia3\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\openserver\domains\sia3\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\openserver\domains\sia3\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\openserver\domains\sia3\framework\web\CWebApplication.php(276): CController->run('login')
+#11 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://sia3.ru:88/index.php?r=site/login
+---
+2012/06/13 12:49:13 [error] [exception.CException] exception 'CException' with message 'Property "Users.username" is not defined.' in C:\openserver\domains\sia3\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\openserver\domains\sia3\framework\db\ar\CActiveRecord.php(144): CComponent->__get('username')
+#1 C:\openserver\domains\sia3\public_html\protected\components\UserIdentity.php(24): CActiveRecord->__get('username')
+#2 C:\openserver\domains\sia3\public_html\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 C:\openserver\domains\sia3\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#4 C:\openserver\domains\sia3\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 C:\openserver\domains\sia3\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#6 C:\openserver\domains\sia3\public_html\protected\controllers\SiteController.php(115): CModel->validate()
+#7 C:\openserver\domains\sia3\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#8 C:\openserver\domains\sia3\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\openserver\domains\sia3\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\openserver\domains\sia3\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\openserver\domains\sia3\framework\web\CWebApplication.php(276): CController->run('login')
+#12 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#13 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://sia3.ru:88/index.php?r=site/login
+---
+2012/06/13 12:49:36 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.name" is read only.' in C:\openserver\domains\sia3\framework\base\CComponent.php:171
+Stack trace:
+#0 C:\openserver\domains\sia3\public_html\protected\components\UserIdentity.php(24): CComponent->__set('name', '???????? ??????...')
+#1 C:\openserver\domains\sia3\public_html\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 C:\openserver\domains\sia3\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 C:\openserver\domains\sia3\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\openserver\domains\sia3\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 C:\openserver\domains\sia3\public_html\protected\controllers\SiteController.php(115): CModel->validate()
+#6 C:\openserver\domains\sia3\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 C:\openserver\domains\sia3\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\openserver\domains\sia3\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\openserver\domains\sia3\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\openserver\domains\sia3\framework\web\CWebApplication.php(276): CController->run('login')
+#11 C:\openserver\domains\sia3\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 C:\openserver\domains\sia3\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\openserver\domains\sia3\public_html\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://sia3.ru:88/index.php?r=site/login
+---
+2012/06/13 12:54:31 [error] [system.db.CDbCommand] Error in preparing SQL: DELETE FROM YiiLog WHERE 0=1
+in C:\openserver\domains\sia3\public_html\index.php (13)
+2012/06/13 12:54:31 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiLog. The SQL statement executed was: DELETE FROM YiiLog WHERE 0=1.
+in C:\openserver\domains\sia3\public_html\index.php (13)
