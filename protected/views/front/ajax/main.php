@@ -23,7 +23,4 @@
 
         <?php endforeach; ?>
     </ul>
-    <div class="footer">
-        <a href="/news">Больше новостей</a>
-    </div>
 </div>

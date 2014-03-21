@@ -7,7 +7,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     ),
         ));
 ?>
-<?php Yii::app()->clientScript->registerCss('t','body {padding-bottom: 45px;}') ?>
+<?php Yii::app()->clientScript->registerCss('t', 'body {padding-bottom: 45px;}') ?>
 <p class="help-block">Поля помеченные <span class="required">*</span> обязательны.</p>
 
 <?php echo $form->errorSummary($model); ?>
@@ -31,48 +31,17 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 // Redactor options
         ));
         ?>
+        <br />
+         <?php echo $form->label($model, 'theme'); ?>
         <?php
-        /*
-          $this->widget('ext.redactorjs.Redactor', array(
-          'model' => $model,
-          'attribute' => 'fulltext',
-          'lang' => 'ru',
-          'editorOptions' => array(
-          'imageUpload' => Yii::app()->createAbsoluteUrl('article/imageupload'),
-          'imageGetJson' => Yii::app()->createAbsoluteUrl('article/uploadedImages'),
-          'removeStyles' => true,
-          'removeClasses' => true,
-          'autoresize' => false,
-          'resizeImage' => false,
-          'buttons' => array('formatting'),
-          //                'initCallback' =>CJavaScript::encode( new CJavaScriptExpression(
-          //                        "function()
-          //        {
-          //            var callback = function(buttonName, buttonDOM, buttonObj, e)
-          //            {
-          //                this.execCommand('underline');
-          //            }
-          //
-          //            // add after
-          //            this.buttonAddAfter('italic', 'underline', 'Underline', callback);
-          //
-          //            // add before
-          //            this.buttonAddBefore('image', 'button1', 'Button Before', function(buttonName, buttonDOM, buttonObj, e) {
-          //                alert(buttonName);
-          //            });
-          //
-          //            // add separator after or before
-          //            this.buttonAddSeparatorAfter('button1');
-          //        }"
-          //                        ), false),
-          # 'formattingTags' => array('p'),
-          'fixed' => false,
-          # 'fixedTop' => 50,
-          #'fixedBox' => true,
-          ),
-          ));
-         * 
-         */
+        $this->widget('CAutoComplete', array(
+            'model' => 'theme',
+            'name' => 'Article_theme',
+            'url' => array('theme/autocomplete'),
+            'minChars' => 2,
+            'htmlOptions' => array('class' => 'span12', 'maxlength' => 255),
+                )
+        );
         ?>
 
         <?php echo $form->textFieldRow($model, 'tags', array('class' => 'span12', 'maxlength' => 255)); ?>

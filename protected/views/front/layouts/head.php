@@ -233,9 +233,11 @@
                                         </ul>-->
                 </nav>
                 <div id="content-line" class="clearfix">
-                    <div id="hot">Горячие темы: <a href="#">Образ новой России</a> <a href="#">Что твориться в Крыму?</a> <a href="#">Что т ораз</a> <a href="#">Что т ораз</a> <a href="#">Что т ораз</a></div>
-                    <div id="cources">
-                        <span>EUR 41.12313 <i class="fa fa-sort-down"></i></span>
+                    <div id="hot">Горячие темы: <a href="#">Образ новой России</a> <a href="#">Что твориться в Крыму?</a> <a href="#">Новые политические веения Владимира ПУ</a> </div>
+                    <div id="cources" class="a-right">
+                        <span>EUR 50,4146 <i class="fa fa-sort-down red"></i></span>
+                        &nbsp;
+                        <span>USD 36,2070 <i class="fa fa-sort-down red"></i></span>
                     </div>
                 </div>
             </header>

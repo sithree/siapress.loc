@@ -1,6 +1,6 @@
 
 <div class="input-group" id="search">
-    <input type="text" placeholder="Введите текст для поиска" class="form-control">
+    <input type="text" placeholder="Поиск по сайту" class="form-control">
     <span class="input-group-btn">
         <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
     </span>
@@ -165,22 +165,39 @@
 
 <?php $this->widget('application.components.widgets.popular'); ?>
 
-<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');  ?>
+<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');   ?>
 
-<div class="widget gray-border-light main-news">
-    <div class="header">
-        <h2>Дежурный по сайту</h2>
-    </div>
-      <p class="no-margin">Юрий Нуреев, тел.: <b>(3462) 44-23-23, доб. 305</b><br />
-        по e-mail: <b>nureev@novygorod.ru</b></p>
-</div>
 <div class="widget gray-border-light main-news">
     <div class="header">
         <h2>Реклама на сайте</h2>
     </div>
-      <p class="no-margin">Ангелина Медведева, тел.: <b>(3462) 44-23-23, доб. 205</b><br />
-        по e-mail: <b>ng@surgutreklama.ru</b></b></p>
+    <p class="no-margin">Тел.: <b>(3462) 44-23-23, доб. 205</b><br />
+        e-mail: <b>ng@surgutreklama.ru</b></b></p>
 </div>
+
+<div class="portlet-content">
+
+    <div style="position:relative;" class="com">
+        <noindex>				
+            <a href="http://www.thn.ru" target="_blank" rel="nofollow"><img style="max-width: 100%" alt="На правах рекламы" src="http://www.siapress.ru/media/com/280х130.jpg"></a>            </noindex>
+    </div>
+    <br />
+    <div style="position:relative;" class="com">
+        <noindex>				
+            <a href="http://echo.msk.ru/sounds/stream.html" target="_blank" rel="nofollow"><img style="max-width: 100%" alt="На правах рекламы" src="http://www.siapress.ru/media/com/59.jpg"></a>            </noindex>
+    </div>
+    <br />
+</div>
+
+
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?108"></script>
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+    VK.Widgets.Group("vk_groups", {mode: 0, width: "270", height: "250"}, 63451219);
+</script>
+
 
 <?php #include($_SERVER['DOCUMENT_ROOT'] . '/profit_partner/market_vert_3.txt'); ?>
 

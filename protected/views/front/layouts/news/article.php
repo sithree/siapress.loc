@@ -5,7 +5,7 @@
         <?php echo $content; ?>
     </div>
     <div  class="col-xs-3" id="left">
-       <?php include Yii::getPathOfAlias('application.views.front.layouts') . DIRECTORY_SEPARATOR . 'column2.php'; ?>
+       <?php include Yii::getPathOfAlias('application.views.front.layouts') . DIRECTORY_SEPARATOR . 'column3.php'; ?>
     </div>
     <div  class="col-xs-3" id="right">
        <?php include Yii::getPathOfAlias('application.views.front.layouts') . DIRECTORY_SEPARATOR . 'column4.php'; ?>

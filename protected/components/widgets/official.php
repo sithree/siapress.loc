@@ -7,7 +7,7 @@ class Official extends CPortlet {
 
     public function __construct($owner = null) {
         parent::__construct($owner);
-        $this->items = Article::model()->getItems('official',12);
+        $this->items = Article::model()->getItems('official',9);
         #print_r($this->items);
        # die();
     }

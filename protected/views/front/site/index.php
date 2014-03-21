@@ -23,10 +23,13 @@ Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
 
 <?php
 
-for ($pollCount = 0; $pollCount < 3; $pollCount++) {
+for ($pollCount = 0; $pollCount < 4; $pollCount++) {
     $this->widget('EPoll');
 }
 ?>
+<div>
+    <a class="gray-light-button" href="/">Больше опросов</a>
+</div>
 
 
 

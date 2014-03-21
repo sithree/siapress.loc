@@ -1,7 +1,7 @@
 <?php
 Yii::import('zii.widgets.CPortlet');
 
-class Blogs extends CPortlet {
+class Blogs_1 extends CPortlet {
 
     protected function renderContent() {
         $model = Yii::app()->cache->get('blogsRight');
@@ -9,7 +9,7 @@ class Blogs extends CPortlet {
             $model = Article::model()->blogsRight()->findAll();
             Yii::app()->cache->set('blogsRight', $model, Config::getCacheduration());
         }
-        $this->render('blogs', array('model' => $model));
+        $this->render('blogs_1', array('model' => $model));
     }
 
 }

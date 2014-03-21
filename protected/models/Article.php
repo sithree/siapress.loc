@@ -34,12 +34,12 @@ class Article extends CActiveRecord {
 
     protected $_mainId = false;
     public $query;
-
     public $ccc;
     public $video;
     public $deleteImage;
     public $_imgpath = 'images/news/main/';
     public $blogLimit = 17;
+    public $theme;
 
     public function scopes() {
         return array(
@@ -51,7 +51,7 @@ class Article extends CActiveRecord {
                 'order' => 't.id DESC',
             ),
             'mainNewsAndOpinions' => array(
-                'with' => array('category','author'),
+                'with' => array('category', 'author'),
                 'condition' => 't.published = 1 AND t.publish <= NOW() AND t.cat_id IN (1,2,3,4,5,6,7,10,11,13,15,8,9,20,19) and (t.main = 1 or t.cat_id in(8,9))',
                 'order' => 't.publish DESC',
             ),
@@ -94,11 +94,12 @@ class Article extends CActiveRecord {
             array('title, cat_id, fulltext, author, created, modified, publish, type_id', 'required'),
             array('query, top, deleteImage, cat_id, published, author, modif_by, main, type_id, comment_on', 'numerical', 'integerOnly' => true),
             array('title, tags, author_alias, metakey, imgtitle', 'length', 'max' => 255),
+             array('theme', 'length', 'max' => 255),
             array('introtext, video, main_category', 'safe'),
-            array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, gif, png'),
+            array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, jpeg, gif, png'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, main_category, title, cat_id, published, introtext, fulltext, tags, author, author_alias, modif_by, created, modified, publish, metakey, main, type_id, comment_on, imgtitle', 'safe', 'on' => 'search'),
+            array('id, theme, main_category, title, cat_id, published, introtext, fulltext, tags, author, author_alias, modif_by, created, modified, publish, metakey, main, type_id, comment_on, imgtitle', 'safe', 'on' => 'search'),
         );
     }
 
@@ -116,7 +117,7 @@ class Article extends CActiveRecord {
             'author0' => array(self::BELONGS_TO, 'Users', 'author'),
             'author' => array(self::BELONGS_TO, 'Users', 'author'),
             'comments' => array(self::HAS_MANY, 'Comment', 'object_id'),
-            'videoPositions' => array(self::HAS_MANY, 'ArticleVideo', 'article'), 
+            'videoPositions' => array(self::HAS_MANY, 'ArticleVideo', 'article'),
         );
     }
 
@@ -148,7 +149,8 @@ class Article extends CActiveRecord {
             'image' => 'Основное фото',
             'deleteImage' => 'Удалить фото',
             'query' => 'Задай вопрос АКТИВНА',
-            'video' => 'Код ролика'
+            'video' => 'Код ролика',
+            'theme' => 'Тема',
         );
     }
 
@@ -188,11 +190,11 @@ class Article extends CActiveRecord {
         $criteria->order = 'id DESC';
 
         return new CActiveDataProvider($this, array(
-                    'criteria' => $criteria,
-                    'pagination' => array(
-                        'pageSize' => 20,
-                    )
-                ));
+            'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 20,
+            )
+        ));
     }
 
     public function afterConstruct() {
@@ -218,9 +220,18 @@ class Article extends CActiveRecord {
             $this->deleteImage();
         }
 
-        if($this->video){
-           $this->video = str_replace('http://youtu.be/', '', $this->video);
+        if ($this->video) {
+            $this->video = str_replace('http://youtu.be/', '', $this->video);
         }
+        
+        if ($this->theme) {
+            $theme = Theme::model()->find('`name` like "' . $this->theme . '"');
+            if($theme)
+                $this->theme = $theme->id;
+        }
+        else 
+            $this->theme = -1;
+        
         return true;
     }
 
@@ -245,6 +256,7 @@ class Article extends CActiveRecord {
         }
 
 
+        
 
 
         //пингуем
@@ -288,7 +300,7 @@ class Article extends CActiveRecord {
             if ($perm == 0 or $perm != $m->perm->name) {
                 $perm = $m->perm->name;
             } else {
-
+                
             }
             $return[$perm][$m->id] = $m->name;
         }
@@ -489,8 +501,7 @@ class Article extends CActiveRecord {
         } elseif ($this->getCategoryId($catid)) {
             $catid = $this->getCategoryId($catid);
             #die($this->getCategoryId($catid););
-        }
-        else
+        } else
             return false;
 
         $data = Yii::app()->cache->get(str_replace(',', '_', $catid) . '_count');
@@ -516,8 +527,7 @@ class Article extends CActiveRecord {
         } else
         if ($this->getCategoryId($catid)) {
             $cat = $this->getCategoryId($catid);
-        }
-        else
+        } else
             return false;
 
         if ($data === false) {
@@ -563,8 +573,7 @@ class Article extends CActiveRecord {
         } elseif ($this->getCategoryId($catid)) {
             $cat = $this->getCategoryId($catid);
             #die($this->getCategoryId($catid););
-        }
-        else
+        } else
             return false;
 
         if ($page)
@@ -766,7 +775,7 @@ class Article extends CActiveRecord {
         if ($img) {
             $path .= $id . $type . '.jpg';
             //if (!is_file($path))
-                //return false;
+            //return false;
         }
 
         if ($html)
@@ -785,7 +794,7 @@ class Article extends CActiveRecord {
             $files = CFileHelper::findFiles($path, array(
                         'fileTypes' => array('jpg'),
                         'level' => 0,
-                    ));
+            ));
             $f = array();
             $f2 = array();
             foreach ($files as $file) {
@@ -859,9 +868,9 @@ class Article extends CActiveRecord {
         return implode(', ', $return);
     }
 
-    public function moreArticles(){
+    public function moreArticles() {
 
-        return 123;# $model;
+        return 123; # $model;
     }
 
 }
