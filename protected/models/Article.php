@@ -758,8 +758,8 @@ class Article extends CActiveRecord {
         $path = Yii::app()->getBaseUrl() . 'images/news/main/';
         if ($img) {
             $path .= $id . $type . '.jpg';
-            if (!is_file($path))
-                return false;
+            //if (!is_file($path))
+                //return false;
         }
 
         if ($html)
