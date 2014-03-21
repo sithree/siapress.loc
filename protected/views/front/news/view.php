@@ -22,14 +22,11 @@ $this->addMetaProperty('og:site_name', Yii::app()->name);
             <time itemprop='dateModified' class="updated" style="display: none;" datetime="<?php echo date('Y-m-d H:i:s-0600', strtotime($model['publish'])); ?>" update><?php echo date('Y-m-d H:i:s-0600', strtotime($model['publish'])); ?></time>
             <div class="tags" style="display: none;"><?php echo $model['tags']; ?></div>
         </header>
-
-        <p style="text-align: right; margin-top: 10px">
-            <?php if (Yii::app()->user->checkAccess('administrator')): ?>
-                <a target="_blank" href="/admin.php?r=article/edit&id=<?php echo $model['id']; ?>">Редактировать в админке</a> | 
-            <?php endif; ?>
-            <a href="<?php echo Yii::app()->request->getHostInfo() . Yii::app()->request->getRequestUri() ?>#comments">Перейти к комментариям</a>
-        </p>
-
+        <?php if (Yii::app()->user->checkAccess('administrator')): ?>
+            <p style="text-align: right; margin-top: 10px">
+                <a target="_blank" href="/admin.php?r=article/edit&id=<?php echo $model['id']; ?>">Редактировать в админке</a> 
+            </p>
+        <?php endif; ?>
         <hr />
         <?php #$this->widget('application.components.main.mbanner', array('position' => 7)); ?>
 
@@ -158,13 +155,13 @@ $this->renderPartial('_moreArticles', array('model' => $moreArticles));
 
 <div id="rontar_adplace_4999"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 4999, rontar_place_id: 'rontar_adplace_4999', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 4999, rontar_place_id: 'rontar_adplace_4999', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;

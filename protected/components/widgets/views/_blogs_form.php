@@ -1,4 +1,4 @@
-<?php if ($i % 2 == 0): ?>
+<?php if ($i % 2 == 0 ): ?>
     <div class="opinion-block"> 
         <header class="clearfix">
             
@@ -19,10 +19,10 @@
         </header>
         <footer>
             <div class="row">
-                <div class="col-xs-7"><?php echo (!empty($model->author_alias)) ? $model->author_alias : $model->author0->name ?>, 
+                <div class="col-xs-8"><?php echo (!empty($model->author_alias)) ? $model->author_alias : $model->author0->name ?>, 
                     <nobr><span class="nowrap"><?php echo Helper::getFormattedtime($model->created, false, false) ?></span></nobr>
                 </div>
-                <div class="col-xs-5 a-right">
+                <div class="col-xs-4 a-right">
                     <i class="fa fa-eye"></i> <?php echo $model->articleAdd->hits; ?> <i class="fa fa-comment"></i> <?php echo count($model->comments); ?>
                 </div>
             </div>

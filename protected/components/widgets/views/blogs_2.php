@@ -14,6 +14,11 @@
             ?>
         </div>
         <div class="col-xs-6">
+            <div style="margin-bottom: 10px;">
+                <a href="/">
+                    <img style="max-width: 100%;" src="http://www.siapress.ru/images/news/main/30520.jpg" />
+                </a>
+            </div>
             <?php
             $i = 1;
             if ($model) {

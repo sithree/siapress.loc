@@ -14,7 +14,7 @@ class Mainnews extends CPortlet {
         $category = array('1,2,3,4,5,6,7,10,11,13,15,19,20,21,22');
         $category2 = array('1,2,3,4,5,6,7,10,11,13,15,19,20,22');
         $this->main = Article::model()->getMainitem($category, false);
-        $this->politics = Article::model()->getItems($category2, 9);
+        $this->politics = Article::model()->getItems($category2, 14);
     }
 
     protected function renderContent() {
