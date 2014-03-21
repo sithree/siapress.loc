@@ -2,7 +2,7 @@
 <html lang="ru"  xmlns:og="http://ogp.me/ns#">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
+
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <base href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/" />
         <!-- Le styles -->
@@ -42,8 +42,8 @@
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/img/favicon.ico">
-        
-        
+
+
 
         <script type="text/javascript">
 
@@ -139,58 +139,75 @@
                     </div>
                 </div>
 
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">Мнения</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">О чем говорят?</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-toggle" href="#">Он-лайн проекты <i class="fa fa-angle-double-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">О чем говорят</a></li>
-                                <li><a href="#">С чем едят</a></li>
-                                <li><a href="#">Что пьют</a></li>
-                                <li><a href="#">И далее по списку</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="dropdown-toggle" class="dropdown-toggle"  href="#">Старый Сургут &nbsp;<i class="fa fa-angle-double-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">О чем говорят</a></li>
-                                <li><a href="#">С чем едят</a></li>
-                                <li><a href="#">Что пьют</a></li>
-                                <li><a href="#">И далее по списку</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Фоторепортажи</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-toggle" class="dropdown-toggle" href="#">Спецпроекты <i class="fa fa-angle-double-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">О чем говорят</a></li>
-                                <li><a href="#">С чем едят</a></li>
-                                <li><a href="#">Что пьют</a></li>
-                                <li><a href="#">И далее по списку</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Недвижимость</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-toggle" class="dropdown-toggle"  href="#">Официально <i class="fa fa-angle-double-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">О чем говорят</a></li>
-                                <li><a href="#">С чем едят</a></li>
-                                <li><a href="#">Что пьют</a></li>
-                                <li><a href="#">И далее по списку</a></li>
-                            </ul>
-                        </li>
 
-                    </ul>
+                <nav>
+                    <?php
+                    $this->widget('zii.widgets.CMenu', array(
+                    'items' => array(
+                        array('label' => 'Мнения', 'url' => array('#')),
+                        array('label' => 'О чем говорят?', 'url' => array('#'), 'items' => array(
+                            array('label' => 'О чем говорят', 'url' => array('#')),
+                            array('label' => 'С чем едят', 'url' => array('#')),
+                            array('label' => 'Что пьют', 'url' => array('#')),
+                            array('label' => 'И далее по списку', 'url' => array('#'))
+                            )),
+                        array('label' => 'Contact', 'url' => array('/site/contact')),
+                        array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+                        array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+                    ),
+                    ));
+                    ?>
+                    <!--                    <ul>
+                                            <li>
+                                                <a href="#">Мнения</a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="#">О чем говорят?</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-toggle" href="#">Он-лайн проекты <i class="fa fa-angle-double-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">О чем говорят</a></li>
+                                                    <li><a href="#">С чем едят</a></li>
+                                                    <li><a href="#">Что пьют</a></li>
+                                                    <li><a href="#">И далее по списку</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-toggle" class="dropdown-toggle"  href="#">Старый Сургут &nbsp;<i class="fa fa-angle-double-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">О чем говорят</a></li>
+                                                    <li><a href="#">С чем едят</a></li>
+                                                    <li><a href="#">Что пьют</a></li>
+                                                    <li><a href="#">И далее по списку</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Фоторепортажи</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-toggle" class="dropdown-toggle" href="#">Спецпроекты <i class="fa fa-angle-double-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">О чем говорят</a></li>
+                                                    <li><a href="#">С чем едят</a></li>
+                                                    <li><a href="#">Что пьют</a></li>
+                                                    <li><a href="#">И далее по списку</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Недвижимость</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-toggle" class="dropdown-toggle"  href="#">Официально <i class="fa fa-angle-double-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">О чем говорят</a></li>
+                                                    <li><a href="#">С чем едят</a></li>
+                                                    <li><a href="#">Что пьют</a></li>
+                                                    <li><a href="#">И далее по списку</a></li>
+                                                </ul>
+                                            </li>
+                    
+                                        </ul>-->
                 </nav>
                 <div id="content-line" class="clearfix">
                     <div id="hot">Горячие темы: <a href="#">Образ новой России</a> <a href="#">Что твориться в Крыму?</a> <a href="#">Что т ораз</a> <a href="#">Что т ораз</a> <a href="#">Что т ораз</a></div>

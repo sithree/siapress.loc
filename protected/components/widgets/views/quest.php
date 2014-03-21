@@ -5,6 +5,7 @@
             $('#carousel-example-generic').carousel();
         });
     </script>
+    
     <div class="widget carousel slide" id="carousel-example-generic" data-ride="carousel">
         <div class="header">
             <h2>Задай вопрос</h2>
@@ -17,7 +18,7 @@
         <div class="carousel-inner">
             <?php foreach ($items as $key => $item) { ?>
                 <div class="item well block-comment block-style <?php if ($key == 0) echo 'active' ?>">
-                    <img width="270" height="220" src="http://siapress.ru/<?php echo $item->getImgpath($item->id, $item->created, true, false, '_item'); ?>" alt="<?php echo $item->title ?>">
+                        <?php echo $item->imageV2(270,220) ?>
                     <div>
                         <h2 class="news-h2">
                             <a href="<?php echo Article::model()->getArticlestriplink($item); ?>">
