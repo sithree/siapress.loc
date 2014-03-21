@@ -302,22 +302,29 @@ class Article extends CActiveRecord {
         $this->resizeImage(118, 86, true, $name);
         $ih = new CImageHandler();
         $ih->load($name);
-        if ($ih->getWidth() > 1920)
+        if ($ih->getWidth() > 1920) {
             $ih->resize(1920, false);
+        }
         $ih->save(Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$this->id.'.jpg');
     }
     
     public function resizeImage($width, $height=0, $x2=false, $source='') {
         $path = Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR;
-        if ($source=='')
-            $source = $path.$this->id.'.jpg';
+        if ($source == '') {
+            $source = $path . $this->id . '.jpg';
+        }
         $filePath = $path.$this->id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
-        if (!is_file($source))
+        if (!is_file($source)) {
             return false;
+        }
         $ih = new CImageHandler();
-        $ih->load($source)
-            ->resize($width * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1), !($width && $height))
-            ->save($filePath, IMG_JPEG, 80);
+        $ih->load($source);
+        if ($height)
+            $ih->adaptiveThumb($width  * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1));
+        else {
+            $ih->resize($width * ($x2 ? 2 : 1), false);
+        }
+            $ih->save($filePath, IMG_JPEG, 80);
         return true;
     }
 

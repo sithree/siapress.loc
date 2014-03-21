@@ -8,7 +8,7 @@
                 <header class="clearfix">
                     <?php if (is_file(Article::model()->getImgpath($politic['id'], $politic['created'], true, false, '_cat'))): ?>
                         <a href="<?php echo Article::model()->getArticlestriplink($politic); ?>">
-                            <img src="<?php echo Article::model()->getImgpath($politic['id'], $politic['created'], true, false, '_cat'); ?>" alt="<?php echo CHtml::decode(trim($politic['title'])) ?>" />
+                            <img src="<?php echo Article::model()->imageV2(50, 50, true); //Article::model()->getImgpath($politic['id'], $politic['created'], true, false, '_cat'); ?>" alt="<?php echo CHtml::decode(trim($politic['title'])) ?>" />
                         </a>
                     <?php endif; ?>
                     <h3>

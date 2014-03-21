@@ -143,18 +143,41 @@
                 <nav>
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
-                    'items' => array(
-                        array('label' => 'Мнения', 'url' => array('#')),
-                        array('label' => 'О чем говорят?', 'url' => array('#'), 'items' => array(
-                            array('label' => 'О чем говорят', 'url' => array('#')),
-                            array('label' => 'С чем едят', 'url' => array('#')),
-                            array('label' => 'Что пьют', 'url' => array('#')),
-                            array('label' => 'И далее по списку', 'url' => array('#'))
-                            )),
-                        array('label' => 'Contact', 'url' => array('/site/contact')),
-                        array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-                        array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
-                    ),
+                        'encodeLabel' => false,
+                        'items' => array(
+                            array('label' => 'Новости <i class="fa fa-angle-double-down"></i>', 'url' => array(''),
+                                'submenuOptions' => array('class' => 'dropdown-menu'),
+                                'linkOptions' => array('class' => 'dropdown-toggle'),
+                                'items' => array(
+                                    array('label' => 'Политика', 'url' => array('#')),
+                                    array('label' => 'Экономика', 'url' => array('/news/economics')),
+                                    array('label' => 'Общество', 'url' => array('#')),
+                                    array('label' => 'Происшествия', 'url' => array('#')),
+                                    array('label' => 'Спорт', 'url' => array('#')),
+                                    array('label' => 'Культура', 'url' => array('#')),
+                                    array('label' => 'Здоровье', 'url' => array('#')),
+                                    array('label' => 'Официально', 'url' => array('#'))
+                                )),
+                            array('label' => 'О чем говорят?', 'url' => array('#')),
+                            array('label' => 'Он-лайн проекты <i class="fa fa-angle-double-down"></i>', 'url' => array('#'),
+                                'submenuOptions' => array('class' => 'dropdown-menu'),
+                                'linkOptions' => array('class' => 'dropdown-toggle'),
+                                'items' => array(
+                                    array('label' => 'О чем говорят', 'url' => array('#')),
+                                    array('label' => 'С чем едят', 'url' => array('#')),
+                                    array('label' => 'Что пьют', 'url' => array('#')),
+                                    array('label' => 'И далее по списку', 'url' => array('#'))
+                                )),
+                            array('label' => 'Старый Сургут &nbsp;<i class="fa fa-angle-double-down"></i>', 'url' => array('#'),
+                                'submenuOptions' => array('class' => 'dropdown-menu'),
+                                'linkOptions' => array('class' => 'dropdown-toggle'),
+                                'items' => array(
+                                    array('label' => 'О чем говорят', 'url' => array('#')),
+                                    array('label' => 'С чем едят', 'url' => array('#')),
+                                    array('label' => 'Что пьют', 'url' => array('#')),
+                                    array('label' => 'И далее по списку', 'url' => array('#'))
+                                ))
+                        ),
                     ));
                     ?>
                     <!--                    <ul>
