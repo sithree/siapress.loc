@@ -68,7 +68,6 @@ class NewsController extends Controller {
     public function actionView($id) {
         #$this->layout = '';
         #Yii::app()->cache->flush();
-
         $actions = $this->getActionParams();
         if ($actions['category'] == 'megapolis') {
             $this->redirect(array('news/view', 'category' => 'society', 'id' => $actions['id']));
@@ -250,7 +249,6 @@ class NewsController extends Controller {
 
         //Плюсуем + 1 к просмотру
         Yii::app()->db->createCommand('UPDATE {{article_add}} SET hits =  hits + 1 WHERE article_id = ' . $id)->execute();
-
         $this->render('view', array(
             'model' => $loadmodel, //$this->loadModel($id),
             'commentform' => $comment,
@@ -412,7 +410,7 @@ class NewsController extends Controller {
     public function actionIndex($category = null, $page = 1) {
         #CVarDumper::dump($this->action);
         #die();
-        $this->layout = '//layouts/news/category';
+        //$this->layout = '//layouts/news/category';
         if ($category == null)
             $category = Article::model()->getNewscat();
 

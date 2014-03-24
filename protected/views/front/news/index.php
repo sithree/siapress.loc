@@ -8,8 +8,6 @@ $this->menu = array(
     array('label' => 'Manage Article', 'url' => array('admin')),
 );
 
-$this->layout = '//layouts/news/category';
-
 $this->setPageTitle($category['fullname'] . ' — ' . Yii::app()->name);
 
 
@@ -28,24 +26,28 @@ jQuery('.news-container').hover(function(){
 if (!empty($mainNews)) {
     $item = $mainNews;
     ?>
-    <div class="row-fluid">
-        <?php if (Article::model()->getImgpath($item['id'], $item['created'], true, false, '_main')): $span = true; ?>
-            <div class="span5">
-                <?php echo CHtml::link(Article::model()->getImgpath($item['id'], $item['created'], true, true, '_main'), array('news/' . $category['alias'] . '/' . $item['id'])); ?>
+    <div class="row-fluid head-news clearfix">
+        <?php
+            //echo $item->imageV2(128, 128, true);
+            $image = Article::imageSV2($item['id'], $item['title'], 230, 150, true);
+            if ($image): $span = true; ?>
+            <div class="col-xs-5">
+                <?php echo CHtml::link($image, array('news/' . $category['alias'] . '/' . $item['id'])); ?>
             </div>
         <?php elseif ($item['cat_id'] == 9): ?>
-            <div class="span5">
-                <?php echo CHtml::link(Article::model()->getImgpath($item['id'], $item['created'], true, true, '_main'), array('news/' . $category['alias'] . '/' . $item['id'])); ?>
+            <div class="col-xs-5">
+                <?php echo CHtml::link($image, array('news/' . $category['alias'] . '/' . $item['id'])); ?>
             </div>
         <?php endif; ?>
-        <div class="<?php echo $span ? "span7" : "span12" ?>">
+        <div class="<?php echo 'col-xs-'.($span ? "7" : "12") ?>">
             <h2><?php echo CHtml::link($item['title'] . '<br />', array('news/' . $category['alias'] . '/' . $item['id'])); ?>
 
             </h2>
 
             <p><?php echo $item['introtext']; ?></p>
             <div class="item_news_info">
-                <span title="Количество просмотров" class="i-view"><?php echo $item['hits'] ?></span>
+                <span title="Количество просмотров" class="i-view"><i class="fa fa-eye"></i> <?php echo $item['hits'] ?></span>
+                <i class="fa fa-comments"></i>
                 <a title="<?php echo $item['comment_count'] > 0 ? "Перейти к комментариям" : "Оставить первый комментарий" ?>" href="<?php echo Article::model()->getArticlestriplink($item); ?>#comments">
                     <span class="i-comment"><?php echo $item['comment_count'] > 0 ? $item['comment_count'] : "Нет комментариев" ?></span>
                 </a> |
@@ -78,12 +80,12 @@ if (!empty($mainNews)) {
 <!-- /// 8 -->
 
 <?php foreach ($dataProvider as $item): ?>
-    <?php $img = Article::model()->getImgpath($item['id'], $item['created'], true, true, '_cat'); ?>
-    <div class="row-fluid news-container">
-        <?php if ($img): ?>
-            <div class="span3" style="position:relative;">
+    <?php $image = Article::imageSV2($item['id'], $item['title'], 118, 86, true); ?>
+    <div class="row-fluid news-container clearfix">
+        <?php if ($image): ?>
+            <div class="col-xs-3" style="position:relative;">
                 <div class="img_container">
-                    <?php echo CHtml::link(Article::model()->getImgpath($item['id'], $item['created'], true, true, '_cat'), array('news/' . $category['alias'] . '/' . $item['id'])); ?>
+                    <?php echo CHtml::link($image, array('news/' . $category['alias'] . '/' . $item['id'])); ?>
                 </div>
             </div>
         <?php else: ?>
@@ -92,7 +94,7 @@ if (!empty($mainNews)) {
                 if (is_file('images/users/blog/' . $item['author'] . '.jpg')):
                     $img = 1;
                     ?>
-                    <div class="span3" style="position:relative;">
+                    <div class="col-xs-3" style="position:relative;">
                         <div class="img_container">
                             <?php echo CHtml::link('<img src="images/users/blog/' . $item['author'] . '.jpg" alt="Блог" />', array('news/' . $category['alias'] . '/' . $item['id'])); ?>
                         </div>
@@ -102,12 +104,13 @@ if (!empty($mainNews)) {
             }
             ?>
         <?php endif; ?>
-        <div class="span<?php echo $img ? 9 : 12 ?>">
+        <div class="col-xs-<?php echo $image ? 9 : 12 ?>">
             <h4><?php echo CHtml::link($item['title'] . '<br />', array('news/' . $category['alias'] . '/' . $item['id'])); ?></h4>
             <p><?php echo $item['introtext']; ?></p>
             <div class="item_news_info">
 
-                <span title="Количество просмотров" class="i-view"><?php echo $item['hits']; ?></span>
+                <span title="Количество просмотров" class="i-view"><i class="fa fa-eye"></i><?php echo $item['hits']; ?></span>
+                <i class="fa fa-comments"></i>
                 <a title="<?php echo $item['comment_count'] > 0 ? "Перейти к комментариям" : "Оставить первый комментарий" ?>" href="<?php echo Article::model()->getArticlestriplink($item); ?>#comments"><span class="i-comment">
                         <?php echo $item['comment_count'] > 0 ? $item['comment_count'] : "Нет комментариев" ?></span>
                 </a> |

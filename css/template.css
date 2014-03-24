@@ -157,6 +157,15 @@ header nav > ul > li  > ul > li > a {
     display: block;
     padding: 7px 15px;
 }
+
+header nav > ul > li > ul > li.active {
+    background:#ca0000;
+    text-decoration: none;
+}
+header nav > ul > li > ul > li.active > a {
+    color:white;
+}
+
 header nav i.fa-angle-double-down {
 
     font-weight: bold;
@@ -1040,4 +1049,26 @@ body > .container > .footer {
 
 .red {
     color:#ca0000;
+}
+
+.head-news h2 {
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 15x;
+}
+
+.head-news p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0 0 9px;
+}
+
+.news-container h4 {
+    margin: 0;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }

@@ -3,21 +3,23 @@
         <h2><a href="/news">Новости</a></h2>
     </div>
     <ul>
-        <?php foreach ($politics as $politic): ?>
+        <?php foreach ($model as $item): ?>
             <li>
                 <header class="clearfix">
-                    <?php if (is_file(Article::model()->getImgpath($politic['id'], $politic['created'], true, false, '_cat'))): ?>
-                        <a href="<?php echo Article::model()->getArticlestriplink($politic); ?>">
-                            <img src="<?php echo Article::model()->imageV2(50, 50, true); //Article::model()->getImgpath($politic['id'], $politic['created'], true, false, '_cat'); ?>" alt="<?php echo CHtml::decode(trim($politic['title'])) ?>" />
+                    <?php
+                    $image = $item->imageV2(68, 46, true);
+                    if ($image): ?>
+                        <a href="<?php echo $item->link(); ?>">
+                            <?php echo $image; ?>
                         </a>
                     <?php endif; ?>
                     <h3>
-                        <a href="<?php echo Article::model()->getArticlestriplink($politic); ?>"><?php echo CHtml::decode(trim($politic['title'])) ?></a>
+                        <a href="<?php echo $item->link()  ?>"><?php echo CHtml::decode($item->title) ?></a>
                     </h3>
                 </header>
                 <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="news/<?php echo $politic['alias'] ?>"><?php echo $politic['fullname'] ?></a>, <?php echo Helper::getFormattedtime($politic['publish'], false, true) ?></div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> <?php echo $politic['hits'] ?> <i class="fa fa-comment"></i> <?php echo $politic['comment_count'] ?></div>
+                    <div class="col-xs-8"><a href="news/<?php echo $item->category->alias?>"><?php echo $item->category->name ?></a>, <?php echo Helper::getFormattedtime($item->publish, false, true) ?></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> <?php echo $item->articleAdd->hits ?> <i class="fa fa-comment"></i> <?php echo count($item->comments); ?></div>
                 </footer>
             </li>
 

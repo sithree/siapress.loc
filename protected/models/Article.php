@@ -308,10 +308,10 @@ class Article extends CActiveRecord {
     }
 
     public function generateImage($name) {
-        $this->resizeImage(270, 220, false, $name);
-        $this->resizeImage(270, 220, true, $name);
-        $this->resizeImage(118, 86, false, $name);
-        $this->resizeImage(118, 86, true, $name);
+        Article::resizeSImage($this->$id, 270, 220, false, $name);
+        Article::resizeSImage($this->$id, 270, 220, true, $name);
+        Article::resizeSImage($this->$id, 118, 86, false, $name);
+        Article::resizeSImage($this->$id, 118, 86, true, $name);
         $ih = new CImageHandler();
         $ih->load($name);
         if ($ih->getWidth() > 1920) {
@@ -320,12 +320,12 @@ class Article extends CActiveRecord {
         $ih->save(Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$this->id.'.jpg');
     }
     
-    public function resizeImage($width, $height=0, $x2=false, $source='') {
+    private static function resizeSImage($id, $width, $height=0, $x2=false, $source='') {
         $path = Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR;
         if ($source == '') {
-            $source = $path . $this->id . '.jpg';
+            $source = $path . $id . '.jpg';
         }
-        $filePath = $path.$this->id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
+        $filePath = $path.$id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
         if (!is_file($source)) {
             return false;
         }
@@ -339,19 +339,25 @@ class Article extends CActiveRecord {
             $ih->save($filePath, IMG_JPEG, 80);
         return true;
     }
-
-    public function imageV2($width, $height=0, $x2=false) {
-        $name = $this->id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
-        if (!is_file(Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$name) && !$this->resizeImage($width, $height, $x2))
+    
+    public static function imageSV2($id, $title, $width, $height=0, $x2=false) {
+        $name = $id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
+        $fp = Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$name;
+        if (!is_file($fp) && !Article::resizeSImage($id, $width, $height, $x2)) {
             return false;
+        }
         if (!($width && $height))
         {
             $img = new CImageHandler();
-            $img->load($filePath);
+            $img->load($fp);
             $width = $img->getWidth();
             $height = $img->getHeight();
         }
-        return CHtml::image('images/news/main/'.$name, $item->title, array('width' => $width, 'height' => $height));
+        return CHtml::image('images/news/main/'.$name, $title, array('width' => $width, 'height' => $height));
+    }
+
+    public function imageV2($width, $height=0, $x2=false) {
+        return Article::imageSV2($this->id, $this->title, $width, $height, $x2);
     }
 
     public function image() {
@@ -519,6 +525,8 @@ class Article extends CActiveRecord {
      */
 
     public function getMainitem($catid, $oncat = false) {
+        
+        
         #Yii::app()->cache->flush();
         $data = Yii::app()->cache->get($catid . '_main_index');
 

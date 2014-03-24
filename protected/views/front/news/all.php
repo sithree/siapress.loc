@@ -24,7 +24,7 @@ jQuery('.news-container').hover(function(){
             <div class="img_container">
                 <?php #echo CHtml::link(Article::model()->getImgpath($item['id'], $item['created'], true, true), Articlte::model()->getLink($item));  ?>
                 <a href="<?php echo Article::model()->getArticlestriplink($item); ?>">
-                    <?php echo Article::model()->getImgpath($item['id'], $item['created'], true, true, '_cat') ?>
+                    <?php echo $item->imageV2(128, 128, true); ?>
                 </a>
             </div>
         </div>
