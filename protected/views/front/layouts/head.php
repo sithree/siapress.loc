@@ -145,38 +145,29 @@
                     $this->widget('zii.widgets.CMenu', array(
                         'encodeLabel' => false,
                         'items' => array(
-                            array('label' => 'Новости <i class="fa fa-angle-double-down"></i>', 'url' => array(''),
+                            array('label' => 'Новости <i class="fa fa-angle-double-down"></i>', 'url' => array('#'),
                                 'submenuOptions' => array('class' => 'dropdown-menu'),
                                 'linkOptions' => array('class' => 'dropdown-toggle'),
+                                'activateParents' => true,
+                                'activateItems' => false,
                                 'items' => array(
-                                    array('label' => 'Политика', 'url' => array('#')),
-                                    array('label' => 'Экономика', 'url' => array('/news/economics')),
-                                    array('label' => 'Общество', 'url' => array('#')),
-                                    array('label' => 'Происшествия', 'url' => array('#')),
-                                    array('label' => 'Спорт', 'url' => array('#')),
-                                    array('label' => 'Культура', 'url' => array('#')),
-                                    array('label' => 'Здоровье', 'url' => array('#')),
-                                    array('label' => 'Официально', 'url' => array('#'))
+                                    array('label' => 'Политика', 'url' => array('news/index', 'category' => 'politics')),
+                                    array('label' => 'Экономика', 'url' => array('news/index', 'category' => 'economics')),
+                                    array('label' => 'Общество', 'url' => array('news/index', 'category' => 'society')),
+                                    array('label' => 'Происшествия', 'url' => array('news/index', 'category' => 'incident')),
+                                    array('label' => 'Спорт', 'url' => array('news/index', 'category' => 'sport')),
+                                    array('label' => 'Культура', 'url' => array('news/index', 'category' => 'life')),
+                                    array('label' => 'Здоровье', 'url' => array('news/index', 'category' => 'health')),
+                                    array('label' => 'Официально', 'url' => array('news/index', 'category' => 'official'))
                                 )),
-                            array('label' => 'О чем говорят?', 'url' => array('#')),
-                            array('label' => 'Он-лайн проекты <i class="fa fa-angle-double-down"></i>', 'url' => array('#'),
-                                'submenuOptions' => array('class' => 'dropdown-menu'),
-                                'linkOptions' => array('class' => 'dropdown-toggle'),
-                                'items' => array(
-                                    array('label' => 'О чем говорят', 'url' => array('#')),
-                                    array('label' => 'С чем едят', 'url' => array('#')),
-                                    array('label' => 'Что пьют', 'url' => array('#')),
-                                    array('label' => 'И далее по списку', 'url' => array('#'))
-                                )),
-                            array('label' => 'Старый Сургут &nbsp;<i class="fa fa-angle-double-down"></i>', 'url' => array('#'),
-                                'submenuOptions' => array('class' => 'dropdown-menu'),
-                                'linkOptions' => array('class' => 'dropdown-toggle'),
-                                'items' => array(
-                                    array('label' => 'О чем говорят', 'url' => array('#')),
-                                    array('label' => 'С чем едят', 'url' => array('#')),
-                                    array('label' => 'Что пьют', 'url' => array('#')),
-                                    array('label' => 'И далее по списку', 'url' => array('#'))
-                                ))
+                            array('label' => 'Мнения', 'url' => array('news/index', 'category' => 'opinion')),
+                            array('label' => 'О чем говорят?', 'url' => array('news/index', 'category' => 'say')),
+                            array('label' => 'Публичные лекции', 'url' => array('news/index', 'category' => 'lections')),
+                            array('label' => 'Задай вопрос', 'url' => array('news/index', 'category' => 'query')),
+                            array('label' => 'Авто', 'url' => array('news/index', 'category' => 'auto')),
+                            array('label' => 'Недвижимость', 'url' => array('news/index', 'category' => 'realty')),
+                            array('label' => 'Карта', 'url' => array('site/pp', 'city' => 'surgut')),
+                            array('label' => '<span style="color:yellow">Операция: "Подъезд!"</span>', 'url' => array('site/rupor'))
                         ),
                     ));
                     ?>
