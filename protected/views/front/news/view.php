@@ -45,29 +45,27 @@ $this->addMetaProperty('og:site_name', Yii::app()->name);
 
         <div class='entry-content' style="position: relative">
             <?php
-            if (is_file('images/news/main/' . $model['id'] . '_item.jpg') && empty($model['video'])):
-                if (is_file('images/news/main/' . $model['id'] . '.jpg')):
-                    ?>
-                    <div class="news-image-container">
-                        <figure style="margin: 0;">
-                            <a title="<?php echo ($model['imgtitle']) ? CHtml::encode($model['imgtitle']) : CHtml::encode($model['title']) ?>" rel="gallery" href="images/news/main/<?php echo $model['id'] ?>.jpg">
-                                <img title="<?php echo CHtml::encode($model['title']) ?>" alt="<?php echo CHtml::encode($model['title']) ?>" itemprop='image' src="images/news/main/<?php echo $model['id'] ?>_item.jpg" class="newsimage" /></a>
+            $image = Article::imageSV2($model['id'], $model['imgtitle'], 230, 0, true);
+            if ($image && empty($model['video'])): ?>
+            <div class="news-image-container">
+                    <figure style="margin: 0;">
+                        <a title="<?php echo ($model['imgtitle']) ? CHtml::encode($model['imgtitle']) : CHtml::encode($model['title']) ?>" rel="gallery" href="images/news/main/<?php echo $model['id'] ?>.jpg">
+                            <?php echo $image; ?></a>
                             <?php if ($model['imgtitle']): ?>
                                 <figcaption><span class="imgtitle"><?php echo CHtml::encode($model['imgtitle']) ?></span></figcaption>
                             <?php endif; ?>
-                        </figure>
-                    </div>
+                    </figure>
+                </div>
                 <?php else: ?>
                     <div class="news-image-container">
                         <figure style="margin: 0;">
-                            <img alt="<?php echo CHtml::encode($model['title']) ?>" src="images/news/main/<?php echo $model['id'] ?>_item.jpg" itemprop='image' class="newsimage" />
+                            <img alt="<?php echo CHtml::encode($model['title']) ?>" src="images/news/main/<?php echo $model['id'] ?>.jpg" itemprop='image' class="newsimage" />
                             <?php if ($model['imgtitle']): ?>
                                 <figcaption><span class="imgtitle"><?php echo CHtml::encode($model['imgtitle']) ?></span></figcaption>
                             <?php endif; ?>
                         </figure>
                     </div>
                 <?php
-                endif;
             endif;
             ?>
             <?php if (!empty($model['video'])): ?>       

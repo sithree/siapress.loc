@@ -350,10 +350,10 @@ class Article extends CActiveRecord {
         {
             $img = new CImageHandler();
             $img->load($fp);
-            $width = $img->getWidth();
-            $height = $img->getHeight();
+            $width = $img->getWidth() / ($x2 ? 2 : 1);
+            $height = $img->getHeight() / ($x2 ? 2 : 1);
         }
-        return CHtml::image('images/news/main/'.$name, $title, array('width' => $width, 'height' => $height));
+        return CHtml::image('/images/news/main/'.$name, $title, array('width' => $width, 'height' => $height));
     }
 
     public function imageV2($width, $height=0, $x2=false) {
