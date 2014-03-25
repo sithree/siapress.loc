@@ -13,10 +13,10 @@ if (class_exists(nokogiri)):
 
                 foreach ($saw->get('h3')->toArray() as $h3) {
                     $title = $h3['#text'][0] ? $h3['#text'][0] : $h3['strong'][0]['#text'][0];
-                    if(strlen($title) < 2)
-                    continue;
+                    if (strlen($title) < 2)
+                        continue;
                     echo "<li><a href='" . Yii::app()->request->requestUri . "#link$i'> $title</a></li>";
-                    
+
                     $model['fulltext'] = str_replace($title, "<a name='link$i'></a>$title", $model['fulltext']);
                     $i++;
                 }
@@ -28,7 +28,7 @@ if (class_exists(nokogiri)):
         <?php Yii::app()->clientScript->registerCss('fixedNav', "
                 .navFixed {
                     position: fixed;
-                    margin-left: 600px;
+                    margin-left: 488px;
                     width: 270px;
                     top: 20px;
                 }
@@ -71,11 +71,11 @@ if (class_exists(nokogiri)):
             $(function() {
                 $(document).scroll(function() {
 
-                    var blogs = $('#blogs').height();
+                    var blogs = $('#opinion').height();
                     var top = $(this).scrollTop();
                     var nav = $('#articleNav');
                     var empty = $('#emptyNav');
-                    if (top > (blogs + 300)) {
+                    if (top > (blogs + 150)) {
                         empty.css('height', (emptyHeight + 25) + 'px');
                         nav.addClass('navFixed');
 

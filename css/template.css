@@ -1145,3 +1145,46 @@ body > .container > .footer {
     text-align: right;
 }
 
+.comment {
+    font-size: 11px;
+    line-height: 15px;
+    color: #333;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.comment-header {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.comment-says {
+    font-size: 115%;
+    margin-bottom: 5px;
+    padding-top: 10px;
+}
+
+.comment-links {
+    color: #333;
+}
+
+.clr {
+    clear: both;
+}
+
+.comment-inner {
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.08);
+    padding-left: 0px;
+    font-size: 13px;
+    line-height: 17px;
+    color: #111;
+    padding: 10px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    background: #fdfdfd;
+}
+
+.comment-inner:hover {
+    box-shadow: 0px 0px 6px rgba(250,0,0,0.3);
+    border: 1px solid rgba(250, 0, 0, 0.50);
+}

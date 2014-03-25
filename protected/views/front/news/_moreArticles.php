@@ -7,12 +7,9 @@
 
     <div class="row-fluid">
         <?php foreach ($model as $item) : ?>
-            <div class="span3">
+            <div class="col-xs-4">
                 <a href="<?php echo $item->link(); ?>">
-                    <p><img  src="<?php echo $item->getImgpath($item->id, $item->created, true, false, '_cat');
-
-
-            ?>" alt="<?php echo $item->title ?>">
+                    <p><?php echo $item->imageV2(118, 86, true); ?>
                     </p>
                     <h5><?php echo $item->title ?></h5>
                 </a>
