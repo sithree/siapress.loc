@@ -357,6 +357,20 @@ class Article extends CActiveRecord {
         }
         $ih->save(Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $this->id . '.jpg');
     }
+    
+    private static function downloadImage($id)
+    {
+        $url = "http://www.siapress.ru/images/news/main/".$id.".jpg";
+        $hds = @get_headers($url);
+        if (!strpos($hds[0], "200")) {
+            $url = "http://www.siapress.ru/images/news/main/".$id."_main.jpg";
+            $hds = @get_headers($url);
+            if (!strpos($hds[0], "200")) {
+                return;
+            }
+        }
+        copy($url, Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$id.'.jpg');
+    }
 
     private static function resizeSImage($id, $width, $height = 0, $x2 = false, $source = '') {
         $path = Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR;
@@ -367,10 +381,26 @@ class Article extends CActiveRecord {
         if (!is_file($source)) {
             $source = $path . $id . '_main.jpg';
             if (!is_file($source))
-                return false;
+            {
+                if ($_SERVER['HTTP_HOST'] != 'siapress.ru')
+                {
+                    Article::downloadImage($id);
+                    $source = $path . $id . '.jpg';
+                    if (!is_file($source)) {
+                        return;
+                    }
+                }
+                else
+                    return false;
+            }
         }
         $ih = new CImageHandler();
         $ih->load($source);
+        
+        if ($ih->getWidth() < 540) {
+            $ih->resize(540, false);
+        }
+            
         if ($height)
             $ih->adaptiveThumb($width * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1));
         else {
