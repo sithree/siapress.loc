@@ -240,15 +240,14 @@ class CImageHandler extends CApplicationComponent
 
 		if($proportional)
 		{
-			$newHeight = $toHeight;
-			$newWidth = round($newHeight / $this->height * $this->width);
+                        $newWidth = $toWidth;
+                        $newHeight = round($newWidth / $this->width * $this->height);
 			
-			
-			if($newWidth > $toWidth)
-			{
-				$newWidth = $toWidth;
-				$newHeight = round($newWidth / $this->width * $this->height);
-			}
+			//if($newWidth > $toWidth)
+			//{
+                            //$newHeight = $toHeight;
+                            //$newWidth = round($newHeight / $this->height * $this->width);
+			//}
 		}
 		else
 		{
