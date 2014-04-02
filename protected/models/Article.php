@@ -198,20 +198,20 @@ class Article extends CActiveRecord {
         ));
     }
 
-//    public function afterConstruct() {
-//        if ($this->hasEventHandler('onAfterConstruct'))
-//            $this->onAfterConstruct(new CEvent($this));
-//        if ($this->isNewRecord) {
-//            $this->created = date('Y-m-d H:i:s');
-//            $this->publish = date('Y-m-d H:i:s');
-//            $this->modified = date('Y-m-d H:i:s');
-//            $this->published = 1;
-//        } 
-//
-//        $this->type_id = 1;
-//
-//        $this->author = Yii::app()->user->id;
-//    }
+    public function afterConstruct() {
+        if ($this->hasEventHandler('onAfterConstruct'))
+            $this->onAfterConstruct(new CEvent($this));
+        if ($this->isNewRecord) {
+            $this->created = date('Y-m-d H:i:s');
+            $this->publish = date('Y-m-d H:i:s');
+            $this->modified = date('Y-m-d H:i:s');
+            $this->published = 1;
+        } 
+
+        $this->type_id = 1;
+
+        $this->author = Yii::app()->user->id;
+    }
 
     public function beforeSave() {
         parent::beforeSave();
@@ -288,6 +288,8 @@ class Article extends CActiveRecord {
             $add = new ArticleAdd;
             $add->article_id = $this->id;
             $add->hits = 1;
+            $add->ccount = 0;
+            
             $add->save();
         }
 
@@ -501,8 +503,8 @@ class Article extends CActiveRecord {
         return false;
     }
 
-    public function getCategoryAlias() {
-        return ArticleCategories::model()->getCategoryAlias($this->cat_id);
+    public function getCategoryAlias($id = false) {
+        return ArticleCategories::model()->getCategoryAlias($id ? $id : $this->cat_id);
     }
 
     public function getCategoryName() {

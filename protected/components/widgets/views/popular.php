@@ -68,6 +68,7 @@
                 } else {
                     $parent = false;
                 }
+                
                 ?>
                 <li>
                     <div class="block-commen-author"><?php echo $item['name'] ?><?php echo $parent ? ' <span style="color: #333;"> &rarr; ' . $parent->name . ':</span>' : ':' ?></div>

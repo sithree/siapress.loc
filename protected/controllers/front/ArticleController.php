@@ -226,6 +226,14 @@ class ArticleController extends Controller {
                     'condition' => 'id = ' . $id,
         ));
 
+//        $add = ArticleAdd::model()->findByPk($id);
+//        if (!$add) {
+//            $add = new ArticleAdd();
+//            $add->article_id = $model->id;
+//        }
+//        $add->hits++;
+//        $add->save();
+
         if ($model === false)
             throw new CHttpException(404, 'Такой статьи в базе не найдено.');
         return $model;
