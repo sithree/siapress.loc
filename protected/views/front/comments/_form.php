@@ -4,8 +4,7 @@ if (1 == 2):
 else :
     ?>
 
-    <h4>Оставить комментарий</h4>
-    <br />
+    <h4 class="fwnormal">Оставить комментарий</h4>
     <?php
     $this->widget('bootstrap.widgets.BootAlert', array(
         'keys' => 'info'
@@ -52,117 +51,86 @@ else :
     ?>
 
 
-    <div class="well well-light">
-        <div class="row-fluid">
-            <div class="span12">
+    <div class="well no-margin">
 
-                <?php if (Yii::app()->user->isGuest): ?>
-                    <div clas="row-fluid">
-                        <p id="reply-to"></p>
-                    </div>
-                    <div class="row-fluid" style="margin-bottom: 10px;">
-                        <div class="span6">
-                            <?php echo $form->textFieldRow($commentform, 'username', array('class' => 'span12','value' => Yii::app()->request->cookies['comment_username']->value)); ?>
-                            <?php echo $form->error($commentform, 'username'); ?>
-                        </div>
-                        <div class="span6">
-                            <?php #echo $form->textFieldRow($commentform, 'email', array('class' => 'span12'));   ?>
-                            <?php #echo $form->error($commentform, 'email'); ?>
-                        </div>
-                    </div>
-                <?php else: ?>
-                <div clas="row-fluid">
-                        <p id="reply-to"></p>
-                    </div>
-                <?php
-                endif;
-                ?>
-
-
-                <!--
-                <div class="row-fluid" style="margin-bottom: 3px;">
-                    <div class="span12">
-                <?php
-                /*
-                  $this->widget('bootstrap.widgets.BootButtonGroup', array(
-                  'buttons' => array(
-                  array('label' => '', 'url' => '#', 'icon' => 'align-left',
-                  'htmlOptions' => array('title' => 'Выравнивание по левому краю')),
-                  array('label' => '', 'url' => '#', 'icon' => 'align-center',
-                  'htmlOptions' => array('title' => 'Выравнивание по центру')),
-                  array('label' => '', 'url' => '#', 'icon' => 'align-right',
-                  'htmlOptions' => array('title' => 'Выравнивание по правому краю')),
-                  array('label' => '', 'url' => '#', 'icon' => 'italic',
-                  'htmlOptions' => array('title' => 'Курсив')),
-                  array('label' => '', 'url' => '#', 'icon' => 'bold',
-                  'htmlOptions' => array('title' => 'Жирный')),
-                  array('label' => '', 'url' => '#', 'icon' => 'picture',
-                  'htmlOptions' => array('title' => 'Вставить картинку')),
-                  array('label' => '', 'url' => '#', 'icon' => 'comment',
-                  'htmlOptions' => array('title' => 'Вставить цитату')),
-                  ),
-                  )); */
-                ?>
-                    </div>
+        <?php if (Yii::app()->user->isGuest): ?>
+            <div clas="row-fluid">
+                <p id="reply-to"></p>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-xs-6">
+                    <?php echo $form->textFieldRow($commentform, 'username', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_username']->value)); ?>
+                    <?php echo $form->error($commentform, 'username'); ?>
                 </div>
-                -->
-                <div class="row-fluid" style="margin-bottom: 10px;">
-                    <?php if (Yii::app()->user->isGuest): ?>
-
-                        <div class="span12">
-                            <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'span12', 'rows' => 5,'value' => Yii::app()->request->cookies[$model->id . '_comment_text']->value)); ?>
-                            <?php echo $form->error($commentform, 'text'); ?>
-                        </div>
-
-
-                    <?php else: ?>
-                        <div class="span1">
-                            <img src="<?php echo Users::model()->getAvatarFilename(50, false, Yii::app()->user->id); ?>" alt="" />
-                        </div>
-                        <div class="span11">
-                            <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'span12', 'rows' => 5,'value' => Yii::app()->request->cookies[$model->id . '_comment_text']->value)); ?>
-                            <?php echo $form->error($commentform, 'text'); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="row-fluid">
-                    <div class="span4">
-                        <?php if (Yii::app()->user->isGuest): ?>
-                            <?php echo $form->textFieldRow($commentform, 'capcha', array('class' => 'span12','value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
-                            <?php echo $form->error($commentform, 'capcha'); ?>
-                        <?php endif; ?>
-                    </div>
-                    <div class="span3">
-                        <? if (extension_loaded('gd') && Yii::app()->user->isGuest): ?>
-                            <?
-                            #$this->captcha->showRefreshButton
-                            $this->widget('CCaptcha', array(
-                                'clickableImage' => true,
-                                'showRefreshButton' => false,
-                            ))
-                            ?>
-                        <? endif ?>
-                        <?php #echo $form->captchaRow($commentform, 'capcha')  ?>
-                    </div>
-                    <div class="span5">
-                        <?php #$form->submitButton($commentform)    ?>
-                        <?php #echo CHtml::submitButton('Сохранить');  ?>
-                        <?php echo $form->hiddenField($commentform, 'parent'); ?>
-                        <?php $this->widget('bootstrap.widgets.BootButton', array('buttonType' => 'submit', 'icon' => 'ok white', 'label' => 'Отправить', 'htmlOptions' => array('class' => 'span12 btn-danger'))); ?>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <p style="font-size: 11px;"> <br />Комментарий может быть удален, если он: не по сути текста; оскорбляет автора,
-                            героев или читателей; не соответствует <a href="rules">правилам сайта</a>.</p>
-                    </div>
+                <div class="col-xs-6">
+                    <?php #echo $form->textFieldRow($commentform, 'email', array('class' => 'span12'));   ?>
+                    <?php #echo $form->error($commentform, 'email'); ?>
                 </div>
             </div>
+        <?php else: ?>
+
+            <p id="reply-to"></p>
+
+        <?php
+        endif;
+        ?>
+
+        <div class="row" style="margin-bottom: 10px;">
+            <?php if (Yii::app()->user->isGuest): ?>
+
+                <div class="col-xs-12">
+                    <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$model->id . '_comment_text']->value)); ?>
+                    <?php echo $form->error($commentform, 'text'); ?>
+                </div>
+
+
+            <?php else: ?>
+<!--                <div class="col-xs-2">
+                    <img src="<?php echo Users::model()->getAvatarFilename(50, false, Yii::app()->user->id); ?>" alt="" />
+                </div>-->
+                <div class="col-xs-12">
+                    <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$model->id . '_comment_text']->value)); ?>
+                    <?php echo $form->error($commentform, 'text'); ?>
+                </div>
+            <?php endif; ?>
         </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <?php if (Yii::app()->user->isGuest): ?>
+                    <?php echo $form->textFieldRow($commentform, 'capcha', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
+                    <?php echo $form->error($commentform, 'capcha'); ?>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-3">
+                <?php if (extension_loaded('gd') && Yii::app()->user->isGuest): ?>
+                <?php
+                #$this->captcha->showRefreshButton
+                $this->widget('CCaptcha', array(
+                'clickableImage' => true,
+                'showRefreshButton' => false,
+                ))
+                ?>
+                <?php endif ?>
+                <?php #echo $form->captchaRow($commentform, 'capcha')  ?>
+            </div>
+            <div class="col-xs-5">
+                <?php #$form->submitButton($commentform)    ?>
+                <?php echo CHtml::submitButton('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn'));  ?>
+                <?php echo $form->hiddenField($commentform, 'parent'); ?>
+               
+                <?php // $this->widget('bootstrap.widgets.BootButton', array('buttonType' => '', 'icon' => 'ok white', 'label' => 'Отправить', 'htmlOptions' => array('class' => 'col-xs-12 red-button'))); ?>
+            </div>
+        </div>
+
+       
+
 
         <?php $this->endWidget(); ?>
     </div>
 <?php endif; ?>
-<hr />
+     <p style="font-size: 11px;"> <br />Комментарий может быть удален, если он: не по сути текста; оскорбляет автора,
+            героев или читателей; не соответствует <a href="rules">правилам сайта</a>.</p>
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/profit_partner/comments.txt'); ?>
+     
+
+<?php // include($_SERVER['DOCUMENT_ROOT'] . '/profit_partner/comments.txt'); ?>

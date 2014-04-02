@@ -1,5 +1,5 @@
 <a name="poll_<?php echo $model->id ?>"></a>
-<div class="form well blogs" style="border-bottom: 1px solid #ca0000;border: 1px solid #ca0000; margin-bottom: 15px;">
+<div class="form well padding" style="border-bottom: 1px solid #ca0000;border: 1px solid #ca0000; margin-bottom: 15px;">
     <?php
     foreach ($model->choices as $choice) {
     $this->render('poll.views.pollchoice._resultsChoice', array(

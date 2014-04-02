@@ -40,10 +40,11 @@ class Comment extends CActiveRecord {
     public function tableName() {
         return '{{comments}}';
     }
-    
-    public function defaultScope(){
+
+    public function defaultScope() {
         return array(
             'order' => 't.created ASC',
+         
         );
     }
 
@@ -143,8 +144,8 @@ class Comment extends CActiveRecord {
     }
 
     public function afterSave() {
-        
-        
+
+
         if ($this->isNewRecord) {
             $name = '=?UTF-8?B?' . base64_encode("Сиа-пресс") . '?=';
             $subject = '=?UTF-8?B?' . base64_encode("Добавлен новый комментарий") . '?=';
@@ -163,23 +164,23 @@ class Comment extends CActiveRecord {
     }
 
     public function beforeSave() {
-        
+
         $banList = array(
-            //"217.112.5.96",
-            //"95.172.121.77",
+                //"217.112.5.96",
+                //"95.172.121.77",
         );
-        if(in_array($this->ip,$banList)){
+        if (in_array($this->ip, $banList)) {
             return false;
         }
-        
+
         if (parent::beforeSave()) {
             $this->token = md5(md5(md5($this->object_id . $this->created . $this->author_id . $this->email . $this->name)));
             return true;
         }
     }
-    
-    public function  beforeValidate(){
-        
+
+    public function beforeValidate() {
+
         return true;
     }
 
@@ -337,7 +338,7 @@ class Comment extends CActiveRecord {
 
         if ($page)
             $limit = $page * $limit - $limit . ', ' . $limit;
-
+/*a.cat_id IN ($cat) AND */
         if ($data === false) {
             $query = "SELECT c.id as cid,c.parent, c.text, c.`name`,c.created, c.author_id, a.id, a.cat_id, u.id as uid, u.`name` as username, u.username as login,
                 a.title, a.cat_id
@@ -345,16 +346,15 @@ class Comment extends CActiveRecord {
                     LEFT JOIN {{articles}} as a on c.object_id = a.id
                     LEFT JOIN {{users}} as u on c.author_id = u.id
                     WHERE
-                    a.cat_id IN ($cat)
-                    AND c.ban = 0 AND c.published = 1
+                    
+                    c.ban = 0 AND c.published = 1
                     ORDER BY c.created DESC LIMIT $limit";
             #die($query);
             $data = Yii::app()->db->createCommand($query)->queryAll();
             Yii::app()->cache->set('last_comment_page_' . $page, $data, Config::getCacheduration());
 
             Yii::trace("Получаем список новостей категории $catid НЕ из кэша!");
-        }
-        else
+        } else
             Yii::trace("Получаем список новостей категории $catid из кэша!");
 
         return $data;
@@ -382,12 +382,66 @@ class Comment extends CActiveRecord {
             Yii::app()->cache->set('popular_comment_page_' . $page, $data, Config::getCacheduration());
 
             Yii::trace("Получаем список новостей категории $catid НЕ из кэша!");
-        }
-        else
+        } else
             Yii::trace("Получаем список новостей категории $catid из кэша!");
 
         return $data;
     }
 
-}
+    public function addComment() {
+        //Проыеряем на имена
+        if (Yii::app()->user->isGuest) {
+            $commentAuthors = User::model()->find('`name` = ' . trim($comment->username));
+            if (mb_strtolower(trim($comment->username), 'UTF-8') === 'admin' or $commentAuthors) {
+                Yii::app()->user->setFlash('error', 'Такое имя пользователя зарегистрировано в системе. Авторизуйтесь или используйте другое имя.');
+                $this->refresh(true, '#addcomment');
+            }
+        }
 
+
+        //Записываем имя в куки
+        $cookie = new CHttpCookie('comment_author', $comment->username);
+        $cookie->expire = time() + 60 * 60 * 24 * 180;
+        Yii::app()->request->cookies['comment_author'] = $cookie;
+
+
+
+        /* Добавляем комментарий */
+        $comm = new Comment;
+        $comm->text = $comment->text;
+        $comm->author_id = $comment->author_id;
+        $comm->name = $comment->username;
+        $comm->email = $comment->email;
+        $comm->ip = $_SERVER['REMOTE_ADDR'];
+        $comm->created = date('Y-m-d H:i:s');
+        $comm->published = Yii::app()->params->autopublishcomment;
+        $comm->object_type_id = 1;
+        $comm->object_id = $loadmodel['id'];
+        $comm->parent = ($comment->parent) ? $comment->parent : 0;
+        #CVarDumper::dump($comm);
+        $comm->save();
+        if ($comm->id > 0) {
+
+            unset(Yii::app()->request->cookies['comment_text']);
+
+            $commadd = new CommentAdd;
+            $commadd->comment_id = $comm->id;
+            $commadd->save();
+            Yii::app()->user->setFlash('info', 'Комментарий успешно добавлен.');
+
+            $comment->text = '';
+            $comment->capcha = '';
+
+            Yii::app()->cache->flush();
+
+            $modif = Modified::model()->findByPk(1);
+            $modif->date = date('Y-m-d H:i:s');
+            $modif->save();
+
+            $this->refresh(true, '#' . $comm->id);
+        } else
+            $this->refresh(true, '#addcomment');
+        Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
+    }
+
+}

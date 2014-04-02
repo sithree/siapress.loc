@@ -98,4 +98,10 @@ class Theme extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public function defaultScope(){
+            return array(
+                'condition' => 'active = 1'
+            );
+        }
 }

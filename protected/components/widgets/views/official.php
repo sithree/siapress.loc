@@ -15,7 +15,7 @@
                         <?php echo $company['name'] ?>
                     </h3>
                     <h4>
-                        <a href="<?php echo Yii::app()->createUrl('news/official/' . $item['id']); ?>">
+                        <a href="<?php echo Yii::app()->createUrl('official/' . $item['id']); ?>">
                             <?php echo $item['title'] ?>
                         </a>    
                     </h4>
@@ -25,6 +25,6 @@
     </ul>
     
     <div class="footer">
-        <a href="<?php echo Yii::app()->createUrl('news/official') ?>">все пресс-релизы →</a>
+        <a href="<?php echo Yii::app()->createUrl('official') ?>">все пресс-релизы →</a>
     </div>
 </div>

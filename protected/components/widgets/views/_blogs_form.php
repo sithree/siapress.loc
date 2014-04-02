@@ -2,7 +2,7 @@
     <div class="opinion-block"> 
         <header class="clearfix">
 
-            <a href="<?php echo (Article::model()->getCategoryAlias($model->cat_id) === "say" or Article::model()->getCategoryAlias($model->cat_id) === 'lections' ) ? "/news" : ""; ?><?php echo Yii::app()->createUrl(Article::model()->getCategoryAlias($model->cat_id) . '/' . $model->id) ?>">
+            <a href="<?php echo $model->getCategoryAlias() . '/'. $model->id; ?>">
                 <?php
                 $img = $model->imageV2(70, 70, true);
                 if ($img)
@@ -26,7 +26,7 @@
                 <nobr><span class="nowrap"><?php echo Helper::getFormattedtime($model->created, false, false) ?></span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> <?php echo $model->articleAdd->hits; ?> <i class="fa fa-comment"></i> <?php echo count($model->comments); ?>
+                <i class="fa fa-eye"></i> <?php echo $model->articleAdd->hits; ?> <a href="<?php echo $model->getCategoryAlias() . '/'. $model->id; ?>#comments" class="tocomments"><i class="fa fa-comment"></i> <?php echo count($model->comments); ?></a>
             </div>
         </div>
     </footer>

@@ -6,36 +6,7 @@
 ?>
 <script>
     jQuery(function($) {
-        $('.navii').click(function() {
-            rel = $(this).attr('rel');
-            if (rel == 'mostreading') {
-                $(this).text('читаемые');
-                $('[rel="mostcomment"]').text('комментируемые');
-                $('[rel="lastcomment"]').text('последние');
-            } else
-            if (rel == 'lastcomment') {
-                $(this).text('последние');
-                $('[rel="mostcomment"]').text('комментируемые');
-                $('[rel="mostreading"]').text('читаемые');
-            } else
-            if (rel == 'mostcomment') {
-                $(this).text('комментируемые');
-                $('[rel="mostreading"]').text('читаемые');
-                $('[rel="lastcomment"]').text('последние');
-            }
-
-            $('.navii').removeClass('block-header');
-            $('.navii').removeClass('active');
-
-            $('.navii').addClass('popular-mini');
-
-            $(this).addClass('block-header');
-            $(this).addClass('active');
-            $(this).removeClass('popular-mini');
-            $('.mtab').css('display', 'none');
-            $('#' + rel).css('display', 'block');
-            return false;
-        });
+        
 
     });
 </script>
@@ -43,13 +14,13 @@
 <div class="widget gray-border-light main-news popular">
     <div class="header">
         <h2>
-            <a rel="lastcomment" class="block-header navii active"  href="#">последние</a>
-            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
-            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>
+            <a rel="lastcomment" class="block-header navii active"  href="#">последние комментарии</a>
+<!--            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
+            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>-->
         </h2>
     </div>
 
-    <div  style="display:none;" id="mostcomment" class="well block-comment mtab">
+    <div  style="display:none;" id="mostcomment" class="block-comment mtab">
         <ul class="unstyled popular">
             <?php foreach ($this->pop as $item): ?>
                 <li>
@@ -69,7 +40,7 @@
         </ul>
     </div>
 
-    <div style="display:none;" id="mostreading" class="well block-comment mtab">
+    <div style="display:none;" id="mostreading" class="block-comment mtab">
         <ul class="unstyled popular">
             <?php foreach ($this->items as $item): ?>
                 <li>
@@ -88,7 +59,7 @@
         </ul>
     </div>
 
-    <div id="lastcomment" class="well block-comment mtab">
+    <div id="lastcomment" class="block-comment mtab">
         <ul class="unstyled">
             <?php
             foreach ($this->last as $item):

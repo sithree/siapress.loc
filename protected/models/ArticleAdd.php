@@ -41,7 +41,7 @@ class ArticleAdd extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('article_id', 'required'),
-			array('article_id, hits, like, dislike', 'numerical', 'integerOnly'=>true),
+			array('article_id, hits, like, dislike, ccount', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('article_id, hits, like, dislike', 'safe', 'on'=>'search'),

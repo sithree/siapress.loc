@@ -17,8 +17,8 @@
         </div>
         <div class="carousel-inner">
             <?php foreach ($items as $key => $item) { ?>
-                <div class="item well block-comment block-style <?php if ($key == 0) echo 'active' ?>">
-                        <?php echo $item->imageV2(270,220) ?>
+                <div class="item block-comment block-style <?php if ($key == 0) echo 'active' ?>">
+                        <?php echo $item->imageV2(270,220, true) ?>
                     <div>
                         <h2 class="news-h2">
                             <a href="<?php echo Article::model()->getArticlestriplink($item); ?>">

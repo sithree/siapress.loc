@@ -62,8 +62,9 @@ class Article extends CActiveRecord {
                         'scopes' => array('publishedComment')
                     ),
                 ),
+//                'select' => ''
                 'limit' => $this->blogLimit,
-                'condition' => 't.published = 1 AND t.top = 0 AND t.publish <= NOW() AND cat_id IN(8,9,21,22) and `query` = 0',
+                'condition' => 't.published = 1 AND t.top = 0 AND t.publish <= NOW() AND cat_id IN(' . self::getOpinionsCategories() . ') and `query` = 0',
             ),
         );
     }
@@ -94,7 +95,7 @@ class Article extends CActiveRecord {
             array('title, cat_id, fulltext, author, created, modified, publish, type_id', 'required'),
             array('query, top, deleteImage, cat_id, published, author, modif_by, main, type_id, comment_on', 'numerical', 'integerOnly' => true),
             array('title, tags, author_alias, metakey, imgtitle', 'length', 'max' => 255),
-             array('theme', 'length', 'max' => 255),
+            array('theme', 'length', 'max' => 255),
             array('introtext, video, main_category', 'safe'),
             array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, jpeg, gif, png'),
             // The following rule is used by search().
@@ -197,21 +198,20 @@ class Article extends CActiveRecord {
         ));
     }
 
-    public function afterConstruct() {
-        if ($this->hasEventHandler('onAfterConstruct'))
-            $this->onAfterConstruct(new CEvent($this));
-        if ($this->isNewRecord) {
-            $this->created = date('Y-m-d H:i:s');
-            $this->publish = date('Y-m-d H:i:s');
-            $this->modified = '0000-00-00 00:00:00';
-            $this->published = 1;
-        } else
-            $this->modified = date('Y-m-d H:i:s');
-
-        $this->type_id = 1;
-
-        $this->author = Yii::app()->user->id;
-    }
+//    public function afterConstruct() {
+//        if ($this->hasEventHandler('onAfterConstruct'))
+//            $this->onAfterConstruct(new CEvent($this));
+//        if ($this->isNewRecord) {
+//            $this->created = date('Y-m-d H:i:s');
+//            $this->publish = date('Y-m-d H:i:s');
+//            $this->modified = date('Y-m-d H:i:s');
+//            $this->published = 1;
+//        } 
+//
+//        $this->type_id = 1;
+//
+//        $this->author = Yii::app()->user->id;
+//    }
 
     public function beforeSave() {
         parent::beforeSave();
@@ -223,28 +223,64 @@ class Article extends CActiveRecord {
         if ($this->video) {
             $this->video = str_replace('http://youtu.be/', '', $this->video);
         }
-        
+
         if ($this->theme) {
             $theme = Theme::model()->find('`name` like "' . $this->theme . '"');
-            if($theme)
+            if ($theme)
                 $this->theme = $theme->id;
-        }
-        else 
+        } else
             $this->theme = -1;
-        
+
+        $this->modified = date("Y-m-d H:i:s");
+
+        $cache = array(
+            'MainNews' => 'getMainNewsCategories',
+            'TrueMainNews' => 'getMainNewsCategories',
+            'TopBlogs' => 'getTopBlogsCategories',
+            'Officials' => 'getOfficialCategories',
+            'Opinions' => 'getOpinionsCategories',
+            'OpinionsMain' => 'getOpinionsMainCategories');
+
+//        $log = '';
+        foreach ($cache as $key => $value) {
+            if (in_array($this->cat_id, self::$value(true))) {
+                Yii::app()->cache->set($key, $this->modified);
+//                $log .= "<p>$key => $value</p>";
+                if ($key == 'Opinions')
+                    Yii::app()->cache->set('blogsRight');
+            }
+        }
+
+
+//        die($log);
+
+
         return true;
+    }
+
+    static function getCacheDependency($name) {
+        $cache = Yii::app()->cache->get($name);
+
+//        echo("get{$name}Categories");
+        if ($cache === false) {
+            $functionName = "get" . $name . "Categories";
+            $categories = self::$functionName();
+
+            $cache = Yii::app()->cache->set($name, Yii::app()->db->createCommand("SELECT MAX(modified) from {{articles}} where cat_id IN(" . $categories . ")")->queryScalar(), Yii::app()->params['cacheExpireLong']);
+        }
+        return $cache;
     }
 
     public function afterSave() {
         $image = CUploadedFile::getInstance($this, 'image');
         if ($image) {
-            $tmpfile = Yii::getPathOfAlias("webroot.temp").DIRECTORY_SEPARATOR.$image;
+            $tmpfile = Yii::getPathOfAlias("webroot.temp") . DIRECTORY_SEPARATOR . $image;
             $result = $image->saveAs($tmpfile);
             if ($result) {
                 $this->generateImage($tmpfile);
                 unlink($tmpfile);
             }
-            
+
             #die('asdas');
         }
         $add = ArticleAdd::model()->findByPk($this->id);
@@ -256,7 +292,7 @@ class Article extends CActiveRecord {
         }
 
 
-        
+
 
 
         //пингуем
@@ -287,7 +323,7 @@ class Article extends CActiveRecord {
         file_get_contents('http://www.siapress.ru/cache.php');
 
 
-        Yii::app()->cache->flush();
+//        Yii::app()->cache->flush();
 
         return true;
     }
@@ -308,55 +344,56 @@ class Article extends CActiveRecord {
     }
 
     public function generateImage($name) {
-        Article::resizeSImage($this->$id, 270, 220, false, $name);
-        Article::resizeSImage($this->$id, 270, 220, true, $name);
-        Article::resizeSImage($this->$id, 118, 86, false, $name);
-        Article::resizeSImage($this->$id, 118, 86, true, $name);
+        Article::resizeSImage($this->id, 270, 220, false, $name);
+        Article::resizeSImage($this->id, 270, 220, true, $name);
+        Article::resizeSImage($this->id, 118, 86, false, $name);
+        Article::resizeSImage($this->id, 118, 86, true, $name);
         $ih = new CImageHandler();
         $ih->load($name);
         if ($ih->getWidth() > 1920) {
             $ih->resize(1920, false);
         }
-        $ih->save(Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$this->id.'.jpg');
+        $ih->save(Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $this->id . '.jpg');
     }
-    
-    private static function resizeSImage($id, $width, $height=0, $x2=false, $source='') {
-        $path = Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR;
+
+    private static function resizeSImage($id, $width, $height = 0, $x2 = false, $source = '') {
+        $path = Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR;
         if ($source == '') {
             $source = $path . $id . '.jpg';
         }
-        $filePath = $path.$id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
+        $filePath = $path . $id . '_' . $width . 'x' . $height . ($x2 ? '@2x' : '') . '.jpg';
         if (!is_file($source)) {
-            return false;
+            $source = $path . $id . '_main.jpg';
+            if (!is_file($source))
+                return false;
         }
         $ih = new CImageHandler();
         $ih->load($source);
         if ($height)
-            $ih->adaptiveThumb($width  * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1));
+            $ih->adaptiveThumb($width * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1));
         else {
             $ih->resize($width * ($x2 ? 2 : 1), false);
         }
-            $ih->save($filePath, IMG_JPEG, 80);
+        $ih->save($filePath, IMG_JPEG, 80);
         return true;
     }
-    
-    public static function imageSV2($id, $title, $width, $height=0, $x2=false) {
-        $name = $id.'_'.$width.'x'.$height.($x2?'@2x':'').'.jpg';
-        $fp = Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$name;
+
+    public static function imageSV2($id, $title, $width, $height = 0, $x2 = false) {
+        $name = $id . '_' . $width . 'x' . $height . ($x2 ? '@2x' : '') . '.jpg';
+        $fp = Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $name;
         if (!is_file($fp) && !Article::resizeSImage($id, $width, $height, $x2)) {
             return false;
         }
-        if (!($width && $height))
-        {
+        if (!($width && $height)) {
             $img = new CImageHandler();
             $img->load($fp);
             $width = $img->getWidth() / ($x2 ? 2 : 1);
             $height = $img->getHeight() / ($x2 ? 2 : 1);
         }
-        return CHtml::image('/images/news/main/'.$name, $title, array('width' => $width, 'height' => $height));
+        return CHtml::image('/images/news/main/' . $name, $title, array('width' => $width, 'height' => $height));
     }
 
-    public function imageV2($width, $height=0, $x2=false) {
+    public function imageV2($width, $height = 0, $x2 = false) {
         return Article::imageSV2($this->id, $this->title, $width, $height, $x2);
     }
 
@@ -378,7 +415,7 @@ class Article extends CActiveRecord {
     public function deleteImage() {
         $path = Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR;
         $names = array('_main', '_item', '_home', '_cat', '');
-        foreach (glob(Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$this->id.'*') as $filename) {
+        foreach (glob(Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $this->id . '*') as $filename) {
             unlink($filename);
         }
     }
@@ -387,8 +424,8 @@ class Article extends CActiveRecord {
         if ($this->author_alias)
             return $this->author_alias;
         else {
-            if ($this->author0->perm_id == 2)
-                return CHtml::link($this->author0->name . ' (СИА-ПРЕСС)', array('user/view', 'id' => $this->author));
+//            if ($this->author0->perm_id == 2 and 1 == 2)
+            return $this->author0->name . ' (СИА-ПРЕСС)';
         }
     }
 
@@ -426,6 +463,7 @@ class Article extends CActiveRecord {
      */
 
     public function getAllcategories() {
+
         $categories = Yii::app()->cache->get('all_news_categories');
         if ($categories === false) {
             $query = "SELECT * FROM {{article_categories}} WHERE `published` = 1";
@@ -463,13 +501,12 @@ class Article extends CActiveRecord {
         return false;
     }
 
-    public function getCategoryAlias($catid) {
-        $categories = $this->getAllcategories();
-        foreach ($categories as $cat) {
-            if ($cat['id'] == $catid)
-                return $cat['alias'];
-        }
-        return false;
+    public function getCategoryAlias() {
+        return ArticleCategories::model()->getCategoryAlias($this->cat_id);
+    }
+
+    public function getCategoryName() {
+        return ArticleCategories::model()->getCategoryName($this->cat_id);
     }
 
     public function getCategoryFullname($catid) {
@@ -477,15 +514,6 @@ class Article extends CActiveRecord {
         foreach ($categories as $cat) {
             if ($cat['id'] == $catid)
                 return $cat['fullname'];
-        }
-        return false;
-    }
-
-    public function getCategoryname($catid) {
-        $categories = $this->getAllcategories();
-        foreach ($categories as $cat) {
-            if ($cat['id'] == $catid)
-                return $cat['name'];
         }
         return false;
     }
@@ -525,8 +553,8 @@ class Article extends CActiveRecord {
      */
 
     public function getMainitem($catid, $oncat = false) {
-        
-        
+
+
         #Yii::app()->cache->flush();
         $data = Yii::app()->cache->get($catid . '_main_index');
 
@@ -757,10 +785,19 @@ class Article extends CActiveRecord {
 
     public function getArticlestriplink($model) {
         #CVarDumper::dump($model);
-        return Yii::app()->createUrl('news/' . $this->getCategoryAlias($model['cat_id']) . '/' . $model['id']);
+        return Yii::app()->createUrl($this->getCategoryAlias($model['cat_id']) . '/' . $model['id']);
     }
 
     public function link($absolute = false) {
+
+//        die($this->cat_id . '<br /><br /><br />');
+        $catAlias = ArticleCategories::model()->getCategoryAlias($this->cat_id);
+
+        if (ArticleCategories::model()->getCategoryParent($this->cat_id))
+            $catAlias = ArticleCategories::model()->getCategoryParentAlias($this->cat_id);
+
+        return Yii::app()->createUrl('article/view', array('category' => $catAlias, 'id' => $this->id));
+
         if ($this->cat_id == 9)
             return $absolute ? Yii::app()->createAbsoluteUrl('blogs/' . $this->id) : Yii::app()->createUrl('blogs/' . $this->id);
         elseif ($this->cat_id == 8)
@@ -816,6 +853,42 @@ class Article extends CActiveRecord {
 
     public function getNewscat() {
         return array(1, 2, 3, 4, 5, 6, 7, 15);
+    }
+
+    public static function getMainNewsCategories($array = false) {
+        $categories = array(1, 2, 3, 4, 5, 6, 7, 15, 23);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+
+    public static function getTrueMainNewsCategories($array = false) {
+        return self::getMainNewsCategories($array);
+    }
+
+    public static function getTopBlogsCategories($array = false) {
+        $categories = array(9);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+
+    public static function getOpinionsCategories($array = false) {
+        $categories = array(8, 9, 21, 22);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+
+    public static function getOpinionsMainCategories($array = false) {
+        return self::getOpinionsCategories($array);
+    }
+
+    public static function getOfficialCategories($array = false) {
+        $categories = array(14);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
     }
 
     public function getMeta($loadmodel) {
@@ -879,6 +952,10 @@ class Article extends CActiveRecord {
     public function moreArticles() {
 
         return 123; # $model;
+    }
+
+    public function getCommentCount() {
+        return 0;
     }
 
 }

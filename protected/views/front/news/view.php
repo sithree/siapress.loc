@@ -1,3 +1,9 @@
+<script>
+    jQuery(function($) {       
+        $("iframe").attr('width', 477);
+    });
+</script>
+
 <?php
 #Yii::app()->cache->flush();
 $this->layout = '//layouts/news/article';

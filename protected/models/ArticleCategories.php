@@ -97,9 +97,60 @@ class ArticleCategories extends CActiveRecord {
         $criteria->compare('fullname', $this->fullname, true);
 
         return new CActiveDataProvider($this, array(
-                    'criteria' => $criteria,
-                ));
+            'criteria' => $criteria,
+        ));
     }
 
+    public function getCategoryName($id) {
+        
+        $model = $this->getFromCache();
+
+        foreach ($model as $key => $value) {
+            if ($value['id'] == $id)
+                return $value['name'];
+        }
+        return false;
+    }
+
+    public function getCategoryAlias($id) {
+        $model = $this->getFromCache();
+
+        foreach ($model as $key => $value) {
+            if ($value['id'] == $id)
+                return $value['alias'];
+        }
+        return false;
+    }
+    
+    public function getCategoryParent($id) {
+        $model = $this->getFromCache();
+
+        foreach ($model as $key => $value) {
+            if ($value['id'] == $id)
+                return $value['parent'];
+        }
+        return false;
+    }
+    public function getCategoryParentAlias($id) {
+        $model = $this->getFromCache();
+
+        foreach ($model as $key => $value) {
+            if ($value['id'] == $id)
+                return $this->getCategoryAlias ($value['parent']);
+        }
+        return false;
+    }
+    
+    
+
+    public function getFromCache() {
+
+        $model = Yii::app()->cache->get('ArticleCategories');
+        if ($model === false) {
+            $model = Yii::app()->db->createCommand('SELECT * FROM ' . $this->tableName())->queryAll();
+            Yii::app()->cache->set('ArticleCategories', $model, 3600);
+        }
+        return $model;
+    }
 
 }

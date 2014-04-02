@@ -6,7 +6,7 @@ class SiteController extends Controller {
     public $metaProperty;
 
     public function addMetaProperty($name, $content) {
-        $this->metaProperty .= "<meta property=\"$name\" content=\"$content\" />\r\n";
+        $this->metaProperty .= "<meta property=\"".CHtml::encode($name)."\" content=\"".CHtml::encode($content)."\" />\r\n";
     }
 
     public function getMetaProperty() {
@@ -58,7 +58,7 @@ class SiteController extends Controller {
             'accessControl', // perform access control for CRUD operations
             array(
                 'CHttpCacheFilter',
-                'lastModified' => Yii::app()->db->createCommand("SELECT MAX(`publish`) FROM {{articles}} where `published` = 1 order by `publish` desc")->queryScalar(),
+                'lastModified' =>  date('Y-m-d H:i:s'), // Yii::app()->db->createCommand("SELECT MAX(`publish`) FROM {{articles}} where `published` = 1 order by `publish` desc")->queryScalar(),
                 'cacheControl' => 'no-store, no-cache, must-revalidate',
             ),
         );

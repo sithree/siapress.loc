@@ -11,7 +11,7 @@
                         <span class="country-name">Россия</span>,
                         <span class="region">ХМАО-Югра</span>, город
                         <span class="locality">Сургут</span>,
-                        <span class="street-address">Бульвар Свободы, д. 1</span>
+                        <span class="street-address">Бульвар Свободы, д. 1  <a href="http://siapress.center" target="_blank">СИА-ПРЕСС ЦЕНТР</a></span>
                     </div>
                     Телефон:
                     <span class="tel">+7 (3462) 44-23-23 </span>

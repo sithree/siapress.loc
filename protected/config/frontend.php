@@ -6,6 +6,21 @@ return CMap::mergeArray(
                 require_once(dirname(__FILE__) . '/main.php'), array(
             // application components
             'components' => array(
+//                'clientScript' => array(
+//                    'class' => 'ext.NLSClientScript.NLSClientScript',
+//                    //'excludePattern' => '/\.tpl/i', //js regexp, files with matching paths won't be filtered is set to other than 'null'
+//                    //'includePattern' => '/\.php/', //js regexp, only files with matching paths will be filtered if set to other than 'null'
+//                    'mergeJs' => false, //def:true
+//                    'compressMergedJs' => false, //def:false
+//                    'mergeCss' => true, //def:true
+//                    'compressMergedCss' => true, //def:false
+//                    #'serverBaseUrl' => 'http://cdn.si3.ru', //can be optionally set here
+//                    'mergeAbove' => 1, //def:1, only "more than this value" files will be merged,
+//                    'curlTimeOut' => 5, //def:5, see curl_setopt() doc
+//                    'curlConnectionTimeOut' => 10, //def:10, see curl_setopt() doc
+//                    'appVersion' => 1.1 //if set, it will be appended to the urls of the merged scripts/css
+//                ),
+                
                 'urlManager' => array(
                     'urlFormat' => 'path',
                     'showScriptName' => false,
@@ -20,12 +35,22 @@ return CMap::mergeArray(
                         'logout' => 'site/logout',
                         'rules' => 'site/rules',
                         'search' => 'site/search',
+                        'rss' => 'site/sitemap',
                         'authors' => 'users/index',
                         'click' => 'click/index',
                         'online/pp/<city:\w+>' => 'site/pp',
                         'official/gazprom_sgt' => 'news/view/id/23533', #array('news/opinion/<id:22>'),
                         #'news' => 'news/index',
                         #'opinion' => 'news/index?category=opinion',
+                        #
+                        //Для всего остального есть общий ArticleController
+//                        'ajax/<category:\w+>' => 'article/view',
+                        'themes/<id:\d+>' => 'themes/index',
+                        '<category:\w+>/<id:\d+>' => 'article/view',
+                        '<category:\w+>' => 'article/index',
+                        
+                        // ---
+                        
                         '<category:\w+>/item/<id>' => 'old/view',
                         'news/<category:\w+>' => 'news/index',
                         'news/<category:\w+>/<id:\d+>' => 'news/view',

@@ -1,8 +1,6 @@
 <?php
 
-$comment = (date("H") >= 21 or date("H") < 6) ? 0 : 1;
-
-
+$comment = 1; //(date("H") >= 21 or date("H") < 6) ? 0 : 1;
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
@@ -10,7 +8,7 @@ $comment = (date("H") >= 21 or date("H") < 6) ? 0 : 1;
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Новости Сургута и Югры, пресс-релизы, официальная информация. СИА-ПРЕСС',
-    'language' => 'ru',
+    'language' => 'ru_RU',
     'timeZone' => 'Asia/Yekaterinburg',
     // preloading 'log' component
     'preload' => array(
@@ -28,7 +26,7 @@ return array(
         'application.components.*',
         'application.vendors.*',
         'ext.eoauth.*',
-         'ext.*',
+        'ext.*',
         'ext.eoauth.lib.*',
         'ext.lightopenid.*',
         'ext.eauth.*',
@@ -105,8 +103,8 @@ return array(
             'charset' => 'utf8',
             'tablePrefix' => 'sia_',
             'queryCacheID' => 'cache',
-            'queryCachingDuration' => 180,
-            'schemaCachingDuration' => 180,
+            'queryCachingDuration' => 3600,
+            'schemaCachingDuration' => 3600,
             // включаем профайлер
             'enableProfiling' => true,
             // показываем значения параметров
@@ -118,11 +116,16 @@ return array(
             'errorAction' => 'site/error',
         ),
         'cache' => array(
-            'class' => 'system.caching.CDummyCache',
+            'class' => 'system.caching.CFileCache',
         ),
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
+                array(
+                    'class' => 'CProfileLogRoute',
+                    'levels' => 'profile',
+                    'enabled' => true,
+                ),
             ),
         ),
         'authManager' => array(
@@ -136,5 +139,7 @@ return array(
         'comments' => $comment,
         'autopublishcomment' => 1,
         'showBanner' => true,
+        'cacheExpire' => 180,
+        'cacheExpireLong' => 600,
     ),
 );

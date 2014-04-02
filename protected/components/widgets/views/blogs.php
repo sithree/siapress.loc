@@ -1,6 +1,6 @@
 <div class="widget no-padding" id="opinion">
     <div class="header">
-        <h2><a href="#">Мнения</a></h2>
+        <h2><a href="/opinion">Мнения</a></h2>
     </div>
     <div class="row">
         <div class="col-xs-6">
@@ -15,7 +15,7 @@
         </div>
         <div class="col-xs-6">
             <div style="margin-bottom: 10px;">
-                <a href="/">
+                <a href="/say/<?php echo Yii::app()->db->createCommand("SELECT id from {{articles}} where cat_id = 21  order by id desc limit 1")->queryScalar() ?>">
                     <img style="max-width: 100%;" src="http://www.siapress.ru/images/news/main/30520.jpg" />
                 </a>
             </div>

@@ -13,10 +13,13 @@
     <div class="vote">
         <?php #echo $form->labelEx($userVote, 'choice_id'); ?>
         <?php $template = '<div class="row-choice clearfix"><div class="form-radio">{input}</div><div class="form-label">{label}</div></div>'; ?>
-        <?php $template = '<label class="radio">
+        <?php $template = '<div class="radio clearfix">
+                                <i class="fa fa-circle-o votecircle"></i>
+                                <div class="poll_r">
                                 {input}
                                 {label}
-                            </label>'; ?>
+                                </div>
+                            </div>'; ?>
         <?php
         
         echo $form->hiddenField($userVote,'choice_id');
@@ -28,10 +31,10 @@
         ?>
         <?php echo $form->error($userVote, 'choice_id'); ?>
     </div>
-<!--
-    <div class="right" style="padding-top:10px;border-top:1px solid #eee;">
+
+    <div class="right" style="display: none;">
         <?php echo CHtml::submitButton('Голосовать', array('class' => 'btn btn-danger')); ?>
-    </div>-->
+    </div>
 
     <?php $this->endWidget(); ?>
 

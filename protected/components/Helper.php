@@ -37,7 +37,7 @@ class Helper {
 
     public static function getFormattedtime($dtime = false, $format = false, $timezone = false) {
         if ($timezone)
-            $timezone = ' [Сургут]';
+            $timezone = '';
         if ($dtime)
             $date = strtotime($dtime);
         else

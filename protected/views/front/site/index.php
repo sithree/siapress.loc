@@ -1,9 +1,46 @@
+<div id="rontar_adplace_5712"></div>
+<script type="text/javascript"><!--
+ 
+    (function (w, d, n) {
+        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5712, rontar_place_id: 'rontar_adplace_5712', adCode_rootUrl: 'http://adcode.rontar.com/' };
+        w[n] = w[n] || [];
+        w[n].push(
+            ri
+        );
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+        var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+        b.parentNode.insertBefore(a, b);
+    })(window, document, 'rontar_ads');
+//--></script>
+<div class="clearfix"><br /></div>
 
-<?php $this->widget('application.components.widgets.Blogs');  ?>
+<?php
+if ($this->beginCache("TrueMainNews", array('dependency' => array(
+                'class' => 'system.caching.dependencies.CExpressionDependency',
+                'expression' => "Article::getCacheDependency('TrueMainNews')")))) {
+    ?>
+    <?php $this->widget('application.components.widgets.TrueMainNews'); ?>
+    <?php
+    $this->endCache();
+}
+?>
 
 
 <?php
+//if ($this->beginCache("OpinionsMain", array('dependency' => array(
+//                'class' => 'system.caching.dependencies.CExpressionDependency',
+//                'expression' => "Article::getCacheDependency('OpinionsMain')")))) {
+    ?>
+    <?php $this->widget('application.components.widgets.Blogs'); ?>
+    <?php
+//    $this->endCache();
+//}
+?>
 
+<?php
 Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
     $('.newsajaxbutton').click(function(){
         $('#category').attr('value',$(this).attr('rel'));
@@ -14,22 +51,21 @@ Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
 ?>
 
 
-<?php // $this->widget('application.components.main.official'); ?>
-<?php // $this->widget('application.components.main.quest'); ?>
-<?php // include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php'); ?>
-<?php // $this->widget('application.components.main.popular'); ?>
+<?php // $this->widget('application.components.main.official');   ?>
+<?php // $this->widget('application.components.main.quest');   ?>
+<?php // include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');    ?>
+<?php // $this->widget('application.components.main.popular');    ?>
 
 
 
 <?php
-
 for ($pollCount = 0; $pollCount < 4; $pollCount++) {
     $this->widget('EPoll');
 }
 ?>
-<div>
+<!--<div>
     <a class="gray-light-button" href="/">Больше опросов</a>
-</div>
+</div>-->
 
 
 

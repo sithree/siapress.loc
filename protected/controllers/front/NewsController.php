@@ -178,7 +178,7 @@ class NewsController extends Controller {
 
                     //Записываем имя в куки
                     $cookie = new CHttpCookie('comment_author', $comment->username);
-                    $cookie->expire = time() + 60 * 60 * 24 * 180;
+                    $cookie->expire = time() + 60 * 60 * 24 * 5;
                     Yii::app()->request->cookies['comment_author'] = $cookie;
 
 
@@ -257,99 +257,6 @@ class NewsController extends Controller {
             'moreArticles' => $moreArticles,
         ));
     }
-
-    /**
-     * Creates a new model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     */
-    public function actionCreate() {
-        $model = new Article;
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
-        if (isset($_POST['Article'])) {
-            $model->attributes = $_POST['Article'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
-        }
-
-        $this->render('create', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
-     */
-    public function actionUpdate($id) {
-        $model = $this->loadModel($id);
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
-        if (isset($_POST['Article'])) {
-            $model->attributes = $_POST['Article'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
-        }
-
-        $this->render('update', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
-     * @param integer $id the ID of the model to be deleted
-     */
-    public function actionDelete($id) {
-        if (Yii::app()->request->isPostRequest) {
-            // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
-
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax']))
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-        }
-        else
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
-    }
-
-    /*
-      public function actionPolitics($id = null, $page = 0) {
-      if (!is_null($id)) {
-      $loadmodel = $this->loadModel($id);
-      $this->render('view', array(
-      'model' => $loadmodel, //$this->loadModel($id),
-      ));
-      return;
-      }
-      /* Пагинация *//*
-      $criteria = new CDbCriteria();
-      $count = Article::model()->getCountitems('politics');
-      $pages = new CPagination($count);
-      $pages->pageSize = Config::getOnpage();
-      /* end.Пагинация */
-    /*
-      if (isset($_GET['page']))
-      $page = intval($page);
-
-      $mainNews = Article::model()->getMainitem($this->action->id);
-      $data = Article::model()->getItems($this->action->id, 20, $page);
-      $cat = Article::model()->getCategory($this->action->id);
-
-      $this->render('index', array(
-      'dataProvider' => $data,
-      'mainNews' => $mainNews,
-      'category' => $cat,
-      'pages' => $pages,
-      ));
-      }
-     */
 
     public function actionOpinion($id = null, $page = 0) {
         if ($id) {

@@ -8,21 +8,21 @@
                 <header class="clearfix">
                     <?php
                     $image = $item->imageV2(68, 46, true);
-                    if ($image): ?>
+                    if ($image):
+                        ?>
                         <a href="<?php echo $item->link(); ?>">
                             <?php echo $image; ?>
                         </a>
                     <?php endif; ?>
                     <h3>
-                        <a href="<?php echo $item->link()  ?>"><?php echo CHtml::decode($item->title) ?></a>
+                        <a href="<?php echo $item->link() ?>"><?php echo CHtml::decode($item->title) ?></a>
                     </h3>
                 </header>
                 <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="news/<?php echo $item->category->alias?>"><?php echo $item->category->name ?></a>, <?php echo Helper::getFormattedtime($item->publish, false, true) ?></div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> <?php echo $item->articleAdd->hits ?> <i class="fa fa-comment"></i> <?php echo count($item->comments); ?></div>
+                    <div class="col-xs-8"><a href="/<?php echo $item->getCategoryAlias(); ?>"><?php echo $item->getCategoryName() ?></a>, <?php echo Helper::getFormattedtime($item->publish, false, true) ?></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> <?php echo $item->articleAdd->hits   ?> <a href="<?php echo $item->link(); ?>#comments" class="tocomments"><i class="fa fa-comment"></i> <?php echo count($item->comments);   ?></a></div>
                 </footer>
             </li>
-
         <?php endforeach; ?>
     </ul>
 </div>

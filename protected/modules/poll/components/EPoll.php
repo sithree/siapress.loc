@@ -93,11 +93,21 @@ class EPoll extends CPortlet {
 
 
                     // Prevent submit on refresh
-                    $route = Yii::app()->controller->route == 'site/index'
-                            ? '/#poll_' .$model->id
-                            : '';
-                    if(!empty($route))
-                            Yii::app()->controller->redirect($route);
+//                    $route = Yii::app()->controller->route == 'site/index' ? '/#poll_' . $model->id : '';
+//                    if (Yii::app()->request->isAjaxRequest) {
+//                        $view = 'view';
+//                        $userChoice = $this->loadChoice($userVote->choice_id);
+//
+//                        $params += array(
+//                            'userVote' => $userVote,
+//                            'userChoice' => $userChoice,
+//                            'userCanCancel' => $model->userCanCancelVote($userVote),
+//                        );
+//                        $this->renderFile($view, $params);
+//                        Yii::app()->end();
+//                    } else 
+                    if (!empty($route))
+                        Yii::app()->controller->redirect($route);
                 }
             }
 

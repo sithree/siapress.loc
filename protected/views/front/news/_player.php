@@ -10,6 +10,8 @@ if ($positions):
             if (!device.ios()) {
                 $('#playerNav').show(0);
             }
+            
+           
 
         });
 
@@ -24,7 +26,7 @@ if ($positions):
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '322',
-                width: '573',
+                width: '477',
                 videoId: '<?php echo trim($model['video']) ?>',
                 events: {
                     'onReady': onPlayerReady,
