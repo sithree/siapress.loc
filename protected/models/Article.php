@@ -22,7 +22,8 @@
  * @property integer $type_id
  * @property integer $comment_on
  * @property string $imgtitle
- *
+ * @property string $like
+ * @property string $dislike
  * The followings are the available model relations:
  * @property ArticleAdd $articleAdd
  * @property Users[] $siaUsers
@@ -40,6 +41,11 @@ class Article extends CActiveRecord {
     public $_imgpath = 'images/news/main/';
     public $blogLimit = 17;
     public $theme;
+    
+    function getRating() {
+        $result = $this->article->like - $this->article->dislike;
+        return $result > 0 ? '+'.$result : $result;
+    }
 
     public function scopes() {
         return array(

@@ -9,18 +9,18 @@
 </div>-->
 
 <div>
-    <a class="red-button" href="/radios" id="radioLink">Слушать радио онлайн</a>
+    <a class="red-button" href="#" id="radioLink">Слушать радио онлайн</a>
 </div>
 
 <script type="text/javascript">
     jQuery(function($) {
         $('#radioLink').on('click', function() {
-            var newWin = window.open("http://siapress.loc/site/radio",
-                    "Radio",
+            var newWin = window.open("/site/radio",
+                    "radio",
                     "width=420,height=230,resizable=no,scrollbars=no,status=no,menubar=no,toolbar=no,location=no,directories=no"
                     );
-
             newWin.focus();
+            return false;
         });
     });
 </script>
