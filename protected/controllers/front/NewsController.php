@@ -39,7 +39,7 @@ class NewsController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'captcha', 'politics', 'page', 'economics', 'society', 'megapolis', 'incident', 'sport', 'life', 'opinion', 'noise', 'send'),
+                'actions' => array('index', 'view', 'captcha', 'politics', 'page', 'economics', 'society', 'megapolis', 'incident', 'sport', 'life', 'opinion', 'noise', 'send', 'sended'),
                 'users' => array('*'),
             ),
             array('deny', // deny all users
@@ -413,19 +413,27 @@ class NewsController extends Controller {
 
     public function actionSend() {
         $model = new UserNews;
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
         if (isset($_POST['UserNews'])) {
             $model->attributes = $_POST['UserNews'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+            if (!Yii::app()->user->isGuest) {
+                $user = Users::model()->find('id='.Yii::app()->user->getId());
+                $model->user_id = $user->id;
+                $model->user_name = $user->name;
+                $model->user_email = $user->email;
+                $model->user_phone = $user->phone;
+            }
+            if ($model->save()) {
+                $this->redirect('sended');
+            }
+            $model->captcha = '';
         }
-
         $this->render('send', array(
             'model' => $model,
         ));
+    }
+    
+    public function actionSended() {
+        $this->render('sended', array());
     }
 
 }

@@ -423,5 +423,9 @@ class SiteController extends Controller {
 
         return $list;
     }
-
+    
+    public function actionRadio() {
+        $this->layout = "//layouts/clear";
+        $this->render('radio');
+    }
 }

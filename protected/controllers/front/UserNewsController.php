@@ -27,15 +27,15 @@ class UserNewsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
+				'actions'=>array(),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('index','view','create', 'update','admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -63,19 +63,15 @@ class UserNewsController extends Controller
 	{
 		$model=new UserNews;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['UserNews']))
 		{
 			$model->attributes=$_POST['UserNews'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if($model->save()) {
+                            $this->render('create', array());
+                            return;
+                        }
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+                throw new CHttpException(404);
 	}
 
 	/**
