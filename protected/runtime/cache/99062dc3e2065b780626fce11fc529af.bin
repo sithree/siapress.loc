@@ -1,112 +1,10 @@
-a:2:{i:0;a:2:{i:0;s:12697:"    <div class="portlet" id="yw5">
+a:2:{i:0;a:2:{i:0;s:13156:"    <div class="portlet" id="yw5">
 <div class="portlet-content">
 <div class="widget b-light-gray main-news">
     <div class="header">
         <h2><a href="/news">Новости</a></h2>
     </div>
     <ul>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/incident/31058">
-                            <img width="68" height="46" src="/images/news/main/31058_68x46@2x.jpg" alt="На подъезде к Сургуту ВАЗ влетел под  FAW. Фото" />                        </a>
-                                        <h3>
-                        <a href="/incident/31058">На подъезде к Сургуту ВАЗ влетел под  FAW. Фото</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/incident">Происшествия</a>, Сегодня в 11:16</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/incident/31058#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/life/31057">
-                            <img width="68" height="46" src="/images/news/main/31057_68x46@2x.jpg" alt="В Сургуте пройдет фестиваль национальных культур народов России в Югре" />                        </a>
-                                        <h3>
-                        <a href="/life/31057">В Сургуте пройдет фестиваль национальных культур народов России в Югре</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/life">Культура</a>, Сегодня в 11:12</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/life/31057#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/life/31055">
-                            <img width="68" height="46" src="/images/news/main/31055_68x46@2x.jpg" alt="В этом году фестиваль национальных культур &quot;Соцветие&quot; пройдет перед театром СурГУ " />                        </a>
-                                        <h3>
-                        <a href="/life/31055">В этом году фестиваль национальных культур "Соцветие" пройдет перед театром СурГУ </a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/life">Культура</a>, Сегодня в 10:58</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/life/31055#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/society/31054">
-                            <img width="68" height="46" src="/images/news/main/31054_68x46@2x.jpg" alt="Жидкость снова можно брать в полет" />                        </a>
-                                        <h3>
-                        <a href="/society/31054">Жидкость снова можно брать в полет</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/society">Общество</a>, Сегодня в 10:47</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/society/31054#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/society/31053">
-                            <img width="68" height="46" src="/images/news/main/31053_68x46@2x.jpg" alt="У россиян масса претензий к правительству" />                        </a>
-                                        <h3>
-                        <a href="/society/31053">У россиян масса претензий к правительству</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/society">Общество</a>, Сегодня в 10:35</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/society/31053#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                        <h3>
-                        <a href="/economics/31047">Наталья Комарова уехала в Дрезден представлять сырьевой потенциал округа</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/economics">Экономика</a>, Сегодня в 09:58</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/economics/31047#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/life/31048">
-                            <img width="68" height="46" src="/images/news/main/31048_68x46@2x.jpg" alt="Премию &quot;Ника&quot; за лучший фильм 2013 года получил &quot;Географ глобус пропил&quot; " />                        </a>
-                                        <h3>
-                        <a href="/life/31048">Премию "Ника" за лучший фильм 2013 года получил "Географ глобус пропил" </a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/life">Культура</a>, Сегодня в 09:54</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/life/31048#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/incident/31045">
-                            <img width="68" height="46" src="/images/news/main/31045_68x46@2x.jpg" alt="Как не надо шутить, показала своим примером жительница Лангепаса. И сейчас готовится стать фигурантом уголовного дела" />                        </a>
-                                        <h3>
-                        <a href="/incident/31045">Как не надо шутить, показала своим примером жительница Лангепаса. И сейчас готовится стать фигурантом уголовного дела</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/incident">Происшествия</a>, 01 апреля  в 19:01</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 202 <a href="/incident/31045#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
                     <li>
                 <header class="clearfix">
                                             <a href="/society/31042">
@@ -166,6 +64,110 @@ a:2:{i:0;a:2:{i:0;s:12697:"    <div class="portlet" id="yw5">
                 <footer class="row clearfix">
                     <div class="col-xs-8"><a href="/society">Общество</a>, 01 апреля  в 14:15</div>
                     <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 149 <a href="/society/31034#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/incident/31033">
+                            <img width="68" height="46" src="/images/news/main/31033_68x46@2x.jpg" alt="Это вам не экстрасенсы! Прогноз синоптиков сбылся: в Сургуте повалены столбы, оторваны двери и части зданий" />                        </a>
+                                        <h3>
+                        <a href="/incident/31033">Это вам не экстрасенсы! Прогноз синоптиков сбылся: в Сургуте повалены столбы, оторваны двери и части зданий</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/incident">Происшествия</a>, 01 апреля  в 13:47</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 410 <a href="/incident/31033#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/politics/31032">
+                            <img width="68" height="46" src="/images/news/main/31032_68x46@2x.jpg" alt="1 апреля ОАО «Аэропорт «Сургут» исполнилось 20 лет" />                        </a>
+                                        <h3>
+                        <a href="/politics/31032">1 апреля ОАО «Аэропорт «Сургут» исполнилось 20 лет</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/politics">Политика</a>, 01 апреля  в 12:31</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 329 <a href="/politics/31032#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/life/31031">
+                            <img width="68" height="46" src="/images/news/main/31031_68x46@2x.jpg" alt="​Роль царевича в «Варваре-красе…» сыграл дядя Сергея Собянина" />                        </a>
+                                        <h3>
+                        <a href="/life/31031">​Роль царевича в «Варваре-красе…» сыграл дядя Сергея Собянина</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/life">Культура</a>, 01 апреля  в 11:38</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 274 <a href="/life/31031#comments" class="tocomments"><i class="fa fa-comment"></i> 5</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/society/31027">
+                            <img width="68" height="46" src="/images/news/main/31027_68x46@2x.jpg" alt="Госавтоинспекторы Югры просят водителей быть внимательней на дорогах" />                        </a>
+                                        <h3>
+                        <a href="/society/31027">Госавтоинспекторы Югры просят водителей быть внимательней на дорогах</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/society">Общество</a>, 01 апреля  в 09:36</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 333 <a href="/society/31027#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/incident/31025">
+                            <img width="68" height="46" src="/images/news/main/31025_68x46@2x.jpg" alt="В Тюмени совершил вынужденную посадку рейс из Новосибирска. Пассажиру стало плохо" />                        </a>
+                                        <h3>
+                        <a href="/incident/31025">В Тюмени совершил вынужденную посадку рейс из Новосибирска. Пассажиру стало плохо</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/incident">Происшествия</a>, 01 апреля  в 09:27</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 196 <a href="/incident/31025#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/incident/31024">
+                            <img width="68" height="46" src="/images/news/main/31024_68x46@2x.jpg" alt="В Пыть-Яхе несовершеннолетний разбил две машины и скрылся с места ДТП" />                        </a>
+                                        <h3>
+                        <a href="/incident/31024">В Пыть-Яхе несовершеннолетний разбил две машины и скрылся с места ДТП</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/incident">Происшествия</a>, 01 апреля  в 09:21</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 188 <a href="/incident/31024#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/economics/31022">
+                            <img width="68" height="46" src="/images/news/main/31022_68x46@2x.jpg" alt="Чистая прибыль «Сургутнефтегаза» по РСБУ выросла в 2013 году до 256,5 млрд рублей" />                        </a>
+                                        <h3>
+                        <a href="/economics/31022">Чистая прибыль «Сургутнефтегаза» по РСБУ выросла в 2013 году до 256,5 млрд рублей</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/economics">Экономика</a>, 31 марта  в 18:51</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 589 <a href="/economics/31022#comments" class="tocomments"><i class="fa fa-comment"></i> 22</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/sport/31021">
+                            <img width="68" height="46" src="/images/news/main/31021_68x46@2x.jpg" alt="Илья Ковальчук пропустит чемпионат мира" />                        </a>
+                                        <h3>
+                        <a href="/sport/31021">Илья Ковальчук пропустит чемпионат мира</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8"><a href="/sport">Спорт</a>, 31 марта  в 17:57</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 189 <a href="/sport/31021#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
                 </footer>
             </li>
             </ul>

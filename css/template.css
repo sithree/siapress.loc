@@ -1459,3 +1459,22 @@ h1 {
 .tocomments:hover, .first-news footer a.tocomments:hover, .opinion-block footer a.tocomments:hover {
     color: #ca0000;
 }
+
+#ageWarning {
+  background: none repeat scroll 0 0 #CA0000;
+  -webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: bold;
+  height: 24px;
+  padding-top: 5px;
+  position: absolute;
+  right: -10px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  z-index: 10;
+  
+}

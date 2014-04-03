@@ -50,6 +50,7 @@ return CMap::mergeArray(
                         '<category:\w+>' => 'article/index',
                         
                         // ---
+                        'news/send' => 'news/send',
                         
                         '<category:\w+>/item/<id>' => 'old/view',
                         'news/<category:\w+>' => 'news/index',

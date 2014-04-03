@@ -39,7 +39,7 @@ class NewsController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'captcha', 'politics', 'page', 'economics', 'society', 'megapolis', 'incident', 'sport', 'life', 'opinion', 'noise'),
+                'actions' => array('index', 'view', 'captcha', 'politics', 'page', 'economics', 'society', 'megapolis', 'incident', 'sport', 'life', 'opinion', 'noise', 'send'),
                 'users' => array('*'),
             ),
             array('deny', // deny all users
@@ -91,7 +91,7 @@ class NewsController extends Controller {
             $condition->addCondition('id != ' . $loadmodel['id']);
             $condition->addCondition('cat_id = ' . $loadmodel['cat_id']);
             $condition->addCondition('publish <= NOW()');
-             $condition->addCondition('created <= NOW()');
+            $condition->addCondition('created <= NOW()');
             $condition->limit = 4;
             $condition->order = '`publish` DESC';
             $moreArticles = Article::model()->findAll($condition);
@@ -102,12 +102,11 @@ class NewsController extends Controller {
             $condition->addCondition('id != ' . $loadmodel['id']);
             $condition->addCondition('cat_id = ' . $loadmodel['cat_id']);
             $condition->addCondition('publish <= NOW()');
-             $condition->addCondition('created <= NOW()');
+            $condition->addCondition('created <= NOW()');
             $condition->limit = 4;
             $condition->order = '`publish` DESC';
             $moreArticles = Article::model()->findAll($condition);
-        }
-        else
+        } else
             Yii::trace('Просмотр новости. Берем из кеша.');
 
         header("Cache-Control: no-store, no-cache, must-revalidate");
@@ -121,8 +120,7 @@ class NewsController extends Controller {
                 $news = Article::model()->findByPk($loadmodel['id']);
                 $news->metakey = $words;
                 $news->save();
-            }
-            else
+            } else
                 $words = '';
         } else {
             $words = $loadmodel['metakey'];
@@ -146,13 +144,12 @@ class NewsController extends Controller {
             if (isset($_POST['CommentForm'])) {
                 $comment->attributes = $_POST['CommentForm'];
                 #CVarDumper::dump($comment->attributes);
-                
                 //Записываем в куки дабы не потерять текст коммента
                 Yii::app()->request->cookies['comment_username'] = new CHttpCookie('comment_username', $comment->username);
-                $ct = new CHttpCookie($id .'_comment_text', $comment->text);
-                $ct->expire = time()+60*60*24*180; 
-                Yii::app()->request->cookies[$id .'_comment_text'] = $ct;
-                Yii::app()->request->cookies[$id .'_comment_capcha'] = new CHttpCookie($id .'_comment_capcha', $comment->capcha);
+                $ct = new CHttpCookie($id . '_comment_text', $comment->text);
+                $ct->expire = time() + 60 * 60 * 24 * 180;
+                Yii::app()->request->cookies[$id . '_comment_text'] = $ct;
+                Yii::app()->request->cookies[$id . '_comment_capcha'] = new CHttpCookie($id . '_comment_capcha', $comment->capcha);
 
 
                 if ($comment->validate()) {
@@ -216,27 +213,23 @@ class NewsController extends Controller {
                         $modif->save();
 
                         $this->refresh(true, '#' . $comm->id);
-                    }
-                    else
+                    } else
                         $this->refresh(true, '#addcomment');
                     Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
 
                     /* end.Добавляем комментарий */
-                }
-                else
+                } else
                     Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
                 $this->refresh(true, '#addcomment');
             }
-        }
-        else
+        } else
             $comment = false;
         /* end.Подгружаем форму добавления комментария */
 
         //Комментарии
         if (Yii::app()->user->checkAccess('administrator')) {
             $comments = Comment::model()->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
-        }
-        else
+        } else
             $comments = Comment::model()->published()->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
 
         Yii::app()->clientScript->registerScriptFile(
@@ -416,6 +409,23 @@ class NewsController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    public function actionSend() {
+        $model = new UserNews;
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if (isset($_POST['UserNews'])) {
+            $model->attributes = $_POST['UserNews'];
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id));
+        }
+
+        $this->render('send', array(
+            'model' => $model,
+        ));
     }
 
 }
