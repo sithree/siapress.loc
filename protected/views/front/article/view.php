@@ -1,7 +1,7 @@
 <script>
     jQuery(function($) {
         $("#center iframe").attr('width', 477);
-       
+
     });
 </script>
 
@@ -130,6 +130,14 @@
         <b><?php echo Helper::getFormattedtime($model['publish']) ?></b>, 
         просмотров: <?php echo $model->articleAdd->hits ? $model->articleAdd->hits : 'не известно'; ?>, 
         комментариев: <?php echo count($comments) ?>
+        <!--<br>
+        <?php //if (!Yii::app()->request->cookies['comment_' . $model->id]->value AND ! isset(Yii::app()->session['comment_' . $model->id])): ?>
+            <a class="likebutton" rel="<?php //echo $model->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
+            <a class="dislikebutton"  rel="<?php //echo $model->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
+            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
+        <?php //else: ?>
+            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
+        <?php //endif; ?>-->
     </article>
 </div>
 
@@ -158,13 +166,13 @@ if ($poll):
 <hr />
 <div id="rontar_adplace_5713"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5713, rontar_place_id: 'rontar_adplace_5713', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5713, rontar_place_id: 'rontar_adplace_5713', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;

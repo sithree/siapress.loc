@@ -1,0 +1,369 @@
+a:2:{i:0;a:2:{i:0;s:18900:"    <div class="portlet" id="yw6">
+<div class="portlet-content">
+<script>
+    jQuery(function($) {
+        
+
+    });
+</script>
+
+<div class="widget gray-border-light main-news popular">
+    <div class="header">
+        <h2>
+            <a rel="lastcomment" class="block-header navii active"  href="#">последние комментарии</a>
+<!--            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
+            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>-->
+        </h2>
+    </div>
+
+    <div  style="display:none;" id="mostcomment" class="block-comment mtab">
+        <ul class="unstyled popular">
+                            <li>
+                    <a href="/31028">
+                        <span class="redlight">​Чистое безумие</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [91]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30934">
+                        ​Президента России призвали не <span class="redlight">допустить травли Андрея Макаревича</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [26]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/31039">
+                        СИА-ПРЕСС 3.0. Новый дизайн и <span class="redlight">новые возможности нашего сайта</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [24]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/31016">
+                        Какой <span class="redlight">мэр? Какие дороги?</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [23]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30916">
+                        Рейтинг одобрения Путина <span class="redlight">превысил 80 процентов</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [22]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/31022">
+                        Чистая прибыль «Сургутнефтегаза» по РСБУ выросла в 2013 <span class="redlight">году до 256,5 млрд рублей</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [22]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30966">
+                        Статья <span class="redlight">дня. Тамтамы простодушия</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [20]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/31020">
+                        <span class="redlight">Капитализация патриотизма</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [20]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30937">
+                        ​Те, кто организовал эту петицию, просто хотят на <span class="redlight">этом заработать свои личные очки</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [17]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30985">
+                        На Украине спешно открывают <span class="redlight">аналоги российской соцсети "ВКонтакте"</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [17]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30931">
+                        Американцы могут наказать Россию <span class="redlight">снижением цен на нефть</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [16]</span>
+                </nobr>
+
+                </li>
+                                <li>
+                    <a href="/30926">
+                        Больше не народный: в интернете требуют <span class="redlight">лишить Андрея Макаревича почетного звания</span>                    </a>
+
+                <nobr>
+                    <span class="created">[]
+                        [13]</span>
+                </nobr>
+
+                </li>
+                        </ul>
+    </div>
+
+    <div style="display:none;" id="mostreading" class="block-comment mtab">
+        <ul class="unstyled popular">
+                            <li>
+                    <a href="/30985">
+                        <!-- <span class="time">18561</span> -->
+                        На Украине спешно открывают <span class="redlight">аналоги российской соцсети "ВКонтакте"</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [18561]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30938">
+                        <!-- <span class="time">6210</span> -->
+                        ​Новый айфон <span class="redlight">– в сентябре?</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [6210]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30934">
+                        <!-- <span class="time">5486</span> -->
+                        ​Президента России призвали не <span class="redlight">допустить травли Андрея Макаревича</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [5486]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30574">
+                        <!-- <span class="time">2852</span> -->
+                        Диана Скрябина: "Полицейские в <span class="redlight">Италии носят Prada..."</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [2852]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/31042">
+                        <!-- <span class="time">2797</span> -->
+                        Павел Дуров заявил об <span class="redlight">уходе из «ВКонтакте»</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [2797]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30972">
+                        <!-- <span class="time">1601</span> -->
+                        Дарт Вейдер хочет <span class="redlight">стать президентом Украины</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1601]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30910">
+                        <!-- <span class="time">1388</span> -->
+                        ​Ульви Мехти: «Главное — чтобы цензура российского <span class="redlight">кино не доходила до маразма» </span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1388]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30897">
+                        <!-- <span class="time">1373</span> -->
+                        «Год назад один чиновник сказал нам, что дороги отремонтированы идеально. Дороги мы видим. А где чиновник? <span class="redlight">В правительстве Ленинградской области» ВИДЕО с тематической разбивкой</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1373]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30919">
+                        <!-- <span class="time">1319</span> -->
+                        ​В <span class="redlight">Москву вернётся ВДНХ</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1319]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30987">
+                        <!-- <span class="time">1317</span> -->
+                        Пропавший малазийский самолёт нашли <span class="redlight">- и опять потеряли</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1317]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30941">
+                        <!-- <span class="time">1302</span> -->
+                        Они <span class="redlight">это серьёзно?</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1302]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30926">
+                        <!-- <span class="time">1239</span> -->
+                        Больше не народный: в интернете требуют <span class="redlight">лишить Андрея Макаревича почетного звания</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1239]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30860">
+                        <!-- <span class="time">1122</span> -->
+                        Сургутские старости. Судьба легендарного нефтяника <span class="redlight">Александра Тимченко. ВИДЕО. ФОТО.</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1122]</span>
+                </nobr>
+                </li>
+                                <li>
+                    <a href="/30970">
+                        <!-- <span class="time">1066</span> -->
+                        София Ротару <span class="redlight">отказалась становиться россиянкой</span>                    </a>
+                <nobr>
+                    <span class="created">[]
+                        [1066]</span>
+                </nobr>
+                </li>
+                        </ul>
+    </div>
+
+    <div id="lastcomment" class="block-comment mtab">
+        <ul class="unstyled">
+                            <li>
+                    <div class="block-commen-author">Андрей:</div>
+                    <a  class="comm-right" href="/31043#comment-111037">
+                        Я ничего не понял, что сказал этот дядька. Типа нам молодым дибилам учится не надо ?                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31043">
+                            ​Статья дня. Оглупление масс                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 11:21</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">Федот:</div>
+                    <a  class="comm-right" href="/31028#comment-111036">
+                        ПатриотЪ, вы думаете "на кухнях страны читатели, Мазурины и т.п." тыщщи раз не говорили, - "Брежнев,...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 11:16</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">Федот:</div>
+                    <a  class="comm-right" href="/31028#comment-111035">
+                        "Читатель", как жалко, что вы просто читатель, а не "пониматель"...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 11:11</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">патриотЪ <span style="color: #333;"> &rarr; Федот:</span></div>
+                    <a  class="comm-right" href="/31028#comment-111034">
+                        Цитата " Кричать на каждом углу " Путин -гэть из России." если бы Брежневу во время не сказали -ГЭТЬ...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 10:24</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">Читатель <span style="color: #333;"> &rarr; Федот:</span></div>
+                    <a  class="comm-right" href="/31028#comment-111033">
+                        Про "курить" я не понял и сильно сомневаюсь, что вы сами поняли к чему это написали. Отнесём к обычн...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 10:15</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">Читательница:</div>
+                    <a  class="comm-right" href="/31048#comment-111032">
+                        хАбенский!!! А "Географ" фильм, не представляющий ни художественной ценности. ИМХО, не совпадающее с...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31048">
+                            Премию "Ника" за лучший фильм 2013 года получил "Географ глобус пропил"                         </a>
+                    </div>
+                    <div class="created">02 апреля  в 10:13</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">Не диЗигнерр:</div>
+                    <a  class="comm-right" href="/31039#comment-111031">
+                        Лебедев плачет! Да фиг с ним. Но я и я ни чего не понимаю чтобы сказать, Вы сделали хуже :) Взявшись...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31039">
+                            СИА-ПРЕСС 3.0. Новый дизайн и новые возможности нашего сайта                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 09:48</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">CZAR <span style="color: #333;"> &rarr; Т. Самборский:</span></div>
+                    <a  class="comm-right" href="/31039#comment-111030">
+                        За всплывающие окна - плюс (выгодно - да, но марку тоже надо держать).
+Может в 1,5-2 ряда, но сверх...                       
+                    </a>          
+                    <div class="created">
+                        <a href="/31039">
+                            СИА-ПРЕСС 3.0. Новый дизайн и новые возможности нашего сайта                        </a>
+                    </div>
+                    <div class="created">02 апреля  в 09:46</div>
+                </li>
+                        </ul>
+    </div>
+</div></div>
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111037";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
