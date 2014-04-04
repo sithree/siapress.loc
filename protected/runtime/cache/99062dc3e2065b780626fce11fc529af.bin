@@ -1,4 +1,4 @@
-a:2:{i:0;a:2:{i:0;s:12711:"    <div class="portlet" id="yw5">
+a:2:{i:0;a:2:{i:0;s:12716:"    <div class="portlet" id="yw5">
 <div class="portlet-content">
 <div class="widget b-light-gray main-news">
     <div class="header">
@@ -15,7 +15,7 @@ a:2:{i:0;a:2:{i:0;s:12711:"    <div class="portlet" id="yw5">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8"><a href="/incident">Происшествия</a>, 02 апреля  в 11:16</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/incident/31058#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 42 <a href="/incident/31058#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
                 </footer>
             </li>
                     <li>
@@ -41,7 +41,7 @@ a:2:{i:0;a:2:{i:0;s:12711:"    <div class="portlet" id="yw5">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8"><a href="/life">Культура</a>, 02 апреля  в 10:58</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/life/31055#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 49 <a href="/life/31055#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
                 </footer>
             </li>
                     <li>
@@ -91,7 +91,7 @@ a:2:{i:0;a:2:{i:0;s:12711:"    <div class="portlet" id="yw5">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8"><a href="/life">Культура</a>, 02 апреля  в 09:54</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i>  <a href="/life/31048#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 2 <a href="/life/31048#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
                 </footer>
             </li>
                     <li>
@@ -117,7 +117,7 @@ a:2:{i:0;a:2:{i:0;s:12711:"    <div class="portlet" id="yw5">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8"><a href="/society">Общество</a>, 01 апреля  в 17:15</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 2798 <a href="/society/31042#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 2801 <a href="/society/31042#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
                 </footer>
             </li>
                     <li>

@@ -121,6 +121,8 @@
             <?php echo CHtml::tag('span', array('class' => 'authorbottom fn'), $model->getAuthor()); ?>
         </p>
 
+        <?php $this->renderPartial('_votes', array('model' => $model)); ?>
+        
         <meta itemprop="copyrightHolder" content="СИА-ПРЕСС: www.siapress.ru" >
         <meta itemprop="typicalAgeRange" content="16+" >
 
@@ -130,14 +132,11 @@
         <b><?php echo Helper::getFormattedtime($model['publish']) ?></b>, 
         просмотров: <?php echo $model->articleAdd->hits ? $model->articleAdd->hits : 'не известно'; ?>, 
         комментариев: <?php echo count($comments) ?>
-        <!--<br>
-        <?php //if (!Yii::app()->request->cookies['comment_' . $model->id]->value AND ! isset(Yii::app()->session['comment_' . $model->id])): ?>
-            <a class="likebutton" rel="<?php //echo $model->id  ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
-            <a class="dislikebutton"  rel="<?php //echo $model->id  ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
-            <span id="<?php //echo $model->id  ?>" class="like-result <?php //echo $class  ?>"><?php //echo $model->rating  ?></span>
-        <?php //else: ?>
-            <span id="<?php //echo $model->id  ?>" class="like-result <?php //echo $class  ?>"><?php //echo $model->rating  ?></span>
-        <?php //endif; ?>-->
+        
+        
+        
+        
+        
     </article>
 </div>
 

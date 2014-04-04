@@ -56,6 +56,7 @@ return CMap::mergeArray(
                         // ---
                         'news/send' => 'news/send',
                         'news/sended' => 'news/sended',
+                        'ajax/likearticle' => 'ajax/likearticle',
                         
                         '<category:\w+>/item/<id>' => 'old/view',
 //                        'news/<category:\w+>' => 'article/index',

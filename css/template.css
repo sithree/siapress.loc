@@ -1222,22 +1222,22 @@ body > .container > .footer {
     margin-right: 0;
     margin-left: 2px;
 }
-.likebutton, .dislikebutton {
+.likebutton, .dislikebutton, .newsLikebutton, .newsDislikebutton, .thumb-up, .thumb-down {
     display: inline-block;
     font-size: 11px;
     padding: 0 3px;
 }
-.likebutton, .dislikebutton {
+.likebutton, .dislikebutton, .newsLikebutton, .newsDislikebutton {
     color:#ccc;
 }
-.likebutton:hover, .dislikebutton:hover {
+.likebutton:hover, .dislikebutton:hover, .newsLikebutton:hover, .newsDislikebutton:hover {
     text-decoration: none;
 }
 
-.red, .dislikebutton:hover {
+.red, .dislikebutton:hover, .newsDislikebutton:hover, .thumb-down {
     color:#ca0000;
 }
-.green, .likebutton:hover {
+.green, .likebutton:hover, .newsLikebutton:hover, .thumb-up {
     color:#008000;    
 }
 .radio {
@@ -1284,7 +1284,8 @@ body > .container > .footer {
 .result p {
     margin-bottom: 0;
 }
-.progress {
+
+progress {
     background-color: #F7F7F7;
     background-image: -moz-linear-gradient(center top , #F5F5F5, #F9F9F9);
     background-repeat: repeat-x;
@@ -1312,6 +1313,45 @@ body > .container > .footer {
 .progress .bar {
     background-color: #CA0000;
     background-image: -moz-linear-gradient(center top , #CA0000, #C10000);
+}
+
+
+.diagram {
+    background-color: #F7F7F7;
+    background-image: -moz-linear-gradient(center top , #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    //border-radius: 4px;
+    //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 2px;
+    margin-bottom: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.diagram .bar {
+    -moz-box-sizing: border-box;
+    background-color: #0E90D2;
+    background-repeat: repeat-x;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 18px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    transition: width 0.6s ease 0s;
+    width: 0;
+}
+.diagram .progress-danger {
+    background-color: #CA0000;
+    background-image: -moz-linear-gradient(center top , #CA0000, #C10000);
+    float:left;
+}
+
+.diagram .progress-success {
+    background-color: green;
+    //background-image: -moz-linear-gradient(center top , #00CA00, #00C100);
+    float:left;
 }
 
 .well {
@@ -1510,4 +1550,15 @@ border-radius: 12px;
     padding: 4px 10px;
     border: 1px solid #ca0000;
     
+}
+
+#articleVotes {
+    margin: 15px 0 15px;
+}
+
+#articleVotes a.newsLikebutton {
+    color:green;
+}
+#articleVotes a.newsDislikebutton {
+    color:#ca0000;
 }
