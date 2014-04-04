@@ -63,7 +63,7 @@
                 <p>При использовании материалов ссылка обязательна. Свидетельство о регистрации СМИ: <a rel="nofollow" target="_blank" href="http://www.rsoc.ru/mass-communications/reestr/media/?id=323976&page=">Эл № ФС77-50742 от 19 июля 2012г.</a> Редакция не несет ответственности за достоверность информации, опубликованной в рекламных объявлениях.<br />
                     <a href="/rules">Правила сайта</a>&nbsp;&nbsp;&nbsp;
                     <a href="/authors">Авторы</a>&nbsp;&nbsp;&nbsp;
-                    <a href="media/files/price2013.pdf">Рекламодателям (pdf)</a>&nbsp;&nbsp;&nbsp;
+                    <a href="media/com/price_siapress2014-04.jpg">Рекламодателям</a>&nbsp;&nbsp;&nbsp;
                     <!-- <a href="/license">Информация об ограничениях.</a>&nbsp;&nbsp;&nbsp;
                      <a href="/contacts/">Обратная связь</a>&nbsp;&nbsp;&nbsp;
                      <a href="#">Размещение рекламы</a>&nbsp;&nbsp;&nbsp;

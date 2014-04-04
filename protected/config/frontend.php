@@ -35,7 +35,7 @@ return CMap::mergeArray(
                         'logout' => 'site/logout',
                         'rules' => 'site/rules',
                         'search' => 'site/search',
-                        'rss' => 'site/sitemap',
+                        'rss' => 'rss/index',
                         'authors' => 'users/index',
                         'click' => 'click/index',
                         'online/pp/<city:\w+>' => 'site/pp',
@@ -46,14 +46,18 @@ return CMap::mergeArray(
                         //Для всего остального есть общий ArticleController
 //                        'ajax/<category:\w+>' => 'article/view',
                         'themes/<id:\d+>' => 'themes/index',
+                        
+                        
+                        'news/all' => 'article/index',
+//                        'news/all/<page>/<id:\d+>' => 'article/index',
                         '<category:\w+>/<id:\d+>' => 'article/view',
                         '<category:\w+>' => 'article/index',
                         
                         // ---
                         
                         '<category:\w+>/item/<id>' => 'old/view',
-                        'news/<category:\w+>' => 'news/index',
-                        'news/<category:\w+>/<id:\d+>' => 'news/view',
+//                        'news/<category:\w+>' => 'article/index',
+//                        'news/<category:\w+>/<id:\d+>' => 'news/view',
                         'blogs/<id:\d+>' => 'blogs/view',
                         'opinion/<id:\d+>' => 'opinion/view',
                     #'<controller:\w+>/<id:\d+>' => '<controller>/view',

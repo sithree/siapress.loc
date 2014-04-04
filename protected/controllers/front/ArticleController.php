@@ -241,7 +241,7 @@ class ArticleController extends Controller {
 
     public function actionIndex($category = null, $page = 1) {
 
-        if ($category == 'news')
+        if ($category == false)
             $category = Article::model()->getNewscat();
 
         if ($category == 'megapolis') {
@@ -278,7 +278,7 @@ class ArticleController extends Controller {
             ));
             return;
         }
-
+        
         #CVarDumper::dump($_GET);
         $page = $_GET['page'];
         $criteria = new CDbCriteria();
@@ -287,7 +287,7 @@ class ArticleController extends Controller {
         $pages = new CPagination($count);
         // элементов на страницу
         $pages->pageSize = Config::getOnpage();
-        $pages->route = 'news/index';
+//        $pages->route = 'news/all';
         #$pages->applyLimit($criteria);
 
         $data = Article::model()->getItems(Article::model()->getNewscat(), Config::getOnpage(), $page);

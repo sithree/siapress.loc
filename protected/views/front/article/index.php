@@ -72,7 +72,7 @@ if (!empty($mainNews)) {
             ?>
         <?php endif; ?>
         <div class="col-xs-<?php echo ($image or is_file('images/users/blog/' . $item['author'] . '.jpg')) ? 9 : 12 ?>">
-            <h2><?php echo CHtml::link($item['title'] . '<br />', array($category['alias'] . '/' . $item['id'])); ?></h2>
+            <h2><?php echo CHtml::link($item['title'] . '<br />', array('news/' . $item['id'])); ?></h2>
             <p><?php echo $item['introtext']; ?></p>
 
         </div>

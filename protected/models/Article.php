@@ -38,7 +38,7 @@ class Article extends CActiveRecord {
     public $video;
     public $deleteImage;
     public $_imgpath = 'images/news/main/';
-    public $blogLimit = 17;
+    public $blogLimit = 24;
     public $theme;
 
     public function scopes() {

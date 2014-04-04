@@ -16,6 +16,7 @@ class TrueMainnews extends CPortlet {
         $criteria->select = 'id, title,author_alias, author, cat_id, publish, modified, introtext';
 
         $criteria->order = 't.publish DESC';
+        $criteria->addCondition('`t`.`publish` <= "' . date('Y-m-s H:i:s') . '" ');
         $criteria->addCondition('`t`.`main` = 1');
         $criteria->addCondition('`t`.`published` = 1');
 

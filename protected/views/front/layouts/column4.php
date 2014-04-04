@@ -77,9 +77,54 @@
 //--></script>
 
 <!-- // C3 -->
-<br />
+<br /><br />
 
+<!-- C4-->
+<div id="rontar_adplace_5724"></div>
+<script type="text/javascript"><!--
+ 
+    (function (w, d, n) {
+        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5724, rontar_place_id: 'rontar_adplace_5724', adCode_rootUrl: 'http://adcode.rontar.com/' };
+        w[n] = w[n] || [];
+        w[n].push(
+            ri
+        );
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+        var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+        b.parentNode.insertBefore(a, b);
+    })(window, document, 'rontar_ads');
+//--></script>
+
+
+<!-- // C4 -->
+
+<br /><br />
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php'); ?>
+
+<!-- C5-->
+<div id="rontar_adplace_5726"></div>
+<script type="text/javascript"><!--
+ 
+    (function (w, d, n) {
+        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5726, rontar_place_id: 'rontar_adplace_5726', adCode_rootUrl: 'http://adcode.rontar.com/' };
+        w[n] = w[n] || [];
+        w[n].push(
+            ri
+        );
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+        var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+        b.parentNode.insertBefore(a, b);
+    })(window, document, 'rontar_ads');
+//--></script>
+
+<!-- // C5 -->
+<br /><br />
 
 <?php
 if ($this->beginCache("popular", array('dependency' => array(

@@ -92,6 +92,8 @@
     <body>
 
         <div class="container">
+            <div id="ageWarning">16+</div>
+            <div style="line-height: 100%; font-size:11px; color:#aaa; position: absolute; top:59px; z-index:100;">Сайт на реконструкции, <br />возможны неполадки</div>
             <div class="toptop">
                 <a id="back-top" href="#" title="К началу страницы">Наверх</a>
             </div>
@@ -174,7 +176,7 @@
                                         array('label' => 'Авто', 'url' => array('article/index', 'category' => 'auto')),
                                         array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'relt')),
                                     )),
-                                array('label' => 'Официально', 'url' => array('article/index', 'category' => 'official')),
+                                array('label' => 'Компании', 'url' => array('article/index', 'category' => 'companies')),
                                 array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'realty')),
                             ),
                         ));
@@ -190,9 +192,9 @@
                     <?php $this->widget('application.components.widgets.themes'); ?>
 
                     <div id="cources" class="a-right">
-                        <span>EUR 48,2596</span>
+                        <span>EUR 48,6826</span>
                         &nbsp;
-                        <span>USD 35,0240	</span>
+                        <span>USD 35,2517	</span>
                     </div>
                 </div>
             </header>

@@ -78,7 +78,9 @@
             endif;
             Yii::endProfile('$image');
             ?>
-            <?php if (!empty($model['video'])): ?>       
+            
+            <?php if (!empty($model->video)): ?>       
+           
                 <?php $this->renderPartial('_player', array('model' => $model)); ?>
             <?php endif; ?>
 

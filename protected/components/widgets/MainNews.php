@@ -18,8 +18,10 @@ class MainNews extends CPortlet {
         $criteria->with = array('articleAdd', 'comments');
 
         $criteria->addCondition('`t`.`publish` <= "' . date('Y-m-s H:i:s') . '" ');
+//        $criteria->addCondition('`t`.`publish` !=> "' . date('Y-m-s H:i:s') . '" ');
 
         $criteria->addCondition('`t`.`published` = 1');
+        $criteria->addCondition('`t`.`main` != 1');
 
         $model = Article::model()->findAll($criteria);
 
