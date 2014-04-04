@@ -46,7 +46,6 @@ body > .container {
     padding: 15px 20px;
     width: 1040px;
     position: relative;
-    /*overflow: hidden;*/
 }
 .container {
     margin-left: auto;
@@ -315,12 +314,14 @@ nav .dropdown-menu:before {
 }
 .main-news h3 a {
     color:#333;
+    font-weight: normal;
 }
 .main-news h3 {
     font-family: Arial;
     font-size: 12px;
     margin: 0;
     margin-bottom: 2px;
+    font-weight: bold;
 }
 .main-news h4 a {
     color:#333;
@@ -402,7 +403,7 @@ nav .dropdown-menu:before {
 }
 .first-news img {
     float: left;
-    width: 176px;
+    width:100%;
     display: block;
     margin: 0 10px 10px 0;
 }
@@ -1481,4 +1482,32 @@ border-radius: 12px;
 
 .modal {
     display: none;
+}
+
+#sayOnline {
+    display:  block;
+    position: absolute;
+    top: 0;
+    right:0;
+    padding: 3px 7px;
+    color:white;
+    background: #ca0000;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#right #SearchForm_text {
+    width: 226px;
+    height: 30px;
+}
+
+#right #searchForm .input-group-btn{
+    
+    
+}
+#right #searchForm .btn.btn-default {
+    padding: 4px 10px;
+    border: 1px solid #ca0000;
+    
 }

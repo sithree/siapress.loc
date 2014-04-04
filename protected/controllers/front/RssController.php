@@ -6,7 +6,7 @@ class RssController extends CController {
     function actionIndex() {
 
         Yii::import('ext.feed.*');
-        $items = Article::model()->getRss(50, true);
+        $items = Article::model()->getRss(20, true);
 // RSS 2.0 is the default type
         $feed = new EFeed();
 
@@ -32,18 +32,18 @@ class RssController extends CController {
             else
                 $item->title = $it['title'];
 
-            $item->link = Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
+            $item->link = Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
 
 
             $item->date = $it['created'];
             $item->description =
-                    '<p><img src="http://siapress.ru/' . Article::model()->getImgpath($it['id'], $it['created'], true, false, '_item') . '" alt="' . $it['introtext'] . '" /></p>' .
+                    '<p>' . Article::imageSV2($it['id'], $it['title'], 420,0,false) . '</p>' .
                     $it['introtext'];
 // this is just a test!!
             #$item->setEncloser('http://www.tester.com', '1283629', 'audio/mpeg');
 
             $item->addTag('author',  'mnenie@novygorod.ru ('. $it['name'] .')' );
-            $item->addTag('guid', Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
+            $item->addTag('guid', Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
 
             $feed->addItem($item);
         }
@@ -78,8 +78,8 @@ class RssController extends CController {
             $item = $feed->createNewItem();
 
             $item->title = $it['title'];
-            $item->link = Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
-            $item->addTag('pdaLink', Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']));
+            $item->link = Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
+            $item->addTag('pdaLink', Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']));
             $item->date = $it['created'];
             $item->addTag('description', $it['introtext']);
             $item->addTag('category', $it['catname']);
@@ -91,7 +91,7 @@ class RssController extends CController {
             $item->addTag('yandex:full-text', strip_tags($it['fulltext']));
 
             $item->addTag('author', $it['name']);
-            $item->addTag('guid', Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
+            $item->addTag('guid', Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
 
             $feed->addItem($item);
         }
@@ -130,19 +130,19 @@ class RssController extends CController {
             else
                 $item->title = $it['title'];
 
-            $item->link = Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
+            $item->link = Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
 
 
             $item->date = $it['created'];
             $item->description =
-                    '<p><img src="http://siapress.ru/' . Article::model()->getImgpath($it['id'], $it['created'], true, false, '_item') . '" alt="' . $it['introtext'] . '" /></p>' .
+                    '<p>' . Article::imageSV2($it['id'], $it['title'], 420,0,false) .'</p>' .
                     $it['introtext'] . $it['fulltext'];
 // this is just a test!!
             #$item->setEncloser('http://www.tester.com', '1283629', 'audio/mpeg');
 
             $item->addTag('author', $it['name']);
             $item->addTag('category', $it['catname']);
-            $item->addTag('guid', Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
+            $item->addTag('guid', Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']), array('isPermaLink' => 'true'));
 
             $feed->addItem($item);
         }
@@ -177,8 +177,8 @@ class RssController extends CController {
             $item = $feed->createNewItem();
 
             $item->title = $it['title'];
-            $item->link = Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
-            $item->addTag('pdaLink', Yii::app()->createAbsoluteUrl('news/' . Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']));
+            $item->link = Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']);
+            $item->addTag('pdaLink', Yii::app()->createAbsoluteUrl(Article::model()->getCategoryAlias($it['cat_id']) . '/' . $it['id']));
             $item->date = $it['created'];
             $item->addTag('description', $it['introtext']);
             $item->addTag('category', $it['catname']);

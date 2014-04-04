@@ -16,8 +16,7 @@ if ($this->beginCache("MainNews", array('dependency' => array(
     </div>
 
     <div class="col-xs-6">
-        <a class="red-button" onclick="alert('Отправить новость может только зарегистрированный пользователь');
-                return false;" href="/news/send">Отправить новость</a>
+        <a class="red-button" href="/news/send">Отправить новость</a>
     </div>
 </div>
 <?php

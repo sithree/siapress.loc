@@ -1,7 +1,7 @@
 <script>
     jQuery(function($) {
         $("#center iframe").attr('width', 477);
-
+        $("#center iframe").css('width', 477);
     });
 </script>
 
@@ -78,9 +78,9 @@
             endif;
             Yii::endProfile('$image');
             ?>
-            
+
             <?php if (!empty($model->video)): ?>       
-           
+
                 <?php $this->renderPartial('_player', array('model' => $model)); ?>
             <?php endif; ?>
 
@@ -132,11 +132,11 @@
         комментариев: <?php echo count($comments) ?>
         <!--<br>
         <?php //if (!Yii::app()->request->cookies['comment_' . $model->id]->value AND ! isset(Yii::app()->session['comment_' . $model->id])): ?>
-            <a class="likebutton" rel="<?php //echo $model->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
-            <a class="dislikebutton"  rel="<?php //echo $model->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
-            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
+            <a class="likebutton" rel="<?php //echo $model->id  ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
+            <a class="dislikebutton"  rel="<?php //echo $model->id  ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
+            <span id="<?php //echo $model->id  ?>" class="like-result <?php //echo $class  ?>"><?php //echo $model->rating  ?></span>
         <?php //else: ?>
-            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
+            <span id="<?php //echo $model->id  ?>" class="like-result <?php //echo $class  ?>"><?php //echo $model->rating  ?></span>
         <?php //endif; ?>-->
     </article>
 </div>

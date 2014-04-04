@@ -17,11 +17,11 @@ class MainNews extends CPortlet {
         $criteria->order = 't.publish DESC';
         $criteria->with = array('articleAdd', 'comments');
 
-        $criteria->addCondition('`t`.`publish` <= "' . date('Y-m-s H:i:s') . '" ');
+        $criteria->addCondition('`t`.`publish` <= "' . date('Y-m-d H:i:s') . '" ');
 //        $criteria->addCondition('`t`.`publish` !=> "' . date('Y-m-s H:i:s') . '" ');
-
+       
         $criteria->addCondition('`t`.`published` = 1');
-        $criteria->addCondition('`t`.`main` != 1');
+        $criteria->addCondition('`t`.`id` != ' . Yii::app()->db->createCommand("SELECT id from {{articles}} where main = 1  order by id desc limit 1")->queryScalar());
 
         $model = Article::model()->findAll($criteria);
 

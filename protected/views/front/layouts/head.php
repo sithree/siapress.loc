@@ -11,8 +11,8 @@
         <meta name="google-site-verification" content="o6O0JpTfyv-GyBqTFgVREC4zxXwukjIN3mEMLKJY3i4" />
         <meta name="229962aa5cb18d18191965311d4422ec" content="">
         <meta name="wot-verification" content="1dff145b2373cca16a3f"/>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,cyrillic" />
 
-        <?php Yii::app()->clientScript->registerCssFile("http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,cyrillic"); ?>
         <?php Yii::app()->clientScript->registerCssFile("/css/bootstrap.css"); ?>
         <?php Yii::app()->clientScript->registerCssFile("/css/font-awesome.min.css"); ?>
         <?php Yii::app()->clientScript->registerCssFile("/css/template.css"); ?>
@@ -55,7 +55,7 @@
                 s.parentNode.insertBefore(ga, s);
             })();"); ?>
 
-              <!-- Вектор подписаться -->
+        <!-- Вектор подписаться -->
         <script type='application/ld+json'>
             {
             "@context":"http://schema.org",
@@ -192,9 +192,9 @@
                     <?php $this->widget('application.components.widgets.themes'); ?>
 
                     <div id="cources" class="a-right">
-                        <span>EUR 48,6826</span>
+                        <span>EUR 48,88</span>
                         &nbsp;
-                        <span>USD 35,2517	</span>
+                        <span>USD 35,52	</span>
                     </div>
                 </div>
             </header>

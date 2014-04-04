@@ -1,3 +1,5 @@
+<h1 class="title entry-title">Отправить свою новость</h1>
+<hr />
 <?php
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'type' => 'vertical',
@@ -24,7 +26,7 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
         <?php echo $form->textFieldRow($model, 'title', array('class' => 'col-xs-12 no-margin', 'maxlength' => 255)); ?>
     </div>
     <div class="col-xs-12">
-        <?php echo $form->textAreaRow($model, 'fulltext', array('rows' => 12, 'cols' => 20, 'class' => 'col-xs-12 no-margin')); ?>
+        <?php echo $form->textAreaRow($model, 'fulltext', array('rows' => 6, 'cols' => 20, 'class' => 'col-xs-12 no-margin')); ?>
     </div>
     <div class="col-xs-12">
         <?php echo $form->textFieldRow($model, 'link', array('class' => 'col-xs-12 no-margin', 'maxlength' => 255)); ?>

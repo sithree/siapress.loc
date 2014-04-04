@@ -112,7 +112,7 @@ class UserNews extends CActiveRecord {
 
             $text = $controller->renderPartial('application.views.front.userNews._mail_form', array('model' => $this), true);
 
-            mail('bump08@mail.ru', $subject, $text, $headers);
+            mail('post@siapress.ru', $subject, $text, $headers);
         }
         return true;
     }

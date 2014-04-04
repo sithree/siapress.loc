@@ -43,7 +43,7 @@ class Comment extends CActiveRecord {
 
     public function defaultScope() {
         return array(
-            'order' => 't.created ASC',
+//            'order' => 'comment.created ASC',
          
         );
     }

@@ -1,12 +1,12 @@
 
-<!--<div class="input-group" id="search">
+<div class="input-group" id="search">
     <form action="/search" id="searchForm" method="GET">
         <input type="text" id="SearchForm_text" name="SearchForm[text]" placeholder="Поиск по сайту" class="form-control">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
         </span>
     </form>
-</div>-->
+</div>
 
 <div>
     <a class="red-button" href="#" id="radioLink">Слушать радио онлайн</a>
@@ -27,7 +27,7 @@
 
 <!-- C1 -->
 <div id="rontar_adplace_5695"></div>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
     (function(w, d, n) {
         var ri = {rontar_site_id: 1717, rontar_adplace_id: 5695, rontar_place_id: 'rontar_adplace_5695', adCode_rootUrl: 'http://adcode.rontar.com/'};
@@ -42,13 +42,13 @@
         var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
         b.parentNode.insertBefore(a, b);
     })(window, document, 'rontar_ads');
-//</script>-->
+//</script>
 
 <!-- // C1 -->
 <br /><br />
 <!-- C2 -->
 <div id="rontar_adplace_5692"></div>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
     (function(w, d, n) {
         var ri = {rontar_site_id: 1717, rontar_adplace_id: 5692, rontar_place_id: 'rontar_adplace_5692', adCode_rootUrl: 'http://adcode.rontar.com/'};
@@ -63,7 +63,7 @@
         var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
         b.parentNode.insertBefore(a, b);
     })(window, document, 'rontar_ads');
-//</script>-->
+//</script>
 <!-- // C2 -->
 <br /><br />
 
@@ -72,7 +72,7 @@
 
 <!-- C3 -->
 <div id="rontar_adplace_5693"></div>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
     (function(w, d, n) {
         var ri = {rontar_site_id: 1717, rontar_adplace_id: 5693, rontar_place_id: 'rontar_adplace_5693', adCode_rootUrl: 'http://adcode.rontar.com/'};
@@ -87,7 +87,7 @@
         var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
         b.parentNode.insertBefore(a, b);
     })(window, document, 'rontar_ads');
-//</script>-->
+//</script>
 
 <!-- // C3 -->
 <br /><br />
