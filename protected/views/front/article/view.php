@@ -128,14 +128,75 @@
         <b><?php echo Helper::getFormattedtime($model['publish']) ?></b>, 
         просмотров: <?php echo $model->articleAdd->hits ? $model->articleAdd->hits : 'не известно'; ?>, 
         комментариев: <?php echo count($comments) ?>
-        <!--<br>
-        <?php //if (!Yii::app()->request->cookies['comment_' . $model->id]->value AND ! isset(Yii::app()->session['comment_' . $model->id])): ?>
-            <a class="likebutton" rel="<?php //echo $model->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
-            <a class="dislikebutton"  rel="<?php //echo $model->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
-            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
-        <?php //else: ?>
-            <span id="<?php //echo $model->id ?>" class="like-result <?php //echo $class ?>"><?php //echo $model->rating ?></span>
-        <?php //endif; ?>-->
+        <hr>
+        <div class="block">
+            <div class="block-inner">            
+                <div id="vote">
+                    <div class="row-fluid">
+                        <div class="col-xs-10 diagram row-fluid">
+                            <?php
+                            $like = $model->articleAdd->like ? $model->articleAdd->like : 0;
+                            $dislike = $model->articleAdd->dislike ? $model->articleAdd->like : 0;
+                            $withoutlike = $like + $dislike == 0;
+                            $onepercent = 100 / ($withoutlike ? 1 : $like + $dislike);
+                            ?>
+                            <div style="width: <?php echo $withoutlike ? 50 : $like * $onepercent ?>%" class="bar progress-success"></div>
+                            <div style="width: <?php echo $withoutlike ? 50 : $dislike * $onepercent ?>%" class="bar progress-danger"></div>
+                        </div>
+                        <div>
+                            <?php if (!Yii::app()->request->cookies['articlelike_' . $model->id]->value AND ! isset(Yii::app()->session['articlelike_' . $model->id])): ?>
+                            <a class="newsLikebutton" rel="<?php echo $model->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> <?php echo (string)$like; ?></a>
+                            <a class="newsDislikebutton" rel="<?php echo $model->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> <?php echo (string)$dislike; ?></a>
+                            <?php else: ?>
+                            <span class="thumb-up"><i class="fa fa-thumbs-up"></i> <?php echo (string)$like; ?></span> 
+                            <span class="thumb-down"><i class="fa fa-thumbs-down"></i> <?php echo (string)$dislike; ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <script>
+        jQuery(function($) {
+
+            $('.newsLikebutton').click(function() {
+                var t = $(this);
+                $.ajax({
+                    'type': 'POST',
+                    // 'id':'morenewsbutton',
+                    'beforeSend': function() {
+                    },
+                    'complete': function() {
+                    },
+                    'success': function(html) {
+                        $('#vote').html(html);
+                    },
+                    'url': '/ajax/likearticle',
+                    'cache': false,
+                    'data': 'id=' + t.attr('rel') + '&type=like'
+                });
+                return false;
+            });
+            $('.newsDislikebutton').click(function() {
+                var t = $(this);
+                $.ajax({
+                    'type': 'POST',
+                    //'id':'morenewsbutton',
+                    'beforeSend': function() {
+                    },
+                    'complete': function() {
+                    },
+                    'success': function(html) {
+                        $('#vote').html(html);
+                    },
+                    'url': '/ajax/likearticle',
+                    'cache': false,
+                    'data': 'id=' + t.attr('rel') + '&type=dislike'
+                });
+                return false;
+            });
+        });
+        </script>
     </article>
 </div>
 

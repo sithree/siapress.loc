@@ -585,6 +585,7 @@ input:focus, textarea:focus {
 
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#CA0000',endColorstr='#C10000',GradientType=0);
 }
+
 .progress {
     height: 6px;
 }

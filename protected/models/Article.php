@@ -43,7 +43,7 @@ class Article extends CActiveRecord {
     public $theme;
     
     function getRating() {
-        $result = $this->article->like - $this->article->dislike;
+        $result = $this->articleAdd->like - $this->articleAdd->dislike;
         return $result > 0 ? '+'.$result : $result;
     }
 
