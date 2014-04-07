@@ -16,9 +16,18 @@ class ThemesController extends Controller {
     public function actionIndex($id) {
         $this->layout = '//layouts/news/article';
 
-        $model = Theme::model()->findByPk($id);
+        $theme = Theme::model()->findByPk($id);
 
-        $this->render('index', array('model' => $model));
+        $model = Article::model()->findAll(array(
+            'limit' => 100,
+            'order' => 'id DESC',
+            'condition' =>
+            'published  = 1 and ' .
+            'publish <= ' . new CDbExpression('NOW()') . ' and ' .
+            'theme = ' . $theme->id
+        ));
+
+        $this->render('index', array('theme' => $theme, 'model' => $model));
     }
 
     public function actionIndex3() {

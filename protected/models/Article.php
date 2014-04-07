@@ -17,7 +17,7 @@
  * @property string $created
  * @property string $modified
  * @property string $publish
- * @property string $metakey
+ * @property string x$metakey
  * @property integer $main
  * @property integer $type_id
  * @property integer $comment_on
@@ -214,7 +214,7 @@ class Article extends CActiveRecord {
         $this->author = Yii::app()->user->id;
     }
 
-    private function getTheme() {
+    public function getTheme() {
         $theme = Theme::model()->find('`name` like "' . $this->theme_name . '"');
         if ($theme)
             return $theme->id;
