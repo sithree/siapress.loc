@@ -10,10 +10,12 @@ class Popular extends CPortlet {
     public function __construct($owner = null) {
         parent::__construct($owner);
         #Yii::app()->cache->flush();
-        $this->items = Article::model()->getPopularitems('14');
+        $this->items = Article::model()->getPopularitems(8);
         $cat = array('1,2,3,4,5,6,7,8,9,10,11,12,13,14');
         $this->last = Comment::model()->getLastcomments($cat, 0, 8);
         $this->pop = Comment::model()->getPopularcomments($cat, 0, 12);
+        
+      
     }
 
     protected function renderContent() {

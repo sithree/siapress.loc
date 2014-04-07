@@ -56,6 +56,30 @@ jQuery(function($) {
         $('#' + rel).css('display', 'block');
         return false;
     });
+
+//            Больше мнений
+    var pageOpinion = 1;
+    $("#moreOpinions").click(function() {
+        $.ajax({
+            url: '/ajax/getopinions', // указываем URL и
+            type: "POST",
+            data: {
+                page: ++pageOpinion,
+            },
+            beforeSend: function() {
+                $(this).addClass("loading");
+            },
+            complete: function() {
+                $(this).removeClass("loading");
+            },
+            success: function(html) { // вешаем свой обработчик на функцию success
+               $('#loadOpinions').append(html);
+            }
+        });
+        return false;
+    });
+
+
 });
 
 /* ========================================================================

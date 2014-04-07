@@ -25,6 +25,27 @@
     });
 </script>
 
+<!-- etagi -->
+<div id="rontar_adplace_5762"></div>
+<script type="text/javascript"><!--
+ 
+    (function (w, d, n) {
+        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5762, rontar_place_id: 'rontar_adplace_5762', adCode_rootUrl: 'http://adcode.rontar.com/' };
+        w[n] = w[n] || [];
+        w[n].push(
+            ri
+        );
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+        var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+        b.parentNode.insertBefore(a, b);
+    })(window, document, 'rontar_ads');
+//--></script>
+<!-- etagi -->
+
+
 <!-- C1 -->
 <div id="rontar_adplace_5695"></div>
 <script type="text/javascript">

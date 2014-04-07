@@ -192,9 +192,9 @@
                     <?php $this->widget('application.components.widgets.themes'); ?>
 
                     <div id="cources" class="a-right">
-                        <span>EUR 48,88</span>
+                        <span>EUR 	48,6435</span>
                         &nbsp;
-                        <span>USD 35,52	</span>
+                        <span>USD 35,5010	</span>
                     </div>
                 </div>
             </header>
