@@ -11,7 +11,7 @@
  */
 class Theme extends CActiveRecord
 {
-	/**
+    /**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -28,11 +28,11 @@ class Theme extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, alias', 'required'),
-			array('active', 'numerical', 'integerOnly'=>true),
+			array('id, active', 'numerical', 'integerOnly'=>true),
 			array('name, alias', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, active, alias', 'safe', 'on'=>'search'),
+			array('name, active, alias', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,7 +53,7 @@ class Theme extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			//'id' => 'ID',
 			'name' => 'Name',
 			'active' => 'Active',
 			'alias' => 'Alias',
@@ -78,7 +78,7 @@ class Theme extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		//$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('active',$this->active);
 		$criteria->compare('alias',$this->alias,true);

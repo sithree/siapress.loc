@@ -33,6 +33,7 @@
  */
 class Article extends CActiveRecord {
 
+    private $changeTheme = false;
     protected $_mainId = false;
     public $query;
     public $ccc;
@@ -40,12 +41,7 @@ class Article extends CActiveRecord {
     public $deleteImage;
     public $_imgpath = 'images/news/main/';
     public $blogLimit = 24;
-    public $theme;
-    
-    function getRating() {
-        $result = $this->articleAdd->like - $this->articleAdd->dislike;
-        return $result > 0 ? '+'.$result : $result;
-    }
+    public $theme_name;
 
     public function scopes() {
         return array(
@@ -100,13 +96,12 @@ class Article extends CActiveRecord {
         return array(
             array('title, cat_id, fulltext, author, created, modified, publish, type_id', 'required'),
             array('query, top, deleteImage, cat_id, published, author, modif_by, main, type_id, comment_on', 'numerical', 'integerOnly' => true),
-            array('title, tags, author_alias, metakey, imgtitle', 'length', 'max' => 255),
-            array('theme', 'length', 'max' => 255),
+            array('title, tags, author_alias, metakey, imgtitle, theme_name', 'length', 'max' => 255),
             array('introtext, video, main_category', 'safe'),
             array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, jpeg, gif, png'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, theme, main_category, title, cat_id, published, introtext, fulltext, tags, author, author_alias, modif_by, created, modified, publish, metakey, main, type_id, comment_on, imgtitle', 'safe', 'on' => 'search'),
+            array('id, theme_name, main_category, title, cat_id, published, introtext, fulltext, tags, author, author_alias, modif_by, created, modified, publish, metakey, main, type_id, comment_on, imgtitle', 'safe', 'on' => 'search'),
         );
     }
 
@@ -157,7 +152,7 @@ class Article extends CActiveRecord {
             'deleteImage' => 'Удалить фото',
             'query' => 'Задай вопрос АКТИВНА',
             'video' => 'Код ролика',
-            'theme' => 'Тема',
+            'theme_name' => 'Тема',
         );
     }
 
@@ -212,11 +207,27 @@ class Article extends CActiveRecord {
             $this->publish = date('Y-m-d H:i:s');
             $this->modified = date('Y-m-d H:i:s');
             $this->published = 1;
-        } 
+        }
 
         $this->type_id = 1;
 
         $this->author = Yii::app()->user->id;
+    }
+
+    private function getTheme() {
+        $theme = Theme::model()->find('`name` like "' . $this->theme_name . '"');
+        if ($theme)
+            return $theme->id;
+        $theme = new Theme();
+        $theme->name = $this->theme_name;
+        $theme->active = 1;
+        $theme->alias = ' ';
+        $theme->save();
+        $theme->alias = 'theme-' . $theme->id;
+        $theme->save();
+        $theme->alias = 'theme-' . $theme->id;
+        $theme->save();
+        return $theme->id;
     }
 
     public function beforeSave() {
@@ -230,12 +241,19 @@ class Article extends CActiveRecord {
             $this->video = str_replace('http://youtu.be/', '', $this->video);
         }
 
-        if ($this->theme) {
-            $theme = Theme::model()->find('`name` like "' . $this->theme . '"');
-            if ($theme)
-                $this->theme = $theme->id;
-        } else
-            $this->theme = -1;
+        if ($this->theme_name) {
+            $themeId = $this->getTheme();
+            if ($this->theme != $themeId) {
+                $theme = Theme::model()->findByPK($this->theme);
+                if ($theme) {
+                    $theme->count--;
+                    $theme->last_update = date('Y-m-d');
+                    $theme->save();
+                }
+                $this->theme = $themeId;
+                $this->changeTheme = true;
+            }
+        }
 
         $this->modified = date("Y-m-d H:i:s");
 
@@ -279,6 +297,15 @@ class Article extends CActiveRecord {
 
     public function afterSave() {
         $image = CUploadedFile::getInstance($this, 'image');
+        if ($this->changeTheme) {
+            $theme = Theme::model()->findByPK($this->theme);
+            if ($theme) {
+                $theme->count++;
+                $theme->last_update = date('Y-m-d');
+                $theme->save();
+            }
+        }
+
         if ($image) {
             $tmpfile = Yii::getPathOfAlias("webroot.temp") . DIRECTORY_SEPARATOR . $image;
             $result = $image->saveAs($tmpfile);
@@ -295,7 +322,7 @@ class Article extends CActiveRecord {
             $add->article_id = $this->id;
             $add->hits = 1;
             $add->ccount = 0;
-            
+
             $add->save();
         }
 
@@ -363,19 +390,18 @@ class Article extends CActiveRecord {
         }
         $ih->save(Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $this->id . '.jpg');
     }
-    
-    private static function downloadImage($id)
-    {
-        $url = "http://www.siapress.ru/images/news/main/".$id.".jpg";
+
+    private static function downloadImage($id) {
+        $url = "http://www.siapress.ru/images/news/main/" . $id . ".jpg";
         $hds = @get_headers($url);
         if (!strpos($hds[0], "200")) {
-            $url = "http://www.siapress.ru/images/news/main/".$id."_main.jpg";
+            $url = "http://www.siapress.ru/images/news/main/" . $id . "_main.jpg";
             $hds = @get_headers($url);
             if (!strpos($hds[0], "200")) {
                 return;
             }
         }
-        copy($url, Yii::getPathOfAlias("webroot.images.news.main").DIRECTORY_SEPARATOR.$id.'.jpg');
+        copy($url, Yii::getPathOfAlias("webroot.images.news.main") . DIRECTORY_SEPARATOR . $id . '.jpg');
     }
 
     private static function resizeSImage($id, $width, $height = 0, $x2 = false, $source = '') {
@@ -386,27 +412,24 @@ class Article extends CActiveRecord {
         $filePath = $path . $id . '_' . $width . 'x' . $height . ($x2 ? '@2x' : '') . '.jpg';
         if (!is_file($source)) {
             $source = $path . $id . '_main.jpg';
-            if (!is_file($source))
-            {
-                if ($_SERVER['HTTP_HOST'] != 'siapress.ru')
-                {
+            if (!is_file($source)) {
+                if ($_SERVER['HTTP_HOST'] != 'siapress.ru') {
                     Article::downloadImage($id);
                     $source = $path . $id . '.jpg';
                     if (!is_file($source)) {
                         return;
                     }
-                }
-                else
+                } else
                     return false;
             }
         }
         $ih = new CImageHandler();
         $ih->load($source);
-        
+
         if ($ih->getWidth() < 540) {
             $ih->resize(540, false);
         }
-            
+
         if ($height)
             $ih->adaptiveThumb($width * ($x2 ? 2 : 1), $height * ($x2 ? 2 : 1));
         else {
@@ -794,7 +817,7 @@ class Article extends CActiveRecord {
         $date = strtotime($model['created']);
 
         $img = Yii::app()->getBaseUrl() . 'images/news/main/' . $model['id'] . '_item.jpg';
-        if (is_file($img) AND !empty($model['imgtitle']))
+        if (is_file($img) AND ! empty($model['imgtitle']))
             return CHtml::tag('div', array('class' => 'news-image-container'), CHtml::image($img, $model['title'], array('class' => 'newsimage')) .
                             CHtml::tag('span', array('class' => 'imgtitle'), $model['imgtitle']));
         else

@@ -141,6 +141,8 @@ class ArticleController extends BackEndController {
             $model->attributes = $_POST['Article'];
             $model->save();
         }
+        else
+            $model->theme_name = Theme::model()->findByPK($model->theme)->name;
 
         if ($model->id) {
             switch ($_POST['actionButton'][0]) {
@@ -159,6 +161,8 @@ class ArticleController extends BackEndController {
                     break;
             }
         }
+        //CVarDumper::dump($model, 10, true);
+        //die();
         $this->render('edit', array(
             'model' => $model,
             'videos' => $videos,
