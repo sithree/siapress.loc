@@ -17,16 +17,16 @@ class ThemesController extends Controller {
         $this->layout = '//layouts/news/article';
 
         $theme = Theme::model()->findByPk($id);
-
-        $model = Article::model()->findAll(array(
-            'limit' => 100,
-            'order' => 'id DESC',
-            'condition' =>
-            'published  = 1 and ' .
-            'publish <= ' . new CDbExpression('NOW()') . ' and ' .
-            'theme = ' . $theme->id
-        ));
-
+        if ($theme) {
+            $model = Article::model()->findAll(array(
+                'limit' => 100,
+                'order' => 'id DESC',
+                'condition' =>
+                'published  = 1 and ' .
+                'publish <= ' . new CDbExpression('NOW()') . ' and ' .
+                'theme = ' . $theme->id
+            ));
+        }
         $this->render('index', array('theme' => $theme, 'model' => $model));
     }
 

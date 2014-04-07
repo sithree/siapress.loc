@@ -214,6 +214,16 @@ class Article extends CActiveRecord {
         $this->author = Yii::app()->user->id;
     }
 
+    public function transliterate($st) {
+        $st = iconv("utf-8", "windows-1251", $st);
+        $st = strtr($st, iconv("utf-8", "windows-1251", "абвгдежзийклмнопрстуфыэАБВГДЕЖЗИЙКЛМНОПРСТУФЫЭ"), iconv("utf-8", "windows-1251", "abvgdegziyklmnoprstufieabvgdegziyklmnoprstufie"));
+        $st = preg_replace('~[^-a-z0-9_]+~u', '-', $st);
+        $st = iconv("windows-1251", "utf-8", $st);
+        str_replace(array('ё', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь', 'ю', 'я', 'ё', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь', 'ю', 'я'), array("yo", "h", "ts", "ch", "sh", "shch", '', '', "yu", "ya", "yo", "h", "ts", "ch", "sh", "shch", '', '', "yu", "ya"), $subject);
+        $st = trim($st, "-");
+        return $st;
+    }
+
     public function getTheme() {
         $theme = Theme::model()->find('`name` like "' . $this->theme_name . '"');
         if ($theme)
@@ -221,11 +231,7 @@ class Article extends CActiveRecord {
         $theme = new Theme();
         $theme->name = $this->theme_name;
         $theme->active = 1;
-        $theme->alias = ' ';
-        $theme->save();
-        $theme->alias = 'theme-' . $theme->id;
-        $theme->save();
-        $theme->alias = 'theme-' . $theme->id;
+        $theme->alias = $this->transliterate($this->theme_name);
         $theme->save();
         return $theme->id;
     }
@@ -757,9 +763,8 @@ class Article extends CActiveRecord {
     public function getPopularitems($limit = 10) {
 
 //        $data = Yii::app()->cache->get('mainpopular');
-
 //        if ($data === false) {
-            $query = "SELECT a.*, `add`.*
+        $query = "SELECT a.*, `add`.*
                      #(SELECT COUNT(*) FROM {{comments}} where published = 1 AND ban = 0 AND object_id = a.id AND object_type_id = 1) as comment_count
                      FROM {{articles}} as a
                      LEFT JOIN {{article_add}} as `add` ON a.id = `add`.article_id
@@ -771,8 +776,8 @@ class Article extends CActiveRecord {
                      ORDER BY add.hits desc
                      #AND cat_id != 9 AND cat_id != 8
                      LIMIT $limit";
-            #die($query);
-            $data = Yii::app()->db->createCommand($query)->queryAll();
+        #die($query);
+        $data = Yii::app()->db->createCommand($query)->queryAll();
 //            Yii::app()->cache->set('mainpopular', $data, Config::getCacheduration());
 //        }
 
@@ -817,7 +822,7 @@ class Article extends CActiveRecord {
         $date = strtotime($model['created']);
 
         $img = Yii::app()->getBaseUrl() . 'images/news/main/' . $model['id'] . '_item.jpg';
-        if (is_file($img) AND ! empty($model['imgtitle']))
+        if (is_file($img) AND !empty($model['imgtitle']))
             return CHtml::tag('div', array('class' => 'news-image-container'), CHtml::image($img, $model['title'], array('class' => 'newsimage')) .
                             CHtml::tag('span', array('class' => 'imgtitle'), $model['imgtitle']));
         else
