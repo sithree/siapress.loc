@@ -214,6 +214,18 @@ class Article extends CActiveRecord {
         $this->author = Yii::app()->user->id;
     }
 
+    private function transliterate($st) {
+        $st = iconv("utf-8", "windows-1251", $st);
+        $st = strtr($st, iconv("utf-8", "windows-1251", "абвгдежзийклмнопрстуфыэАБВГДЕЖЗИЙКЛМНОПРСТУФЫЭ"), 
+                iconv("utf-8", "windows-1251", "abvgdegziyklmnoprstufieabvgdegziyklmnoprstufie"));
+        $st = preg_replace('~[^-a-z0-9_]+~u', '-', $st);
+        $st = iconv("windows-1251", "utf-8", $st);
+        str_replace(array('ё','х','ц','ч','ш','щ','ъ','ь','ю','я','ё','х','ц','ч','ш','щ','ъ','ь','ю','я'), 
+                array("yo","h","ts","ch","sh","shch",'','',"yu","ya","yo","h","ts","ch","sh","shch",'','',"yu","ya"), $subject);
+        $st = trim($st, "-");
+        return $st;
+    }
+
     private function getTheme() {
         $theme = Theme::model()->find('`name` like "' . $this->theme_name . '"');
         if ($theme)
@@ -221,11 +233,7 @@ class Article extends CActiveRecord {
         $theme = new Theme();
         $theme->name = $this->theme_name;
         $theme->active = 1;
-        $theme->alias = ' ';
-        $theme->save();
-        $theme->alias = 'theme-' . $theme->id;
-        $theme->save();
-        $theme->alias = 'theme-' . $theme->id;
+        $theme->alias = $this->transliterate($this->theme_name);
         $theme->save();
         return $theme->id;
     }
