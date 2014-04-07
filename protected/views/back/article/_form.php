@@ -32,11 +32,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         ));
         ?>
         <br />
-         <?php echo $form->label($model, 'theme'); ?>
+         <?php echo $form->label($model, 'theme_name'); ?>
         <?php
         $this->widget('CAutoComplete', array(
-            'model' => 'theme',
-            'name' => 'Article_theme',
+            'model' => $model,
+            'name' => 'Article',
+            'attribute' => 'theme_name',
             'url' => array('theme/autocomplete'),
             'minChars' => 2,
             'htmlOptions' => array('class' => 'span12', 'maxlength' => 255),
