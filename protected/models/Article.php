@@ -764,9 +764,9 @@ class Article extends CActiveRecord {
 
     public function getPopularitems($limit = 10) {
 
-        $data = Yii::app()->cache->get('mainpopular');
+//        $data = Yii::app()->cache->get('mainpopular');
 
-        if ($data === false) {
+//        if ($data === false) {
             $query = "SELECT a.*, `add`.*
                      #(SELECT COUNT(*) FROM {{comments}} where published = 1 AND ban = 0 AND object_id = a.id AND object_type_id = 1) as comment_count
                      FROM {{articles}} as a
@@ -781,8 +781,8 @@ class Article extends CActiveRecord {
                      LIMIT $limit";
             #die($query);
             $data = Yii::app()->db->createCommand($query)->queryAll();
-            Yii::app()->cache->set('mainpopular', $data, Config::getCacheduration());
-        }
+//            Yii::app()->cache->set('mainpopular', $data, Config::getCacheduration());
+//        }
 
         return $data;
     }

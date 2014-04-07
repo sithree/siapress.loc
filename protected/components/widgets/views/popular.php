@@ -6,7 +6,7 @@
 ?>
 <script>
     jQuery(function($) {
-        
+
 
     });
 </script>
@@ -15,23 +15,26 @@
     <div class="header">
         <h2>
             <a rel="lastcomment" class="block-header navii active"  href="#">последние комментарии</a>
-<!--            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
-            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>-->
+            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
+            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>
         </h2>
     </div>
 
     <div  style="display:none;" id="mostcomment" class="block-comment mtab">
         <ul class="unstyled popular">
-            <?php foreach ($this->pop as $item): ?>
+            <?php foreach ($pop as $item): ?>
                 <li>
                     <a href="<?php echo Article::model()->getArticlestriplink($item); ?>">
                         <?php echo Helper::getLight($item); ?>
                     </a>
 
-                <nobr>
-                    <span class="created">[<?php echo Article::model()->getCategoryname($item['cat_id']); ?>]
-                        [<?php echo $item['count'] ?>]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap"><?php echo Helper::getFormattedtime($item['created'], false, true) ?></span>, 
+                   
+                            <i class="fa fa-comment-o"></i> <?php echo $item['count'] ?>
+                      </div>
+
+
 
                 </li>
                 <?php
@@ -42,16 +45,18 @@
 
     <div style="display:none;" id="mostreading" class="block-comment mtab">
         <ul class="unstyled popular">
-            <?php foreach ($this->items as $item): ?>
+
+            <?php foreach ($items as $item): ?>
                 <li>
                     <a href="<?php echo Article::model()->getArticlestriplink($item); ?>">
-                        <!-- <span class="time"><?php echo $item['hits'] ?></span> -->
+                        <!-- <span class="time"><?php echo $item->articleAdd->hits ?></span> -->
+                        <?php // echo $item['title'] ?>
                         <?php echo Helper::getLight($item); ?>
                     </a>
-                <nobr>
-                    <span class="created">[<?php echo Article::model()->getCategoryname($item['cat_id']); ?>]
-                        [<?php echo $item['hits'] ?>]</span>
-                </nobr>
+                    <div class="small a-right">
+                        <span class="nowrap"><?php echo Helper::getFormattedtime($item['created'], false, true) ?>, 
+                            <i class="fa fa-eye"></i> <?php echo $item['hits'] ?>
+                    </div>
                 </li>
                 <?php
             endforeach;
@@ -62,13 +67,12 @@
     <div id="lastcomment" class="block-comment mtab">
         <ul class="unstyled">
             <?php
-            foreach ($this->last as $item):
+            foreach ($last as $item):
                 if (!empty($item['parent']) and $item['parent'] !== 0) {
                     $parent = Comment::model()->findByPk($item['parent']);
                 } else {
                     $parent = false;
                 }
-                
                 ?>
                 <li>
                     <div class="block-commen-author"><?php echo $item['name'] ?><?php echo $parent ? ' <span style="color: #333;"> &rarr; ' . $parent->name . ':</span>' : ':' ?></div>

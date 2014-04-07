@@ -19,9 +19,9 @@ class MainNews extends CPortlet {
 
         $criteria->addCondition('`t`.`publish` <= "' . date('Y-m-d H:i:s') . '" ');
 //        $criteria->addCondition('`t`.`publish` !=> "' . date('Y-m-s H:i:s') . '" ');
-       
+
         $criteria->addCondition('`t`.`published` = 1');
-        $criteria->addCondition('`t`.`id` != ' . Yii::app()->db->createCommand("SELECT id from {{articles}} where main = 1  order by id desc limit 1")->queryScalar());
+        $criteria->addCondition('`t`.`id` != ' . Yii::app()->db->createCommand("SELECT id from {{articles}} where main = 1 and published = 1 and publish <= '" . new CDbExpression("NOW()") . "' order by id desc limit 1")->queryScalar());
 
         $model = Article::model()->findAll($criteria);
 

@@ -127,7 +127,7 @@ class ArticleController extends Controller {
                     $comm->save();
                     if ($comm->id > 0) {
 
-                        unset(Yii::app()->request->cookies['comment_text']);
+                        unset(Yii::app()->request->cookies[$id . '_comment_text']);
 
                         $commadd = new CommentAdd;
                         $commadd->comment_id = $comm->id;

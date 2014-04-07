@@ -74,7 +74,7 @@ class AjaxController extends CController {
         }
     }
 
-    function actionGetopinions() {
+    function actionGetopinions($main = true) {
         if (Yii::app()->request->isAjaxRequest) {
             $page = intval($_POST['page']);
             $limit = Article::model()->blogLimit;
@@ -84,15 +84,13 @@ class AjaxController extends CController {
             #echo ("$start, $end");
             #die();
             foreach ($model as $item) {
-                $this->renderPartial('application.components.views._blogs_form', array('model' => $item));
+                $this->renderPartial('application.components.widgets.views._blogs_form', array('model' => $item));
             }
             Yii::app()->end();
         } else {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
     }
-    
-    
 
     function actionLikecomment() {
         if (Yii::app()->request->isAjaxRequest) {
@@ -117,8 +115,7 @@ class AjaxController extends CController {
                 $class = 'green';
             } elseif ($like < 0) {
                 $class = 'red';
-            }
-            else
+            } else
                 $class = 'green';
             if ($comment->comment_id) {
                 $cookie = new CHttpCookie('comment_' . $comment->comment_id, '1');
@@ -129,20 +126,19 @@ class AjaxController extends CController {
                 $session = new CHttpSession;
                 $session->open();
                 $session['comment_' . $comment->comment_id] = 1;
-               
             }
 
             echo "<span id='$id' class='like-result $class'>$like</span>";
             Yii::app()->end();
         }
     }
-    
+
     function actionLikeArticle() {
         if (Yii::app()->request->isAjaxRequest) {
             $id = $_POST['id'];
             //$sessid = $_REQUEST['PHPSESSID'];
 
-            $article = ArticleAdd::model()->find('article_id='.$id);
+            $article = ArticleAdd::model()->find('article_id=' . $id);
             if (!$article) {
                 $article = new ArticleAdd();
                 $article->article_id = $id;
@@ -156,8 +152,7 @@ class AjaxController extends CController {
                 $class = 'green';
             } elseif ($like < 0) {
                 $class = 'red';
-            }
-            else
+            } else
                 $class = 'green';
             if ($article->article_id) {
                 $cookie = new CHttpCookie('articlelike_' . $article->article_id, '1');
@@ -168,10 +163,9 @@ class AjaxController extends CController {
                 $session = new CHttpSession;
                 $session->open();
                 $session['articlelike_' . $article->article_id] = 1;
-               
             }
 
-            echo $this->renderPartial('vote',array('model' => $article));
+            echo $this->renderPartial('vote', array('model' => $article));
             Yii::app()->end();
         }
     }

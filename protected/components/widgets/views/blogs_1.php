@@ -10,8 +10,8 @@
         }
     }
     ?>
-
-    <a class="gray-light-button" href="/opinion">
-
-        Больше мнений</a>
+    <div id="loadOpinions"></div>
+    
+    <a id="moreOpinions" class="gray-light-button" href="/opinion">Больше мнений</a>
+    
 </div>
