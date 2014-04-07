@@ -216,12 +216,10 @@ class Article extends CActiveRecord {
 
     private function transliterate($st) {
         $st = iconv("utf-8", "windows-1251", $st);
-        $st = strtr($st, iconv("utf-8", "windows-1251", "абвгдежзийклмнопрстуфыэАБВГДЕЖЗИЙКЛМНОПРСТУФЫЭ"), 
-                iconv("utf-8", "windows-1251", "abvgdegziyklmnoprstufieabvgdegziyklmnoprstufie"));
+        $st = strtr($st, iconv("utf-8", "windows-1251", "абвгдежзийклмнопрстуфыэАБВГДЕЖЗИЙКЛМНОПРСТУФЫЭ"), iconv("utf-8", "windows-1251", "abvgdegziyklmnoprstufieabvgdegziyklmnoprstufie"));
         $st = preg_replace('~[^-a-z0-9_]+~u', '-', $st);
         $st = iconv("windows-1251", "utf-8", $st);
-        str_replace(array('ё','х','ц','ч','ш','щ','ъ','ь','ю','я','ё','х','ц','ч','ш','щ','ъ','ь','ю','я'), 
-                array("yo","h","ts","ch","sh","shch",'','',"yu","ya","yo","h","ts","ch","sh","shch",'','',"yu","ya"), $subject);
+        str_replace(array('ё', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь', 'ю', 'я', 'ё', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь', 'ю', 'я'), array("yo", "h", "ts", "ch", "sh", "shch", '', '', "yu", "ya", "yo", "h", "ts", "ch", "sh", "shch", '', '', "yu", "ya"), $subject);
         $st = trim($st, "-");
         return $st;
     }
@@ -249,7 +247,7 @@ class Article extends CActiveRecord {
             $this->video = str_replace('http://youtu.be/', '', $this->video);
         }
 
-        if ($this->theme_name) {
+        if (strlen(trim($this->theme_name))) {
             $themeId = $this->getTheme();
             if ($this->theme != $themeId) {
                 $theme = Theme::model()->findByPK($this->theme);
@@ -261,6 +259,8 @@ class Article extends CActiveRecord {
                 $this->theme = $themeId;
                 $this->changeTheme = true;
             }
+        } else {
+            $this->theme = 0;
         }
 
         $this->modified = date("Y-m-d H:i:s");
@@ -765,9 +765,8 @@ class Article extends CActiveRecord {
     public function getPopularitems($limit = 10) {
 
 //        $data = Yii::app()->cache->get('mainpopular');
-
 //        if ($data === false) {
-            $query = "SELECT a.*, `add`.*
+        $query = "SELECT a.*, `add`.*
                      #(SELECT COUNT(*) FROM {{comments}} where published = 1 AND ban = 0 AND object_id = a.id AND object_type_id = 1) as comment_count
                      FROM {{articles}} as a
                      LEFT JOIN {{article_add}} as `add` ON a.id = `add`.article_id
@@ -779,8 +778,8 @@ class Article extends CActiveRecord {
                      ORDER BY add.hits desc
                      #AND cat_id != 9 AND cat_id != 8
                      LIMIT $limit";
-            #die($query);
-            $data = Yii::app()->db->createCommand($query)->queryAll();
+        #die($query);
+        $data = Yii::app()->db->createCommand($query)->queryAll();
 //            Yii::app()->cache->set('mainpopular', $data, Config::getCacheduration());
 //        }
 
