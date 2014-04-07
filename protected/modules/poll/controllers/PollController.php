@@ -1,10 +1,17 @@
 <?php
 
 class PollController extends Controller {
+    public $layout = '//layouts/news/article';
+    public $metaProperty;
 
-    /**
-     * @return array action filters
-     */
+    public function addMetaProperty($name, $content) {
+        $this->metaProperty .= "<meta property=\"" . CHtml::encode($name) . "\" content=\"" . CHtml::encode($content) . "\" />\r\n";
+    }
+
+    public function getMetaProperty() {
+        return $this->metaProperty;
+    }
+    
     public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
@@ -185,14 +192,13 @@ class PollController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-
-        $dataProvider = Poll::model()->findAll();
+        $model = Poll::model()->findAll();
 
         $this->pageTitle = 'Все опросы СИА-ПРЕСС';
        
         
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+            'model' => $model,
         ));
         
     }

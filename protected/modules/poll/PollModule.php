@@ -82,6 +82,7 @@ class PollModule extends CWebModule
 
   public function init()
   {
+      
     $this->setImport(array(
       'poll.components.*',
       'poll.models.*',
