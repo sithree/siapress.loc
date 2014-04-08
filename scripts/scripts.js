@@ -8,21 +8,21 @@ jQuery(function($) {
         $(this).find(".votecircle").removeClass('fa-check-circle-o');
     });
     $(".vote .radio").click(function() {
-        var input = $(this).find('.poll_r input');
-        input.attr('checked', 'checked');
-
+        $(this).find('.poll_r input').attr('checked', 'checked');
+        //input.attr('checked', 'checked');
         //$(this).parents().find('#PollVote_choice_id').val(id);
-//        var form = $(this).parents().find("#portlet-poll-form");
-//        $.ajax({
-//            url: '/', // указываем URL и
-//            type: "POST",
-//            data: form.serialize(),
-//            success: function(html) { // вешаем свой обработчик на функцию success
-//                $(this).parents().find(".portlet").html(html);
-//            }
-//        });
-//        return false;
-        $(this).parents().find("#portlet-poll-form").find("input[type='submit']").click();
+        var form = $(this).parents("#portlet-poll-form");
+        $.ajax({
+            url: '/poll/poll/vote', // указываем URL и
+            type: "POST",
+            'cache': false,
+            data: form.serialize(),
+            success: function(html) { // вешаем свой обработчик на функцию success
+                form.parent('').html(html);
+            }
+        });
+        return false;
+        //$(this).parents().find("#portlet-poll-form").submit(); //find("input[type='submit']").click();
     });
 
     //Кнопки у последних комментов
