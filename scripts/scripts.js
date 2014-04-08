@@ -9,14 +9,13 @@ jQuery(function($) {
     });
     $(".vote .radio").click(function() {
         $(this).find('.poll_r input').attr('checked', 'checked');
-        //input.attr('checked', 'checked');
-        //$(this).parents().find('#PollVote_choice_id').val(id);
         var form = $(this).parents("#portlet-poll-form");
         $.ajax({
             url: '/poll/poll/vote', // указываем URL и
             type: "POST",
-            'cache': false,
+            cache: false,
             data: form.serialize(),
+            //contentType: 'text/html',
             success: function(html) { // вешаем свой обработчик на функцию success
                 form.parents('.portlet-content').html(html);
             }
@@ -73,7 +72,7 @@ jQuery(function($) {
                 $(this).removeClass("loading");
             },
             success: function(html) { // вешаем свой обработчик на функцию success
-               $('#loadOpinions').append(html);
+                $('#loadOpinions').append(html);
             }
         });
         return false;
