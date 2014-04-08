@@ -247,7 +247,7 @@ class Article extends CActiveRecord {
             $this->video = str_replace('http://youtu.be/', '', $this->video);
         }
 
-        if ($this->theme_name) {
+        if (strlen(trim($this->theme_name))) {
             $themeId = $this->getTheme();
             if ($this->theme != $themeId) {
                 $theme = Theme::model()->findByPK($this->theme);
@@ -259,6 +259,8 @@ class Article extends CActiveRecord {
                 $this->theme = $themeId;
                 $this->changeTheme = true;
             }
+        } else {
+            $this->theme = 0;
         }
 
         $this->modified = date("Y-m-d H:i:s");
