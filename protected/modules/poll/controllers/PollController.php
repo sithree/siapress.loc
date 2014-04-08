@@ -68,14 +68,15 @@ class PollController extends Controller {
      * @param integer $id the ID of the model to vote on
      */
     public function actionVote() {
-        $model = $this->loadModel($_POST['PollVote']['poll_id']);
+        $model = $this->loadModel($_POST['Poll']['id']);
         $vote = new PollVote;
 
         //if (!$model->userCanVote())
             //$this->redirect(array('view', 'id' => $model->id));
 
         if (isset($_POST['PollVote'])) {
-            $vote->attributes = $_POST['PollVote'];
+            $vote->poll_id = $_POST['Poll']['id'];
+            $vote->choice_id = $_POST['PollVote']['choice_id'];
             $vote->key = (isset(Yii::app()->request->cookies['PHPSESSID']->value)) ?
                     Yii::app()->request->cookies['PHPSESSID']->value : NULL;
             if ($vote->save()) {

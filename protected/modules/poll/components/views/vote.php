@@ -21,9 +21,9 @@
                                 </div>
                             </div>'; ?>
         <?php
-        
-        echo $form->hiddenField($userVote,'choice_id');
-        echo $form->hiddenField($userVote,'poll_id');        
+        //CVarDumper::dump($model, 10, true);
+        //die();
+        echo $form->hiddenField($model, 'id', array('style' => 'display:none'));        
         echo $form->radioButtonList($userVote, 'choice_id', $choices, array(
             'template' => $template,
             'separator' => ''));
