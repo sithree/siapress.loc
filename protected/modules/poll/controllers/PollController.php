@@ -2,9 +2,17 @@
 
 class PollController extends Controller {
 
-    /**
-     * @return array action filters
-     */
+    public $layout = '//layouts/news/article';
+    public $metaProperty;
+
+    public function addMetaProperty($name, $content) {
+        $this->metaProperty .= "<meta property=\"" . CHtml::encode($name) . "\" content=\"" . CHtml::encode($content) . "\" />\r\n";
+    }
+
+    public function getMetaProperty() {
+        return $this->metaProperty;
+    }
+
     public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
@@ -59,31 +67,25 @@ class PollController extends Controller {
      * If vote is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to vote on
      */
-    public function actionVote($id) {
-        $model = $this->loadModel($id);
+    public function actionVote() {
+        $model = $this->loadModel($_POST['PollVote']['poll_id']);
         $vote = new PollVote;
 
-        if (!$model->userCanVote())
-            $this->redirect(array('view', 'id' => $model->id));
+        //if (!$model->userCanVote())
+            //$this->redirect(array('view', 'id' => $model->id));
 
         if (isset($_POST['PollVote'])) {
             $vote->attributes = $_POST['PollVote'];
-            $vote->poll_id = $model->id;
-            if ($vote->save())
-                $this->redirect(array('view', 'id' => $model->id));
+            $vote->key = (isset(Yii::app()->request->cookies['PHPSESSID']->value)) ?
+                    Yii::app()->request->cookies['PHPSESSID']->value : NULL;
+            if ($vote->save()) {
+                $cookie = new CHttpCookie('poll_' . $model->id, '1');
+                $cookie->expire = time() + 3600;
+                Yii::app()->request->cookies['poll_' . $model->id] = $cookie;
+                echo $this->renderPartial('results', array('model' => $model, 'userChoice' => $this->loadChoice($model, $vote->choice_id), 'userVote' => $vote));
+            }
         }
-
-        // Convert choices to form options list
-        $choices = array();
-        foreach ($model->choices as $choice) {
-            $choices[$choice->id] = CHtml::encode($choice->label);
-        }
-
-        $this->render('vote', array(
-            'model' => $model,
-            'vote' => $vote,
-            'choices' => $choices,
-        ));
+        Yii::app()->end();
     }
 
     /**
@@ -185,16 +187,14 @@ class PollController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-
-        $dataProvider = Poll::model()->findAll();
+        $model = Poll::model()->findAll();
 
         $this->pageTitle = 'Все опросы СИА-ПРЕСС';
-       
-        
+
+
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+            'model' => $model,
         ));
-        
     }
 
     /**

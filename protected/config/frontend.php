@@ -46,7 +46,8 @@ return CMap::mergeArray(
                         //Для всего остального есть общий ArticleController
 //                        'ajax/<category:\w+>' => 'article/view',
                         'themes/<id:\d+>' => 'themes/index',
-                        
+                        'poll/<controller:\w+>' => 'poll/<controller>',
+                        'poll/<controller:\w+>/<action:\w+>' => 'poll/<controller>/<action>',
                         
                         'news/all' => 'article/index',
 //                        'news/all/<page>/<id:\d+>' => 'article/index',

@@ -23,17 +23,12 @@
         <?php
         
         echo $form->hiddenField($userVote,'choice_id');
-        
+        echo $form->hiddenField($userVote,'poll_id');        
         echo $form->radioButtonList($userVote, 'choice_id', $choices, array(
             'template' => $template,
-            'separator' => '',
-            'name' => 'PortletPollVote_choice_id_' . $model->id));
+            'separator' => ''));
         ?>
         <?php echo $form->error($userVote, 'choice_id'); ?>
-    </div>
-
-    <div class="right" style="display: none;">
-        <?php echo CHtml::submitButton('Голосовать', array('class' => 'btn btn-danger')); ?>
     </div>
 
     <?php $this->endWidget(); ?>
