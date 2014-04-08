@@ -33,7 +33,7 @@
  */
 class Article extends CActiveRecord {
 
-    private $changeTheme = false;
+    public $changeTheme = false;
     protected $_mainId = false;
     public $query;
     public $ccc;

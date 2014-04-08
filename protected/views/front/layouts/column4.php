@@ -28,13 +28,13 @@
 <!-- etagi -->
 <div id="rontar_adplace_5762"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5762, rontar_place_id: 'rontar_adplace_5762', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5762, rontar_place_id: 'rontar_adplace_5762', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
@@ -116,13 +116,13 @@
 <!-- C4-->
 <div id="rontar_adplace_5724"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5724, rontar_place_id: 'rontar_adplace_5724', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5724, rontar_place_id: 'rontar_adplace_5724', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
@@ -141,13 +141,13 @@
 <!-- C5-->
 <div id="rontar_adplace_5726"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5726, rontar_place_id: 'rontar_adplace_5726', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5726, rontar_place_id: 'rontar_adplace_5726', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
@@ -159,7 +159,11 @@
 
 <!-- // C5 -->
 <br /><br />
-
+<div style="margin-bottom: 10px;">
+    <a href="/blogs/25088">
+        <img src="http://siapress.ru/media/com/konkurs_nadga_2013.gif" />
+    </a>
+</div>
 <?php
 if ($this->beginCache("popular", array('dependency' => array(
                 'class' => 'system.caching.dependencies.CDbCacheDependency',
@@ -170,7 +174,9 @@ if ($this->beginCache("popular", array('dependency' => array(
     $this->endCache();
 }
 ?>
-<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');          ?>
+
+
+<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');           ?>
 
 <!--<div class="widget gray-border-light main-news">
     <div class="header">

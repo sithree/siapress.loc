@@ -1,4 +1,28 @@
+<div class="row clearfix">
+    <div class="col-xs-12"  style="margin-top:10px;">
+        <div id="rontar_adplace_5777"></div>
+        <script type="text/javascript"><!--
+
+            (function (w, d, n) {
+            var ri = { rontar_site_id: 1717, rontar_adplace_id: 5777, rontar_place_id: 'rontar_adplace_5777', adCode_rootUrl: 'http://adcode.rontar.com/' };
+                    w[n] = w[n] || [];
+                    w[n].push(
+                    ri
+                    );
+                    var a = document.createElement('script');
+                    a.type = 'text/javascript';
+                    a.async = true;
+                    a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+                    var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+                    b.parentNode.insertBefore(a, b);
+            })(window, document, 'rontar_ads');
+//--></script>
+    </div>
 </div>
+</div>
+
+
+
 <div class="container" style="background: transparent; padding: 0">
     <div class="footer"><!-- Подвал -->
 
@@ -61,6 +85,7 @@
 
 
                 <p>При использовании материалов ссылка обязательна. Свидетельство о регистрации СМИ: <a rel="nofollow" target="_blank" href="http://www.rsoc.ru/mass-communications/reestr/media/?id=323976&page=">Эл № ФС77-50742 от 19 июля 2012г.</a> Редакция не несет ответственности за достоверность информации, опубликованной в рекламных объявлениях.<br />
+                    Материалы в рубрике «Компании» размещаются на коммерческой основе. <br />
                     <a href="/rules">Правила сайта</a>&nbsp;&nbsp;&nbsp;
                     <a href="/authors">Авторы</a>&nbsp;&nbsp;&nbsp;
                     <a href="media/com/price_siapress2014-04.jpg">Рекламодателям</a>&nbsp;&nbsp;&nbsp;
@@ -77,10 +102,10 @@
 
                     <!-- UralWeb counter-->
                     <script type="text/javascript">
-                        document.write('<span id="uralweb-hc">' + '</' + 'span>');
-                                (function() {
-                                var hc = document.createElement('script'); hc.type = 'text/javascript'; hc.async = true; hc.src = 'http://j.uralweb.ru/js/siapress.ru'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hc, s);
-                                })();</script>
+                    document.write('<span id="uralweb-hc">' + '</' + 'span>');
+                    (function() {
+                    var hc = document.createElement('script'); hc.type = 'text/javascript'; hc.async = true; hc.src = 'http://j.uralweb.ru/js/siapress.ru'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hc, s);
+                    })();</script>
                     <!-- end of counter UralWeb -->
 
 

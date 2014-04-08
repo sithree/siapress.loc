@@ -8,6 +8,7 @@ class Themes extends CPortlet {
         $model = Theme::model()->findAll(
                 array(
                     'limit' => 5,
+                    'order' => 'last_update DESC, count desc'
         ));
         $this->render('themes', array('model' => $model));
     }

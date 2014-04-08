@@ -18,7 +18,7 @@ jQuery(function($) {
             'cache': false,
             data: form.serialize(),
             success: function(html) { // вешаем свой обработчик на функцию success
-                form.parent('').html(html);
+                form.parents('.portlet-content').html(html);
             }
         });
         return false;

@@ -223,7 +223,7 @@ class ArticleController extends Controller {
         $model = Article::model()->find(
                 array(
                     'limit' => 1,
-                    'condition' => 'id = ' . $id,
+                    'condition' => 'id = ' . $id . ' and published = 1 and publish <= ' . new CDbExpression('NOW()'),
         ));
 
 //        $add = ArticleAdd::model()->findByPk($id);
