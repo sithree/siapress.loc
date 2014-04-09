@@ -113,6 +113,7 @@
 <!-- // C3 -->
 <br /><br />
 
+
 <!-- C4-->
 <div id="rontar_adplace_5724"></div>
 <script type="text/javascript"><!--
@@ -136,7 +137,11 @@
 <!-- // C4 -->
 
 <br /><br />
+
+<?php if($this->id == 'site' and $this->action->id == 'index'): ?>
+
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php'); ?>
+
 
 <!-- C5-->
 <div id="rontar_adplace_5726"></div>
@@ -159,6 +164,8 @@
 
 <!-- // C5 -->
 <br /><br />
+<?php endif; ?>
+
 <div style="margin-bottom: 10px;">
     <a href="/blogs/25088">
         <img src="http://siapress.ru/media/com/konkurs_nadga_2013.gif" />

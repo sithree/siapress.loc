@@ -112,7 +112,7 @@ class EPoll extends CPortlet {
             }
 
             // Force user to vote if needed
-            if (true){//Yii::app()->getModule('poll')->forceVote && $model->userCanVote()) {
+            if (Yii::app()->getModule('poll')->forceVote && $model->userCanVote()) {
                 $view = 'vote';
 
                 // Convert choices to form options list

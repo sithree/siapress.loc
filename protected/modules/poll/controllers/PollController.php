@@ -68,7 +68,6 @@ class PollController extends Controller {
      * @param integer $id the ID of the model to vote on
      */
     public function actionVote() {
-        $model = $this->loadModel($_POST['Poll']['id']);
         $vote = new PollVote;
 
         //if (!$model->userCanVote())
@@ -83,6 +82,7 @@ class PollController extends Controller {
                 $cookie = new CHttpCookie('poll_' . $model->id, '1');
                 $cookie->expire = time() + 3600;
                 Yii::app()->request->cookies['poll_' . $model->id] = $cookie;
+                $model = $this->loadModel($_POST['Poll']['id']);
                 echo $this->renderPartial('results', array('model' => $model, 'userChoice' => $this->loadChoice($model, $vote->choice_id), 'userVote' => $vote));
             }
         }

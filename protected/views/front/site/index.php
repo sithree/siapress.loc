@@ -57,6 +57,9 @@ if ($this->beginCache("TrueMainNews", array('dependency' => array(
 //}
 ?>
 
+ <?php $this->widget('application.components.widgets.OnlineProjects'); ?>
+ <?php $this->widget('application.components.widgets.Photos'); ?>
+
 <?php
 Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
     $('.newsajaxbutton').click(function(){
@@ -75,11 +78,7 @@ Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
 
 
 
-<?php
-for ($pollCount = 0; $pollCount < 4; $pollCount++) {
-    $this->widget('EPoll');
-}
-?>
+
 <!--<div>
     <a class="gray-light-button" href="/">Больше опросов</a>
 </div>-->

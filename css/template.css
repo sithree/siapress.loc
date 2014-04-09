@@ -1263,12 +1263,17 @@ body > .container > .footer {
     padding: 0;
 }
 .poll_r {
-
     float: left;
-
-    width: 438px;
+    width: 208px;
 }
-
+.result p {
+    line-height: 115%;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.result  {
+    margin-bottom: 15px;
+}
 .votecircle {
     margin-top: 2px;
     display: block;
@@ -1281,9 +1286,7 @@ body > .container > .footer {
 .padding {
     padding: 10px;
 }
-.result p {
-    margin-bottom: 0;
-}
+
 
 progress {
     background-color: #F7F7F7;
@@ -1544,22 +1547,22 @@ h1 {
 }
 
 #ageWarning {
-  background: none repeat scroll 0 0 #CA0000;
-  -webkit-border-radius: 12px;
--moz-border-radius: 12px;
-border-radius: 12px;
-  color: #FFFFFF;
-  font-size: 11px;
-  font-weight: bold;
-  height: 24px;
-  padding-top: 5px;
-  position: absolute;
-  right: -10px;
-  text-align: center;
-  top: -10px;
-  width: 24px;
-  z-index: 10;
-  
+    background: none repeat scroll 0 0 #CA0000;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    height: 24px;
+    padding-top: 5px;
+    position: absolute;
+    right: -10px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    z-index: 10;
+
 }
 
 .modal {
@@ -1585,13 +1588,13 @@ border-radius: 12px;
 }
 
 #right #searchForm .input-group-btn{
-    
-    
+
+
 }
 #right #searchForm .btn.btn-default {
     padding: 4px 10px;
     border: 1px solid #ca0000;
-    
+
 }
 
 #articleVotes {

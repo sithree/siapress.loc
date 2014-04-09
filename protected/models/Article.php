@@ -40,7 +40,7 @@ class Article extends CActiveRecord {
     public $video;
     public $deleteImage;
     public $_imgpath = 'images/news/main/';
-    public $blogLimit = 24;
+    public $blogLimit = 16;
     public $theme_name;
 
     public function scopes() {
@@ -56,6 +56,26 @@ class Article extends CActiveRecord {
                 'with' => array('category', 'author'),
                 'condition' => 't.published = 1 AND t.publish <= NOW() AND t.cat_id IN (1,2,3,4,5,6,7,10,11,13,15,8,9,20,19) and (t.main = 1 or t.cat_id in(8,9))',
                 'order' => 't.publish DESC',
+            ),
+            'onlineProjects' => array(
+                'order' => 't.publish DESC',
+                'with' => array('author0', 'articleAdd',
+                    'comments' => array(
+                        'scopes' => array('publishedComment')
+                    ),
+                ),
+                'limit' => 6,
+                'condition' => 't.published = 1 AND t.publish <= NOW() AND cat_id IN(' . self::getOnlineProjectsCategories() . ')',
+            ),
+            'photos' => array(
+                'order' => 't.publish DESC',
+                'with' => array('author0', 'articleAdd',
+                    'comments' => array(
+                        'scopes' => array('publishedComment')
+                    ),
+                ),
+                'limit' => 8,
+                'condition' => 't.published = 1 AND t.publish <= NOW() AND cat_id IN(' . self::getPhotosCategories() . ')',
             ),
             'blogsRight' => array(
                 'order' => 't.publish DESC',
@@ -942,7 +962,20 @@ class Article extends CActiveRecord {
     }
 
     public static function getOpinionsCategories($array = false) {
-        $categories = array(8, 9, 21, 22);
+        $categories = array(8, 9);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+    public static function getOnlineProjectsCategories($array = false) {
+        $categories = array(21,22, 25, 24, 38);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+    
+    public static function getPhotosCategories($array = false) {
+        $categories = array(31,32,33,34);
         if ($array)
             return $categories;
         return implode(",", $categories);

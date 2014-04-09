@@ -8,7 +8,6 @@
 <aside>
     <div id="rontar_adplace_5711" style="margin-bottom: 10px;"></div>
     <script type="text/javascript"><!--
-
         (function(w, d, n) {
             var ri = {rontar_site_id: 1717, rontar_adplace_id: 5711, rontar_place_id: 'rontar_adplace_5711', adCode_rootUrl: 'http://adcode.rontar.com/'};
             w[n] = w[n] || [];

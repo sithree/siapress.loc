@@ -29,3 +29,9 @@ if ($this->beginCache("Officials", array('dependency' => array(
     $this->endCache();
 }
 ?>
+
+<?php
+for ($pollCount = 0; $pollCount < 4; $pollCount++) {
+    $this->widget('EPoll');
+}
+?>

@@ -79,7 +79,9 @@ class ArticleController extends Controller {
         $this->addMetaProperty('og:type', 'article');
         $this->addMetaProperty('og:description', $loadmodel['introtext']);
         $this->addMetaProperty('og:url', 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
-        (is_file('images/news/main/' . $loadmodel['id'] . '_item.jpg')) ? $this->addMetaProperty('og:image', 'http://' . $_SERVER['SERVER_NAME'] . '/images/news/main/' . $loadmodel['id'] . '_item.jpg') : '';
+
+
+        (is_file('images/news/main/' . $loadmodel['id'] . '_230x0@2x.jpg')) ? $this->addMetaProperty('og:image', 'http://' . $_SERVER['SERVER_NAME'] . '/images/news/main/' . $loadmodel['id'] . '_230x0@2x.jpg') : '';
         $this->addMetaProperty('og:site_name', Yii::app()->name);
 
         /* Подгружаем форму добавления комментария */
@@ -244,10 +246,20 @@ class ArticleController extends Controller {
         if ($category == false)
             $category = Article::model()->getNewscat();
 
-        if ($category == 'megapolis') {
-            $this->redirect('society');
-            Yii::app()->end();
+        switch ($category) {
+            case "opinions":
+                $category = Article::getOpinionsCategories(true);
+                break;
+            
+            case "online":
+                $category = Article::getOnlineProjectsCategories(true);
+                break;
+            
+            default:
+                break;
         }
+
+
         if ($category == "realty") {
             Yii::app()->clientScript->registerScriptFile('http://cs.etagi.com/account/ru/portal/utf8/46/');
         }
@@ -278,7 +290,7 @@ class ArticleController extends Controller {
             ));
             return;
         }
-        
+
         #CVarDumper::dump($_GET);
         $page = $_GET['page'];
         $criteria = new CDbCriteria();

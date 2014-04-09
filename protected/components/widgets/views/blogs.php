@@ -34,6 +34,6 @@
     </div>
     <div id="loadOpinions"></div>
     
-    <a id="moreOpinions" class="gray-light-button" href="/opinion">Больше мнений</a>
+    <a id="moreOpinions" class="gray-light-button" href="/opinions">Больше мнений</a>
 </div>
 
