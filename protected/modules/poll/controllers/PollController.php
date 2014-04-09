@@ -68,11 +68,10 @@ class PollController extends Controller {
      * @param integer $id the ID of the model to vote on
      */
     public function actionVote() {
-        $model = $this->loadModel($_POST['Poll']['id']);
         $vote = new PollVote;
 
         //if (!$model->userCanVote())
-            //$this->redirect(array('view', 'id' => $model->id));
+        //$this->redirect(array('view', 'id' => $model->id));
 
         if (isset($_POST['PollVote'])) {
             $vote->poll_id = $_POST['Poll']['id'];
@@ -80,10 +79,11 @@ class PollController extends Controller {
             $vote->key = (isset(Yii::app()->request->cookies['PHPSESSID']->value)) ?
                     Yii::app()->request->cookies['PHPSESSID']->value : NULL;
             if ($vote->save()) {
-                $cookie = new CHttpCookie('poll_' . $model->id, '1');
-                $cookie->expire = time() + 3600;
-                Yii::app()->request->cookies['poll_' . $model->id] = $cookie;
-                echo $this->renderPartial('results', array('model' => $model, 'userChoice' => $this->loadChoice($model, $vote->choice_id), 'userVote' => $vote));
+                $cookie = new CHttpCookie('poll_' . $vote->poll_id, '1');
+                $cookie->expire = time() + 172800;
+                Yii::app()->request->cookies['poll_' . $vote->poll_id] = $cookie;
+                $model = $this->loadModel($_POST['Poll']['id']);
+                echo $this->renderPartial('resultsAjax', array('model' => $model, 'userChoice' => $this->loadChoice($model, $vote->choice_id), 'userVote' => $vote));
             }
         }
         Yii::app()->end();
@@ -188,13 +188,20 @@ class PollController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $model = Poll::model()->findAll();
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'status='.Poll::STATUS_OPEN.' and article_id=0';
+        $count = Poll::model()->count($criteria);
+        $pages = new CPagination($count);
+        //$pages->route = 'poll/poll/index';
 
-        $this->pageTitle = 'Все опросы СИА-ПРЕСС';
-
+        // results per page
+        $pages->pageSize = 5;
+        $pages->applyLimit($criteria);
+        $models = Poll::model()->latest()->findAll($criteria);
 
         $this->render('index', array(
-            'model' => $model,
+            'models' => $models,
+            'pages' => $pages
         ));
     }
 

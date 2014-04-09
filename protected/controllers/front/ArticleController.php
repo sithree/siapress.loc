@@ -196,9 +196,9 @@ class ArticleController extends Controller {
 
         //Комментарии
         if (Yii::app()->user->checkAccess('administrator')) {
-            $comments = Comment::model()->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
+            $comments = Comment::model()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
         } else
-            $comments = Comment::model()->published()->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
+            $comments = Comment::model()->published()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
 
         Yii::app()->clientScript->registerScriptFile(
                 Yii::app()->assetManager->publish(

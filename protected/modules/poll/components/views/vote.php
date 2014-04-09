@@ -1,36 +1,37 @@
-<div class="widget gray-border-light main-news poll">
+<div class="portlet-decoration">
+    <div class="portlet-title"><?php echo $model->title; ?></div>
+</div>
+<div class="poll-content">
+    <div class="widget gray-border-light main-news poll">
 
-    <?php
-    $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'portlet-poll-form',
-        'enableAjaxValidation' => false,
-    ));
-    ?>
+        <?php
+        $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'portlet-poll-form',
+            'enableAjaxValidation' => false,
+        ));
+        ?>
 
 
-    <?php echo $form->errorSummary($model); ?>
+        <?php echo $form->errorSummary($model); ?>
 
-    <div class="vote">
-        <?php #echo $form->labelEx($userVote, 'choice_id'); ?>
-        <?php $template = '<div class="row-choice clearfix"><div class="form-radio">{input}</div><div class="form-label">{label}</div></div>'; ?>
-        <?php $template = '<div class="radio clearfix">
+        <div class="vote">
+            <?php $template = '<div class="radio clearfix">
                                 <i class="fa fa-circle-o votecircle"></i>
                                 <div class="poll_r">
                                 {input}
                                 {label}
                                 </div>
                             </div>'; ?>
-        <?php
-        //CVarDumper::dump($model, 10, true);
-        //die();
-        echo $form->hiddenField($model, 'id', array('style' => 'display:none'));        
-        echo $form->radioButtonList($userVote, 'choice_id', $choices, array(
-            'template' => $template,
-            'separator' => ''));
-        ?>
-        <?php echo $form->error($userVote, 'choice_id'); ?>
+            <?php
+            echo $form->hiddenField($model, 'id');
+            echo $form->radioButtonList($vote, 'choice_id', $choices, array(
+                'template' => $template,
+                'separator' => ''));
+            ?>
+            <?php echo $form->error($vote, 'choice_id'); ?>
+        </div>
+
+        <?php $this->endWidget(); ?>
+
     </div>
-
-    <?php $this->endWidget(); ?>
-
 </div>
