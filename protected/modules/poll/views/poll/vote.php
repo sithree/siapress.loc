@@ -1,19 +1,37 @@
-<?php
-$this->breadcrumbs=array(
-  'Polls'=>array('index'),
-  $model->title=>array('view','id'=>$model->id),
-);
+<div class="portlet-decoration">
+    <div class="portlet-title"><?php echo $model->title; ?></div>
+</div>
+<div class="poll-content">
+    <div class="widget gray-border-light main-news poll">
 
-$this->menu=array(
-  array('label'=>'List Polls', 'url'=>array('index')),
-  array('label'=>'Create Poll', 'url'=>array('create')),
-  array('label'=>'Update Poll', 'url'=>array('update', 'id'=>$model->id)),
-  array('label'=>'Export Poll', 'url'=>array('export', 'id'=>$model->id)),
-  array('label'=>'Delete Poll', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-  array('label'=>'Manage Polls', 'url'=>array('admin')),
-);
-?>
+        <?php
+        $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'portlet-poll-form',
+            'enableAjaxValidation' => false,
+        ));
+        ?>
 
-<h1><?php echo CHtml::encode($model->title) ?></h1>
 
-<?php echo $this->renderPartial('_vote', array('model'=>$model,'vote'=>$vote,'choices'=>$choices)); ?>
+        <?php echo $form->errorSummary($model); ?>
+
+        <div class="vote">
+            <?php $template = '<div class="radio clearfix">
+                                <i class="fa fa-circle-o votecircle"></i>
+                                <div class="poll_r">
+                                {input}
+                                {label}
+                                </div>
+                            </div>'; ?>
+            <?php
+            echo $form->hiddenField($model, 'id');
+            echo $form->radioButtonList($vote, 'choice_id', $choices, array(
+                'template' => $template,
+                'separator' => ''));
+            ?>
+            <?php echo $form->error($vote, 'choice_id'); ?>
+        </div>
+
+        <?php $this->endWidget(); ?>
+
+    </div>
+</div>

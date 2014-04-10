@@ -3,7 +3,6 @@ jQuery(function($) {
         $(this).find(".votecircle").addClass('fa-check-circle-o');
         $(this).find(".votecircle").removeClass('fa-circle-o');
     }, function() {
-
         $(this).find(".votecircle").addClass('fa-circle-o');
         $(this).find(".votecircle").removeClass('fa-check-circle-o');
     });
@@ -15,7 +14,6 @@ jQuery(function($) {
             type: "POST",
             cache: false,
             data: form.serialize(),
-            //contentType: 'text/html',
             success: function(html) { // вешаем свой обработчик на функцию success
                 form.parents('.portlet-content').html(html);
             }

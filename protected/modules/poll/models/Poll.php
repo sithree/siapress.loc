@@ -14,15 +14,9 @@
  * @property PollVote[] $votes
  */
 class Poll extends CActiveRecord {
-    /**
-     * @var integer representing a closed poll status
-     */
 
+    //Статус голосования
     const STATUS_CLOSED = 0;
-
-    /**
-     * @var integer representing an open poll status
-     */
     const STATUS_OPEN = 1;
 
     /**
@@ -45,7 +39,7 @@ class Poll extends CActiveRecord {
      */
     public function rules() {
         return array(
-            array('title', 'required'),
+            array('title, startDate, endDate', 'required'),
             array('status', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 255),
             array('description', 'safe'),
@@ -68,9 +62,14 @@ class Poll extends CActiveRecord {
      * @return array additional query scopes
      */
     public function scopes() {
+        $date = date('Y-m-d');
         return array(
             'open' => array(
-                'condition' => 'status=' . self::STATUS_OPEN . ' and article_id  = 0',
+                'condition' => 'status=' . self::STATUS_OPEN .
+                ' and article_id = 0 AND ((startDate IS NULL AND endDate IS NULL) OR' .
+                '(startDate IS NULL AND endDate > "'.$date.'") OR' .
+                '(startDate < "'.$date.'" AND endDate IS NULL) OR' .
+                '("'.$date.'" BETWEEN startDate AND endDate))'
             ),
             'closed' => array(
                 'condition' => 'status=' . self::STATUS_CLOSED,
@@ -140,6 +139,11 @@ class Poll extends CActiveRecord {
         if ($this->status == self::STATUS_CLOSED)
             return FALSE;
         if (isset(Yii::app()->request->cookies['poll_' . $this->id]->value))
+            return false;
+        $startDate = $this->startDate ? $this->startDate : '1970-01-02';
+        $endDate = $this->endDate ? $this->endDate : '2037-12-30';
+        
+        if(strtotime($startDate) > time() || strtotime($endDate) < time())
             return false;
 
         $key = (isset(Yii::app()->request->cookies['PHPSESSID']->value)) ?
