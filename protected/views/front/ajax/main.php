@@ -19,7 +19,7 @@
                     </h3>
                 </header>
                 <footer class="row clearfix">
-                    <div class="col-xs-8"><a href="/<?php echo $item->getCategoryAlias(); ?>"><?php echo $item->getCategoryName() ?></a>, <?php echo Helper::getFormattedtime($item->publish, false, true) ?></div>
+                    <div class="col-xs-8"><?php echo Helper::getFormattedtime($item->publish, false, true) ?></div>
                     <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> <?php echo $item->articleAdd->hits   ?> <a href="<?php echo $item->link(); ?>#comments" class="tocomments"><i class="fa fa-comment"></i> <?php echo count($item->comments);   ?></a></div>
                 </footer>
             </li>

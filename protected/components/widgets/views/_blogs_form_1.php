@@ -14,9 +14,9 @@
                 
             <h3><?php echo $model->title; ?></h3>
         </a>
-        <?php if (strlen($model->introtext) > 10): ?> 
-            <div class="blogfulltext"><?php echo $model->introtext ?></div>
-        <?php endif; ?>
+        <?php // if (strlen($model->introtext) > 10): ?> 
+            <div class="blogfulltext"><?php echo $model->quote ? $model->quote : $model->introtext ?></div>
+        <?php // endif; ?>
     </header>
     <footer>
         <div class="row">

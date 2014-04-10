@@ -1,12 +1,12 @@
 <div id="rontar_adplace_5712"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5712, rontar_place_id: 'rontar_adplace_5712', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5712, rontar_place_id: 'rontar_adplace_5712', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
@@ -29,13 +29,13 @@ if ($this->beginCache("TrueMainNews", array('dependency' => array(
 
 <div id="rontar_adplace_5719"></div>
 <script type="text/javascript"><!--
- 
-    (function (w, d, n) {
-        var ri = { rontar_site_id: 1717, rontar_adplace_id: 5719, rontar_place_id: 'rontar_adplace_5719', adCode_rootUrl: 'http://adcode.rontar.com/' };
+
+    (function(w, d, n) {
+        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5719, rontar_place_id: 'rontar_adplace_5719', adCode_rootUrl: 'http://adcode.rontar.com/'};
         w[n] = w[n] || [];
         w[n].push(
-            ri
-        );
+                ri
+                );
         var a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
@@ -50,15 +50,48 @@ if ($this->beginCache("TrueMainNews", array('dependency' => array(
 //if ($this->beginCache("OpinionsMain", array('dependency' => array(
 //                'class' => 'system.caching.dependencies.CExpressionDependency',
 //                'expression' => "Article::getCacheDependency('OpinionsMain')")))) {
-    ?>
-    <?php $this->widget('application.components.widgets.Blogs'); ?>
-    <?php
+    $this->widget('application.components.widgets.Blogs');
 //    $this->endCache();
 //}
 ?>
 
- <?php $this->widget('application.components.widgets.OnlineProjects'); ?>
- <?php $this->widget('application.components.widgets.Photos'); ?>
+<?php
+//if ($this->beginCache("OnlineProjects", array('dependency' => array(
+//                'class' => 'system.caching.dependencies.CExpressionDependency',
+//                'expression' => "Article::getCacheDependency('OnlineProjects')")))) {
+    $this->widget('application.components.widgets.OnlineProjects');
+//    $this->endCache();
+//}
+?>
+
+<?php
+//if ($this->beginCache("OldSurgut", array('dependency' => array(
+//                'class' => 'system.caching.dependencies.CExpressionDependency',
+//                'expression' => "Article::getCacheDependency('OldSurgut')")))) {
+    $this->widget('application.components.widgets.OldSurgut');
+//    $this->endCache();
+//}
+?>
+<?php
+//if ($this->beginCache("Photos", array('dependency' => array(
+//                'class' => 'system.caching.dependencies.CExpressionDependency',
+//                'expression' => "Article::getCacheDependency('Photos')")))) {
+    $this->widget('application.components.widgets.Photos');
+//    $this->endCache();
+//}
+?>
+<?php
+//if ($this->beginCache("SpecProjects", array('dependency' => array(
+//                'class' => 'system.caching.dependencies.CExpressionDependency',
+//                'expression' => "Article::getCacheDependency('SpecProjects')")))) {
+    $this->widget('application.components.widgets.SpecProjects');
+//    $this->endCache();
+//}
+?>
+
+<?php // $this->widget('application.components.widgets.OldSurgut'); ?>
+<?php // $this->widget('application.components.widgets.Photos'); ?>
+<?php // $this->widget('application.components.widgets.SpecProjects');  ?>
 
 <?php
 Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
@@ -74,7 +107,7 @@ Yii::app()->getClientScript()->registerScript('ajaxnewsbutton', "
 <?php // $this->widget('application.components.main.official');   ?>
 <?php // $this->widget('application.components.main.quest');   ?>
 <?php // include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');    ?>
-<?php // $this->widget('application.components.main.popular');    ?>
+<?php // $this->widget('application.components.main.popular');     ?>
 
 
 

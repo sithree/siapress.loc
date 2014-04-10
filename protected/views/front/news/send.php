@@ -1,4 +1,6 @@
-<h1 class="title entry-title">Отправить свою новость</h1>
+<h1 class="title entry-title">Связь с редакцией siapress.ru</h1>
+
+<h3 class="introtext entry-summary">Уважаемые читатели siapress.ru, на этой странице вы можете отправить нам свою новость, темы для опросов, а также адресовать редакции свои вопросы и предложения.</h3>
 <hr />
 <?php
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
@@ -8,8 +10,6 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
         ));
 ?>
 <div class="row" style="margin-bottom: 10px;">
-
-
     <?php // echo $form->errorSummary($model); ?>
     <?php if (Yii::app()->user->isGuest): ?>
         <div class="col-xs-6">

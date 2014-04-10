@@ -29,11 +29,18 @@ class ArticleCategories extends CActiveRecord {
         return '{{article_categories}}';
     }
 
+    public function defaultScope() {
+        return array(
+//            'condition' => 't.published = 1',
+            'order' => 'sort, `group`',
+        );
+    }
+
     public function scopes() {
         return array(
             'list' => array(
                 'order' => 'id',
-                'condition' => 'published = 1',
+//                'condition' => 'published = 1',
             ),
         );
     }
@@ -102,7 +109,7 @@ class ArticleCategories extends CActiveRecord {
     }
 
     public function getCategoryName($id) {
-        
+
         $model = $this->getFromCache();
 
         foreach ($model as $key => $value) {
@@ -121,7 +128,7 @@ class ArticleCategories extends CActiveRecord {
         }
         return false;
     }
-    
+
     public function getCategoryParent($id) {
         $model = $this->getFromCache();
 
@@ -131,17 +138,16 @@ class ArticleCategories extends CActiveRecord {
         }
         return false;
     }
+
     public function getCategoryParentAlias($id) {
         $model = $this->getFromCache();
 
         foreach ($model as $key => $value) {
             if ($value['id'] == $id)
-                return $this->getCategoryAlias ($value['parent']);
+                return $this->getCategoryAlias($value['parent']);
         }
         return false;
     }
-    
-    
 
     public function getFromCache() {
 
@@ -151,6 +157,25 @@ class ArticleCategories extends CActiveRecord {
             Yii::app()->cache->set('ArticleCategories', $model, 3600);
         }
         return $model;
+    }
+
+    public function getCategoryList() {
+        $model = $this->findAll();
+        $return = array();
+        $parent = array();
+        $group = '-';
+        $cahnge = 10;
+        foreach ($model as $m) {
+            if ($change != $m->group) {
+                $group .= '-';
+                $change = $m->group;
+            } 
+//            else {
+                $return[$group][$m->id] = $m->name;
+//            }
+        }
+//        CVarDumper::dumps($return, 15, true);
+        return $return;
     }
 
 }

@@ -128,7 +128,7 @@
                             'encodeLabel' => false,
                             'items' => array(
                                 array('label' => 'Мнения', 'url' => array('article/index', 'category' => 'opinions')),
-                                array('label' => 'О чем говорят', 'url' => array('article/index', 'category' => 'say')),
+//                                array('label' => 'О чем говорят', 'url' => array('article/index', 'category' => 'say')),
                                 array('label' => 'Онлайн-проекты', 'url' => array('article/index', 'category' => 'online'),
                                     'submenuOptions' => array('class' => 'dropdown-menu'),
                                     'linkOptions' => array('class' => 'dropdown-toggle'),
@@ -177,6 +177,7 @@
                                         array('label' => 'Авто', 'url' => array('article/index', 'category' => 'auto')),
                                         array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'realty')),
                                     )),
+                                array('label' => 'Люди', 'url' => array('article/index', 'category' => 'people')),
                                 array('label' => 'Компании', 'url' => array('article/index', 'category' => 'companies')),
                                 array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'realty')),
                             ),

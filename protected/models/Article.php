@@ -42,6 +42,7 @@ class Article extends CActiveRecord {
     public $_imgpath = 'images/news/main/';
     public $blogLimit = 16;
     public $theme_name;
+    public $quote;
 
     public function scopes() {
         return array(
@@ -66,6 +67,26 @@ class Article extends CActiveRecord {
                 ),
                 'limit' => 6,
                 'condition' => 't.published = 1 AND t.publish <= NOW() AND cat_id IN(' . self::getOnlineProjectsCategories() . ')',
+            ),
+            'oldSurgut' => array(
+                'order' => 't.publish DESC',
+                'with' => array('author0', 'articleAdd',
+                    'comments' => array(
+                        'scopes' => array('publishedComment')
+                    ),
+                ),
+                'limit' => 6,
+                'condition' => 't.published = 1 AND t.publish <= NOW() AND cat_id IN(' . self::getOldSurgutCategories() . ')',
+            ),
+            'specProjects' => array(
+                'order' => 't.publish DESC',
+                'with' => array('author0', 'articleAdd',
+                    'comments' => array(
+                        'scopes' => array('publishedComment')
+                    ),
+                ),
+                'limit' => 8,
+                'condition' => 't.published = 1 AND t.publish <= NOW() AND cat_id IN(' . self::getSpecialCategories() . ')',
             ),
             'photos' => array(
                 'order' => 't.publish DESC',
@@ -117,7 +138,7 @@ class Article extends CActiveRecord {
             array('title, cat_id, fulltext, author, created, modified, publish, type_id', 'required'),
             array('query, top, deleteImage, cat_id, published, author, modif_by, main, type_id, comment_on', 'numerical', 'integerOnly' => true),
             array('title, tags, author_alias, metakey, imgtitle, theme_name', 'length', 'max' => 255),
-            array('introtext, video, main_category', 'safe'),
+            array('introtext, video, main_category,quote', 'safe'),
             array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, jpeg, gif, png'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
@@ -173,6 +194,7 @@ class Article extends CActiveRecord {
             'query' => 'Задай вопрос АКТИВНА',
             'video' => 'Код ролика',
             'theme_name' => 'Тема',
+            'quote' => 'Цитата для главной',
         );
     }
 
@@ -886,12 +908,12 @@ class Article extends CActiveRecord {
 
         return Yii::app()->createUrl('article/view', array('category' => $catAlias, 'id' => $this->id));
 
-        if ($this->cat_id == 9)
-            return $absolute ? Yii::app()->createAbsoluteUrl('blogs/' . $this->id) : Yii::app()->createUrl('blogs/' . $this->id);
-        elseif ($this->cat_id == 8)
-            return $absolute ? Yii::app()->createAbsoluteUrl('opinion/' . $this->id) : Yii::app()->createUrl('opinion/' . $this->id);
-        else
-            return $absolute ? Yii::app()->createAbsoluteUrl('news/' . $this->getCategoryAlias($this->cat_id) . '/' . $this->id) : Yii::app()->createUrl('news/' . $this->getCategoryAlias($this->cat_id) . '/' . $this->id);
+//        if ($this->cat_id == 9)
+//            return $absolute ? Yii::app()->createAbsoluteUrl('blogs/' . $this->id) : Yii::app()->createUrl('blogs/' . $this->id);
+//        elseif ($this->cat_id == 8)
+//            return $absolute ? Yii::app()->createAbsoluteUrl('opinion/' . $this->id) : Yii::app()->createUrl('opinion/' . $this->id);
+//        else
+//            return $absolute ? Yii::app()->createAbsoluteUrl('news/' . $this->getCategoryAlias($this->cat_id) . '/' . $this->id) : Yii::app()->createUrl('news/' . $this->getCategoryAlias($this->cat_id) . '/' . $this->id);
     }
 
     public function blogs($limit = 10) {
@@ -940,7 +962,7 @@ class Article extends CActiveRecord {
     }
 
     public function getNewscat() {
-        return array(1, 2, 3, 4, 5, 6, 7, 15);
+        return array(1, 2, 3, 4, 5, 6, 7, 15, 20, 23);
     }
 
     public static function getMainNewsCategories($array = false) {
@@ -969,7 +991,7 @@ class Article extends CActiveRecord {
     }
 
     public static function getNewsCategories($array = false) {
-        $categories = array(39, 11);
+        $categories = array(39, 11, 20, 23);
         if ($array)
             return $categories;
         return implode(",", $categories);
@@ -981,20 +1003,24 @@ class Article extends CActiveRecord {
             return $categories;
         return implode(",", $categories);
     }
+
     public static function getSpecialCategories($array = false) {
         $categories = array(15, 37, 36, 19, 20);
         if ($array)
             return $categories;
         return implode(",", $categories);
     }
+
+    public static function getSpecProjectsCategories($array = false) {
+        return self::getSpecProjectsCategories($array);
+    }
+
     public static function getOldSurgutCategories($array = false) {
-        $categories = array(26,27,28,29,30,24);
+        $categories = array(26, 27, 28, 29, 30, 24);
         if ($array)
             return $categories;
         return implode(",", $categories);
     }
-    
-    
 
     public static function getPhotosCategories($array = false) {
         $categories = array(31, 32, 33, 34);
