@@ -10,15 +10,9 @@ if ($this->beginCache("MainNews", array('dependency' => array(
 }
 ?>
 
-<div class="row">
-    <div class="col-xs-6">
-        <a class="gray-button" href="/news">Больше новостей</a>
-    </div>
 
-    <div class="col-xs-6">
-        <a class="red-button" href="/news/send">Отправить новость</a>
-    </div>
-</div>
+        <a class="gray-button" href="/news">Больше новостей</a>
+
 <?php
 if ($this->beginCache("Officials", array('dependency' => array(
                 'class' => 'system.caching.dependencies.CExpressionDependency',

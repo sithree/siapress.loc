@@ -8,22 +8,10 @@
     </form>
 </div>
 
-<div>
-    <a class="red-button" href="#" id="radioLink">Слушать радио онлайн</a>
+<div class="margin-bottom">
+    <a class="red-button" href="/news/send">Обратная связь &nbsp;<i class="fa  fa-envelope"></i></a>
 </div>
 
-<script type="text/javascript">
-    jQuery(function($) {
-        $('#radioLink').on('click', function() {
-            var newWin = window.open("/site/radio",
-                    "radio",
-                    "width=420,height=230,resizable=no,scrollbars=no,status=no,menubar=no,toolbar=no,location=no,directories=no"
-                    );
-            newWin.focus();
-            return false;
-        });
-    });
-</script>
 
 <?php if ($this->id == "article" and $this->actionParams['category'] == "realty"): ?>
     <!-- etagi -->
@@ -45,6 +33,7 @@
         })(window, document, 'rontar_ads');
     //--></script>
     <!-- etagi -->
+    <br /><br />
     <?php
 endif;
 ?>
@@ -55,19 +44,19 @@ endif;
 <div id="rontar_adplace_5695"></div>
 <script type="text/javascript">
 
-    (function(w, d, n) {
-        var ri = {rontar_site_id: 1717, rontar_adplace_id: 5695, rontar_place_id: 'rontar_adplace_5695', adCode_rootUrl: 'http://adcode.rontar.com/'};
-        w[n] = w[n] || [];
-        w[n].push(
-                ri
-                );
-        var a = document.createElement('script');
-        a.type = 'text/javascript';
-        a.async = true;
-        a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
-        var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
-        b.parentNode.insertBefore(a, b);
-    })(window, document, 'rontar_ads');
+        (function(w, d, n) {
+            var ri = {rontar_site_id: 1717, rontar_adplace_id: 5695, rontar_place_id: 'rontar_adplace_5695', adCode_rootUrl: 'http://adcode.rontar.com/'};
+            w[n] = w[n] || [];
+            w[n].push(
+                    ri
+                    );
+            var a = document.createElement('script');
+            a.type = 'text/javascript';
+            a.async = true;
+            a.src = 'http://adcode.rontar.com/rontar2_async.js?rnd=' + Math.round(Math.random() * 100000);
+            var b = document.getElementById('rontar_adplace_' + ri.rontar_adplace_id);
+            b.parentNode.insertBefore(a, b);
+        })(window, document, 'rontar_ads');
 //</script>
 
 <!-- // C1 -->
@@ -95,6 +84,23 @@ endif;
 
 
 <?php $this->widget('application.components.widgets.quest'); ?>
+
+<div>
+    <a class="red-button" href="#" id="radioLink">Слушать радио онлайн</a>
+</div>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        $('#radioLink').on('click', function() {
+            var newWin = window.open("/site/radio",
+                    "radio",
+                    "width=420,height=230,resizable=no,scrollbars=no,status=no,menubar=no,toolbar=no,location=no,directories=no"
+                    );
+            newWin.focus();
+            return false;
+        });
+    });
+</script>
 
 <!-- C3 -->
 <div id="rontar_adplace_5693"></div>
@@ -188,7 +194,7 @@ if ($this->beginCache("popular", array('dependency' => array(
 ?>
 
 
-<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');            ?>
+<!-- LM -->   <?php #include($_SERVER['DOCUMENT_ROOT'] . '/_lm8ea8f138e7abf12fd3b69de62a906877/linkmoney.php');             ?>
 
 <!--<div class="widget gray-border-light main-news">
     <div class="header">
@@ -218,7 +224,7 @@ if ($this->beginCache("popular", array('dependency' => array(
 <!-- VK Widget -->
 <div id="vk_groups"></div>
 <script type="text/javascript">
-    VK.Widgets.Group("vk_groups", {mode: 0, width: "270", height: "250"}, 63451219);
+        VK.Widgets.Group("vk_groups", {mode: 0, width: "270", height: "250"}, 63451219);
 </script>
 
 

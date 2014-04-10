@@ -15,7 +15,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div class="span8">
         <?php echo $form->textFieldRow($model, 'title', array('class' => 'span12')); ?>
         <?php echo $form->textFieldRow($model, 'introtext', array('class' => 'span12')); ?>
-
+        <?php echo $form->textFieldRow($model, 'quote', array('class' => 'span12')); ?>
+        
         <?php echo $form->label($model, 'fulltext'); ?>
 
         <?php
@@ -32,7 +33,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         ));
         ?>
         <br />
-         <?php echo $form->label($model, 'theme_name'); ?>
+        <?php echo $form->label($model, 'theme_name'); ?>
         <?php
         $this->widget('CAutoComplete', array(
             'model' => $model,
@@ -52,7 +53,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     </div>
     <div class="span4">
 
-        <?php echo $form->dropDownListRow($model, 'cat_id', CHtml::listData(ArticleCategories::model()->list()->findAll(array('order' => 'name')), 'id', 'name'), array('class' => 'span12')); ?>
+        <?php echo $form->dropDownListRow($model, 'cat_id', ArticleCategories::model()->getCategoryList(), array('class' => 'span12')); ?>
         <?php echo $form->dropDownListRow($model, 'author', $model->getAuthorsArray(), array('class' => 'span12')); ?>
         <?php echo $form->textFieldRow($model, 'author_alias', array('class' => 'span12', 'maxlength' => 255)); ?>
 
