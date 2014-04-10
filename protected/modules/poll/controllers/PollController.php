@@ -27,7 +27,7 @@ class PollController extends Controller {
     public function accessRules() {
         return array(
             array('allow',
-                'actions' => array('index', 'view', 'vote'),
+                'actions' => array('index', 'view', 'vote', 'actual'),
                 'users' => array('*'),
             ),
             array('allow',
@@ -46,20 +46,85 @@ class PollController extends Controller {
      */
     public function actionView($id) {
         $model = $this->loadModel($id);
+        $userVote = $this->loadVote($model);
+        $userChoice = $this->loadChoice($model, $userVote->choice_id);
 
-        if (Yii::app()->getModule('poll')->forceVote && $model->userCanVote()) {
-            $this->redirect(array('vote', 'id' => $model->id));
-        } else {
-            $userVote = $this->loadVote($model);
-            $userChoice = $this->loadChoice($model, $userVote->choice_id);
+        $comment = new CommentForm();
 
-            $this->render('view', array(
-                'model' => $model,
-                'userVote' => $userVote,
-                'userChoice' => $userChoice,
-                'userCanCancel' => $model->userCanCancelVote($userVote),
-            ));
+        if (isset($_POST['ajax'])) {
+            echo CActiveForm::validate($comment);
+            Yii::app()->end();
         }
+        if (isset($_POST['CommentForm'])) {
+            $comment->attributes = $_POST['CommentForm'];
+            Yii::app()->request->cookies['pcomment_username'] = new CHttpCookie('pcomment_username', $comment->username);
+            $ct = new CHttpCookie($id . '_pcomment_text', $comment->text);
+            $ct->expire = time() + 60 * 60 * 24 * 7;
+            Yii::app()->request->cookies[$id . '_pcomment_text'] = $ct;
+
+            if ($comment->validate()) {
+                //Записываем имя в куки
+                $cookie = new CHttpCookie('pcomment_author', $comment->username);
+                $cookie->expire = time() + 60 * 60 * 24 * 5;
+                Yii::app()->request->cookies['pcomment_author'] = $cookie;
+
+
+
+                /* Добавляем комментарий */
+                $comm = new Comment;
+                $comm->text = $comment->text;
+                $comm->author_id = $comment->author_id;
+                $comm->name = $comment->username;
+                $comm->email = $comment->email;
+                $comm->ip = $_SERVER['REMOTE_ADDR'];
+                $comm->created = date('Y-m-d H:i:s');
+                $comm->published = Yii::app()->params->autopublishcomment;
+                $comm->object_type_id = 2;
+                $comm->object_id = $model->id;
+                $comm->parent = ($comment->parent) ? $comment->parent : 0;
+                $comm->save();
+                if ($comm->id > 0) {
+
+                    unset(Yii::app()->request->cookies[$id . '_pcomment_text']);
+
+                    $commadd = new CommentAdd;
+                    $commadd->comment_id = $comm->id;
+                    $commadd->save();
+                    Yii::app()->user->setFlash('info', 'Комментарий успешно добавлен.');
+
+                    $comment->text = '';
+                    $comment->capcha = '';
+
+                    Yii::app()->cache->flush();
+
+                    $this->refresh(true, '#' . $comm->id);
+                } else
+                    $this->refresh(true, '#addcomment');
+                Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
+            } else
+                Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
+            $this->refresh(true, '#addcomment');
+        }
+        
+        if (Yii::app()->user->checkAccess('administrator')) {
+            $comments = Comment::model()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $model->id . ' AND object_type_id = 2'));
+        } else
+            $comments = Comment::model()->published()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $model->id . ' AND object_type_id = 2'));
+
+        Yii::app()->clientScript->registerScriptFile(
+                Yii::app()->assetManager->publish(
+                        Yii::getPathOfAlias('webroot.scripts') . '/comments.js'
+                ), CClientScript::POS_END
+        );
+
+        $this->render('view', array(
+            'model' => $model,
+            'userVote' => $userVote,
+            'userChoice' => $userChoice,
+            'head' => 'h1',
+            'commentform' => $comment,
+            'comments' => $comments,
+        ));
     }
 
     /**
@@ -69,9 +134,6 @@ class PollController extends Controller {
      */
     public function actionVote() {
         $vote = new PollVote;
-
-        //if (!$model->userCanVote())
-        //$this->redirect(array('view', 'id' => $model->id));
 
         if (isset($_POST['PollVote'])) {
             $vote->poll_id = $_POST['Poll']['id'];
@@ -83,7 +145,7 @@ class PollController extends Controller {
                 $cookie->expire = time() + 172800;
                 Yii::app()->request->cookies['poll_' . $vote->poll_id] = $cookie;
                 $model = $this->loadModel($_POST['Poll']['id']);
-                echo $this->renderPartial('resultsAjax', array('model' => $model, 'userChoice' => $this->loadChoice($model, $vote->choice_id), 'userVote' => $vote));
+                $this->renderPartial('results', array('model' => $model, 'choicehoice' => $this->loadChoice($model, $vote->choice_id), 'vote' => $vote));
             }
         }
         Yii::app()->end();
@@ -193,21 +255,37 @@ class PollController extends Controller {
         $criteria->condition = 'status=' . Poll::STATUS_OPEN . ' and article_id=0';
         $count = Poll::model()->count($criteria);
         $pages = new CPagination($count);
-        //$pages->route = 'poll/poll/index';
-        // results per page
         $pages->pageSize = 5;
         $pages->applyLimit($criteria);
         $models = Poll::model()->latest()->findAll($criteria);
 
         $this->pageTitle = "Все опросы СИА-ПРЕСС";
         if ($pages->currentPage > 0) {
-            $this->pageTitle .= ". Страница " . (string)($pages->currentPage + 1);
+            $this->pageTitle .= ". Страница " . (string) ($pages->currentPage + 1);
         }
 
         $this->render('index', array(
             'models' => $models,
             'pages' => $pages
         ));
+    }
+
+    public function actionActual($id) {
+        $model = null;
+        if (strlen($id) == 0) {
+            $model = Poll::model()->open()->latest()->findAll();
+        } else {
+            $criteria = new CDbCriteria();
+            $criteria->condition = 'id=' . $this->poll_id . ' and status=' . poll::STATUS_OPEN;
+            $model = array(Poll::model()->find($criteria));
+        }
+        if (!$model) {
+            return;
+        }
+
+        foreach ($model as $poll) {
+            $this->renderPartial('view', array('model' => $poll, 'head' => 'portlet'));
+        }
     }
 
     /**

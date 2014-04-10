@@ -47,14 +47,9 @@ return array(
             ),
         ),
         'poll' => array(
-            // Force users to vote before seeing results
-            'forceVote' => TRUE,
             // Restrict anonymous votes by IP address,
             // otherwise it's tied only to user_id
-            'ipRestrict' => FALSE,
-            // Allow guests to cancel their votes
-            // if ipRestrict is enabled
-            'allowGuestCancel' => FALSE,
+            'ipRestrict' => FALSE
         ),
     ),
     // application components

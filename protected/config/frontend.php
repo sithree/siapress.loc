@@ -37,6 +37,7 @@ return CMap::mergeArray(
                         'authors' => 'users/index',
                         'click' => 'click/index',
                         'polls' => 'poll/poll/index',
+                        'polls/view' => 'poll/poll/view',
                         'online/pp/<city:\w+>' => 'site/pp',
                         'official/gazprom_sgt' => 'news/view/id/23533', #array('news/opinion/<id:22>'),
                         #'news' => 'news/index',

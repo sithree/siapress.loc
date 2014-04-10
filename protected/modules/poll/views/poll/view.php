@@ -1,47 +1,45 @@
 <?php
-$this->breadcrumbs=array(
-  'Polls'=>array('index'),
-  $model->title,
-);
-
-$this->menu=array(
-  array('label'=>'List Polls', 'url'=>array('index')),
-  array('label'=>'Create Poll', 'url'=>array('create')),
-  array('label'=>'Update Poll', 'url'=>array('update', 'id'=>$model->id)),
-  array('label'=>'Export Poll', 'url'=>array('export', 'id'=>$model->id)),
-  array('label'=>'Delete Poll', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-  array('label'=>'Manage Polls', 'url'=>array('admin')),
-);
-?>
-
-<h1><?php echo CHtml::encode($model->title); ?></h1>
-
-<?php if ($model->description): ?>
-<p class="description"><?php echo CHtml::encode($model->description); ?></p>
+/* @var $model Poll */
+/* @var $head string */
+$this->renderPartial($head, array('model' => $model));
+if ($model->userCanVote()) {
+    $choices = array();
+    foreach ($model->choices as $choice) {
+        $choices[$choice->id] = CHtml::encode($choice->label);
+    }
+    echo $this->renderPartial('vote', array('model' => $model, 'choices' => $choices, 'vote' => new PollVote()));
+} else {
+    echo $this->renderPartial('results', array('model' => $model));
+}?>
+<a id="comments"></a>
+<?php if (count($comments) > 0): ?>
+    <div style="margin-bottom: 15px; font-size:14px; font-weight: bold;">Комментарии:</div>
+<?php else: ?>
+    <div style="margin-bottom: 15px; font-size:14px; font-weight: bold;">Комментариев пока нет.</div>
 <?php endif; ?>
 
-<?php $this->renderPartial('_results', array('model' => $model)); ?>
 
-<?php if ($userVote->id): ?>
-  <p id="pollvote-<?php echo $userVote->id ?>">
-    You voted: <strong><?php echo $userChoice->label ?></strong>.<br />
+<?php
+if (count($comments) > 0) {
+    $this->renderPartial('application.views.front.comments.comments', array(
+        'comments' => $comments,
+    ));
+}
+?>
+<hr />
+<!-- Форма добавления комментария -->
+<?php if (isset($commentform)): ?>
+    <a id="addcomment"></a>
     <?php
-      if ($userCanCancel) {
-        echo CHtml::ajaxLink(
-          'Cancel Vote',
-          array('/poll/pollvote/delete', 'id' => $userVote->id, 'ajax' => TRUE),
-          array(
-            'type' => 'POST',
-            'success' => 'js:function(){window.location.reload();}',
-          ),
-          array(
-            'class' => 'cancel-vote',
-            'confirm' => 'Are you sure you want to cancel your vote?'
-          )
-        );
-      }
-    ?>
-  </p>
-<?php else: ?>
-  <p><?php echo CHtml::link('Vote', array('/poll/poll/vote', 'id' => $model->id)); ?></p>
+    $this->renderPartial('application.views.front.comments._form', array(
+        'commentform' => $commentform,
+        'model' => $model
+    ));
+else:
+    if (empty($model['comment_ban'])):
+        ?>
+        <h3>Комментарии закрыты.</h3>
+    <?php else: ?>
+        <h3><?php echo $model['comment_ban'] ?></h3>
+    <?php endif; ?>
 <?php endif; ?>

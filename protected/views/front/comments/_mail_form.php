@@ -1,3 +1,6 @@
+<?php
+/* @var $model Comment */
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -5,8 +8,8 @@
         <title>Добавлен новый комментарий</title>
     </head>
     <body>
-        <p><strong><?php echo $model->article->cat_id == 9 ? 'Блог' : 'Новость' ?>:</strong>
-            <a href="<?php echo $model->article->link(true); ?>"><?php echo $model->article->title ?></a><br />
+        <p><strong><?php echo $model->object_type_id == 2 ? 'Опрос' : ($model->article->cat_id == 9 ? 'Блог' : 'Новость') ?>:</strong>
+            <a href="<?php echo $model->object_type_id == 2 ? 'http://siapress.loc/polls/view?id='.$model->poll->id : $model->article->link(true); ?>"><?php echo $model->object_type_id == 2 ? $model->poll->title : $model->article->title ?></a><br />
             <strong>Состояние:</strong> <?php echo $model->published == 1 ? 'Опубликовано' : 'Ожидает модерации'; ?><br />
             <strong>Дата:</strong> <?php echo Helper::getFormattedtime($model->created) ?><br />
             <strong>ip:</strong> <?php echo $model->ip; ?>

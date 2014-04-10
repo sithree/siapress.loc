@@ -86,7 +86,7 @@ else :
 
             <?php else: ?>
 <!--                <div class="col-xs-2">
-                    <img src="<?php echo Users::model()->getAvatarFilename(50, false, Yii::app()->user->id); ?>" alt="" />
+                    <img src="<?php //echo Users::model()->getAvatarFilename(50, false, Yii::app()->user->id); ?>" alt="" />
                 </div>-->
                 <div class="col-xs-12">
                     <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$model->id . '_comment_text']->value)); ?>

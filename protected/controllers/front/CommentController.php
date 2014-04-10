@@ -27,8 +27,11 @@ class CommentController extends Controller {
 
         $comment = Comment::model()->find("id = {$id} AND `token` = '{$token}'");
         if ($comment) {
-
-
+            $link = null;
+            if ($comment->object_type_id == 2)
+                $link = $this->createAbsoluteUrl('polls/view').'?id='.$comment->poll->id. '#comment-' . $id;
+            else
+                $link = $this->redirect($comment->article->link() . '#comment-' . $id);
             switch ($action) {
                 case "rules":
                     $comment->published = 1;
@@ -42,8 +45,7 @@ class CommentController extends Controller {
                         ));
                         Yii::app()->end();
                     }
-
-                    $this->redirect($comment->article->link() . '#comment-' . $id);
+                    $this->redirect($link);
 
                     break;
                 case "author":
@@ -60,7 +62,7 @@ class CommentController extends Controller {
                         Yii::app()->end();
                     }
 
-                    $this->redirect($comment->article->link() . '#comment-' . $id);
+                    $this->redirect($link);
 
                     break;
                 case "theme":
@@ -77,7 +79,7 @@ class CommentController extends Controller {
                         Yii::app()->end();
                     }
 
-                    $this->redirect($comment->article->link() . '#comment-' . $id);
+                    $this->redirect($link);
 
                     break;
                 case "delete":
@@ -92,7 +94,7 @@ class CommentController extends Controller {
                         ));
                         Yii::app()->end();
                     }
-                    $this->redirect($comment->article->link() . '#comment-' . $id);
+                    $this->redirect($link);
 
                     break;
                 case "publish":
@@ -108,7 +110,7 @@ class CommentController extends Controller {
                         ));
                         Yii::app()->end();
                     }
-                    $this->redirect($comment->article->link() . '#comment-' . $id);
+                    $this->redirect($link);
 
                     break;
                 default:

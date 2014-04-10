@@ -2,16 +2,7 @@
 <hr />
 <?php
 foreach ($models as $poll) {
-    if (Yii::app()->getModule('poll')->forceVote && $poll->userCanVote()) {
-        $choices = array();
-        foreach ($poll->choices as $choice) {
-            $choices[$choice->id] = CHtml::encode($choice->label);
-        }
-        echo $this->renderPartial('vote', array('model' => $poll, 'choices' => $choices, 'vote' => new PollVote()));
-    } else
-    {
-        echo $this->renderPartial('results', array('model' => $poll));
-    }
+    $this->renderPartial('view', array('model' => $poll, 'head' => 'portlet'));
 } ?>
 <hr />
 <div class="pagination ">

@@ -1,9 +1,5 @@
-<div class="portlet-decoration">
-    <div class="portlet-title"><?php echo $model->title; ?></div>
-</div>
 <div class="poll-content">
     <div class="widget gray-border-light main-news poll">
-
         <?php
         $form = $this->beginWidget('CActiveForm', array(
             'id' => 'portlet-poll-form',
@@ -32,6 +28,5 @@
         </div>
 
         <?php $this->endWidget(); ?>
-
     </div>
 </div>

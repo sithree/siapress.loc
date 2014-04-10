@@ -44,7 +44,6 @@ class Comment extends CActiveRecord {
     public function defaultScope() {
         return array(
 //            'order' => 'comment.created ASC',
-         
         );
     }
 
@@ -88,6 +87,7 @@ class Comment extends CActiveRecord {
         return array(
             'author' => array(self::BELONGS_TO, 'Users', 'author_id'),
             'article' => array(self::BELONGS_TO, 'Article', 'object_id'),
+            'poll' => array(self::BELONGS_TO, 'Poll', 'object_id'),
             'objectType' => array(self::BELONGS_TO, 'ObjectTypes', 'object_type_id'),
             'commentAdd' => array(self::HAS_ONE, 'CommentAdd', 'comment_id'),
         );
@@ -338,7 +338,7 @@ class Comment extends CActiveRecord {
 
         if ($page)
             $limit = $page * $limit - $limit . ', ' . $limit;
-/*a.cat_id IN ($cat) AND */
+        /* a.cat_id IN ($cat) AND */
         if ($data === false) {
             $query = "SELECT c.id as cid,c.parent, c.text, c.`name`,c.created, c.author_id, a.id, a.cat_id, u.id as uid, u.`name` as username, u.username as login,
                 a.title, a.cat_id

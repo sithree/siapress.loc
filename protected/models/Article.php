@@ -138,7 +138,7 @@ class Article extends CActiveRecord {
             'category' => array(self::BELONGS_TO, 'ArticleCategories', 'cat_id'),
             'author0' => array(self::BELONGS_TO, 'Users', 'author'),
             'author' => array(self::BELONGS_TO, 'Users', 'author'),
-            'comments' => array(self::HAS_MANY, 'Comment', 'object_id'),
+            'comments' => array(self::HAS_MANY, 'Comment', 'object_id', 'condition' => 'object_type_id = 2'),
             'videoPositions' => array(self::HAS_MANY, 'ArticleVideo', 'article'),
         );
     }
