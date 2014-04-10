@@ -887,6 +887,16 @@ hr {
     text-transform: uppercase;
 }
 
+.portlet-title a{
+    line-height: 115%;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+    
 .poll {
     padding-bottom: 5px;
 }
