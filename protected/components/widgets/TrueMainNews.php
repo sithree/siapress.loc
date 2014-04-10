@@ -6,7 +6,7 @@ class TrueMainnews extends CPortlet {
     #public $title = 'Blogs';
 
     protected function renderContent() {
-        $categories = Article::getMainNewsCategories();
+        $categories = Article::getNewsCategories();
 
 
         $criteria = new CDbCriteria;

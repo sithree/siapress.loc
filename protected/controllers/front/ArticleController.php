@@ -249,12 +249,31 @@ class ArticleController extends Controller {
         switch ($category) {
             case "opinions":
                 $category = Article::getOpinionsCategories(true);
+                $this->pageTitle = "Все мнения на портале СИА-ПРЕСС";
                 break;
-            
+
             case "online":
                 $category = Article::getOnlineProjectsCategories(true);
+                $this->pageTitle = "Все онлайн-проекты СИА-ПРЕСС";
                 break;
-            
+
+            case "news":
+                $this->pageTitle = "Все новости Сургута и Югры на СИА-ПРЕСС";
+                $category = Article::getNewsCategories(true);
+                break;
+            case "photos":
+                $this->pageTitle = "Все фото-проекты портала СИА-ПРЕСС";
+                $category = Article::getPhotosCategories(true);
+                break;
+            case "special":
+                $this->pageTitle = "Все спецпроекты портала СИА-ПРЕСС";
+                $category = Article::getSpecialCategories(true);
+                break;
+            case "oldsurgut":
+                $this->pageTitle = "Старый Сургут";
+                $category = Article::getOldSurgutCategories(true);
+                break;
+
             default:
                 break;
         }
@@ -296,13 +315,18 @@ class ArticleController extends Controller {
         $criteria = new CDbCriteria();
         $count = Article::model()->getCountitems($category);
 
+//        CVarDumper::dump($count);
+//        die();
         $pages = new CPagination($count);
         // элементов на страницу
         $pages->pageSize = Config::getOnpage();
+        if ($pages->currentPage > 0) {
+            $this->pageTitle .= ". Страница " . (string) ($pages->currentPage + 1);
+        }
 //        $pages->route = 'news/all';
         #$pages->applyLimit($criteria);
 
-        $data = Article::model()->getItems(Article::model()->getNewscat(), Config::getOnpage(), $page);
+        $data = Article::model()->getItems($category, Config::getOnpage(), $page);
         $this->render('index', array(
             'dataProvider' => $data,
             'pages' => $pages,

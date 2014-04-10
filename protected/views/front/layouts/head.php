@@ -127,7 +127,7 @@
                         $this->widget('zii.widgets.CMenu', array(
                             'encodeLabel' => false,
                             'items' => array(
-                                array('label' => 'Мнения', 'url' => array('article/index', 'category' => 'opinion')),
+                                array('label' => 'Мнения', 'url' => array('article/index', 'category' => 'opinions')),
                                 array('label' => 'О чем говорят', 'url' => array('article/index', 'category' => 'say')),
                                 array('label' => 'Онлайн-проекты', 'url' => array('article/index', 'category' => 'online'),
                                     'submenuOptions' => array('class' => 'dropdown-menu'),
@@ -136,7 +136,8 @@
                                     'activateItems' => false,
                                     'items' => array(
                                         array('label' => 'О чем говорят', 'url' => array('article/index', 'category' => 'say')),
-                                        array('label' => 'Онлайн-конференции', 'url' => array('article/index', 'category' => 'query')),
+                                        array('label' => 'Онлайн-конференции', 'url' => array('article/index', 'category' => 'conference')),
+                                        array('label' => 'Задай вопрос', 'url' => array('article/index', 'category' => 'query')),
                                         array('label' => 'Сургутские старости', 'url' => array('article/index', 'category' => 'starosti')),
                                         array('label' => 'Особое мнение', 'url' => array('article/index', 'category' => 'specopinion')),
                                     )),
@@ -153,7 +154,7 @@
                                         array('label' => 'Очерки', 'url' => array('article/index', 'category' => 'ocherki')),
                                         array('label' => 'Цифирь', 'url' => array('article/index', 'category' => 'cifir')),
                                     )),
-                                array('label' => 'Фото', 'url' => array('article/index', 'category' => 'photo'),
+                                array('label' => 'Фото', 'url' => array('article/index', 'category' => 'photos'),
                                     'submenuOptions' => array('class' => 'dropdown-menu'),
                                     'linkOptions' => array('class' => 'dropdown-toggle'),
                                     'activateParents' => true,
@@ -174,7 +175,7 @@
                                         array('label' => 'Потребитель', 'url' => array('article/index', 'category' => 'potrebitel')),
                                         array('label' => 'Огород', 'url' => array('article/index', 'category' => 'ogorod')),
                                         array('label' => 'Авто', 'url' => array('article/index', 'category' => 'auto')),
-                                        array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'relt')),
+                                        array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'realty')),
                                     )),
                                 array('label' => 'Компании', 'url' => array('article/index', 'category' => 'companies')),
                                 array('label' => 'Недвижимость', 'url' => array('article/index', 'category' => 'realty')),

@@ -1,7 +1,5 @@
 <?php
 
-
-
 return CMap::mergeArray(
                 require_once(dirname(__FILE__) . '/main.php'), array(
             // application components
@@ -20,7 +18,7 @@ return CMap::mergeArray(
 //                    'curlConnectionTimeOut' => 10, //def:10, see curl_setopt() doc
 //                    'appVersion' => 1.1 //if set, it will be appended to the urls of the merged scripts/css
 //                ),
-                
+
                 'urlManager' => array(
                     'urlFormat' => 'path',
                     'showScriptName' => false,
@@ -49,17 +47,15 @@ return CMap::mergeArray(
                         'themes/<id:\d+>' => 'themes/index',
                         'poll/<controller:\w+>' => 'poll/<controller>',
                         'poll/<controller:\w+>/<action:\w+>' => 'poll/<controller>/<action>',
-                        
-                        'news/all' => 'article/index',
+//                        'online' => array('article/index', array('category' => 'online')),
 //                        'news/all/<page>/<id:\d+>' => 'article/index',
                         '<category:\w+>/<id:\d+>' => 'article/view',
                         '<category:\w+>' => 'article/index',
-                        
+                        'news/all' => 'article/index',
                         // ---
                         'news/send' => 'news/send',
                         'news/sended' => 'news/sended',
                         'ajax/likearticle' => 'ajax/likearticle',
-                        
                         '<category:\w+>/item/<id>' => 'old/view',
 //                        'news/<category:\w+>' => 'article/index',
 //                        'news/<category:\w+>/<id:\d+>' => 'news/view',

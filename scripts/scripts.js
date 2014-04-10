@@ -15,7 +15,7 @@ jQuery(function($) {
             cache: false,
             data: form.serialize(),
             success: function(html) { // вешаем свой обработчик на функцию success
-                form.parents('.portlet-content').html(html);
+                form.parents('.poll-content').html(html);
             }
         });
         return false;

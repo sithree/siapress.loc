@@ -1,6 +1,6 @@
 <div class="widget no-padding" id="opinion">
     <div class="header">
-        <h2><a href="/opinion">Мнения</a></h2>
+        <h2><a href="/opinions">Мнения</a></h2>
     </div>
     <div class="row">
         <div class="col-xs-6">

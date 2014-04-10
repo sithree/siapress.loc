@@ -8,7 +8,7 @@ class MainNews extends CPortlet {
 
     protected function renderContent() {
 
-        $categories = Article::getMainNewsCategories();
+        $categories = Article::getNewsCategories();
         $criteria = new CDbCriteria;
 
         $criteria->addCondition('t.cat_id IN(' . $categories . ')');

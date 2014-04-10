@@ -52,7 +52,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     </div>
     <div class="span4">
 
-        <?php echo $form->dropDownListRow($model, 'cat_id', CHtml::listData(ArticleCategories::model()->list()->findAll(), 'id', 'name'), array('class' => 'span12')); ?>
+        <?php echo $form->dropDownListRow($model, 'cat_id', CHtml::listData(ArticleCategories::model()->list()->findAll(array('order' => 'name')), 'id', 'name'), array('class' => 'span12')); ?>
         <?php echo $form->dropDownListRow($model, 'author', $model->getAuthorsArray(), array('class' => 'span12')); ?>
         <?php echo $form->textFieldRow($model, 'author_alias', array('class' => 'span12', 'maxlength' => 255)); ?>
 

@@ -31,7 +31,9 @@ if ($this->beginCache("Officials", array('dependency' => array(
 ?>
 
 <?php
-for ($pollCount = 0; $pollCount < 4; $pollCount++) {
+
     $this->widget('EPoll');
-}
+
 ?>
+
+<a href="/polls" class="gray-light-button">Больше опросов</a>

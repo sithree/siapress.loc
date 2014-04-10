@@ -3,11 +3,14 @@ $this->breadcrumbs = array(
     'Articles',
 );
 
-$this->setPageTitle($category['fullname']);
+if ($category['fullname'])
+    $this->setPageTitle($category['fullname']);
 ?>
-
-<h2 class="headtitle"><?php echo!empty($dataProvider) ? $category['fullname'] : "Пока нет записей в этой категории" ?></h2>
-
+<?php if (empty($dataProvider)): ?>
+    <h2 class="headtitle">Пока нет записей в этой категории</h2>
+<?php else: ?>
+    <h2 class="headtitle"><?php echo $category['fullname'] ? $category['fullname'] : $this->pageTitle ?></h2>
+<?php endif; ?>
 <?php
 if (!empty($mainNews)) {
     $item = $mainNews;
@@ -20,20 +23,20 @@ if (!empty($mainNews)) {
         if ($image): $span = true;
             ?>
             <div class="col-xs-5">
-                <?php echo CHtml::link($image, array($category['alias'] . '/' . $item['id'])); ?>
+            <?php echo CHtml::link($image, array($category['alias'] . '/' . $item['id'])); ?>
             </div>
-        <?php elseif ($item['cat_id'] == 9): ?>
+            <?php elseif ($item['cat_id'] == 9): ?>
             <div class="col-xs-5">
-                <?php echo CHtml::link($image, array($category['alias'] . '/' . $item['id'])); ?>
+            <?php echo CHtml::link($image, array($category['alias'] . '/' . $item['id'])); ?>
             </div>
-        <?php endif; ?>
+    <?php endif; ?>
         <div class="<?php echo 'col-xs-' . ($span ? "7" : "12") ?>">
             <h2><?php echo CHtml::link($item['title'] . '<br />', array($category['alias'] . '/' . $item['id'])); ?>
 
             </h2>
             <p><?php echo $item['introtext']; ?></p>
             <footer class="fbottom clearfix">
-                <div class="col-xs-8"><?php // echo $item->author_alias ? $item->author_alias : $item->author0->name           ?>
+                <div class="col-xs-8"><?php // echo $item->author_alias ? $item->author_alias : $item->author0->name            ?>
                     <nobr><span class="nowrap"><?php echo Helper::getFormattedtime($item['created'], false, true); ?></span></nobr>
                 </div>
                 <div class="col-xs-4 a-right">

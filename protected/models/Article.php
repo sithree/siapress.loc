@@ -967,15 +967,37 @@ class Article extends CActiveRecord {
             return $categories;
         return implode(",", $categories);
     }
+
+    public static function getNewsCategories($array = false) {
+        $categories = array(39, 11);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+
     public static function getOnlineProjectsCategories($array = false) {
-        $categories = array(21,22, 25, 24, 38);
+        $categories = array(21, 22, 25, 24, 38);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+    public static function getSpecialCategories($array = false) {
+        $categories = array(15, 37, 36, 19, 20);
+        if ($array)
+            return $categories;
+        return implode(",", $categories);
+    }
+    public static function getOldSurgutCategories($array = false) {
+        $categories = array(26,27,28,29,30,24);
         if ($array)
             return $categories;
         return implode(",", $categories);
     }
     
+    
+
     public static function getPhotosCategories($array = false) {
-        $categories = array(31,32,33,34);
+        $categories = array(31, 32, 33, 34);
         if ($array)
             return $categories;
         return implode(",", $categories);

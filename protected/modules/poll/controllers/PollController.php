@@ -188,16 +188,21 @@ class PollController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
+
         $criteria = new CDbCriteria();
-        $criteria->condition = 'status='.Poll::STATUS_OPEN.' and article_id=0';
+        $criteria->condition = 'status=' . Poll::STATUS_OPEN . ' and article_id=0';
         $count = Poll::model()->count($criteria);
         $pages = new CPagination($count);
         //$pages->route = 'poll/poll/index';
-
         // results per page
         $pages->pageSize = 5;
         $pages->applyLimit($criteria);
         $models = Poll::model()->latest()->findAll($criteria);
+
+        $this->pageTitle = "Все опросы СИА-ПРЕСС";
+        if ($pages->currentPage > 0) {
+            $this->pageTitle .= ". Страница " . (string)($pages->currentPage + 1);
+        }
 
         $this->render('index', array(
             'models' => $models,

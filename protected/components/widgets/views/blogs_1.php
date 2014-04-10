@@ -1,6 +1,6 @@
 <div class="widget no-padding" id="opinion">
     <div class="header">
-        <h2><a href="<?php echo Yii::app()->createUrl('/news/opinion'); ?>">Мнения</a></h2>
+        <h2><a href="<?php echo Yii::app()->createUrl('/opinions'); ?>">Мнения</a></h2>
     </div>
 
     <?php
@@ -12,6 +12,6 @@
     ?>
     <div id="loadOpinions"></div>
     
-    <a id="moreOpinions" class="gray-light-button" href="/online">Больше онлайн-проектов</a>
+    <a id="moreOpinions" class="gray-light-button" href="/opinions">Больше мнений</a>
     
 </div>

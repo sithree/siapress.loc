@@ -49,7 +49,7 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
             <?php if ($image): ?>
                 <div class="col-xs-3">
                     <div class="img_container">
-                        <?php echo CHtml::link($image, array($category['alias'] . '/' . $item['id'])); ?>
+                        <?php echo CHtml::link($image, array(ArticleCategories::model()->getCategoryAlias($item['cat_id']) . '/' . $item['id'])); ?>
                     </div>
                 </div>
             <?php else: ?>
@@ -60,7 +60,7 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
                         ?>
                         <div class="col-xs-3">
                             <div class="img_container">
-                                <?php echo CHtml::link('<img src="images/users/blog/' . $item['author'] . '.jpg" alt="Блог" />', array('news/' . $category['alias'] . '/' . $item['id'])); ?>
+                                <?php echo CHtml::link('<img src="images/users/blog/' . $item['author'] . '.jpg" alt="Блог" />', array(ArticleCategories::model()->getCategoryAlias($item['cat_id']) . '/' . $item['id'])); ?>
                             </div>
                         </div>
                         <?php
@@ -69,7 +69,7 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
                 ?>
             <?php endif; ?>
             <div class="col-xs-<?php echo ($image or is_file('images/users/blog/' . $item['author'] . '.jpg')) ? 9 : 12 ?>">
-                <h2><?php echo CHtml::link($item['title'] . '<br />', array('news/' . $item['id'])); ?></h2>
+                <h2><?php echo CHtml::link($item['title'] . '<br />', array(ArticleCategories::model()->getCategoryAlias($item['cat_id']) . '/' . $item['id'])); ?></h2>
                 <p><?php echo $item['introtext']; ?></p>
 
             </div>
@@ -77,7 +77,7 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
         </div>
         <footer class="row fbottom clearfix">
 
-            <div class="col-xs-8"><?php // echo $item->author_alias ? $item->author_alias : $item->author0->name          ?>
+            <div class="col-xs-8"><?php // echo $item->author_alias ? $item->author_alias : $item->author0->name           ?>
                 <nobr><span class="nowrap"><?php echo Helper::getFormattedtime($item['created'], false, true); ?></span></nobr>
             </div>
             <div class="col-xs-4 a-right">
