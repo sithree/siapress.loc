@@ -122,6 +122,7 @@ class PollController extends Controller {
             'userVote' => $userVote,
             'userChoice' => $userChoice,
             'head' => 'h1',
+            'comment' => true,
             'commentform' => $comment,
             'comments' => $comments,
         ));
