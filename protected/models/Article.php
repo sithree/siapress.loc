@@ -137,7 +137,7 @@ class Article extends CActiveRecord {
         return array(
             array('title, cat_id, fulltext, author, created, modified, publish, type_id', 'required'),
             array('query, top, deleteImage, cat_id, published, author, modif_by, main, type_id, comment_on', 'numerical', 'integerOnly' => true),
-            array('title, tags, author_alias, metakey, imgtitle, theme_name', 'length', 'max' => 255),
+            array('title, tags, author_alias, metakey, imgtitle, theme_name, group', 'length', 'max' => 255),
             array('introtext, video, main_category,quote', 'safe'),
             array('image', 'file', 'allowEmpty' => true, 'types' => 'jpg, jpeg, gif, png'),
             // The following rule is used by search().

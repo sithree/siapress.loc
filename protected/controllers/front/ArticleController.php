@@ -84,78 +84,6 @@ class ArticleController extends Controller {
         (is_file('images/news/main/' . $loadmodel['id'] . '_230x0@2x.jpg')) ? $this->addMetaProperty('og:image', 'http://' . $_SERVER['SERVER_NAME'] . '/images/news/main/' . $loadmodel['id'] . '_230x0@2x.jpg') : '';
         $this->addMetaProperty('og:site_name', Yii::app()->name);
 
-        /* Подгружаем форму добавления комментария */
-        if ($loadmodel['comment_on'] == 1 AND Yii::app()->params->comments == true) {
-
-            $comment = new CommentForm();
-
-            if (isset($_POST['ajax'])) {
-                echo CActiveForm::validate($comment);
-                Yii::app()->end();
-            }
-            if (isset($_POST['CommentForm'])) {
-                $comment->attributes = $_POST['CommentForm'];
-                #CVarDumper::dump($comment->attributes);
-                //Записываем в куки дабы не потерять текст коммента
-                Yii::app()->request->cookies['comment_username'] = new CHttpCookie('comment_username', $comment->username);
-                $ct = new CHttpCookie($id . '_comment_text', $comment->text);
-                $ct->expire = time() + 60 * 60 * 24 * 7;
-                Yii::app()->request->cookies[$id . '_comment_text'] = $ct;
-                Yii::app()->request->cookies[$id . '_comment_capcha'] = new CHttpCookie($id . '_comment_capcha', $comment->capcha);
-
-
-                if ($comment->validate()) {
-
-                    //Записываем имя в куки
-                    $cookie = new CHttpCookie('comment_author', $comment->username);
-                    $cookie->expire = time() + 60 * 60 * 24 * 5;
-                    Yii::app()->request->cookies['comment_author'] = $cookie;
-
-
-
-                    /* Добавляем комментарий */
-                    $comm = new Comment;
-                    $comm->text = $comment->text;
-                    $comm->author_id = $comment->author_id;
-                    $comm->name = $comment->username;
-                    $comm->email = $comment->email;
-                    $comm->ip = $_SERVER['REMOTE_ADDR'];
-                    $comm->created = date('Y-m-d H:i:s');
-                    $comm->published = Yii::app()->params->autopublishcomment;
-                    $comm->object_type_id = 1;
-                    $comm->object_id = $loadmodel['id'];
-                    $comm->parent = ($comment->parent) ? $comment->parent : 0;
-                    #CVarDumper::dump($comm);
-                    $comm->save();
-                    if ($comm->id > 0) {
-
-                        unset(Yii::app()->request->cookies[$id . '_comment_text']);
-
-                        $commadd = new CommentAdd;
-                        $commadd->comment_id = $comm->id;
-                        $commadd->save();
-                        Yii::app()->user->setFlash('info', 'Комментарий успешно добавлен.');
-
-                        $comment->text = '';
-                        $comment->capcha = '';
-
-                        Yii::app()->cache->flush();
-
-                        $modif = Modified::model()->findByPk(1);
-                        $modif->date = date('Y-m-d H:i:s');
-                        $modif->save();
-
-                        $this->refresh(true, '#' . $comm->id);
-                    } else
-                        $this->refresh(true, '#addcomment');
-                    Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
-                } else
-                    Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
-                $this->refresh(true, '#addcomment');
-            }
-        } else
-            $comment = false;
-
 
 //        $loadmodel = Yii::app()->cache->get('news_' . $id);
 //        if ($loadmodel === false) {
@@ -187,37 +115,14 @@ class ArticleController extends Controller {
 //        } else
 //            Yii::trace('Просмотр новости. Берем из кеша.');
 
-
-
-
-
-
-
-
-        /* end.Подгружаем форму добавления комментария */
-
-        //Комментарии
-        if (Yii::app()->user->checkAccess('administrator')) {
-            $comments = Comment::model()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
-        } else
-            $comments = Comment::model()->published()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $loadmodel['id'] . ' AND object_type_id = 1'));
-
-        Yii::app()->clientScript->registerScriptFile(
-                Yii::app()->assetManager->publish(
-                        Yii::getPathOfAlias('webroot.scripts') . '/comments.js'
-                ), CClientScript::POS_END
-        );
-
         $photos = Article::model()->getPhotos($id);
 
         //Плюсуем + 1 к просмотру
         Yii::app()->db->createCommand('UPDATE {{article_add}} SET hits =  hits + 1 WHERE article_id = ' . $id)->execute();
         $this->render('view', array(
             'model' => $loadmodel, //$this->loadModel($id),
-            'commentform' => $comment,
-            'comments' => $comments,
             'photos' => $photos,
-            'moreArticles' => $moreArticles,
+            //'moreArticles' => $moreArticles,
         ));
     }
 

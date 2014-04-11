@@ -109,7 +109,7 @@ if (Yii::app()->user->checkAccess('administrator')) :
                 <div class="adminCommentBtns">
                 <?php
                 if ($comment->published == 1):
-                    echo CHtml::ajaxLink('Нарушает', $this->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'rules', 'token' => $comment->token)), array(
+                    echo CHtml::ajaxLink('Нарушает', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'rules', 'token' => $comment->token)), array(
                         'type' => 'get',
                         'cache' => false,
                         'success' => "function(html){
@@ -118,7 +118,7 @@ if (Yii::app()->user->checkAccess('administrator')) :
                             ), array('style' => $comment->ban == 1 ? 'text-decoration:underline;' : '')
                     );
                     echo "&nbsp;&nbsp;&nbsp;";
-                    echo CHtml::ajaxLink('Оскорбляет', $this->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'author', 'token' => $comment->token)), array(
+                    echo CHtml::ajaxLink('Оскорбляет', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'author', 'token' => $comment->token)), array(
                         'type' => 'get',
                         'cache' => false,
                         'success' => "function(html){
@@ -127,7 +127,7 @@ if (Yii::app()->user->checkAccess('administrator')) :
                             ), array('style' => $comment->ban == 2 ? 'text-decoration:underline;' : '')
                     );
                     echo "&nbsp;&nbsp;&nbsp;";
-                    echo CHtml::ajaxLink('Не в тему', $this->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'theme', 'token' => $comment->token)), array(
+                    echo CHtml::ajaxLink('Не в тему', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'theme', 'token' => $comment->token)), array(
                         'type' => 'get',
                         'cache' => false,
                         'success' => "function(html){
@@ -138,7 +138,7 @@ if (Yii::app()->user->checkAccess('administrator')) :
                 endif;
                 echo "&nbsp;&nbsp;&nbsp;";
 
-                echo CHtml::ajaxLink('Удалить', $this->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'delete', 'token' => $comment->token)), array(
+                echo CHtml::ajaxLink('Удалить', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'delete', 'token' => $comment->token)), array(
                     'type' => 'get',
                     'cache' => false,
                     'success' => "function(html){
@@ -148,7 +148,7 @@ if (Yii::app()->user->checkAccess('administrator')) :
                 );
                 echo "&nbsp;&nbsp;&nbsp;";
 
-                echo CHtml::ajaxLink('Опубликовать', $this->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'publish', 'token' => $comment->token)), array(
+                echo CHtml::ajaxLink('Опубликовать', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'publish', 'token' => $comment->token)), array(
                     'type' => 'get',
                     'cache' => false,
                     'success' => "function(html){

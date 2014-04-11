@@ -21,5 +21,3 @@ class Quest extends CPortlet {
         $this->render('quest', array('items' => $this->items));
     }
 }
-
-?>

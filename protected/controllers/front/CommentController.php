@@ -121,5 +121,64 @@ class CommentController extends Controller {
         else
             throw new CHttpException(404, 'Invalid request. Please do not repeat this request again.');
     }
+    
+    public function actionAdd() {
+        $comment = new CommentForm();
+        if (isset($_POST['CommentForm'])) {
+            $comment->attributes = $_POST['CommentForm'];
+            Yii::app()->request->cookies['pcomment_username'] = new CHttpCookie('pcomment_username', $comment->username);
+            $ct = new CHttpCookie($id . '_pcomment_text', $comment->text);
+            $ct->expire = time() + 60 * 60 * 24 * 7;
+            Yii::app()->request->cookies[$id . '_pcomment_text'] = $ct;
+
+            if ($comment->validate()) {
+                //Записываем имя в куки
+                $cookie = new CHttpCookie('pcomment_author', $comment->username);
+                $cookie->expire = time() + 60 * 60 * 24 * 5;
+                Yii::app()->request->cookies['pcomment_author'] = $cookie;
+
+
+
+                /* Добавляем комментарий */
+                $comm = new Comment;
+                $comm->text = $comment->text;
+                $comm->author_id = $comment->author_id;
+                $comm->name = $comment->username;
+                $comm->email = $comment->email;
+                $comm->ip = $_SERVER['REMOTE_ADDR'];
+                $comm->created = date('Y-m-d H:i:s');
+                $comm->published = Yii::app()->params->autopublishcomment;
+                $comm->object_type_id = 2;
+                $comm->object_id = $model->id;
+                $comm->parent = ($comment->parent) ? $comment->parent : 0;
+                $comm->save();
+                if ($comm->id > 0) {
+
+                    unset(Yii::app()->request->cookies[$id . '_pcomment_text']);
+
+                    $commadd = new CommentAdd;
+                    $commadd->comment_id = $comm->id;
+                    $commadd->save();
+                    Yii::app()->user->setFlash('info', 'Комментарий успешно добавлен.');
+
+                    $comment->text = '';
+                    $comment->capcha = '';
+
+                    Yii::app()->cache->flush();
+
+                    $this->refresh(true, '#' . $comm->id);
+                } else
+                    $this->refresh(true, '#addcomment');
+                Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
+            } else
+                Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
+            $this->refresh(true, '#addcomment');
+        }
+    }
+    
+    public function actionGetComment($objectTypeId, $id, $lastCommentId) {
+        $object = $objectTypeId == 1 ? Article::model()->findByPk($id) : Poll::model()->findByPk($id);
+        $object->comments();
+    }
 
 }

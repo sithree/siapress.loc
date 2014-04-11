@@ -1,3 +1,5 @@
+<?php /* @var $model Article */ ?>
+
 <script>
     jQuery(function($) {
         $("#center iframe").attr('width', 477);
@@ -180,36 +182,4 @@ if ($poll):
     })(window, document, 'rontar_ads');
 //--></script>
 <hr />
-
-<a id="comments"></a>
-<?php if (count($comments) > 0): ?>
-    <div style="margin-bottom: 15px; font-size:14px; font-weight: bold;">Комментарии:</div>
-<?php else: ?>
-    <div style="margin-bottom: 15px; font-size:14px; font-weight: bold;">Комментариев пока нет.</div>
-<?php endif; ?>
-
-
-<?php
-if (count($comments) > 0) {
-    $this->renderPartial('/comments/comments', array(
-        'comments' => $comments,
-    ));
-}
-?>
-<hr />
-<!-- Форма добавления комментария -->
-<?php if (isset($commentform) AND Yii::app()->params->comments == true and $model['comment_on'] == 1): ?>
-    <a id="addcomment"></a>
-    <?php
-    $this->renderPartial('application.views.front.comments._form', array(
-        'commentform' => $commentform,
-        'model' => $model
-    ));
-else:
-    if (empty($model['comment_ban'])):
-        ?>
-        <h3>Комментарии закрыты.</h3>
-    <?php else: ?>
-        <h3><?php echo $model['comment_ban'] ?></h3>
-    <?php endif; ?>
-<?php endif; ?>
+<?php $this->widget('application.components.widgets.Comments', array('object_type_id' => 1, 'object_id' => $model->id, 'comment_on' => $model->comment_on)); ?>
