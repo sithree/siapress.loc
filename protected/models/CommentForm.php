@@ -25,7 +25,7 @@ class CommentForm extends CFormModel {
      */
     public function rules() {
         return array(
-            array('username, text', 'required', 'message' => 'Введите <b>«{attribute}»</b>'),
+            array('username, text, object_type_id, object_id', 'required', 'message' => 'Введите <b>«{attribute}»</b>'),
             array('ip', 'ban'),
             /* array('capcha', 'myCaptcha', 'captchaAction'=>'site/captcha',
               'message' => Yii::t('user', 'Неверный проверочный код'), 'allowEmpty' => !Yii::app()->user->isGuest || !extension_loaded('gd')),

@@ -126,6 +126,8 @@ class CommentController extends Controller {
         $comment = new CommentForm();
         if (isset($_POST['CommentForm'])) {
             $comment->attributes = $_POST['CommentForm'];
+            CVarDumper::dump($comment->attributes);
+            die();
             Yii::app()->request->cookies['pcomment_username'] = new CHttpCookie('pcomment_username', $comment->username);
             $ct = new CHttpCookie($id . '_pcomment_text', $comment->text);
             $ct->expire = time() + 60 * 60 * 24 * 7;
@@ -148,12 +150,9 @@ class CommentController extends Controller {
                 $comm->ip = $_SERVER['REMOTE_ADDR'];
                 $comm->created = date('Y-m-d H:i:s');
                 $comm->published = Yii::app()->params->autopublishcomment;
-                $comm->object_type_id = 2;
-                $comm->object_id = $model->id;
                 $comm->parent = ($comment->parent) ? $comment->parent : 0;
                 $comm->save();
                 if ($comm->id > 0) {
-
                     unset(Yii::app()->request->cookies[$id . '_pcomment_text']);
 
                     $commadd = new CommentAdd;
@@ -174,6 +173,7 @@ class CommentController extends Controller {
                 Yii::app()->user->setFlash('error', 'Ошибка добавления комментария. ');
             $this->refresh(true, '#addcomment');
         }
+        Yii::app()->end();
     }
     
     public function actionGetComment($objectTypeId, $id, $lastCommentId) {

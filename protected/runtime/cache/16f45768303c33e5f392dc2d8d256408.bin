@@ -1,4 +1,4 @@
-a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
+a:2:{i:0;a:2:{i:0;s:12754:"    <div class="portlet" id="yw5">
 <div class="portlet-content">
 <script>
     jQuery(function($) {
@@ -19,11 +19,11 @@ a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
     <div  style="display:none;" id="mostcomment" class="block-comment mtab">
         <ul class="unstyled popular">
                             <li>
-                    <a href="/politics/31072">
+                    <a href="/31059">
                         <span class="redlight">test</span>                    </a>
 
                     <div class="small a-right">
-                           <span class="nowrap">07 апреля  в 10:57</span>, 
+                           <span class="nowrap">Сегодня в 12:30</span>, 
                    
                             <i class="fa fa-comment-o"></i> 0                      </div>
 
@@ -31,11 +31,11 @@ a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
 
                 </li>
                                 <li>
-                    <a href="/politics/31073">
-                        <span class="redlight">test</span>                    </a>
+                    <a href="/31060">
+                        <span class="redlight">gfdsgdsfgdfg</span>                    </a>
 
                     <div class="small a-right">
-                           <span class="nowrap">07 апреля  в 13:17</span>, 
+                           <span class="nowrap">Сегодня в 12:43</span>, 
                    
                             <i class="fa fa-comment-o"></i> 0                      </div>
 
@@ -43,11 +43,47 @@ a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
 
                 </li>
                                 <li>
-                    <a href="/politics/31074">
-                        <span class="redlight">test</span>                    </a>
+                    <a href="/31061">
+                        <span class="redlight">hgjgjh</span>                    </a>
 
                     <div class="small a-right">
-                           <span class="nowrap">07 апреля  в 13:19</span>, 
+                           <span class="nowrap">Сегодня в 12:55</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/news/31062">
+                        <span class="redlight">fdasfsdaf</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 13:17</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/news/31063">
+                        <span class="redlight">fdsfsdf</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 14:07</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/news/31064">
+                        <span class="redlight">пфавфыа</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 14:08</span>, 
                    
                             <i class="fa fa-comment-o"></i> 0                      </div>
 
@@ -61,27 +97,51 @@ a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
         <ul class="unstyled popular">
 
                             <li>
-                    <a href="/politics/31072">
+                    <a href="/news/31064">
                         <!-- <span class="time"></span> -->
-                                                <span class="redlight">test</span>                    </a>
+                                                <span class="redlight">пфавфыа</span>                    </a>
                     <div class="small a-right">
-                        <span class="nowrap">07 апреля  в 10:57, 
-                            <i class="fa fa-eye"></i> 4                    </div>
+                        <span class="nowrap">Сегодня в 14:08, 
+                            <i class="fa fa-eye"></i> 11                    </div>
                 </li>
                                 <li>
-                    <a href="/politics/31073">
+                    <a href="/news/31062">
                         <!-- <span class="time"></span> -->
-                                                <span class="redlight">test</span>                    </a>
+                                                <span class="redlight">fdasfsdaf</span>                    </a>
                     <div class="small a-right">
-                        <span class="nowrap">07 апреля  в 13:17, 
-                            <i class="fa fa-eye"></i> 3                    </div>
+                        <span class="nowrap">Сегодня в 13:17, 
+                            <i class="fa fa-eye"></i> 5                    </div>
                 </li>
                                 <li>
-                    <a href="/politics/31074">
+                    <a href="/31059">
                         <!-- <span class="time"></span> -->
                                                 <span class="redlight">test</span>                    </a>
                     <div class="small a-right">
-                        <span class="nowrap">07 апреля  в 13:19, 
+                        <span class="nowrap">Сегодня в 12:30, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                                <li>
+                    <a href="/31060">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">gfdsgdsfgdfg</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 12:43, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                                <li>
+                    <a href="/31061">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">hgjgjh</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 12:55, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                                <li>
+                    <a href="/news/31063">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdsfsdf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 14:07, 
                             <i class="fa fa-eye"></i> 1                    </div>
                 </li>
                         </ul>
@@ -90,94 +150,95 @@ a:2:{i:0;a:2:{i:0;s:8335:"    <div class="portlet" id="yw5">
     <div id="lastcomment" class="block-comment mtab">
         <ul class="unstyled">
                             <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111050">
-                        fasfdfasfsf                       
+                    <div class="block-commen-author">Андрей:</div>
+                    <a  class="comm-right" href="/blogs/31043#comment-111037">
+                        Я ничего не понял, что сказал этот дядька. Типа нам молодым дибилам учится не надо ?                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/blogs/31043">
+                            ​Статья дня. Оглупление масс                        </a>
                     </div>
-                    <div class="created">10 апреля  в 18:23</div>
+                    <div class="created">02 апреля  в 11:21</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111049">
-                        fsafsadgsd                       
+                    <div class="block-commen-author">Федот:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111036">
+                        ПатриотЪ, вы думаете "на кухнях страны читатели, Мазурины и т.п." тыщщи раз не говорили, - "Брежнев,...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
                     </div>
-                    <div class="created">10 апреля  в 18:21</div>
+                    <div class="created">02 апреля  в 11:16</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111046">
-                        gdgfsdgsdgsd                       
+                    <div class="block-commen-author">Федот:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111035">
+                        "Читатель", как жалко, что вы просто читатель, а не "пониматель"...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
                     </div>
-                    <div class="created">10 апреля  в 17:48</div>
+                    <div class="created">02 апреля  в 11:11</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111045">
-                        teststs                       
+                    <div class="block-commen-author">патриотЪ <span style="color: #333;"> &rarr; Федот:</span></div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111034">
+                        Цитата " Кричать на каждом углу " Путин -гэть из России." если бы Брежневу во время не сказали -ГЭТЬ...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
                     </div>
-                    <div class="created">10 апреля  в 17:47</div>
+                    <div class="created">02 апреля  в 10:24</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111044">
-                        аыавыфаыфафывавфыаыф                       
+                    <div class="block-commen-author">Читатель <span style="color: #333;"> &rarr; Федот:</span></div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111033">
+                        Про "курить" я не понял и сильно сомневаюсь, что вы сами поняли к чему это написали. Отнесём к обычн...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
                     </div>
-                    <div class="created">10 апреля  в 17:25</div>
+                    <div class="created">02 апреля  в 10:15</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111043">
-                        выпывапрыывпвыпапыапвыпывпвап                       
+                    <div class="block-commen-author">Читательница:</div>
+                    <a  class="comm-right" href="/31048#comment-111032">
+                        хАбенский!!! А "Географ" фильм, не представляющий ни художественной ценности. ИМХО, не совпадающее с...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/31048">
+                            Премию "Ника" за лучший фильм 2013 года получил "Географ глобус пропил"                         </a>
                     </div>
-                    <div class="created">10 апреля  в 17:21</div>
+                    <div class="created">02 апреля  в 10:13</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111042">
-                        авыфафыафыафы                       
+                    <div class="block-commen-author">Не диЗигнерр:</div>
+                    <a  class="comm-right" href="/31039#comment-111031">
+                        Лебедев плачет! Да фиг с ним. Но я и я ни чего не понимаю чтобы сказать, Вы сделали хуже :) Взявшись...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/31039">
+                            СИА-ПРЕСС 3.0. Новый дизайн и новые возможности нашего сайта                        </a>
                     </div>
-                    <div class="created">10 апреля  в 17:21</div>
+                    <div class="created">02 апреля  в 09:48</div>
                 </li>
                                 <li>
-                    <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/174#comment-111041">
-                        авфавыфаф                       
+                    <div class="block-commen-author">CZAR <span style="color: #333;"> &rarr; Т. Самборский:</span></div>
+                    <a  class="comm-right" href="/31039#comment-111030">
+                        За всплывающие окна - плюс (выгодно - да, но марку тоже надо держать).
+Может в 1,5-2 ряда, но сверх...                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/174">
-                            Имидж – все!                        </a>
+                        <a href="/31039">
+                            СИА-ПРЕСС 3.0. Новый дизайн и новые возможности нашего сайта                        </a>
                     </div>
-                    <div class="created">10 апреля  в 17:21</div>
+                    <div class="created">02 апреля  в 09:46</div>
                 </li>
                         </ul>
     </div>
 </div></div>
-</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111050";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111037";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}

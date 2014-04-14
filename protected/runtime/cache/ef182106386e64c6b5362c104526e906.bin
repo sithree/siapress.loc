@@ -1,8 +1,8 @@
-a:2:{i:0;a:2:{i:0;s:18952:"    <div class="portlet" id="yw6">
+a:2:{i:0;a:2:{i:0;s:12754:"    <div class="portlet" id="yw6">
 <div class="portlet-content">
 <script>
     jQuery(function($) {
-        
+
 
     });
 </script>
@@ -11,131 +11,83 @@ a:2:{i:0;a:2:{i:0;s:18952:"    <div class="portlet" id="yw6">
     <div class="header">
         <h2>
             <a rel="lastcomment" class="block-header navii active"  href="#">последние комментарии</a>
-<!--            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
-            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>-->
+            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
+            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>
         </h2>
     </div>
 
     <div  style="display:none;" id="mostcomment" class="block-comment mtab">
         <ul class="unstyled popular">
                             <li>
-                    <a href="/31028">
-                        <span class="redlight">​Чистое безумие</span>                    </a>
+                    <a href="/31059">
+                        <span class="redlight">test</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [91]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 12:30</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/31039">
-                        СИА-ПРЕСС 3.0. Новый дизайн и <span class="redlight">новые возможности нашего сайта</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [24]</span>
-                </nobr>
 
                 </li>
                                 <li>
-                    <a href="/31016">
-                        Какой <span class="redlight">мэр? Какие дороги?</span>                    </a>
+                    <a href="/31060">
+                        <span class="redlight">gfdsgdsfgdfg</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [23]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 12:43</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/31022">
-                        Чистая прибыль «Сургутнефтегаза» по РСБУ выросла в 2013 <span class="redlight">году до 256,5 млрд рублей</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [22]</span>
-                </nobr>
 
                 </li>
                                 <li>
-                    <a href="/30966">
-                        Статья <span class="redlight">дня. Тамтамы простодушия</span>                    </a>
+                    <a href="/31061">
+                        <span class="redlight">hgjgjh</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [20]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 12:55</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/31020">
-                        <span class="redlight">Капитализация патриотизма</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [20]</span>
-                </nobr>
 
                 </li>
                                 <li>
-                    <a href="/30985">
-                        На Украине спешно открывают <span class="redlight">аналоги российской соцсети "ВКонтакте"</span>                    </a>
+                    <a href="/news/31062">
+                        <span class="redlight">fdasfsdaf</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [17]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 13:17</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/30967">
-                        <span class="redlight">​Технопарк нефтяников</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [11]</span>
-                </nobr>
 
                 </li>
                                 <li>
-                    <a href="/30897">
-                        «Год назад один чиновник сказал нам, что дороги отремонтированы идеально. Дороги мы видим. А где чиновник? <span class="redlight">В правительстве Ленинградской области» ВИДЕО с тематической разбивкой</span>                    </a>
+                    <a href="/news/31063">
+                        <span class="redlight">fdsfsdf</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [11]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 14:07</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/31006">
-                        54% россиян готовы, чтобы их обманывали по ТВ, если <span class="redlight">это нужно для блага государства</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [11]</span>
-                </nobr>
 
                 </li>
                                 <li>
-                    <a href="/30999">
-                        Правительство округа проводит опрос среди жителей <span class="redlight">об эффективности деятельности глав муниципалитетов</span>                    </a>
+                    <a href="/news/31064">
+                        <span class="redlight">пфавфыа</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [10]</span>
-                </nobr>
+                    <div class="small a-right">
+                           <span class="nowrap">Сегодня в 14:08</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
 
-                </li>
-                                <li>
-                    <a href="/30970">
-                        София Ротару <span class="redlight">отказалась становиться россиянкой</span>                    </a>
 
-                <nobr>
-                    <span class="created">[]
-                        [9]</span>
-                </nobr>
 
                 </li>
                         </ul>
@@ -143,131 +95,54 @@ a:2:{i:0;a:2:{i:0;s:18952:"    <div class="portlet" id="yw6">
 
     <div style="display:none;" id="mostreading" class="block-comment mtab">
         <ul class="unstyled popular">
+
                             <li>
-                    <a href="/30985">
-                        <!-- <span class="time">18561</span> -->
-                        На Украине спешно открывают <span class="redlight">аналоги российской соцсети "ВКонтакте"</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [18561]</span>
-                </nobr>
+                    <a href="/news/31064">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">пфавфыа</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 14:08, 
+                            <i class="fa fa-eye"></i> 11                    </div>
                 </li>
                                 <li>
-                    <a href="/31042">
-                        <!-- <span class="time">2798</span> -->
-                        Павел Дуров заявил об <span class="redlight">уходе из «ВКонтакте»</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [2798]</span>
-                </nobr>
+                    <a href="/news/31062">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdasfsdaf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 13:17, 
+                            <i class="fa fa-eye"></i> 5                    </div>
                 </li>
                                 <li>
-                    <a href="/30972">
-                        <!-- <span class="time">1601</span> -->
-                        Дарт Вейдер хочет <span class="redlight">стать президентом Украины</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [1601]</span>
-                </nobr>
+                    <a href="/31059">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">test</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 12:30, 
+                            <i class="fa fa-eye"></i> 1                    </div>
                 </li>
                                 <li>
-                    <a href="/30897">
-                        <!-- <span class="time">1373</span> -->
-                        «Год назад один чиновник сказал нам, что дороги отремонтированы идеально. Дороги мы видим. А где чиновник? <span class="redlight">В правительстве Ленинградской области» ВИДЕО с тематической разбивкой</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [1373]</span>
-                </nobr>
+                    <a href="/31060">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">gfdsgdsfgdfg</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 12:43, 
+                            <i class="fa fa-eye"></i> 1                    </div>
                 </li>
                                 <li>
-                    <a href="/30987">
-                        <!-- <span class="time">1317</span> -->
-                        Пропавший малазийский самолёт нашли <span class="redlight">- и опять потеряли</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [1317]</span>
-                </nobr>
+                    <a href="/31061">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">hgjgjh</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 12:55, 
+                            <i class="fa fa-eye"></i> 1                    </div>
                 </li>
                                 <li>
-                    <a href="/30970">
-                        <!-- <span class="time">1066</span> -->
-                        София Ротару <span class="redlight">отказалась становиться россиянкой</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [1066]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/30966">
-                        <!-- <span class="time">1025</span> -->
-                        Статья <span class="redlight">дня. Тамтамы простодушия</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [1025]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/30967">
-                        <!-- <span class="time">967</span> -->
-                        <span class="redlight">​Технопарк нефтяников</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [967]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/30953">
-                        <!-- <span class="time">925</span> -->
-                        Онлайн-конференция с начальником управления экологии и <span class="redlight">природопользования Сургута Андреем Анохиным</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [925]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/30971">
-                        <!-- <span class="time">891</span> -->
-                        В Югре в ДТП погибли люди, <span class="redlight">сгорели две фуры. ФОТО</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [891]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/31016">
-                        <!-- <span class="time">870</span> -->
-                        Какой <span class="redlight">мэр? Какие дороги?</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [870]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/31028">
-                        <!-- <span class="time">864</span> -->
-                        <span class="redlight">​Чистое безумие</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [864]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/30988">
-                        <!-- <span class="time">847</span> -->
-                        Известные сургутские наклейки "Какой мэр - <span class="redlight">такие и дороги" обзавелись рекламой</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [847]</span>
-                </nobr>
-                </li>
-                                <li>
-                    <a href="/31019">
-                        <!-- <span class="time">788</span> -->
-                        Заболеваемость гриппом и ОРВИ в <span class="redlight">Югре пошла на спад</span>                    </a>
-                <nobr>
-                    <span class="created">[]
-                        [788]</span>
-                </nobr>
+                    <a href="/news/31063">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdsfsdf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">Сегодня в 14:07, 
+                            <i class="fa fa-eye"></i> 1                    </div>
                 </li>
                         </ul>
     </div>
@@ -276,55 +151,55 @@ a:2:{i:0;a:2:{i:0;s:18952:"    <div class="portlet" id="yw6">
         <ul class="unstyled">
                             <li>
                     <div class="block-commen-author">Андрей:</div>
-                    <a  class="comm-right" href="/31043#comment-111037">
+                    <a  class="comm-right" href="/blogs/31043#comment-111037">
                         Я ничего не понял, что сказал этот дядька. Типа нам молодым дибилам учится не надо ?                       
                     </a>          
                     <div class="created">
-                        <a href="/31043">
+                        <a href="/blogs/31043">
                             ​Статья дня. Оглупление масс                        </a>
                     </div>
                     <div class="created">02 апреля  в 11:21</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">Федот:</div>
-                    <a  class="comm-right" href="/31028#comment-111036">
+                    <a  class="comm-right" href="/blogs/31028#comment-111036">
                         ПатриотЪ, вы думаете "на кухнях страны читатели, Мазурины и т.п." тыщщи раз не говорили, - "Брежнев,...                       
                     </a>          
                     <div class="created">
-                        <a href="/31028">
+                        <a href="/blogs/31028">
                             ​Чистое безумие                        </a>
                     </div>
                     <div class="created">02 апреля  в 11:16</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">Федот:</div>
-                    <a  class="comm-right" href="/31028#comment-111035">
+                    <a  class="comm-right" href="/blogs/31028#comment-111035">
                         "Читатель", как жалко, что вы просто читатель, а не "пониматель"...                       
                     </a>          
                     <div class="created">
-                        <a href="/31028">
+                        <a href="/blogs/31028">
                             ​Чистое безумие                        </a>
                     </div>
                     <div class="created">02 апреля  в 11:11</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">патриотЪ <span style="color: #333;"> &rarr; Федот:</span></div>
-                    <a  class="comm-right" href="/31028#comment-111034">
+                    <a  class="comm-right" href="/blogs/31028#comment-111034">
                         Цитата " Кричать на каждом углу " Путин -гэть из России." если бы Брежневу во время не сказали -ГЭТЬ...                       
                     </a>          
                     <div class="created">
-                        <a href="/31028">
+                        <a href="/blogs/31028">
                             ​Чистое безумие                        </a>
                     </div>
                     <div class="created">02 апреля  в 10:24</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">Читатель <span style="color: #333;"> &rarr; Федот:</span></div>
-                    <a  class="comm-right" href="/31028#comment-111033">
+                    <a  class="comm-right" href="/blogs/31028#comment-111033">
                         Про "курить" я не понял и сильно сомневаюсь, что вы сами поняли к чему это написали. Отнесём к обычн...                       
                     </a>          
                     <div class="created">
-                        <a href="/31028">
+                        <a href="/blogs/31028">
                             ​Чистое безумие                        </a>
                     </div>
                     <div class="created">02 апреля  в 10:15</div>

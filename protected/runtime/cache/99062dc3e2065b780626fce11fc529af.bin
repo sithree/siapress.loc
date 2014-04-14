@@ -1,10 +1,49 @@
-a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
+a:2:{i:0;a:2:{i:0;s:11459:"    <div class="portlet" id="yw9">
 <div class="portlet-content">
 <div class="widget b-light-gray main-news">
     <div class="header">
         <h2><a href="/news">Новости</a></h2>
     </div>
     <ul>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/news/31064">
+                            <img width="68" height="46" src="/images/news/main/31064_68x46@2x.jpg" alt="пфавфыа" />                        </a>
+                                        <h3>
+                        <a href="/news/31064">пфавфыа</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8">Сегодня в 14:08</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 11 <a href="/news/31064#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/news/31063">
+                            <img width="68" height="46" src="/images/news/main/31063_68x46@2x.jpg" alt="fdsfsdf" />                        </a>
+                                        <h3>
+                        <a href="/news/31063">fdsfsdf</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8">Сегодня в 14:07</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 1 <a href="/news/31063#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
+                    <li>
+                <header class="clearfix">
+                                            <a href="/news/31062">
+                            <img width="68" height="46" src="/images/news/main/31062_68x46@2x.jpg" alt="fdasfsdaf" />                        </a>
+                                        <h3>
+                        <a href="/news/31062">fdasfsdaf</a>
+                    </h3>
+                </header>
+                <footer class="row clearfix">
+                    <div class="col-xs-8">Сегодня в 13:17</div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 5 <a href="/news/31062#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                </footer>
+            </li>
                     <li>
                 <header class="clearfix">
                                             <a href="/noise/30951">
@@ -15,7 +54,7 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">29 марта  в 08:12</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 635 <a href="/noise/30951#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 630 <a href="/noise/30951#comments" class="tocomments"><i class="fa fa-comment"></i> 6</a></div>
                 </footer>
             </li>
                     <li>
@@ -28,7 +67,7 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">27 марта  в 12:51</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 360 <a href="/realty/30909#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 368 <a href="/realty/30909#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
                 </footer>
             </li>
                     <li>
@@ -54,7 +93,7 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">09 марта  в 08:48</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 895 <a href="/noise/30425#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 896 <a href="/noise/30425#comments" class="tocomments"><i class="fa fa-comment"></i> 3</a></div>
                 </footer>
             </li>
                     <li>
@@ -106,7 +145,7 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">30 января  в 09:37</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 1272 <a href="/realty/29414#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 1272 <a href="/realty/29414#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
                 </footer>
             </li>
                     <li>
@@ -119,7 +158,7 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">28 января  в 18:16</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 866 <a href="/realty/29375#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 866 <a href="/realty/29375#comments" class="tocomments"><i class="fa fa-comment"></i> 2</a></div>
                 </footer>
             </li>
                     <li>
@@ -132,48 +171,9 @@ a:2:{i:0;a:2:{i:0;s:12143:"    <div class="portlet" id="yw9">
                 </header>
                 <footer class="row clearfix">
                     <div class="col-xs-8">27 января  в 11:49</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 600 <a href="/realty/29319#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/realty/29259">
-                            <img width="68" height="46" src="/images/news/main/29259_68x46@2x.jpg" alt="Уже в это воскресенье приз в 555 тысяч рублей найдет своего обладателя!" />                        </a>
-                                        <h3>
-                        <a href="/realty/29259">Уже в это воскресенье приз в 555 тысяч рублей найдет своего обладателя!</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8">23 января  в 13:11</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 701 <a href="/realty/29259#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/realty/29200">
-                            <img width="68" height="46" src="/images/news/main/29200_68x46@2x.jpg" alt="Поторопитесь! Неучтенную недвижимость после 2018 года государство начнет изымать в свою пользу " />                        </a>
-                                        <h3>
-                        <a href="/realty/29200">Поторопитесь! Неучтенную недвижимость после 2018 года государство начнет изымать в свою пользу </a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8">21 января  в 11:22</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 749 <a href="/realty/29200#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
-                </footer>
-            </li>
-                    <li>
-                <header class="clearfix">
-                                            <a href="/realty/29164">
-                            <img width="68" height="46" src="/images/news/main/29164_68x46@2x.jpg" alt="​«Молодая семья»: сезон открыт" />                        </a>
-                                        <h3>
-                        <a href="/realty/29164">​«Молодая семья»: сезон открыт</a>
-                    </h3>
-                </header>
-                <footer class="row clearfix">
-                    <div class="col-xs-8">20 января  в 10:36</div>
-                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 1012 <a href="/realty/29164#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a></div>
+                    <div class="col-xs-4 a-right"><i class="fa fa-eye"></i> 601 <a href="/realty/29319#comments" class="tocomments"><i class="fa fa-comment"></i> 1</a></div>
                 </footer>
             </li>
             </ul>
 </div></div>
-</div>    ";i:1;N;}i:1;O:21:"CExpressionDependency":6:{s:10:"expression";s:39:"Article::getCacheDependency('MainNews')";s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";s:19:"2014-04-02 15:36:11";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
+</div>    ";i:1;N;}i:1;O:21:"CExpressionDependency":6:{s:10:"expression";s:39:"Article::getCacheDependency('MainNews')";s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";b:1;s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}

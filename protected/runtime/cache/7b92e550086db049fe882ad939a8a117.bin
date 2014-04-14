@@ -1,4 +1,4 @@
-a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
+a:2:{i:0;a:2:{i:0;s:16175:"    <div class="portlet" id="yw7">
 <div class="portlet-content">
 <div class="widget no-padding" id="opinion">
     <div class="header">
@@ -21,7 +21,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">03 апреля  в 10:30</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 2 <a href="blogs/30948#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 8 <a href="blogs/30948#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
             </div>
         </div>
     </footer>
@@ -44,7 +44,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">02 апреля  в 13:17</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 3 <a href="blogs/30945#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 15 <a href="blogs/30945#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
             </div>
         </div>
     </footer>
@@ -90,7 +90,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">02 апреля  в 10:25</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 0 <a href="blogs/31052#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i>  <a href="blogs/31052#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
             </div>
         </div>
     </footer>
@@ -113,7 +113,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">31 марта  в 11:02</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 368 <a href="blogs/30993#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 367 <a href="blogs/30993#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
             </div>
         </div>
     </footer>
@@ -136,7 +136,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 17:40</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 199 <a href="blogs/31044#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 204 <a href="blogs/31044#comments" class="tocomments"><i class="fa fa-comment"></i> 2</a>
             </div>
         </div>
     </footer>
@@ -159,7 +159,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 17:30</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 279 <a href="blogs/31043#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 273 <a href="blogs/31043#comments" class="tocomments"><i class="fa fa-comment"></i> 4</a>
             </div>
         </div>
     </footer>
@@ -182,7 +182,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 15:12</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 282 <a href="blogs/31040#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 281 <a href="blogs/31040#comments" class="tocomments"><i class="fa fa-comment"></i> 2</a>
             </div>
         </div>
     </footer>
@@ -205,7 +205,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 11:24</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 409 <a href="blogs/31030#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 410 <a href="blogs/31030#comments" class="tocomments"><i class="fa fa-comment"></i> 4</a>
             </div>
         </div>
     </footer>
@@ -228,7 +228,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 11:07</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 282 <a href="opinion/31029#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 281 <a href="opinion/31029#comments" class="tocomments"><i class="fa fa-comment"></i> 2</a>
             </div>
         </div>
     </footer>
@@ -251,7 +251,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 10:55</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 932 <a href="opinion/30953#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 925 <a href="opinion/30953#comments" class="tocomments"><i class="fa fa-comment"></i> 9</a>
             </div>
         </div>
     </footer>
@@ -274,7 +274,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 09:51</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 864 <a href="blogs/31028#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 864 <a href="blogs/31028#comments" class="tocomments"><i class="fa fa-comment"></i> 81</a>
             </div>
         </div>
     </footer>
@@ -297,7 +297,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 09:33</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 494 <a href="blogs/31026#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 393 <a href="blogs/31026#comments" class="tocomments"><i class="fa fa-comment"></i> 4</a>
             </div>
         </div>
     </footer>
@@ -320,7 +320,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">01 апреля  в 04:21</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 462 <a href="blogs/31023#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 462 <a href="blogs/31023#comments" class="tocomments"><i class="fa fa-comment"></i> 2</a>
             </div>
         </div>
     </footer>
@@ -345,7 +345,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">25 марта  в 13:06</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 1480 <a href="blogs/30853#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 1476 <a href="blogs/30853#comments" class="tocomments"><i class="fa fa-comment"></i> 12</a>
             </div>
         </div>
     </footer>
@@ -368,7 +368,7 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
                 <nobr><span class="nowrap">31 марта  в 17:36</span></nobr>
             </div>
             <div class="col-xs-4 a-right">
-                <i class="fa fa-eye"></i> 318 <a href="blogs/31018#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
+                <i class="fa fa-eye"></i> 308 <a href="blogs/31018#comments" class="tocomments"><i class="fa fa-comment"></i> 0</a>
             </div>
         </div>
     </footer>
@@ -381,4 +381,4 @@ a:2:{i:0;a:2:{i:0;s:16173:"    <div class="portlet" id="yw7">
     
 </div>
 </div>
-</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_articles";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:5:"31074";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_articles";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:5:"31064";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}

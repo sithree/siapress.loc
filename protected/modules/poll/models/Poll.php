@@ -12,6 +12,8 @@
  * The followings are the available model relations:
  * @property PollChoice[] $choices
  * @property PollVote[] $votes
+ * @property date $startDate Дата начала голосования
+ * @property date $endDate Дата конца голосования
  */
 class Poll extends CActiveRecord {
 
@@ -25,6 +27,10 @@ class Poll extends CActiveRecord {
      */
     public static function model($className = __CLASS__) {
         return parent::model($className);
+    }
+    
+    public function getObjectType() {
+        return 2;
     }
 
     /**
@@ -43,7 +49,7 @@ class Poll extends CActiveRecord {
             array('status', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 255),
             array('description', 'safe'),
-            array('title, description, status', 'safe', 'on' => 'search'),
+            array('title, description, status, startDate, endDate', 'safe', 'on' => 'search'),
         );
     }
 
