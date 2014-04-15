@@ -1,7 +1,7 @@
 
 <script>
     $(function() {
-        $('a.replyComment').click(function() {
+        $(document).on('click', 'a.replyComment', function() {
             rel = $(this).attr('rel');
             parent = $(this).parents('#d' + rel);
             user = parent.find('.comment-author').text();
@@ -10,13 +10,13 @@
             $('#CommentForm_parent').val(rel);
         });
 
-        $('#deleteReply').live('click', function() {
+        $(document).on('click', '#deleteReply', function() {
             $('#CommentForm_parent').val('');
             $('#reply-to').html('');
             return false;
         })
 
-        $('.fromComment').click(function() {
+        $(document).on('click', '#fromComment', function() {
             id = $(this).attr('data-from-id');
             block = $('#d' + id);
 

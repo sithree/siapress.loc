@@ -15,127 +15,8 @@ else :
         'keys' => 'error'
     ));
     ?>
-    <?php
-#echo Yii::app()->user()->getFlash();
-    /* @var $form BootActiveForm */
-    $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
-        'type' => 'inline',
-        'id' => 'CommentForm',
-        #'htmlOptions' => array('class' => 'well'),
-        'enableAjaxValidation' => false,
-        'enableClientValidation' => false,
-        'clientOptions' => array(
-            'validateOnSubmit' => true,
-        ),
-    ));
-    echo CHtml::hiddenField('lastCommentId');
-    $commentform->object_id = $object_id;
-    $commentform->object_type_id = $object_type_id;
-    echo $form->hiddenField($commentform, 'object_id');
-    echo $form->hiddenField($commentform, 'object_type_id');
-    //echo CHtml::hiddenField('CommentForm[object_id]', $object_id);
-    //echo Chtml::hiddenField('CommentForm[object_type_id]', $object_type_id);
-    ?>
-
-    <div class="well no-margin">
-
-        <?php if (Yii::app()->user->isGuest): ?>
-            <div clas="row-fluid">
-                <p id="reply-to"></p>
-            </div>
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-xs-6">
-                    <?php echo $form->textFieldRow($commentform, 'username', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_username']->value)); ?>
-                    <?php echo $form->error($commentform, 'username'); ?>
-                </div>
-                <div class="col-xs-6">
-                    <?php #echo $form->textFieldRow($commentform, 'email', array('class' => 'span12'));   ?>
-                    <?php #echo $form->error($commentform, 'email'); ?>
-                </div>
-            </div>
-        <?php else: ?>
-
-            <p id="reply-to"></p>
-
-        <?php
-        endif;
-        ?>
-
-        <div class="row" style="margin-bottom: 10px;">
-            <?php if (Yii::app()->user->isGuest): ?>
-
-                <div class="col-xs-12">
-                    <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
-                    <?php echo $form->error($commentform, 'text'); ?>
-                </div>
-
-
-            <?php else: ?>
-                <!--                <div class="col-xs-2">
-                                    <img src="<?php //echo Users::model()->getAvatarFilename(50, false, Yii::app()->user->id);     ?>" alt="" />
-                                </div>-->
-                <div class="col-xs-12">
-                    <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
-                    <?php echo $form->error($commentform, 'text'); ?>
-                </div>
-            <?php endif; ?>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <?php if (Yii::app()->user->isGuest): ?>
-                    <?php echo $form->textFieldRow($commentform, 'capcha', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
-                    <?php echo $form->error($commentform, 'capcha'); ?>
-                <?php endif; ?>
-            </div>
-            <div class="col-xs-3">
-                <?php if (extension_loaded('gd') && Yii::app()->user->isGuest): ?>
-                    <?php
-                    #$this->captcha->showRefreshButton
-                    $this->widget('CCaptcha', array(
-                        'clickableImage' => true,
-                        'showRefreshButton' => false,
-                    ))
-                    ?>
-                <?php endif ?>
-                <?php #echo $form->captchaRow($commentform, 'capcha')  ?>
-            </div>
-            <div class="col-xs-5">
-                <?php #$form->submitButton($commentform)    ?>
-                <?php echo CHtml::button('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn', 'id' => 'sendComment')); ?>
-                <script>
-                    $('#sendComment').click(function() {
-                        var commentContainer = $('#commentContainer');
-                        var id = commentContainer.children().last().attr('id');
-                        if (id === undefined) {
-                            $('#lastCommentId').val(0);
-                        } else {
-                            $('#lastCommentId').val(id.substring(1, 7));
-                        }
-                        form = $(this).parents('#CommentForm');
-                        $.ajax({
-                            url: '/comment/add', // указываем URL и
-                            type: "POST",
-                            cache: false,
-                            data: form.serialize(),
-                            success: function(html) { // вешаем свой обработчик на функцию success
-                                commentContainer = $('#commentContainer');
-                                commentContainer.append(html);
-                                $('#commentTitle').val('Комментарии:');
-                            }
-                        });
-                    });
-                </script>
-                <?php //echo CHtml::submitButton('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn'));  ?>
-                <?php echo $form->hiddenField($commentform, 'parent'); ?>
-
-                <?php // $this->widget('bootstrap.widgets.BootButton', array('buttonType' => '', 'icon' => 'ok white', 'label' => 'Отправить', 'htmlOptions' => array('class' => 'col-xs-12 red-button'))); ?>
-            </div>
-        </div>
-
-
-
-
-        <?php $this->endWidget(); ?>
+    <div id="commentFormBlock">
+        <?php $this->render('application.views.front.comments._form', array('commentform' => $commentform, 'object_id' => $object_id, 'object_type_id' => $object_type_id)); ?>
     </div>
 <?php endif; ?>
 <p style="font-size: 11px;"> <br />Комментарий может быть удален, если он: не по сути текста; оскорбляет автора,
@@ -143,5 +24,77 @@ else :
 
 
 
-<?php
-// include($_SERVER['DOCUMENT_ROOT'] . '/profit_partner/comments.txt'); ?>
+<script>
+    var refreshId;
+    function fadeInComment()
+    {
+        $('.new').css('display', 'none');
+        $('.new').fadeIn(1000, function() {
+            $('.new').removeClass('new');
+        });
+    }
+
+    function refreshComments() {
+        var commentContainer = $('#commentContainer');
+        var id = commentContainer.children().last().attr('id');
+        if (id === undefined) {
+            $('#lastCommentId').val(0);
+        } else {
+            $('#lastCommentId').val(id.substring(1, 7));
+        }
+        form = $('#CommentForm');
+        $.ajax({
+            url: '/comment/loadlast', // указываем URL и
+            type: "POST",
+            cache: false,
+            data: form.serialize(),
+            success: function(html) { // вешаем свой обработчик на функцию success
+                commentContainer = $('#commentContainer');
+                commentContainer.append(html);
+                fadeInComment();
+            }
+        });
+    }
+
+    $(document).on('click', '.adminCommentBtns a', function() {
+        link = $(this);
+        link.parent().find('.adminCommentBtns a').prop('disabled', true);
+        $.ajax({
+            url: $(this).attr('href'), // указываем URL и
+            type: "GET",
+            cache: false,
+            success: function(html) { // вешаем свой обработчик на функцию success
+                link.parents('.comment').parent().replaceWith(html);
+            }
+        });
+        return false;
+    });
+
+    $(document).on('click', '#sendComment', function() {
+        clearInterval(refreshId);
+        $(this).prop('disabled', true);
+        var commentContainer = $('#commentContainer');
+        var id = commentContainer.children().last().attr('id');
+        if (id === undefined) {
+            $('#lastCommentId').val(0);
+        } else {
+            $('#lastCommentId').val(id.substring(1, 7));
+        }
+        form = $('#CommentForm');
+        $.ajax({
+            url: '/comment/add', // указываем URL и
+            type: "POST",
+            cache: false,
+            dataType: 'json',
+            data: form.serialize(),
+            success: function(result) { // вешаем свой обработчик на функцию success
+                $('#commentFormBlock').html(result.form);
+                commentContainer = $('#commentContainer');
+                commentContainer.append(result.comments);
+                fadeInComment();
+                refreshId = setInterval(refreshComments, 5000);
+            }
+        });
+    });
+    refreshId = setInterval(refreshComments, 5000);
+</script>

@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-    $('.likebutton').click(function(){
+    $(document).on('click', '.likebutton', function(){
        var t = $(this);
         $.ajax({
             'type':'POST',
@@ -18,7 +18,7 @@ jQuery(function($) {
         });
         return false;
     });
-    $('.dislikebutton').click(function(){
+    $(document).on('click', '.dislikebutton', function(){
        var t = $(this);
         $.ajax({
             'type':'POST',

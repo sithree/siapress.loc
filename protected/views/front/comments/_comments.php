@@ -15,7 +15,7 @@ if ($likeOr > 0) {
 <!-- noindex -->
 
 
-<div id="d<?php echo $comment['id'] ?>">
+<div id="d<?php echo $comment['id'] ?>" <?php echo $new ? 'class="new"' : "" ?> >
     <a class="comment-id" rel="" name="comment-<?php echo $comment['id'] ?>"></a>
     <div id="c<?php echo $comment['id'] ?>" style="padding: 0;" class="comment <?php echo $comment['level'] > 0 ? "comment-inner-" . $comment['level'] : '' ?>">
         <div class="comment-header" style="margin-bottom: 5px; position: relative">
@@ -54,7 +54,7 @@ if ($likeOr > 0) {
                     ?>
 
                 <?php endif; ?>
-                <div style="float:right; font-size:11px;"><a rel="<?php echo $comment['id'] ?>" class="replyComment" style="font-weight:normal;" href="<?php echo Yii::app()->request->requestUri ?>#addcomment">Ответить</a></div>
+                    <div style="float:right; font-size:11px;"><a rel="<?php echo $comment['id'] ?>" class="replyComment" style="font-weight:normal;" href="<?php echo $url ? $url : Yii::app()->request->requestUri ?>#addcomment">Ответить</a></div>
             </div>
             <div class="1234" style="float:right">
 
@@ -94,68 +94,21 @@ if ($likeOr > 0) {
 
 
 <?php
-if (Yii::app()->user->checkAccess('administrator')) :
-    Yii::app()->clientScript->registerCss('adminCommentBtns', '
-                .adminCommentBtns {
-                background: none repeat scroll 0 0 #EEEEEE;
-    bottom: -17px;
-    font-size: 10px;
-    padding: 0 8px;
-    position: absolute;
-    right: -1px;
-}
-');
-    ?>
+if (Yii::app()->user->checkAccess('administrator')) : ?>
                 <div class="adminCommentBtns">
                 <?php
                 if ($comment->published == 1):
-                    echo CHtml::ajaxLink('Нарушает', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'rules', 'token' => $comment->token)), array(
-                        'type' => 'get',
-                        'cache' => false,
-                        'success' => "function(html){
-                                    jQuery('#d" . $comment->id . "').html(html);
-                                 }"
-                            ), array('style' => $comment->ban == 1 ? 'text-decoration:underline;' : '')
-                    );
+                    echo CHtml::link('Нарушает', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'rules', 'token' => $comment->token)));
                     echo "&nbsp;&nbsp;&nbsp;";
-                    echo CHtml::ajaxLink('Оскорбляет', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'author', 'token' => $comment->token)), array(
-                        'type' => 'get',
-                        'cache' => false,
-                        'success' => "function(html){
-                                    jQuery('#d" . $comment->id . "').html(html);
-                                 }"
-                            ), array('style' => $comment->ban == 2 ? 'text-decoration:underline;' : '')
-                    );
+                    echo CHtml::link('Оскорбляет', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'autor', 'token' => $comment->token)));
                     echo "&nbsp;&nbsp;&nbsp;";
-                    echo CHtml::ajaxLink('Не в тему', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'theme', 'token' => $comment->token)), array(
-                        'type' => 'get',
-                        'cache' => false,
-                        'success' => "function(html){
-                                    jQuery('#d" . $comment->id . "').html(html);
-                                 }"
-                            ), array('style' => $comment->ban == 3 ? 'text-decoration:underline;' : '')
-                    );
+                    echo CHtml::link('Не в тему', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'theme', 'token' => $comment->token)));
                 endif;
                 echo "&nbsp;&nbsp;&nbsp;";
-
-                echo CHtml::ajaxLink('Удалить', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'delete', 'token' => $comment->token)), array(
-                    'type' => 'get',
-                    'cache' => false,
-                    'success' => "function(html){
-                                    jQuery('#d" . $comment->id . "').html(html);
-                                 }"
-                        ), array('style' => $comment->published == 0 ? 'text-decoration:underline;' : '')
-                );
+                
+                echo CHtml::link('Удалить', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'delete', 'token' => $comment->token)));
                 echo "&nbsp;&nbsp;&nbsp;";
-
-                echo CHtml::ajaxLink('Опубликовать', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'publish', 'token' => $comment->token)), array(
-                    'type' => 'get',
-                    'cache' => false,
-                    'success' => "function(html){
-                                    jQuery('#d" . $comment->id . "').html(html);
-                                 }"
-                        )
-                );
+                echo CHtml::link('Опубликовать', Yii::app()->createUrl('comment/moderator', array('id' => $comment->id, 'action' => 'publish', 'token' => $comment->token)));
                 ?>
                 </div>
                 <?php endif; ?>
