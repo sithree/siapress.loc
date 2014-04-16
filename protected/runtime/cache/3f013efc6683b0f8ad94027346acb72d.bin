@@ -1,4 +1,4 @@
-a:2:{i:0;a:2:{i:0;s:11383:"    <div class="portlet" id="yw10">
+a:2:{i:0;a:2:{i:0;s:11017:"    <div class="portlet" id="yw9">
 <div class="portlet-content">
 <script>
     jQuery(function($) {
@@ -37,7 +37,7 @@ a:2:{i:0;a:2:{i:0;s:11383:"    <div class="portlet" id="yw10">
                     <div class="small a-right">
                            <span class="nowrap">14 апреля  в 14:07</span>, 
                    
-                            <i class="fa fa-comment-o"></i> 1                      </div>
+                            <i class="fa fa-comment-o"></i> 2                      </div>
 
 
 
@@ -97,12 +97,20 @@ a:2:{i:0;a:2:{i:0;s:11383:"    <div class="portlet" id="yw10">
         <ul class="unstyled popular">
 
                             <li>
+                    <a href="/news/31063">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdsfsdf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 14:07, 
+                            <i class="fa fa-eye"></i> 99                    </div>
+                </li>
+                                <li>
                     <a href="/news/31064">
                         <!-- <span class="time"></span> -->
                                                 <span class="redlight">пфавфыа</span>                    </a>
                     <div class="small a-right">
                         <span class="nowrap">14 апреля  в 14:08, 
-                            <i class="fa fa-eye"></i> 47                    </div>
+                            <i class="fa fa-eye"></i> 96                    </div>
                 </li>
                                 <li>
                     <a href="/news/31062">
@@ -111,14 +119,6 @@ a:2:{i:0;a:2:{i:0;s:11383:"    <div class="portlet" id="yw10">
                     <div class="small a-right">
                         <span class="nowrap">14 апреля  в 13:17, 
                             <i class="fa fa-eye"></i> 5                    </div>
-                </li>
-                                <li>
-                    <a href="/news/31063">
-                        <!-- <span class="time"></span> -->
-                                                <span class="redlight">fdsfsdf</span>                    </a>
-                    <div class="small a-right">
-                        <span class="nowrap">14 апреля  в 14:07, 
-                            <i class="fa fa-eye"></i> 3                    </div>
                 </li>
                                 <li>
                     <a href="/31059">
@@ -151,93 +151,93 @@ a:2:{i:0;a:2:{i:0;s:11383:"    <div class="portlet" id="yw10">
         <ul class="unstyled">
                             <li>
                     <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/31018#comment-111190">
-                        ttdgfdgfdgdgd                       
+                    <a  class="comm-right" href="/blogs/173#comment-111207">
+                        еуые                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/31018">
-                            Мотоциклы летали. ФОТОРЕПОРТАЖ                        </a>
+                        <a href="/blogs/173">
+                            Отвечать надо                        </a>
                     </div>
-                    <div class="created">Сегодня в 18:52</div>
-                </li>
-                                <li>
-                    <div class="block-commen-author">admin <span style="color: #333;"> &rarr; admin:</span></div>
-                    <a  class="comm-right" href="/blogs/31018#comment-111189">
-                        trretetert                       
-                    </a>          
-                    <div class="created">
-                        <a href="/blogs/31018">
-                            Мотоциклы летали. ФОТОРЕПОРТАЖ                        </a>
-                    </div>
-                    <div class="created">Сегодня в 18:52</div>
+                    <div class="created">Сегодня в 12:07</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/31018#comment-111188">
-                        lklkjhljhl                       
+                    <a  class="comm-right" href="/blogs/174#comment-111206">
+                        пвапвыпававыаыа                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/31018">
-                            Мотоциклы летали. ФОТОРЕПОРТАЖ                        </a>
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
                     </div>
-                    <div class="created">Сегодня в 18:48</div>
+                    <div class="created">Сегодня в 10:26</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/31018#comment-111187">
-                        fgfdgdfgdfg                       
+                    <a  class="comm-right" href="/blogs/174#comment-111205">
+                        мчсмсчмчисичям                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/31018">
-                            Мотоциклы летали. ФОТОРЕПОРТАЖ                        </a>
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
                     </div>
-                    <div class="created">Сегодня в 18:48</div>
+                    <div class="created">Сегодня в 10:26</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/blogs/30993#comment-111186">
-                        gfdgdfgfdgdf                       
+                    <a  class="comm-right" href="/blogs/174#comment-111204">
+                        пвпвыпвыпывпв                       
                     </a>          
                     <div class="created">
-                        <a href="/blogs/30993">
-                            ​Альбина Максименко: «Новый полис продлять не нужно»                        </a>
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
                     </div>
-                    <div class="created">Сегодня в 18:46</div>
-                </li>
-                                <li>
-                    <div class="block-commen-author">admin <span style="color: #333;"> &rarr; VL:</span></div>
-                    <a  class="comm-right" href="/noise/30951#comment-111185">
-                        cvcxvcxvzx                       
-                    </a>          
-                    <div class="created">
-                        <a href="/noise/30951">
-                            ​Слухи недели. Гори, гори ясно                        </a>
-                    </div>
-                    <div class="created">Сегодня в 18:44</div>
-                </li>
-                                <li>
-                    <div class="block-commen-author">admin <span style="color: #333;"> &rarr; fdgsdgd:</span></div>
-                    <a  class="comm-right" href="/news/31064#comment-111184">
-                        gdfgdgsdgrdsg                       
-                    </a>          
-                    <div class="created">
-                        <a href="/news/31064">
-                            пфавфыа                        </a>
-                    </div>
-                    <div class="created">Сегодня в 18:41</div>
+                    <div class="created">Сегодня в 10:26</div>
                 </li>
                                 <li>
                     <div class="block-commen-author">admin:</div>
-                    <a  class="comm-right" href="/noise/30951#comment-111183">
-                        fdsfdsfsd                       
+                    <a  class="comm-right" href="/blogs/174#comment-111203">
+                        пвапавпвапв                       
                     </a>          
                     <div class="created">
-                        <a href="/noise/30951">
-                            ​Слухи недели. Гори, гори ясно                        </a>
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
                     </div>
-                    <div class="created">Сегодня в 17:01</div>
+                    <div class="created">Сегодня в 10:26</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">admin:</div>
+                    <a  class="comm-right" href="/blogs/174#comment-111202">
+                        рпаврпаврар                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
+                    </div>
+                    <div class="created">Сегодня в 10:26</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">admin:</div>
+                    <a  class="comm-right" href="/blogs/174#comment-111201">
+                        пывпавыпы                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
+                    </div>
+                    <div class="created">Сегодня в 10:26</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">admin:</div>
+                    <a  class="comm-right" href="/blogs/174#comment-111200">
+                        мсчмчс                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/174">
+                            Имидж – все!                        </a>
+                    </div>
+                    <div class="created">Сегодня в 10:26</div>
                 </li>
                         </ul>
     </div>
 </div></div>
-</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111192";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111208";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}

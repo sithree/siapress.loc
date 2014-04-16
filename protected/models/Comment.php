@@ -23,34 +23,39 @@
  * @property ObjectTypes $objectType
  * @property CommentsAdd $commentsAdd
  */
-class Comment extends CActiveRecord {
+class Comment extends CActiveRecord
+{
 
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
      * @return Comment the static model class
      */
-    public static function model($className = __CLASS__) {
+    public static function model($className = __CLASS__)
+    {
         return parent::model($className);
     }
 
     /**
      * @return string the associated database table name
      */
-    public function tableName() {
+    public function tableName()
+    {
         return '{{comments}}';
     }
 
-    public function defaultScope() {
+    public function defaultScope()
+    {
         return array(
 //            'order' => 'comment.created ASC',
         );
     }
 
-    public function scopes() {
+    public function scopes()
+    {
         return array(
             'published' => array(
-                'condition' => 't.`published` = 1 and `ban` = 0',
+                'condition' => 't.`published` = 1',
                 'with' => array('author', 'commentAdd'),
             ),
             'publishedComment' => array(
@@ -63,7 +68,8 @@ class Comment extends CActiveRecord {
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
+    public function rules()
+    {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
@@ -81,7 +87,8 @@ class Comment extends CActiveRecord {
     /**
      * @return array relational rules.
      */
-    public function relations() {
+    public function relations()
+    {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
@@ -96,7 +103,8 @@ class Comment extends CActiveRecord {
     /**
      * @return array customized attribute labels (name=>label)
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return array(
             'id' => 'ID',
             'text' => 'Text',
@@ -118,7 +126,8 @@ class Comment extends CActiveRecord {
      * Retrieves a list of models based on the current search/filter conditions.
      * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
      */
-    public function search() {
+    public function search()
+    {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 
@@ -143,10 +152,12 @@ class Comment extends CActiveRecord {
         ));
     }
 
-    public function afterSave() {
+    public function afterSave()
+    {
 
 
-        if ($this->isNewRecord) {
+        if ($this->isNewRecord)
+        {
             $name = '=?UTF-8?B?' . base64_encode("Сиа-пресс") . '?=';
             $subject = '=?UTF-8?B?' . base64_encode("Добавлен новый комментарий") . '?=';
             $headers = "From: $name <no-reply@siapress.ru>\r\n" .
@@ -163,31 +174,37 @@ class Comment extends CActiveRecord {
         return true;
     }
 
-    public function beforeSave() {
+    public function beforeSave()
+    {
 
         $banList = array(
                 //"217.112.5.96",
                 //"95.172.121.77",
         );
-        if (in_array($this->ip, $banList)) {
+        if (in_array($this->ip, $banList))
+        {
             return false;
         }
 
-        if (parent::beforeSave()) {
+        if (parent::beforeSave())
+        {
             $this->token = md5(md5(md5($this->object_id . $this->created . $this->author_id . $this->email . $this->name)));
             return true;
         }
     }
 
-    public function beforeValidate() {
+    public function beforeValidate()
+    {
 
         return true;
     }
 
-    public function getAllComments($id, $type = 1) {
+    public function getAllComments($id, $type = 1)
+    {
         #Yii::app()->cache->flush();
         $comments = Yii::app()->cache->get('comment_news_1' . $id);
-        if ($comments === false) {
+        if ($comments === false)
+        {
             $query = "SELECT c.*, `add`.*, u.username as uname, u.login_from, u.id as userid FROM {{comments}} as c
                       LEFT JOIN {{comments_add}} as `add` ON c.id = `add`.comment_id
                       LEFT JOIN {{users}} as u ON c.author_id = u.id
@@ -207,11 +224,13 @@ class Comment extends CActiveRecord {
      *
      */
 
-    public function getBanText() {
+    public function getBanText()
+    {
         if ($this->comment_ban)
             return '<span class="commdeleted">' . $this->comment_ban . '</span>';
 
-        switch ($this->ban) {
+        switch ($this->ban)
+        {
             case 1: return '<span class="commdeleted">Комментарий удален модератором из-за нарушений <a href="/rules">правил сайта</a>.</span>';
             case 2: return '<span class="commdeleted">Комментарий удален модератором, так как оскорбляет автора и читателей сайта.</span>';
             case 3: return '<span class="commdeleted">Комментарий удален модератором, так как не по сути материала.</span>';
@@ -219,7 +238,8 @@ class Comment extends CActiveRecord {
         }
     }
 
-    public function replace($str = null) {
+    public function replace($str = null)
+    {
         #return $str;
         if (!$str)
             $str = $this->text;
@@ -320,26 +340,30 @@ class Comment extends CActiveRecord {
         //QUOTE
         $quotePattern = '#\[quote\s?name=\"([^\"\'\<\>\(\)]+)+\"\](<br\s?\/?\>)*(.*?)(<br\s?\/?\>)*\[\/quote\]#iu';
         $quoteReplace = '<span class="quote2">Цитирую: \\1</span><blockquote>\\3</blockquote>';
-        while (preg_match($quotePattern, $str)) {
+        while (preg_match($quotePattern, $str))
+        {
             $str = preg_replace($quotePattern, $quoteReplace, $str);
         }
         $quotePattern = '#\[quote[^\]]*?\](<br\s?\/?\>)*([^\[]+)(<br\s?\/?\>)*\[\/quote\]#iu';
         $quoteReplace = '<span class="quote">Цитата:</span><blockquote>\\2</blockquote>';
-        while (preg_match($quotePattern, $str)) {
+        while (preg_match($quotePattern, $str))
+        {
             $str = preg_replace($quotePattern, $quoteReplace, $str);
         }
 
         return $str;
     }
 
-    public function getLastcomments($catid = array(), $page = 0, $limit = 10) {
+    public function getLastcomments($catid = array(), $page = 0, $limit = 10)
+    {
         $data = Yii::app()->cache->get('last_comment_page_' . $page);
         $cat = implode(',', $catid);
 
         if ($page)
             $limit = $page * $limit - $limit . ', ' . $limit;
         /* a.cat_id IN ($cat) AND */
-        if ($data === false) {
+        if ($data === false)
+        {
             $query = "SELECT c.id as cid,c.parent, c.text, c.`name`,c.created, c.author_id, a.id, a.cat_id, u.id as uid, u.`name` as username, u.username as login,
                 a.title, a.cat_id
                    FROM {{comments}} as c
@@ -360,14 +384,16 @@ class Comment extends CActiveRecord {
         return $data;
     }
 
-    public function getPopularcomments($catid = array(), $page = 0, $limit = 10) {
+    public function getPopularcomments($catid = array(), $page = 0, $limit = 10)
+    {
         $data = Yii::app()->cache->get('popular_comment_page_' . $page);
         $cat = implode(',', $catid);
 
         if ($page)
             $limit = $page * $limit - $limit . ', ' . $limit;
 
-        if ($data === false) {
+        if ($data === false)
+        {
             $query = "SELECT a.*, `add`.*,
                 (SELECT COUNT(*) FROM {{comments}} where object_id = a.id) as count
                 FROM {{articles}} as a
@@ -388,11 +414,14 @@ class Comment extends CActiveRecord {
         return $data;
     }
 
-    public function addComment() {
+    public function addComment()
+    {
         //Проыеряем на имена
-        if (Yii::app()->user->isGuest) {
+        if (Yii::app()->user->isGuest)
+        {
             $commentAuthors = User::model()->find('`name` = ' . trim($comment->username));
-            if (mb_strtolower(trim($comment->username), 'UTF-8') === 'admin' or $commentAuthors) {
+            if (mb_strtolower(trim($comment->username), 'UTF-8') === 'admin' or $commentAuthors)
+            {
                 Yii::app()->user->setFlash('error', 'Такое имя пользователя зарегистрировано в системе. Авторизуйтесь или используйте другое имя.');
                 $this->refresh(true, '#addcomment');
             }
@@ -420,7 +449,8 @@ class Comment extends CActiveRecord {
         $comm->parent = ($comment->parent) ? $comment->parent : 0;
         #CVarDumper::dump($comm);
         $comm->save();
-        if ($comm->id > 0) {
+        if ($comm->id > 0)
+        {
 
             unset(Yii::app()->request->cookies['comment_text']);
 

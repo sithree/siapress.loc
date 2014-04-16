@@ -30,122 +30,63 @@ class CommentController extends Controller
         return $this->metaProperty;
     }
 
-    public function actionIndex()
+    protected function getComment($id, $token)
     {
-        $this->render('index');
+        $comment = Comment::model()->find("id = {$id} AND `token` = '{$token}'");
+        if (!$comment)
+            throw new CHttpException(404, 'Invalid request. Please do not repeat this request again.');
+        return $comment;
     }
 
-    public function actionModerator()
+    protected function sendResult($id)
     {
-        $id = Yii::app()->request->getQuery('id');
-        $action = Yii::app()->request->getQuery('action');
-        $token = Yii::app()->request->getQuery('token');
-
-        if (!isset($id) OR ! isset($action) OR ! isset($token))
-            throw new CHttpException(404, '11 Invalid request. Please do not repeat this request again.');
-
-        $comment = Comment::model()->find("id = {$id} AND `token` = '{$token}'");
-        if ($comment)
+        if (Yii::app()->request->isAjaxRequest)
         {
-            $link = null;
-            if ($comment->object_type_id == 2)
-                $link = $this->createAbsoluteUrl('polls/view') . '?id=' . $comment->poll->id . '#comment-' . $id;
-            else
-                $link = $this->createAbsoluteUrl($comment->article->link() . '#comment-' . $id);
-            
-            switch ($action)
-            {
-                case "rules":
-                    $comment->published = 1;
-                    $comment->ban = 1;
-                    $comment->save();
-                    Yii::app()->cache->flush();
-                    $comments = Comment::model()->findAll('id = ' . $comment->id);
-                    if (Yii::app()->request->isAjaxRequest)
-                    {
-                        $this->renderPartial('/comments/comments', array(
-                            'comments' => $comments,
-                        ));
-                        Yii::app()->end();
-                    }
-                    $this->redirect($link);
+            $comments = Comment::model()->findAll('id = ' . $comment->id);
+            $this->renderPartial('/comments/comments', array(
+                'comments' => $comments,
+            ));
+            Yii::app()->end();
+        }
+        $this->redirect($_SERVER['HTTP_REFERER'] . '#comment-' . $id);
+    }
 
-                    break;
-                case "author":
-                    $comment->published = 1;
-                    $comment->ban = 2;
-                    $comment->save();
+    protected function changeComment($id, $token, $params)
+    {
+        $comment = $this->getComment($id, $token);
+        $comment->setAttributes($params, false);
+        $comment->save();
+        //Yii::app()->cache->flush();
+        $this->sendResult($id);
+    }
 
-                    Yii::app()->cache->flush();
-                    $comments = Comment::model()->findByPk($comment->id);
-                    if (Yii::app()->request->isAjaxRequest)
-                    {
-                        $this->renderPartial('/comments/_comments_ajax', array(
-                            'comments' => $comments,
-                        ));
-                        Yii::app()->end();
-                    }
+    public function actionMakeTheBest($id, $token, $value)
+    {
+        $params = array('best' => $value);
+        if ($value > 0)
+            $params['ban'] = 0;
+        $this->changeComment($id, $token, $params);
+    }
 
-                    $this->redirect($link);
+    public function actionMarkBan($id, $token, $value)
+    {
+        $params = array('ban' => $value);
+        if ($value > 0)
+            $params['best'] = 0;
+        $this->changeComment($id, $token, $params);
+    }
 
-                    break;
-                case "theme":
-                    $comment->published = 1;
-                    $comment->ban = 3;
-                    $comment->save();
+    public function actionMarkPublished($id, $token, $value)
+    {
+        $this->changeComment($id, $token, array(
+            'published' => $value
+        ));
+    }
 
-                    Yii::app()->cache->flush();
-                    $comments = Comment::model()->findAll('id = ' . $comment->id);
-                    if (Yii::app()->request->isAjaxRequest)
-                    {
-                        $this->renderPartial('/comments/comments', array(
-                            'comments' => $comments,
-                        ));
-                        Yii::app()->end();
-                    }
-
-                    $this->redirect($link);
-
-                    break;
-                case "delete":
-                    $comment->published = 0;
-                    $comment->ban = 0;
-                    $comment->save();
-                    Yii::app()->cache->flush();
-                    $comments = Comment::model()->findAll('id = ' . $comment->id);
-                    if (Yii::app()->request->isAjaxRequest)
-                    {
-                        $this->renderPartial('/comments/comments', array(
-                            'comments' => $comments,
-                        ));
-                        Yii::app()->end();
-                    }
-                    $this->redirect($link);
-
-                    break;
-                case "publish":
-                    $comment->published = 1;
-                    $comment->ban = 0;
-                    $comment->save();
-
-                    Yii::app()->cache->flush();
-                    $comments = Comment::model()->findAll('id = ' . $comment->id);
-                    if (Yii::app()->request->isAjaxRequest)
-                    {
-                        $this->renderPartial('/comments/comments', array(
-                            'comments' => $comments,
-                        ));
-                        Yii::app()->end();
-                    }
-                    $this->redirect($link);
-
-                    break;
-                default:
-                    throw new CHttpException(404, 'Invalid request. Please do not repeat this request again.');
-                    break;
-            }
-        } else
-            throw new CHttpException(404, 'Invalid request. Please do not repeat this request again.');
+    public function actionBan($id, $token)
+    {
+        $comment = $this->getComment($id, $token);
+        $this->sendResult($id);
     }
 
     public function actionAdd()
@@ -197,7 +138,7 @@ class CommentController extends Controller
             {
                 $error = false;
             }
-            
+
             $comments = null;
             if (Yii::app()->user->checkAccess('administrator'))
             {
@@ -217,7 +158,9 @@ class CommentController extends Controller
 
     public function actionLoadLast()
     {
-        $comment = new CommentForm();
+        if (!Yii::app()->request->isAjaxRequest)
+            return;
+        $comment = new Comment();
         $comment->attributes = $_POST['CommentForm'];
         $comments = null;
         if (Yii::app()->user->checkAccess('administrator'))

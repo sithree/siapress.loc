@@ -2,7 +2,6 @@
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'type' => 'inline',
     'id' => 'CommentForm',
-    #'htmlOptions' => array('class' => 'well'),
     'enableAjaxValidation' => false,
     'enableClientValidation' => false,
     'clientOptions' => array(
@@ -10,27 +9,33 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     )
         ));
 echo CHtml::hiddenField('lastCommentId');
-$commentform->object_id = $object_id;
-$commentform->object_type_id = $object_type_id;
-echo $form->hiddenField($commentform, 'object_id');
-echo $form->hiddenField($commentform, 'object_type_id');
+echo $form->hiddenField($comment, 'object_id');
+echo $form->hiddenField($comment, 'object_type_id');
 ?>
 
 <div class="well no-margin">
 
     <?php if (Yii::app()->user->isGuest): ?>
         <div clas="row-fluid">
-            <p id="reply-to"></p>
+            <p id="reply-to">
+                <?php if (isset($comment->parent)): ?>
+                    В ответ на комментарий от пользователя <b>' + user + '</b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+                <?php endif; ?>
+            </p>
         </div>
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-xs-6">
-                <?php echo $form->textFieldRow($commentform, 'username', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_username']->value)); ?>
-                <?php echo $form->error($commentform, 'username'); ?>
+                <?php echo $form->textFieldRow($comment, 'username', array('class' => 'col-xs-12 no-margin')); ?>
+                <?php echo $form->error($comment, 'username'); ?>
             </div>
         </div>
     <?php else: ?>
 
-        <p id="reply-to"></p>
+        <p id="reply-to">
+            <?php if ($comment->parent): ?>
+                В ответ на комментарий от пользователя <b><?php echo $comment->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+            <?php endif; ?>
+        </p>
 
     <?php
     endif;
@@ -40,23 +45,23 @@ echo $form->hiddenField($commentform, 'object_type_id');
         <?php if (Yii::app()->user->isGuest): ?>
 
             <div class="col-xs-12">
-                <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
-                <?php echo $form->error($commentform, 'text'); ?>
+                <?php echo $form->textAreaRow($comment, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
+                <?php echo $form->error($comment, 'text'); ?>
             </div>
 
 
         <?php else: ?>
             <div class="col-xs-12">
-                <?php echo $form->textAreaRow($commentform, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
-                <?php echo $form->error($commentform, 'text'); ?>
+                <?php echo $form->textAreaRow($comment, 'text', array('class' => 'col-xs-12 no-margin', 'rows' => 5, 'value' => Yii::app()->request->cookies[$object_id . '_comment_text']->value)); ?>
+                <?php echo $form->error($comment, 'text'); ?>
             </div>
         <?php endif; ?>
     </div>
     <div class="row">
         <div class="col-xs-4">
             <?php if (Yii::app()->user->isGuest): ?>
-                <?php echo $form->textFieldRow($commentform, 'capcha', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
-                <?php echo $form->error($commentform, 'capcha'); ?>
+                <?php echo $form->textFieldRow($comment, 'capcha', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
+                <?php echo $form->error($comment, 'capcha'); ?>
             <?php endif; ?>
         </div>
         <div class="col-xs-3">
@@ -72,12 +77,9 @@ echo $form->hiddenField($commentform, 'object_type_id');
         </div>
         <div class="col-xs-5">
             <?php echo CHtml::button('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn', 'id' => 'sendComment')); ?>
-            <?php echo $form->hiddenField($commentform, 'parent'); ?>
-
-            <?php // $this->widget('bootstrap.widgets.BootButton', array('buttonType' => '', 'icon' => 'ok white', 'label' => 'Отправить', 'htmlOptions' => array('class' => 'col-xs-12 red-button')));  ?>
+            <?php echo $form->hiddenField($comment, 'parent'); ?>
         </div>
     </div>
 </div>
-    <?php
-    $this->endWidget();
-    
+<?php
+$this->endWidget();
