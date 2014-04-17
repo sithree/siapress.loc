@@ -1,11 +1,13 @@
 <?php
 
-class ArticleController extends Controller {
+class ArticleController extends Controller
+{
 
     public $layout = '//layouts/news/article';
     public $metaProperty;
 
-    public function filters() {
+    public function filters()
+    {
         return array(
             'accessControl', // perform access control for CRUD operations
             array(
@@ -16,15 +18,18 @@ class ArticleController extends Controller {
         );
     }
 
-    public function addMetaProperty($name, $content) {
+    public function addMetaProperty($name, $content)
+    {
         $this->metaProperty .= "<meta property=\"" . CHtml::encode($name) . "\" content=\"" . CHtml::encode($content) . "\" />\r\n";
     }
 
-    public function getMetaProperty() {
+    public function getMetaProperty()
+    {
         return $this->metaProperty;
     }
 
-    public function actions() {
+    public function actions()
+    {
         return array(
             'captcha' => array(
                 'class' => 'MCaptcha',
@@ -37,13 +42,61 @@ class ArticleController extends Controller {
         );
     }
 
-    public function actionView($category, $id) {
+    public function actionDislike($id)
+    {
+        $article = ArticleAdd::model()->find('article_id=' . $id);
+        if (!$article)
+        {
+            $article = new ArticleAdd();
+            $article->article_id = $id;
+        }
+        $article->dislike++;
+        $article->save();
+        $cookie = new CHttpCookie('articlelike_' . $article->article_id, '1');
+        $cookie->expire = time() + 86400;
+        Yii::app()->request->cookies['articlelike_' . $article->article_id] = $cookie;
+
+        if (Yii::app()->request->isAjaxRequest)
+        {
+            echo $this->renderPartial('vote', array('model' => $article));
+            Yii::app()->end();
+        }
+        $this->redirect(Yii::app()->request->urlReferrer);
+        Yii::app()->end();
+    }
+
+    public function actionLike($id)
+    {
+        $article = ArticleAdd::model()->find('article_id=' . $id);
+        if (!$article)
+        {
+            $article = new ArticleAdd();
+            $article->article_id = $id;
+        }
+        $article->like++;
+        $article->save();
+        $cookie = new CHttpCookie('articlelike_' . $article->article_id, '1');
+        $cookie->expire = time() + 86400;
+        Yii::app()->request->cookies['articlelike_' . $article->article_id] = $cookie;
+
+        if (Yii::app()->request->isAjaxRequest)
+        {
+            echo $this->renderPartial('vote', array('model' => $article));
+            Yii::app()->end();
+        }
+        $this->redirect(Yii::app()->request->urlReferrer);
+        Yii::app()->end();
+    }
+
+    public function actionView($category, $id)
+    {
 
 
         $loadmodel = $this->loadModel($id);
         $this->pageTitle = CHtml::encode($loadmodel->title);
 
-        if ($category == "realty") {
+        if ($category == "realty")
+        {
             Yii::app()->clientScript->registerScriptFile('http://cs.etagi.com/account/ru/portal/utf8/46/');
         }
 
@@ -54,15 +107,18 @@ class ArticleController extends Controller {
         header("Expires: " . date("r"));
 
         //Генерация ключевых слов
-        if (empty($loadmodel->metakey)) {
+        if (empty($loadmodel->metakey))
+        {
             $words = Article::model()->getMeta($loadmodel);
-            if ($words) {
+            if ($words)
+            {
                 $news = $loadmodel;
                 $news->metakey = $words;
                 $news->save();
             } else
                 $words = '';
-        } else {
+        } else
+        {
             $words = $loadmodel['metakey'];
         }
 
@@ -122,11 +178,12 @@ class ArticleController extends Controller {
         $this->render('view', array(
             'model' => $loadmodel, //$this->loadModel($id),
             'photos' => $photos,
-            //'moreArticles' => $moreArticles,
+                //'moreArticles' => $moreArticles,
         ));
     }
 
-    public function loadModel($id) {
+    public function loadModel($id)
+    {
         $model = Article::model()->find(
                 array(
                     'limit' => 1,
@@ -146,12 +203,14 @@ class ArticleController extends Controller {
         return $model;
     }
 
-    public function actionIndex($category = null, $page = 1) {
+    public function actionIndex($category = null, $page = 1)
+    {
 
         if ($category == false)
             $category = Article::model()->getNewscat();
 
-        switch ($category) {
+        switch ($category)
+        {
             case "opinions":
                 $category = Article::getOpinionsCategories(true);
                 $this->pageTitle = "Все мнения на портале СИА-ПРЕСС";
@@ -184,11 +243,13 @@ class ArticleController extends Controller {
         }
 
 
-        if ($category == "realty") {
+        if ($category == "realty")
+        {
             Yii::app()->clientScript->registerScriptFile('http://cs.etagi.com/account/ru/portal/utf8/46/');
         }
 
-        if (!is_array($category)) {
+        if (!is_array($category))
+        {
             /* Пагинация */
             $criteria = new CDbCriteria();
             $count = Article::model()->getCountitems($category);
@@ -196,10 +257,12 @@ class ArticleController extends Controller {
             $pages->pageSize = Config::getOnpage();
 
             /* end.Пагинация */
-            if ($category == 'opinion') {
+            if ($category == 'opinion')
+            {
                 $mainNews = NULL;
                 $data = Article::model()->getItems(array(8, 9), 20, $page);
-            } else {
+            } else
+            {
                 $mainNews = Article::model()->getMainitem($category, true);
                 $data = Article::model()->getItems($category, 20, $page);
             }
@@ -225,7 +288,8 @@ class ArticleController extends Controller {
         $pages = new CPagination($count);
         // элементов на страницу
         $pages->pageSize = Config::getOnpage();
-        if ($pages->currentPage > 0) {
+        if ($pages->currentPage > 0)
+        {
             $this->pageTitle .= ". Страница " . (string) ($pages->currentPage + 1);
         }
 //        $pages->route = 'news/all';

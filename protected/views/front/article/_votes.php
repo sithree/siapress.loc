@@ -9,8 +9,8 @@
             ?>
             <div class="a-right">
                 <?php if (!Yii::app()->request->cookies['articlelike_' . $model->id]->value AND !isset(Yii::app()->session['articlelike_' . $model->id])): ?>
-                    <a class="newsLikebutton" rel="<?php echo $model->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится (<?php echo (string) $like; ?>)</a>
-                    <a class="newsDislikebutton" rel="<?php echo $model->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится (<?php echo (string) $dislike; ?>)</a>
+                    <a class="newsLikebutton" rel="<?php echo $model->id ?>" title="Нравится" href="<?php echo Yii::app()->createUrl('', array('article' => 'like', 'id' => $model->id)) ?>"><i class="fa fa-thumbs-up"></i> нравится (<?php echo (string) $like; ?>)</a>
+                    <a class="newsDislikebutton" rel="<?php echo $model->id ?>" title="Не нравится" href="<?php echo Yii::app()->createUrl('', array('article' => 'dislike', 'id' => $model->id)) ?>"><i class="fa fa-thumbs-down"></i> не нравится (<?php echo (string) $dislike; ?>)</a>
                 <?php else: ?>
                     <span class="thumb-up"><i class="fa fa-thumbs-up"></i> нравится (<?php echo (string) $like; ?>)</span> 
                     <span class="thumb-down"><i class="fa fa-thumbs-down"></i> не нравится (<?php echo (string) $dislike; ?>)</span>
@@ -31,36 +31,24 @@
         $('.newsLikebutton').click(function() {
             var t = $(this);
             $.ajax({
-                'type': 'POST',
-                // 'id':'morenewsbutton',
-                'beforeSend': function() {
-                },
-                'complete': function() {
-                },
                 'success': function(html) {
                     $('#vote').html(html);
                 },
-                'url': '/ajax/likearticle',
+                'url': '/article/like',
                 'cache': false,
-                'data': 'id=' + t.attr('rel') + '&type=like'
+                'data': 'id=' + t.attr('rel')
             });
             return false;
         });
         $('.newsDislikebutton').click(function() {
             var t = $(this);
             $.ajax({
-                'type': 'POST',
-                //'id':'morenewsbutton',
-                'beforeSend': function() {
-                },
-                'complete': function() {
-                },
                 'success': function(html) {
                     $('#vote').html(html);
                 },
-                'url': '/ajax/likearticle',
+                'url': '/article/dislike',
                 'cache': false,
-                'data': 'id=' + t.attr('rel') + '&type=dislike'
+                'data': 'id=' + t.attr('rel')
             });
             return false;
         });

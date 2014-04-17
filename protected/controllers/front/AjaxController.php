@@ -133,42 +133,7 @@ class AjaxController extends CController {
         }
     }
 
-    function actionLikeArticle() {
-        if (Yii::app()->request->isAjaxRequest) {
-            $id = $_POST['id'];
-            //$sessid = $_REQUEST['PHPSESSID'];
-
-            $article = ArticleAdd::model()->find('article_id=' . $id);
-            if (!$article) {
-                $article = new ArticleAdd();
-                $article->article_id = $id;
-            }
-            ($_POST['type'] == 'like') ? $article->like++ : $article->dislike++;
-            $article->save();
-
-            $like = (int) $article->like - (int) $article->dislike;
-            if ($like > 0) {
-                $like = '+' . $like;
-                $class = 'green';
-            } elseif ($like < 0) {
-                $class = 'red';
-            } else
-                $class = 'green';
-            if ($article->article_id) {
-                $cookie = new CHttpCookie('articlelike_' . $article->article_id, '1');
-                $cookie->expire = time() + 86400;
-                Yii::app()->request->cookies['articlelike_' . $article->article_id] = $cookie;
-
-                //Добавляем в текущую сесиию, если у пользователя не принимает Куки
-                $session = new CHttpSession;
-                $session->open();
-                $session['articlelike_' . $article->article_id] = 1;
-            }
-
-            echo $this->renderPartial('vote', array('model' => $article));
-            Yii::app()->end();
-        }
-    }
+    
 
 }
 

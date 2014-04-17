@@ -5,7 +5,8 @@
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class CommentForm extends CFormModel {
+class CommentForm extends CFormModel
+{
 
     public $username;
     public $email;
@@ -23,7 +24,8 @@ class CommentForm extends CFormModel {
      * The rules state that username and password are required,
      * and password needs to be authenticated.
      */
-    public function rules() {
+    public function rules()
+    {
         return array(
             array('username, text, object_type_id, object_id', 'required', 'message' => 'Введите <b>«{attribute}»</b>'),
             array('ip', 'ban'),
@@ -31,7 +33,7 @@ class CommentForm extends CFormModel {
               'message' => Yii::t('user', 'Неверный проверочный код'), 'allowEmpty' => !Yii::app()->user->isGuest || !extension_loaded('gd')),
 
              */
-            array('parent','safe'),
+            array('parent', 'safe'),
             array(
                 'capcha',
                 'captcha',
@@ -44,29 +46,35 @@ class CommentForm extends CFormModel {
         );
     }
 
-    public function ban($attribute, $params) {
+    public function ban($attribute, $params)
+    {
         $ban = array('109.167.200.255');
-        
+
         if (in_array(Yii::app()->request->getUserHostAddress(), $ban))
             $this->addError('username', 'Ваш IP заблокирован. Вы не можете оставлять комментарии.');
     }
 
-    public function myCaptcha($attr, $params) {
+    public function myCaptcha($attr, $params)
+    {
         if (Yii::app()->request->isAjaxRequest)
             return;
 
         CValidator::createValidator('captcha', $this, $attr, $params)->validate($this);
     }
 
-    public function beforeValidate() {
-        if (!Yii::app()->user->isGuest) {
+    public function beforeValidate()
+    {
+        if (!Yii::app()->user->isGuest)
+        {
             $user = Users::model()->findByPk(Yii::app()->user->id);
-            if ($user) {
+            if ($user)
+            {
                 $this->email = $user->email ? $user->email : 'NOEMAIL';
                 $this->username = $user->name ? $user->name : $user->username;
                 $this->author_id = $user->id;
             }
-        } else {
+        } else
+        {
             $this->author_id = 0;
             $this->email = 'NOEMAIL';
         }
@@ -78,7 +86,8 @@ class CommentForm extends CFormModel {
     /**
      * Declares attribute labels.
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return array(
             'username' => 'Имя',
             'email' => 'Email',

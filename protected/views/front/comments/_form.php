@@ -2,6 +2,7 @@
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'type' => 'inline',
     'id' => 'CommentForm',
+    'action' => 'comment/add',
     'enableAjaxValidation' => false,
     'enableClientValidation' => false,
     'clientOptions' => array(
@@ -14,26 +15,26 @@ echo $form->hiddenField($comment, 'object_type_id');
 ?>
 
 <div class="well no-margin">
-
+    <?php echo $message; ?>
     <?php if (Yii::app()->user->isGuest): ?>
         <div clas="row-fluid">
             <p id="reply-to">
-                <?php if (isset($comment->parent)): ?>
-                    В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+                <?php if ($comment->parent): ?>
+                    В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'removeparent', 'objectTypeId' => $comment->object_type_id, 'objectId' => $comment->object_id)) ?>#addcomment">[отменить]</a>
                 <?php endif; ?>
             </p>
         </div>
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-xs-6">
-                <?php echo $form->textFieldRow($comment, 'username', array('class' => 'col-xs-12 no-margin')); ?>
-                <?php echo $form->error($comment, 'username'); ?>
+                <?php echo $form->textFieldRow($comment, 'name', array('class' => 'col-xs-12 no-margin')); ?>
+                <?php echo $form->error($comment, 'name'); ?>
             </div>
         </div>
     <?php else: ?>
 
         <p id="reply-to">
             <?php if ($comment->parent): ?>
-                В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+                В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'removeparent', 'objectTypeId' => $comment->object_type_id, 'objectId' => $comment->object_id)) ?>#addcomment">[отменить]</a>
             <?php endif; ?>
         </p>
 
@@ -76,7 +77,7 @@ echo $form->hiddenField($comment, 'object_type_id');
             <?php endif ?>
         </div>
         <div class="col-xs-5">
-            <?php echo CHtml::button('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn', 'id' => 'sendComment')); ?>
+            <?php echo CHtml::submitButton('Отправить', array('class' => 'col-xs-12 no-margin red-button small-btn', 'id' => 'sendComment')) ?>
             <?php echo $form->hiddenField($comment, 'parent'); ?>
         </div>
     </div>

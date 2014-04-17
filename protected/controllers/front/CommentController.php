@@ -42,7 +42,7 @@ class CommentController extends Controller
     {
         if (Yii::app()->request->isAjaxRequest)
         {
-            $comments = Comment::model()->findAll('id = ' . $comment->id);
+            $comments = Comment::model()->findAll('id = ' . $id);
             $this->renderPartial('/comments/comments', array(
                 'comments' => $comments,
             ));
@@ -89,54 +89,92 @@ class CommentController extends Controller
         $this->sendResult($id);
     }
 
+    public function actionSetParent($objectTypeId, $objectId, $parent)
+    {
+        $pcName = $objectTypeId . '_' . $objectId . '_comment_parent';
+        Yii::app()->request->cookies[$pcName] = new CHttpCookie($pcName, $parent);
+        $this->redirect(Yii::app()->request->urlReferrer . '#addcomment');
+    }
+
+    public function actionRemoveParent($objectTypeId, $objectId)
+    {
+        unset(Yii::app()->request->cookies[$objectTypeId . '_' . $objectId . '_comment_parent']);
+        $this->redirect(Yii::app()->request->urlReferrer . '#addcomment');
+    }
+
+    public function actionLike($id)
+    {
+        if (isset(Yii::app()->request->cookies['comment_' . $comment->comment_id]))
+            return;
+        $comment = CommentAdd::model()->findByPk($id);
+        $comment->like++;
+        $comment->save();
+
+        $cookie = new CHttpCookie('comment_' . $comment->comment_id, '1');
+        $cookie->expire = time() + 86400;
+        Yii::app()->request->cookies['comment_' . $comment->comment_id] = $cookie;
+        $this->sendResult($id);
+    }
+
+    public function actionDislike($id)
+    {
+        if (isset(Yii::app()->request->cookies['comment_' . $comment->comment_id]))
+            return;
+        $comment = CommentAdd::model()->findByPk($id);
+        $comment->dislike++;
+        $comment->save();
+
+        $cookie = new CHttpCookie('comment_' . $comment->comment_id, '1');
+        $cookie->expire = time() + 86400;
+        Yii::app()->request->cookies['comment_' . $comment->comment_id] = $cookie;
+        $this->sendResult($id);
+    }
+
     public function actionAdd()
     {
-        $comment = new CommentForm();
-        if (isset($_POST['CommentForm']))
+        $message = '';
+        $comment = new Comment();
+        if (isset($_POST['Comment']))
         {
-            $comment->attributes = $_POST['CommentForm'];
-            Yii::app()->request->cookies['pcomment_username'] = new CHttpCookie('pcomment_username', $comment->username);
-            $ct = new CHttpCookie($id . '_pcomment_text', $comment->text);
-            $ct->expire = time() + 60 * 60 * 24 * 7;
-            Yii::app()->request->cookies[$id . '_pcomment_text'] = $ct;
-
-            $error = false;
-            if ($comment->validate())
+            $comment->attributes = $_POST['Comment'];
+            $lastComment = Comment::model()->find(array('condition' => 'ip="' . Yii::app()->request->userHostAddress . '"', 'order' => 'id DESC', 'limit' => 1));
+            if (!$lastComment || time() - strtotime($lastComment->created) > 15)
             {
-                //Записываем имя в куки
-                $cookie = new CHttpCookie('pcomment_author', $comment->username);
-                $cookie->expire = time() + 60 * 60 * 24 * 5;
-                Yii::app()->request->cookies['pcomment_author'] = $cookie;
+                $lastComment = Comment::model()->findAll('created > ' . date('Y-m-d') . ' ip=' . Yii::app()->request->userHostAddress);
+                $prefix = $comment->object_type_id . '_' . $comment->object_id . '_';
+                Yii::app()->request->cookies['comment_username'] = new CHttpCookie('comment_username', $comment->name);
+                Yii::app()->request->cookies[$prefix . 'comment_text'] = new CHttpCookie($prefix . 'comment_text', $comment->text);
+                Yii::app()->request->cookies[$prefix . 'comment_parent'] = new CHttpCookie($prefix . 'comment_parent', $comment->parent);
+                $comment->ip = Yii::app()->request->userHostAddress;
+                $comment->published = Yii::app()->params->autopublishcomment;
+                $comment->created = date('Y-m-d H:i:s');
 
-
-
-                /* Добавляем комментарий */
-                $comm = new Comment;
-                $comm->attributes = $_POST['CommentForm'];
-                $comm->author_id = $comment->author_id;
-                $comm->name = $comment->username;
-                $comm->email = $comment->email;
-                $comm->ip = $_SERVER['REMOTE_ADDR'];
-                $comm->created = date('Y-m-d H:i:s');
-                $comm->published = Yii::app()->params->autopublishcomment;
-                $comm->parent = ($comment->parent) ? $comment->parent : 0;
-                $comm->save();
-                if ($comm->id > 0)
+                $comment->save();
+                if ($comment->id > 0)
                 {
+                    unset(Yii::app()->request->cookies[$prefix . 'comment_text']);
+                    unset(Yii::app()->request->cookies[$prefix . 'comment_parent']);
+                    unset(Yii::app()->request->cookies[$prefix . 'comment_validate']);
+                    $commadd = new CommentAdd;
+                    $commadd->comment_id = $comment->id;
+                    $commadd->save();
+                    if (!Yii::app()->request->isAjaxRequest)
+                        $this->redirect(Yii::app()->request->urlReferrer . '#comment-' . $comment->id);
+                    $comment = new Comment();
+                    $comment->attributes = $_POST['Comment'];
                     $comment->text = '';
                     $comment->parent = '';
                     $comment->capcha = '';
-                    unset(Yii::app()->request->cookies[$id . '_pcomment_text']);
-                    $commadd = new CommentAdd;
-                    $commadd->comment_id = $comm->id;
-                    $commadd->save();
                 } else
                 {
-                    $error = false;
+                    Yii::app()->request->cookies[$prefix . 'comment_validate'] = new CHttpCookie($prefix . 'comment_validate', 1);
+                    if (!Yii::app()->request->isAjaxRequest)
+                        $this->redirect(Yii::app()->request->urlReferrer . '#addcomment');
                 }
-            } else
+            }else
             {
-                $error = false;
+                $comment->capcha = '';
+                $message = 'Слишком частое комментирование';
             }
 
             $comments = null;
@@ -148,9 +186,8 @@ class CommentController extends Controller
                 $comments = Comment::model()->published()->with('commentAdd')->findAll(array('condition' => 'object_id = ' . $comment->object_id . ' AND object_type_id = ' . $comment->object_type_id . ' AND t.id > ' . $_POST['lastCommentId']));
             }
             echo json_encode(array(
-                'error' => $error,
-                'comments' => $this->renderPartial('application.views.front.comments.comments', array('comments' => $comments, 'url' => $_SERVER['HTTP_REFERER'], 'new' => true), true),
-                'form' => $this->renderPartial('application.views.front.comments._form', array('commentform' => $comment, 'object_id' => $comment->object_id, 'object_type_id' => $comment->object_type_id, 'new' => true), true)
+                'comments' => $this->renderPartial('application.views.front.comments.comments', array('comments' => $comments, 'new' => true), true),
+                'form' => $this->renderPartial('application.views.front.comments._form', array('comment' => $comment, 'message' => $message), true)
             ));
         }
         Yii::app()->end();

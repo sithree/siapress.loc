@@ -26,6 +26,8 @@
 class Comment extends CActiveRecord
 {
 
+    public $capcha;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -78,6 +80,11 @@ class Comment extends CActiveRecord
             array('name', 'length', 'max' => 100),
             array('email', 'length', 'max' => 50),
             array('ip', 'length', 'max' => 15),
+            array(
+                'capcha',
+                'captcha',
+                'allowEmpty' => !Yii::app()->user->isGuest || !extension_loaded('gd')
+            ),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('id, text, author_id, name, email, ip, published, created, modif_com_id, object_type_id, object_id, parent, level', 'safe', 'on' => 'search'),
@@ -108,9 +115,9 @@ class Comment extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'text' => 'Text',
-            'author_id' => 'Author',
-            'name' => 'Name',
+            'text' => 'Текст',
+            'author_id' => 'Автор',
+            'name' => 'Имя',
             'email' => 'Email',
             'ip' => 'Ip',
             'published' => 'Published',
@@ -120,6 +127,7 @@ class Comment extends CActiveRecord
             'object_id' => 'Object',
             'parent' => 'Parent',
             'level' => 'Level',
+            'capcha' => 'Код с картинки'
         );
     }
 
@@ -196,8 +204,23 @@ class Comment extends CActiveRecord
 
     public function beforeValidate()
     {
-
-        return true;
+        if (!Yii::app()->user->isGuest)
+        {
+            $user = Users::model()->findByPk(Yii::app()->user->id);
+            if ($user)
+            {
+                $this->email = $user->email ? $user->email : 'NOEMAIL';
+                $this->name = $user->name ? $user->name : $user->username;
+                $this->author_id = $user->id;
+            }
+        } else
+        {
+            $this->author_id = 0;
+            $this->email = 'NOEMAIL';
+        }
+        $event = new CModelEvent($this);
+        $this->onBeforeValidate($event);
+        return $event->isValid;
     }
 
     public function getAllComments($id, $type = 1)

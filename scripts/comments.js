@@ -3,13 +3,12 @@ jQuery(function($) {
     $(document).on('click', '.likebutton', function() {
         var t = $(this);
         $.ajax({
-            'type': 'POST',
             'success': function(html) {
-                t.parent('.1234').html(html);
+                t.parents('.comment').parent().replaceWith(html);
             },
-            'url': '/comment/likecomment',
+            'url': '/comment/like',
             'cache': false,
-            'data': 'id=' + t.attr('rel') + '&type=like'
+            'data': 'id=' + t.attr('rel')
         });
         return false;
     });
@@ -17,13 +16,12 @@ jQuery(function($) {
     $(document).on('click', '.dislikebutton', function() {
         var t = $(this);
         $.ajax({
-            'type': 'POST',
             'success': function(html) {
-                t.parent('.1234').html(html);
+                t.parents('.comment').parent().replaceWith(html);
             },
-            'url': '/ajax/likecomment',
+            'url': '/comment/dislike',
             'cache': false,
-            'data': 'id=' + t.attr('rel') + '&type=dislike'
+            'data': 'id=' + t.attr('rel')
         });
         return false;
     });
@@ -66,24 +64,24 @@ jQuery(function($) {
         root.animate({
             scrollTop: destination
         },
-        Math.abs(root.scrollTop() - destination) / 10,
+        Math.abs(root.scrollTop() - destination) / 20,
                 function() {
                     jTargetContent = jTarget.next();
                     jTargetContent.animate({
                         opacity: 0.4
                     },
                     1000,
-                    function() {
-                        jTargetContent.animate({
-                            opacity: 1
-                        },
-                        1000);
-                    });
+                            function() {
+                                jTargetContent.animate({
+                                    opacity: 1
+                                },
+                                1000);
+                            });
                     document.location.hash = target;
                 });
     }
-    
-    $(document).on('click', '.fromComment', function(){
+
+    $(document).on('click', '.fromComment', function() {
         scrollTo('comment-' + $(this).attr('data-from-id'));
         return false;
     });
@@ -127,7 +125,9 @@ jQuery(function($) {
                 refreshId = setInterval(refreshComments, refreshInterval);
             }
         });
+        return false;
     });
+
     refreshId = setInterval(refreshComments, refreshInterval);
 
     $(document).on('click', 'a.replyComment', function() {
@@ -136,13 +136,13 @@ jQuery(function($) {
         user = parent.find('.comment-author').text();
         replyTo = $('#reply-to');
         replyTo.html('В ответ на комментарий от пользователя <b>' + user + '</b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>');
-        $('#CommentForm_parent').val(rel);
+        $('#Comment_parent').val(rel);
         scrollTo('addcomment');
         return false;
     });
 
     $(document).on('click', '#deleteReply', function() {
-        $('#CommentForm_parent').val('');
+        $('#Comment_parent').val('');
         $('#reply-to').html('');
         return false;
     })

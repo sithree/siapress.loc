@@ -54,12 +54,12 @@ if ($likeOr > 0) {
                     ?>
 
                 <?php endif; ?>
-                <div style="float:right; font-size:11px;"><a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo $replyUrl.'?parent='.$comment->id ?>#addcomment">Ответить</a></div>
+                    <div style="float:right; font-size:11px;"><a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'setparent', 'objectTypeId' => $comment->object_type_id, 'objectId' => $comment->object_id, 'parent' => $comment->id)) ?>#addcomment">Ответить</a></div>
             </div>
             <div class="1234" style="float:right">
                 <?php if (!Yii::app()->request->cookies['comment_' . $comment->id]->value AND ! isset(Yii::app()->session['comment_' . $comment->id])): ?>
-                    <a class="likebutton" rel="<?php echo $comment->id ?>" title="Нравится" href="#"><i class="fa fa-thumbs-up"></i> нравится</a>
-                    <a class="dislikebutton"  rel="<?php echo $comment->id ?>" title="Не нравится" href="#"><i class="fa fa-thumbs-down"></i> не нравится</a>
+                    <a class="likebutton" rel="<?php echo $comment->id ?>" title="Нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'like', 'id' => $comment->id)).'#comment-'.$comment->id ?>"><i class="fa fa-thumbs-up"></i> нравится</a>
+                    <a class="dislikebutton"  rel="<?php echo $comment->id ?>" title="Не нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'dislike', 'id' => $comment->id)).'#comment-'.$comment->id ?>"><i class="fa fa-thumbs-down"></i> не нравится</a>
                     <span id="<?php echo $comment->id ?>" class="like-result <?php echo $class ?>"><?php echo $like ?></span>
                 <?php else: ?>
                     <span id="<?php echo $comment->id ?>" class="like-result <?php echo $class ?>"><?php echo $like ?></span>

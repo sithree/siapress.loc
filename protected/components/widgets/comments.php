@@ -2,22 +2,27 @@
 
 Yii::import('zii.widgets.CPortlet');
 
-class Comments extends CPortlet {
+class Comments extends CPortlet
+{
 
     public $object_type_id;
     public $object_id;
     public $comment_on = false;
 
-    protected function renderContent() {
-        $params = array();
+    protected function renderContent()
+    {
         $comment = new Comment();
         $comment->object_type_id = $this->object_type_id;
         $comment->object_id = $this->object_id;
-        $parent = Yii::app()->request->getParam('parent');
-        if (isset($parent)) {
-            $comment->parent = $parent;
-        }
+        $prefix = $this->object_type_id . '_' . $this->object_id . '_';
         $comment->name = Yii::app()->request->cookies['comment_username']->value;
+        $comment->text = Yii::app()->request->cookies[$prefix . 'comment_text']->value;
+        $comment->parent = Yii::app()->request->cookies[$prefix . 'comment_parent']->value;
+        if (Yii::app()->request->cookies[$prefix . 'comment_validate'])
+        {
+            $comment->validate();
+        }
+
         $comments = Yii::app()->user->checkAccess('administrator') ? Comment::model() : Comment::model()->published();
         $comments = $comments->findAll(array('condition' => 'object_id = ' . $this->object_id . ' AND object_type_id = ' . $this->object_type_id));
         Yii::app()->clientScript->registerScriptFile(
@@ -25,10 +30,7 @@ class Comments extends CPortlet {
                         Yii::getPathOfAlias('webroot.scripts') . '/comments.js'
                 ), CClientScript::POS_END
         );
-        $params['replyUrl'] = explode('?', Yii::app()->request->url)[0];
-        $params['comments'] = $comments;
-        $params['comment'] = $comment;
-        $this->render('comments', array('comments' => $comments, 'comment' => $comment, 'params' => $params));
+        $this->render('comments', array('comments' => $comments, 'comment' => $comment));
     }
 
 }

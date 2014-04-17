@@ -94,7 +94,7 @@ return array(
             'connectionString' => 'mysql:host=127.0.0.1;dbname=siapress',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => 'root',
+            'password' => 'mysql',
             'charset' => 'utf8',
             'tablePrefix' => 'sia_',
             'queryCacheID' => 'cache',

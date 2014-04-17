@@ -1,0 +1,243 @@
+a:2:{i:0;a:2:{i:0;s:11159:"    <div class="portlet" id="yw13">
+<div class="portlet-content">
+<script>
+    jQuery(function($) {
+
+
+    });
+</script>
+
+<div class="widget gray-border-light main-news popular">
+    <div class="header">
+        <h2>
+            <a rel="lastcomment" class="block-header navii active"  href="#">последние комментарии</a>
+            <a href="#" rel="mostreading" class="popular-mini navii">читаемые</a>
+            <a rel="mostcomment" class="popular-mini navii"  href="#">комментируемые</a>
+        </h2>
+    </div>
+
+    <div  style="display:none;" id="mostcomment" class="block-comment mtab">
+        <ul class="unstyled popular">
+                            <li>
+                    <a href="/news/31064">
+                        <span class="redlight">пфавфыа</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 14:08</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 38                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/news/31062">
+                        <span class="redlight">fdasfsdaf</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 13:17</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 8                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/news/31063">
+                        <span class="redlight">fdsfsdf</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 14:07</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 2                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/31059">
+                        <span class="redlight">test</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 12:30</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/31060">
+                        <span class="redlight">gfdsgdsfgdfg</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 12:43</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                                <li>
+                    <a href="/31061">
+                        <span class="redlight">hgjgjh</span>                    </a>
+
+                    <div class="small a-right">
+                           <span class="nowrap">14 апреля  в 12:55</span>, 
+                   
+                            <i class="fa fa-comment-o"></i> 0                      </div>
+
+
+
+                </li>
+                        </ul>
+    </div>
+
+    <div style="display:none;" id="mostreading" class="block-comment mtab">
+        <ul class="unstyled popular">
+
+                            <li>
+                    <a href="/news/31064">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">пфавфыа</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 14:08, 
+                            <i class="fa fa-eye"></i> 202                    </div>
+                </li>
+                                <li>
+                    <a href="/news/31063">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdsfsdf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 14:07, 
+                            <i class="fa fa-eye"></i> 99                    </div>
+                </li>
+                                <li>
+                    <a href="/news/31062">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">fdasfsdaf</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 13:17, 
+                            <i class="fa fa-eye"></i> 24                    </div>
+                </li>
+                                <li>
+                    <a href="/31059">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">test</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 12:30, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                                <li>
+                    <a href="/31060">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">gfdsgdsfgdfg</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 12:43, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                                <li>
+                    <a href="/31061">
+                        <!-- <span class="time"></span> -->
+                                                <span class="redlight">hgjgjh</span>                    </a>
+                    <div class="small a-right">
+                        <span class="nowrap">14 апреля  в 12:55, 
+                            <i class="fa fa-eye"></i> 1                    </div>
+                </li>
+                        </ul>
+    </div>
+
+    <div id="lastcomment" class="block-comment mtab">
+        <ul class="unstyled">
+                            <li>
+                    <div class="block-commen-author">afdsafdsfsfs <span style="color: #333;"> &rarr; Ирина:</span></div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111232">
+                        gfdffdsaffsdafasdfasf                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:30</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111231">
+                        hgfhfhf                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:22</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111230">
+                        gfgfdgdfgd                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:20</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111229">
+                        fdsfsafdsfsafsfa                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:10</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111228">
+                        zvcxvcxvczvxvcxv cxvzx                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:10</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111227">
+                        vxvczvcvz                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:09</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111226">
+                        dsfasdfdvcxzvg                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:09</div>
+                </li>
+                                <li>
+                    <div class="block-commen-author">afdsafdsfsfs:</div>
+                    <a  class="comm-right" href="/blogs/31028#comment-111225">
+                        2138                       
+                    </a>          
+                    <div class="created">
+                        <a href="/blogs/31028">
+                            ​Чистое безумие                        </a>
+                    </div>
+                    <div class="created">Сегодня в 16:08</div>
+                </li>
+                        </ul>
+    </div>
+</div></div>
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111232";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
