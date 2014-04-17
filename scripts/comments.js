@@ -30,8 +30,7 @@ jQuery(function($) {
 
     var refreshId;
     var refreshInterval = 15000;
-    function fadeInComment()
-    {
+    function fadeInComment() {
         $('.new').css('display', 'none');
         $('.new').fadeIn(1000, function() {
             $('.new').removeClass('new');
@@ -59,6 +58,35 @@ jQuery(function($) {
             }
         });
     }
+
+    function scrollTo(target) {
+        jTarget = $("a[name='" + target + "']");
+        destination = jTarget.offset().top;
+        root = $.browser.safari ? $('body') : $('html');
+        root.animate({
+            scrollTop: destination
+        },
+        Math.abs(root.scrollTop() - destination) / 10,
+                function() {
+                    jTargetContent = jTarget.next();
+                    jTargetContent.animate({
+                        opacity: 0.4
+                    },
+                    1000,
+                    function() {
+                        jTargetContent.animate({
+                            opacity: 1
+                        },
+                        1000);
+                    });
+                    document.location.hash = target;
+                });
+    }
+    
+    $(document).on('click', '.fromComment', function(){
+        scrollTo('comment-' + $(this).attr('data-from-id'));
+        return false;
+    });
 
     $(document).on('click', '.adminCommentBtns a', function() {
         link = $(this);
@@ -109,6 +137,8 @@ jQuery(function($) {
         replyTo = $('#reply-to');
         replyTo.html('В ответ на комментарий от пользователя <b>' + user + '</b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>');
         $('#CommentForm_parent').val(rel);
+        scrollTo('addcomment');
+        return false;
     });
 
     $(document).on('click', '#deleteReply', function() {
