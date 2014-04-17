@@ -1,16 +1,13 @@
 <?php
 $likeOr = $comment->commentAdd->like - $comment->commentAdd->dislike;
-if ($likeOr > 0)
-{
+if ($likeOr > 0) {
     $like = '+' . $likeOr;
     $class = 'green';
-} elseif ($likeOr < 0)
-{
+} elseif ($likeOr < 0) {
     $like = $likeOr;
 
     $class = 'red';
-} else
-{
+} else {
     $class = 'green';
     $like = $likeOr;
 }
@@ -57,7 +54,7 @@ if ($likeOr > 0)
                     ?>
 
                 <?php endif; ?>
-                    <div style="float:right; font-size:11px;"><a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo $replyUrl.'?parent='.$comment->id ?>#addcomment">Ответить</a></div>
+                <div style="float:right; font-size:11px;"><a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo $replyUrl.'?parent='.$comment->id ?>#addcomment">Ответить</a></div>
             </div>
             <div class="1234" style="float:right">
                 <?php if (!Yii::app()->request->cookies['comment_' . $comment->id]->value AND ! isset(Yii::app()->session['comment_' . $comment->id])): ?>
@@ -73,7 +70,7 @@ if ($likeOr > 0)
                 <span class="comment-date" style="font-size:100%; float: none; display: inline"><?php echo Helper::getFormattedtime($comment->created) ?></span>
                 <?php
                 if (Yii::app()->user->checkAccess('administrator'))
-                    echo '| '.CHtml::link('Бан на сутки', Yii::app()->createUrl('comment/ban', array('id' => $comment->id, 'token' => $comment->token)));
+                    echo '| ' . CHtml::link('Бан на сутки', Yii::app()->createUrl('comment/ban', array('id' => $comment->id, 'token' => $comment->token)));
                 ?>
             </div>
 
@@ -84,18 +81,15 @@ if ($likeOr > 0)
         echo $comment->best ? 'border-color: #ca0000;' : ''
         ?>" >
                  <?php
-                 if (Yii::app()->user->checkAccess('administrator'))
-                 {
-                     if ($comment->ban != 0 || $comment->published == 0)
-                     {
+                 if (Yii::app()->user->checkAccess('administrator')) {
+                     if ($comment->ban != 0 || $comment->published == 0) {
                          echo "<div style='color:#aaa;'> " . $comment->replace() . "</div>";
                      } else
                          echo $comment->replace();
                  }
-                 else
-                 {
+                 else {
                      if ($comment->ban)
-                         echo $comment->getBanText();
+                         echo "<div style='color:#aaa;'> " . $comment->getBanText() . "</div>";
                      else
                          echo $comment->replace();
                  }

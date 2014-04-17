@@ -97,6 +97,7 @@ class Comment extends CActiveRecord
             'poll' => array(self::BELONGS_TO, 'Poll', 'object_id'),
             'objectType' => array(self::BELONGS_TO, 'ObjectTypes', 'object_type_id'),
             'commentAdd' => array(self::HAS_ONE, 'CommentAdd', 'comment_id'),
+            'editable' => array(self::BELONGS_TO, 'Comment', 'parent'),
         );
     }
 

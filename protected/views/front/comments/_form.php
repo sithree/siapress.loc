@@ -19,7 +19,7 @@ echo $form->hiddenField($comment, 'object_type_id');
         <div clas="row-fluid">
             <p id="reply-to">
                 <?php if (isset($comment->parent)): ?>
-                    В ответ на комментарий от пользователя <b>' + user + '</b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+                    В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
                 <?php endif; ?>
             </p>
         </div>
@@ -33,7 +33,7 @@ echo $form->hiddenField($comment, 'object_type_id');
 
         <p id="reply-to">
             <?php if ($comment->parent): ?>
-                В ответ на комментарий от пользователя <b><?php echo $comment->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
+                В ответ на комментарий от пользователя <b><?php echo $comment->editable->name ?></b> <a id="deleteReply" style="font-size:10px;" href="#">[отменить]</a>
             <?php endif; ?>
         </p>
 
