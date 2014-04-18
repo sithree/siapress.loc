@@ -48,7 +48,13 @@ class CommentController extends Controller
             ));
             Yii::app()->end();
         }
-        $this->redirect($_SERVER['HTTP_REFERER'] . '#comment-' . $id);
+        $link = Yii::app()->request->urlReferrer;
+        if (!$link)
+        {
+            $comment = Comment::model()->findByPk($id);
+            $link = $comment->article->link(true);
+        }
+        $this->redirect($link . '#comment-' . $id);
     }
 
     protected function changeComment($id, $token, $params)

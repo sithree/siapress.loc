@@ -1627,7 +1627,7 @@ h1 {
     right: -1px;
 }
 
-.adminCommentBtns a,span {
+.adminCommentBtns a, .adminCommentBtns span {
     margin-left: 15px;
 }
 

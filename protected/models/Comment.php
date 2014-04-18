@@ -258,6 +258,7 @@ class Comment extends CActiveRecord
             case 1: return '<span class="commdeleted">Комментарий удален модератором из-за нарушений <a href="/rules">правил сайта</a>.</span>';
             case 2: return '<span class="commdeleted">Комментарий удален модератором, так как оскорбляет автора и читателей сайта.</span>';
             case 3: return '<span class="commdeleted">Комментарий удален модератором, так как не по сути материала.</span>';
+            case 4: return '<span class="commdeleted">Комментарий удален модератором, из за жалоб пользователей.</span>';
             case 0: return;
         }
     }

@@ -1,4 +1,4 @@
-a:2:{i:0;a:2:{i:0;s:11024:"    <div class="portlet" id="yw9">
+a:2:{i:0;a:2:{i:0;s:11024:"    <div class="portlet" id="yw5">
 <div class="portlet-content">
 <script>
     jQuery(function($) {
@@ -25,7 +25,7 @@ a:2:{i:0;a:2:{i:0;s:11024:"    <div class="portlet" id="yw9">
                     <div class="small a-right">
                            <span class="nowrap">14 апреля  в 14:08</span>, 
                    
-                            <i class="fa fa-comment-o"></i> 46                      </div>
+                            <i class="fa fa-comment-o"></i> 45                      </div>
 
 
 
@@ -102,7 +102,7 @@ a:2:{i:0;a:2:{i:0;s:11024:"    <div class="portlet" id="yw9">
                                                 <span class="redlight">пфавфыа</span>                    </a>
                     <div class="small a-right">
                         <span class="nowrap">14 апреля  в 14:08, 
-                            <i class="fa fa-eye"></i> 230                    </div>
+                            <i class="fa fa-eye"></i> 224                    </div>
                 </li>
                                 <li>
                     <a href="/news/31063">
@@ -240,4 +240,4 @@ a:2:{i:0;a:2:{i:0;s:11024:"    <div class="portlet" id="yw9">
                         </ul>
     </div>
 </div></div>
-</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111269";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
+</div>    ";i:1;N;}i:1;O:18:"CDbCacheDependency":9:{s:12:"connectionID";s:2:"db";s:3:"sql";s:32:"SELECT MAX(id) FROM sia_comments";s:6:"params";N;s:23:" CDbCacheDependency _db";N;s:18:"reuseDependentData";b:0;s:23:" CCacheDependency _hash";N;s:23:" CCacheDependency _data";a:1:{s:7:"MAX(id)";s:6:"111268";}s:14:" CComponent _e";N;s:14:" CComponent _m";N;}}
