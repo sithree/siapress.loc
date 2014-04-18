@@ -1,13 +1,16 @@
 <?php
 $likeOr = $comment->commentAdd->like - $comment->commentAdd->dislike;
-if ($likeOr > 0) {
+if ($likeOr > 0)
+{
     $like = '+' . $likeOr;
     $class = 'green';
-} elseif ($likeOr < 0) {
+} elseif ($likeOr < 0)
+{
     $like = $likeOr;
 
     $class = 'red';
-} else {
+} else
+{
     $class = 'green';
     $like = $likeOr;
 }
@@ -41,25 +44,27 @@ if ($likeOr > 0) {
                     <span class="comment-author" style="font-weight: bold;color: #ca0000; ">
                         <?php echo $comment->name; ?>                                             
                     </span>
-                    <span/>
 
                     <?php if (!empty($comment->parent)): ?>
-                        <span> 
-                            <?php
-                            $parent = Comment::model()->findByPk($comment->parent);
-                            echo ' <span style="color:#333; font-weight:normal;">  <a class="fromComment" data-from-id="' . $parent->id . '" rel="tooltip" title="' . mb_substr(strip_tags($parent->text), 0, 200, 'UTF-8') . '..." style="border-bottom: 1px dotted #CA0000;" href="' . Yii::app()->request->requestUri . '#comment-' . $parent->id . '">&rarr;</a> </span> <b>' . $parent->name . '</b>';
-                            ?>
-                        </span>
+                        <?php
+                        $parent = Comment::model()->findByPk($comment->parent);
+                        echo '<a class="fromComment" data-from-id="' . $parent->id . '" rel="tooltip" title="' . mb_substr(strip_tags($parent->text), 0, 200, 'UTF-8') . '..." style="border-bottom: 1px dotted #CA0000;" href="' . Yii::app()->request->requestUri . '#comment-' . $parent->id . '">&rarr;</a> <b>' . $parent->name . '</b>';
+                        ?>
                     <?php endif;
                     ?>
 
                 <?php endif; ?>
-                    <div style="float:right; font-size:11px;"><a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'setparent', 'objectTypeId' => $comment->object_type_id, 'objectId' => $comment->object_id, 'parent' => $comment->id)) ?>#addcomment">Ответить</a></div>
+                <div style="float:right; font-size:11px;">
+                    <?php if (!Yii::app()->request->cookies['comment_whine_' . $comment->id]): ?>
+                        <a rel="<?php echo $comment->id ?>" class="whineComment" style="font-weight:normal;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'whine', 'id' => $comment->id)) . '#comment-' . $comment->id ?>">Пожаловаться</a>
+                    <?php endif; ?>
+                    <a rel="<?php echo $comment->id ?>" class="replyComment" style="font-weight:normal;" href="<?php echo Yii::app()->createUrl('', array('comment' => 'setparent', 'objectTypeId' => $comment->object_type_id, 'objectId' => $comment->object_id, 'parent' => $comment->id)) ?>#addcomment">Ответить</a>
+                </div>
             </div>
             <div class="1234" style="float:right">
                 <?php if (!Yii::app()->request->cookies['comment_' . $comment->id]->value AND ! isset(Yii::app()->session['comment_' . $comment->id])): ?>
-                    <a class="likebutton" rel="<?php echo $comment->id ?>" title="Нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'like', 'id' => $comment->id)).'#comment-'.$comment->id ?>"><i class="fa fa-thumbs-up"></i> нравится</a>
-                    <a class="dislikebutton"  rel="<?php echo $comment->id ?>" title="Не нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'dislike', 'id' => $comment->id)).'#comment-'.$comment->id ?>"><i class="fa fa-thumbs-down"></i> не нравится</a>
+                    <a class="likebutton" rel="<?php echo $comment->id ?>" title="Нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'like', 'id' => $comment->id)) . '#comment-' . $comment->id ?>"><i class="fa fa-thumbs-up"></i> нравится</a>
+                    <a class="dislikebutton"  rel="<?php echo $comment->id ?>" title="Не нравится" href="<?php echo Yii::app()->createUrl('', array('comment' => 'dislike', 'id' => $comment->id)) . '#comment-' . $comment->id ?>"><i class="fa fa-thumbs-down"></i> не нравится</a>
                     <span id="<?php echo $comment->id ?>" class="like-result <?php echo $class ?>"><?php echo $like ?></span>
                 <?php else: ?>
                     <span id="<?php echo $comment->id ?>" class="like-result <?php echo $class ?>"><?php echo $like ?></span>
@@ -68,10 +73,6 @@ if ($likeOr > 0) {
 
             <div class="comment-links">
                 <span class="comment-date" style="font-size:100%; float: none; display: inline"><?php echo Helper::getFormattedtime($comment->created) ?></span>
-                <?php
-                if (Yii::app()->user->checkAccess('administrator'))
-                    echo '| ' . CHtml::link('Бан на сутки', Yii::app()->createUrl('comment/ban', array('id' => $comment->id, 'token' => $comment->token)));
-                ?>
             </div>
 
             <div class="clr"></div>
@@ -81,13 +82,16 @@ if ($likeOr > 0) {
         echo $comment->best ? 'border-color: #ca0000;' : ''
         ?>" >
                  <?php
-                 if (Yii::app()->user->checkAccess('administrator')) {
-                     if ($comment->ban != 0 || $comment->published == 0) {
+                 if (Yii::app()->user->checkAccess('administrator'))
+                 {
+                     if ($comment->ban != 0 || $comment->published == 0)
+                     {
                          echo "<div style='color:#aaa;'> " . $comment->replace() . "</div>";
                      } else
                          echo $comment->replace();
                  }
-                 else {
+                 else
+                 {
                      if ($comment->ban)
                          echo "<div style='color:#aaa;'> " . $comment->getBanText() . "</div>";
                      else
@@ -99,6 +103,7 @@ if ($likeOr > 0) {
             <?php if (Yii::app()->user->checkAccess('administrator')) : ?>
                 <div class="adminCommentBtns">
                     <?php
+                    echo CHtml::link('Бан на сутки', Yii::app()->createUrl('comment/ban', array('id' => $comment->id, 'token' => $comment->token)));
                     if ($comment->published == 1):
                         if ($comment->best)
                             echo CHtml::link('Не лучший', Yii::app()->createUrl('comment/makeTheBest', array('id' => $comment->id, 'token' => $comment->token, 'value' => 0)));

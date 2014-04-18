@@ -130,6 +130,18 @@ jQuery(function($) {
 
     refreshId = setInterval(refreshComments, refreshInterval);
 
+    $(document).on('click', 'a.whineComment', function() {
+        var t = $(this);
+        $.ajax({
+            'success': function(html) {
+                t.parents('.comment').parent().replaceWith(html);
+            },
+            'url': '/comment/whine',
+            'cache': false,
+            'data': 'id=' + t.attr('rel')
+        });
+        return false;
+    });
     $(document).on('click', 'a.replyComment', function() {
         rel = $(this).attr('rel');
         parent = $(this).parents('#d' + rel);

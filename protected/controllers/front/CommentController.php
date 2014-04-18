@@ -86,6 +86,35 @@ class CommentController extends Controller
     public function actionBan($id, $token)
     {
         $comment = $this->getComment($id, $token);
+        $date = new DateTime();
+        User::ban($date->add(new DateInterval('P1D'))->format('Y-m-d H:i:s'), $comment->ip);
+        $this->sendResult($id);
+    }
+
+    public function actionWhine($id)
+    {
+        $comment = CommentAdd::model()->findByPk($id);
+        if (!$comment)
+        {
+            $comment = new CommentAdd();
+            $comment->$id = $id;
+        }
+        if ($comment->whines >= 5)
+        {
+            $c = Comment::model()->findByPk($id);
+            if ($c)
+            {
+                $c->ban = 4;
+                $c->save();
+            }
+        }
+        {
+            $comment->whines++;
+            $comment->save();
+            $cookie = new CHttpCookie('comment_whine_' . $comment->comment_id, '1');
+            $cookie->expire = time() + 86400;
+            Yii::app()->request->cookies['comment_whine_' . $comment->comment_id] = $cookie;
+        }
         $this->sendResult($id);
     }
 
@@ -130,17 +159,41 @@ class CommentController extends Controller
         $this->sendResult($id);
     }
 
+    protected function canAdd($comment)
+    {
+        $date = new DateTime();
+        $ip = Yii::app()->request->userHostAddress;
+        $lastComment = Comment::model()->find(array('condition' => "ip='{$ip}'", 'order' => 'id DESC', 'limit' => 1));
+
+        if (User::isBaned())
+            return 'Комментарии для вас заблокированы';
+
+        if ($lastComment && time() - strtotime($lastComment->created) < 15)
+            return 'Слишком частое комментирование';
+
+        $lastComment = Comment::model()->findAll("created > '{$date->format('Y-m-d')}' AND ip='{$ip}' AND text='$comment->text'");
+
+        foreach ($lastComment as $c)
+            if (!$c->published || $c->ban)
+            {
+                User::ban($date->add(new DateInterval('P1D'))->format('Y-m-d H:i:s'));
+                return 'Ваш ip адрес заблокирован. У вас нет возможности оставлять комментарий.';
+            }
+        if ((bool) count($lastComment))
+            return 'Такой комментарий вы уже оставляли.';
+        return '';
+    }
+
     public function actionAdd()
     {
-        $message = '';
         $comment = new Comment();
         if (isset($_POST['Comment']))
         {
             $comment->attributes = $_POST['Comment'];
-            $lastComment = Comment::model()->find(array('condition' => 'ip="' . Yii::app()->request->userHostAddress . '"', 'order' => 'id DESC', 'limit' => 1));
-            if (!$lastComment || time() - strtotime($lastComment->created) > 15)
+            $message = $this->canAdd($comment);
+
+            if (!$message)
             {
-                $lastComment = Comment::model()->findAll('created > ' . date('Y-m-d') . ' ip=' . Yii::app()->request->userHostAddress);
                 $prefix = $comment->object_type_id . '_' . $comment->object_id . '_';
                 Yii::app()->request->cookies['comment_username'] = new CHttpCookie('comment_username', $comment->name);
                 Yii::app()->request->cookies[$prefix . 'comment_text'] = new CHttpCookie($prefix . 'comment_text', $comment->text);
@@ -174,7 +227,6 @@ class CommentController extends Controller
             }else
             {
                 $comment->capcha = '';
-                $message = 'Слишком частое комментирование';
             }
 
             $comments = null;
@@ -198,7 +250,7 @@ class CommentController extends Controller
         if (!Yii::app()->request->isAjaxRequest)
             return;
         $comment = new Comment();
-        $comment->attributes = $_POST['CommentForm'];
+        $comment->attributes = $_POST['Comment'];
         $comments = null;
         if (Yii::app()->user->checkAccess('administrator'))
         {
