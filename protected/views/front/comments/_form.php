@@ -61,6 +61,7 @@ echo $form->hiddenField($comment, 'object_type_id');
     <div class="row">
         <div class="col-xs-4">
             <?php if (Yii::app()->user->isGuest): ?>
+                
                 <?php echo $form->textFieldRow($comment, 'capcha', array('class' => 'col-xs-12 no-margin', 'value' => Yii::app()->request->cookies['comment_capcha']->value)); ?>
                 <?php echo $form->error($comment, 'capcha'); ?>
             <?php endif; ?>

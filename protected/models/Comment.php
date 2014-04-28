@@ -83,7 +83,7 @@ class Comment extends CActiveRecord
             array(
                 'capcha',
                 'captcha',
-                'allowEmpty' => !Yii::app()->user->isGuest || !extension_loaded('gd')
+                'allowEmpty' => !$this->isNewRecord || !Yii::app()->user->isGuest || !extension_loaded('gd')
             ),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.

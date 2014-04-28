@@ -169,12 +169,12 @@ jQuery(function($) {
             opacity: 0.4, // прозрачность будет 40%
             marginLeft: "-0.6in", // отступ от левого края элемента станет равным 6 дюймам
             marginRight: "0.6in",
-            left: -100,
+            left: -100
         }, 100, 'swing', function() {
             block.animate({
                 opacity: 1, // прозрачность будет 40%
                 marginLeft: "0", // отступ от левого края элемента станет равным 6 дюймам
-                marginRight: 0,
+                marginRight: 0
             }, 500);
         });
 
